@@ -1,3 +1,5 @@
+CREATE DATABASE labor_docente_bd;
+USE labor_docente_bd;
 /*==============================================================*/
 /* Table: USUARIO                                               */
 /*==============================================================*/
@@ -52,6 +54,7 @@ alter table USEROL
 alter table USEROL
    add constraint FK_USEROL_USEROL2_ROL foreign key (ROL_ID)
       references ROL (ROL_ID);
+/**-------------------------------------------------------------PERIODO-------------/
 /*==============================================================*/
 /* Table: PERIODO                                               */
 /*==============================================================*/
@@ -106,7 +109,7 @@ create table EVALUACION
    USR_IDENTIFICACION   INT,
    ROL_ID               INT,
    EVA_ESTADO           SMALLINT,
-   EVA_PUNTAJE          INT(4,2),
+   EVA_PUNTAJE          DECIMAL(4,2),
    EVA_RESULTADO        VARCHAR(1000),
    constraint PK_EVALUACION primary key (EVA_ID)
 );
