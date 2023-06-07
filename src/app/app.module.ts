@@ -7,12 +7,18 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { ListarComponent } from './usuario/listar/listar.component';
+import { AgregarComponent } from './usuario/agregar/agregar.component';
+import { EditarComponent } from './usuario/editar/editar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ListarComponent,
+    AgregarComponent,
+    EditarComponent
   ],
   imports: [
     BrowserModule,

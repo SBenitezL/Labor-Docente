@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent {
 
     public myForm!: FormGroup;
 
-    constructor(private fb:FormBuilder)
+    constructor(private fb:FormBuilder,private router:Router)
     {
 
     }
@@ -27,8 +28,9 @@ export class LoginComponent {
     }
 
     public submitFormulario(){
-      alert("Se va a enviar el formulario");
+      //alert("Se va a enviar el formulario");
       console.log(this.myForm.value);
-
+    }
+    login(){
     }
 }
