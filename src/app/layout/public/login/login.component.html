@@ -3,13 +3,13 @@
     <div class ="main-container">
       <div id="action1">
           <div class="sign-up-container" id="sign-up">
-              <form action="" class="formulario">
+              <form [formGroup]="myForm" (ngSubmit)="submitFormulario()" class="formulario">
                   <h1 class="tittle-action">SIGN UP</h1>
                   <label for="full-name">
-                      <input type="text" id="full-name" placeholder="Full Name" autocomplete="name" class="entrada" required>
+                      <input formControlName="user" type="text" id="full-name" placeholder="Full Name" autocomplete="name" class="entrada" required>
                   </label>
                   <label for="email">
-                      <input type="text" id="email" placeholder="Email" autocomplete="email" class="entrada" required>
+                      <input formControlName="password" type="text" id="email" placeholder="Email" autocomplete="email" class="entrada" required>
                   </label>
                   <label for="password">
                       <input type="password" id="password" placeholder="Password" autocomplete="new-password" class="entrada" required>
