@@ -4,7 +4,7 @@
   margin: 0;
 }
 body{
-  background-image: url("../../../../assets/samuel-ferrara-1527pjeb6jg-unsplash.jpg");
+  background: linear-gradient(to bottom,#051a54, #770000,#051a54);;
   background-size:cover;
   background-position: center;
   height: 100vh;
