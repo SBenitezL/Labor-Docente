@@ -1,4 +1,5 @@
 import {Router} from 'express';
+import  usuariosControllers from '../controllers/usuariosControllers'; 
 
 class UsuariosRoutes{
     public router:Router= Router();
@@ -8,7 +9,7 @@ class UsuariosRoutes{
 
     }
     config():void{
-        this.router.get('/',(req,res)=> res.send('Usuarios'));
+        this.router.get('/',usuariosControllers.index);
     }
 }
 const usuariosRoutes=new UsuariosRoutes();
