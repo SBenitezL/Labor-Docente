@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-import { Component} from '@angular/core';
-=======
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
->>>>>>> 13fb7083b22fe0ff4fc1007d75312d0adb106d0c
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +8,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-<<<<<<< HEAD
-  
-=======
 
     public myForm!: FormGroup;
 
-    constructor(private fb:FormBuilder)
+    constructor(private fb:FormBuilder,private router:Router)
     {
 
     }
@@ -34,9 +28,9 @@ export class LoginComponent {
     }
 
     public submitFormulario(){
-      alert("Se va a enviar el formulario");
+      //alert("Se va a enviar el formulario");
       console.log(this.myForm.value);
-
     }
->>>>>>> 13fb7083b22fe0ff4fc1007d75312d0adb106d0c
+    login(){
+    }
 }

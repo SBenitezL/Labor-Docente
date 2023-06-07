@@ -104,7 +104,7 @@ color: black;
 .envio a{
   font-size: 12px;
   position: relative;
-  color:rgb(221, 215, 206);
+  color:rgb(150, 148, 146);
   text-decoration: none;
 }
 .entrada{
@@ -180,7 +180,7 @@ color: black;
   transform: translateX(-80%);
 }
 
-#full-name{
+#username{
   background-image: url('../../../../assets/user.svg');
   background-repeat: no-repeat; /* Evita la repetición del icono */
   background-position: right center; /* Colocar el icono en la izquierda centrado */

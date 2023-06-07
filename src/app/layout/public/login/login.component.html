@@ -1,52 +1,25 @@
 <body>
   <main>
     <div class ="main-container">
-      <div id="action1">
-          <div class="sign-up-container" id="sign-up">
-              <form [formGroup]="myForm" (ngSubmit)="submitFormulario()" class="formulario">
-                  <h1 class="tittle-action">SIGN UP</h1>
-                  <label for="full-name">
-                      <input formControlName="user" type="text" id="full-name" placeholder="Full Name" autocomplete="name" class="entrada" required>
-                  </label>
-                  <label for="email">
-                      <input formControlName="password" type="text" id="email" placeholder="Email" autocomplete="email" class="entrada" required>
-                  </label>
-                  <label for="password">
-                      <input type="password" id="password" placeholder="Password" autocomplete="new-password" class="entrada" required>
-                  </label>
-                  <div class="envio">
-                      <input type="submit" value="SIGN UP" class="send">
-                  </div>
-              </form>
-          </div>
-          <div class="question">
-              <h1>Have an account?</h1>
-              <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam eligendi suscipit harum.
-              </p>
-              <button class="switch" onclick="cambiar()" id="switch">LOGIN</button>
-          </div>
-      </div>
       <div id="action2">
           <div class="question">
               <h1>Don't Have an account?</h1>
               <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente suscipit nemo labore?
               </p>
-              <button class="switch" onclick="cambiar()" id="switch">SIGN UP</button>
           </div>
-          <div class="login-container" id ="login">
-              <form action="" class = "formulario">
+          <div  class="login-container" id ="login">
+              <form [formGroup]="myForm" (ngSubmit)="submitFormulario()" class = "formulario">
                   <h1 class="tittle-action">LOGIN</h1>
-                  <label for="email">
-                      <input type="text" id="email" placeholder="Email" autocomplete="email" class="entrada" required>
+                  <label for="username">
+                      <input formGroupName="user" type="text" id="username" placeholder="Username" autocomplete="username" class="entrada" required>
                   </label>
                   <label for="password">
-                      <input type="password" id="password" placeholder="Password" autocomplete="current-password" class="entrada" required>
+                      <input formGroupName="password" type="password" id="password" placeholder="Password" autocomplete="current-password" class="entrada" required>
                   </label>
                   <div class="envio">
                       <a href="#" target="_blank">Forgot password?</a>
-                      <input type="submit" value="LOGIN" class="send">
+                      <input (click)="login()" type="submit" value="LOGIN" class="send">
                   </div>
               </form>
           </div>
