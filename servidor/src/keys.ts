@@ -1,4 +1,4 @@
-import { Pool, createPool, Connection } from 'promise-mysql';
+//import { Pool, createPool, Connection } from 'promise-mysql';
 export default{
     database: {
         host: 'localhost',
