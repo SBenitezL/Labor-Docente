@@ -11,7 +11,11 @@ class UsuariosRoutes {
         this.config();
     }
     config() {
-        this.router.get('/', usuariosControllers_1.default.index);
+        this.router.get('/', usuariosControllers_1.default.list);
+        this.router.get('/', usuariosControllers_1.default.getOne);
+        this.router.post('/', usuariosControllers_1.default.create);
+        this.router.delete('/:id', usuariosControllers_1.default.delete);
+        this.router.put('/:id', usuariosControllers_1.default.update);
     }
 }
 const usuariosRoutes = new UsuariosRoutes();
