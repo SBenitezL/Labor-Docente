@@ -9,6 +9,7 @@ class UsuariosRoutes{
 
     }
     config():void{
+
        
         this.router.get('/',usuariosControllers.list);
         this.router.get('/:id', usuariosControllers.getOne);

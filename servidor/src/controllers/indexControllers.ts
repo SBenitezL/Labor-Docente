@@ -1,7 +1,7 @@
 import {Request, Response} from 'express';
 
 class IndexController{
-    index (req: Request,res: Response){
+    public index (req: Request,res: Response){
         res.send('Hello')
     }
 }

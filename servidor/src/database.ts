@@ -1,4 +1,4 @@
-import mysql from 'mysql2/promise';
+import mysql from 'mysql2/promise'; // Importa la versión compatible con promesas
 
 import keys from './keys';
 
