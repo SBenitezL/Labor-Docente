@@ -7,7 +7,8 @@ class UsuariosController{
         res.json('Usuarios');
 
     }
-   /* public getOne (req: Request,res: Response){
+    /*
+   public getOne (req: Request,res: Response){
         res.json({text : 'Usuario'+ req.params.id});
 
     }*/
