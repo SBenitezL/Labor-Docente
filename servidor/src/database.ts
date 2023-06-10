@@ -1,22 +1,22 @@
-import mysql from 'mysql2/promise';
+import mysql from 'mysql2/promise'; // Importa la versión compatible con promesas
 
 import keys from './keys';
 
-const pool = mysql.createPool(keys.database);//se ejecuta el modulo de conexion a la bd
-//permite enviar consultas
+const pool = mysql.createPool(keys.database);
 
-
-
-pool.getConnection()
-  .then((conn) => {
+// Ahora puedes usar `await` en lugar de callbacks
+(async () => {
+  try {
+    const connection = await pool.getConnection();
     console.log('DB is connected');
-    // Aquí puedes realizar consultas o cualquier operación con la conexión
-    // ...
-    // Recuerda liberar la conexión cuando hayas terminado
-    conn.release();
-  })
-  .catch((err) => {
-    console.error('Error connecting to DB:', err);
-  });
 
-export default pool; 
+    // Realiza tus operaciones de base de datos aquí
+    // Ejemplo: const results = await connection.query('SELECT * FROM ...');
+    connection.release(); // Libera la conexión cuando hayas terminado
+  } catch (error) {
+    console.error('Error connecting to the database:', error);
+  }
+})();
+
+export default pool;
+////////////////////////////////////////////

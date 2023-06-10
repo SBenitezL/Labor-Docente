@@ -21,6 +21,7 @@ class Servidor{
     routes():void{
         this.app.use(indexRoutes);
         this.app.use('/api/usuarios',usuariosRoutes);
+        
     }
     start():void{
         this.app.listen(this.app.get('port'),()=>{

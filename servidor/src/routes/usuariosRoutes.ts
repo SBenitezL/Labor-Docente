@@ -9,12 +9,14 @@ class UsuariosRoutes{
 
     }
     config():void{
-        this.router.get('/',usuariosControllers.index);
-        this.router.get('/',usuariosControllers.getOne);
-        this.router.post('/',usuariosControllers.create);
-        this.router.delete('/:id',usuariosControllers.delete);
-        this.router.put('/:id',usuariosControllers.update);
 
+       
+        this.router.get('/',usuariosControllers.list);
+       /* this.router.get('/:id', usuariosControllers.getOne);
+        this.router.post('/', usuariosControllers.create);
+        this.router.put('/:id', usuariosControllers.update );
+        this.router.delete('/:id',usuariosControllers.delete);
+*/
     }
 }
 const usuariosRoutes=new UsuariosRoutes();

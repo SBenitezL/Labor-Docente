@@ -13,16 +13,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class UsuariosController {
+class UsuariosControllers {
     list(req, res) {
-        res.json({ text: 'Listando usuario' });
+        return __awaiter(this, void 0, void 0, function* () {
+            const usuarios = yield database_1.default.query('SELECT * FROM USUARIO');
+            res.json(usuarios);
+        });
     }
     getOne(req, res) {
-        res.json({ text: 'Usuario' + req.params.id });
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const usuario = yield database_1.default.query('SELECT * FROM USUARIO WHERE USR_IDENTIFICACION  = ?', [id]);
+            console.log(usuario);
+            res.json({ text: 'Usuario encontrado' });
+        });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO USUARIO set ?', [req.body]);
+            yield database_1.default.query('INSERT INTO USUARIO SET ?', [req.body]);
             res.json({ message: 'Usuario insertado' });
         });
     }
@@ -30,8 +38,8 @@ class UsuariosController {
         res.json({ text: 'Eliminando usuario' });
     }
     update(req, res) {
-        res.json({ text: 'Actualizando usuario' });
+        res.json({ text: 'Actualizando usuario' + req.params.id });
     }
 }
-const usuariosController = new UsuariosController();
+const usuariosController = new UsuariosControllers();
 exports.default = usuariosController;
