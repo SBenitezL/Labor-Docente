@@ -9,6 +9,7 @@ const pool = mysql.createPool(keys.database);
   try {
     const connection = await pool.getConnection();
     console.log('DB is connected');
+
     // Realiza tus operaciones de base de datos aquí
     // Ejemplo: const results = await connection.query('SELECT * FROM ...');
     connection.release(); // Libera la conexión cuando hayas terminado
@@ -18,3 +19,4 @@ const pool = mysql.createPool(keys.database);
 })();
 
 export default pool;
+////////////////////////////////////////////
