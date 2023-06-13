@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="15.0px"
+   height="15.0px"
+   viewBox="0 0 15.0 15.0"
+   version="1.1"
+   id="SVGRoot"
+   sodipodi:docname="candado.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview18907"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="41.733333"
+     inkscape:cx="7.5"
+     inkscape:cy="7.5"
+     inkscape:window-width="1600"
+     inkscape:window-height="829"
+     inkscape:window-x="1358"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid18913" />
+  </sodipodi:namedview>
+  <defs
+     id="defs18902" />
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#ffffff;stroke-width:0.5;stroke-linejoin:bevel"
+       id="rect18920"
+       width="4.7444091"
+       height="4.5287538"
+       x="5.031949"
+       y="5.007987" />
+    <path
+       style="fill:#999999;fill-opacity:1;stroke:#999999;stroke-width:0.440246;stroke-linejoin:bevel;stroke-opacity:1"
+       d="m 3.9479604,12.351709 7.1522046,0.01843 -0.02416,-5.3792404 -7.1522045,0.018423 z"
+       id="path19620" />
+    <path
+       style="fill:none;stroke:#999999;stroke-width:0.942179;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       d="m 4.195257,7.0330809 c 0.069377,-5.0111383 6.555702,-5.0527824 6.609485,0"
+       id="path20404"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>

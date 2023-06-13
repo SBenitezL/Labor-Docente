@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule}from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './layout/public/login/login.component';
@@ -12,8 +11,6 @@ import { ListarComponent } from './usuario/listar/listar.component';
 import { AgregarComponent } from './usuario/agregar/agregar.component';
 import { EditarComponent } from './usuario/editar/editar.component';
 
-import {ServiceService} from './Service/service.service';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,19 +18,15 @@ import {ServiceService} from './Service/service.service';
     UsuarioComponent,
     ListarComponent,
     AgregarComponent,
-    EditarComponent,
-
+    EditarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule
+    AppRoutingModule
   ],
-  providers: [
-    ServiceService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

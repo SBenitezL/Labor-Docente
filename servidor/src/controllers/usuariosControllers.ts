@@ -1,18 +1,22 @@
 import {Request, Response} from 'express';
 import db from '../database';
 class UsuariosControllers{
-     
-    public async list (req: Request,res: Response){
-        
-        const usuarios= (await db.query('SELECT * FROM USUARIO')).map((row: any) => ({
-        USR_IDENTIFICACION: row.USR_IDENTIFICACION,
-        USU_NOMBRE: row.USU_NOMBRE.toString(),
-        // Agrega otras propiedades según la estructura de tu tabla
-      }));
-     
-        res.json(usuarios);
 
-    }
+    /*public async list(req: Request, res: Response) {
+        const usuarios = await db.query('SELECT * FROM USUARIO');  
+        res.json(usuarios);
+      }*/
+      public async list(req: Request, res: Response) {
+        const [rows] = await db.query('SELECT * FROM USUARIO'); // Desestructurar el resultado para obtener solo el primer elemento (las filas)
+      
+        if (Array.isArray(rows)) {
+          const usuarios = rows.map((row: any) => row); // Utilizar cualquier tipo genérico para 'row' según tus necesidades
+          res.json(usuarios);
+        } else {
+          console.error('Invalid result format');
+          res.status(500).json({ message: 'Internal Server Error' });
+        }
+      }
     public async getOne (req: Request,res: Response): Promise<any>{
         const {id} = req.params;
         const usuario= await db.query('SELECT * FROM USUARIO WHERE USR_IDENTIFICACION  = ?',[id]);
@@ -22,7 +26,7 @@ class UsuariosControllers{
         }
         res.status(404).json({text:'Usuario no encontrado'});
 
-    }
+    } 
     public async create(req: Request,res: Response): Promise<void>{
         await db.query('INSERT INTO USUARIO SET ?', [req.body]);
         res.json({message: 'Usuario insertado'});
