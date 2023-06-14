@@ -19,15 +19,15 @@ export class ServiceService {
   }
 
   getUsuario(id:number){
-    return this.http.get('${this.API_URI}/usuarios/${id}');
+    return this.http.get(`${this.API_URI}/usuarios/${id}`);
   }
 
-  deleteUsuario(id:number){
-    this.http.delete('${this.API_URI}/usuarios/${id}')
+  deleteUsuario(id: number): Observable<any> {
+    return this.http.delete(`${this.API_URI}/usuarios/${id}`);
   }
-  saveUsuario(usuario:Usuario){
-    return this.http.post('${this.API_URI}/usuarios/',usuario);
-
+  
+  saveUsuario(usuario: Usuario) {
+    return this.http.post(`${this.API_URI}/usuarios/`, usuario);
   }
   updateUsuario(id: number, updatedUsuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(`${this.API_URI}/usuarios/${id}`, updatedUsuario);

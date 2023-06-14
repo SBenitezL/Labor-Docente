@@ -23,8 +23,8 @@
                         <td>{{ usuario.USU_GENERO }}</td>
                         <td>{{ usuario.USU_ESTUDIO }}</td>
                         <td>
-                            <button class="btn btn-warning">Editar</button>
-                            <button class="btn btn-warning" style="margin-left: 10px;">Eliminar</button>
+                            <button [routerLink]="['/editar',usuario.USR_IDENTIFICACION]" class="btn btn-warning">Editar</button>
+                            <button class="btn btn-warning" (click)="deleteUsuario(usuario.USR_IDENTIFICACION)" style="margin-left: 10px;">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>
