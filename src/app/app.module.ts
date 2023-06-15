@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ListarComponent } from './usuario/listar/listar.component';
 import { AgregarComponent } from './usuario/agregar/agregar.component';
 import { EditarComponent } from './usuario/editar/editar.component';
+import { LaborDocenteComponent } from './labor-docente/labor-docente.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EditarComponent } from './usuario/editar/editar.component';
     UsuarioComponent,
     ListarComponent,
     AgregarComponent,
-    EditarComponent
+    EditarComponent,
+    LaborDocenteComponent
   ],
   imports: [
     BrowserModule,
