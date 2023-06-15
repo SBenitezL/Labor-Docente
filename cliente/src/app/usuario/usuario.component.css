@@ -7,3 +7,7 @@
     background-color: rgb(35, 35, 163);
     border-color: black;
 }
+#cabecera {
+    height: 105px;
+    background: #0D4185;
+}

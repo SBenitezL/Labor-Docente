@@ -16,17 +16,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr  class="text-center">
-                        <td> <input type="text" name="USR_IDENTIFICACION"[(ngModel)]="usuario.USR_IDENTIFICACION" placeholder="Identificación"></td>
-                        <td> <input type="text" name="USU_NOMBRE" [(ngModel)]="usuario.USU_NOMBRE"placeholder="Nombre"></td>
-                        <td> <input type="text" name="USU_APELLIDO" [(ngModel)]="usuario.USU_APELLIDO"placeholder="Apellido"></td>
-                        <td> <input type="text" name="USU_GENERO"[(ngModel)]="usuario.USU_GENERO" placeholder="Género"></td>
-                        <td> <input type="text" name="USU_ESTUDIO"[(ngModel)]="usuario.USU_ESTUDIO" placeholder="Estudio"></td>
+                    <tr class="text-center">
+                        <td> <input type="text" name="USR_IDENTIFICACION" [(ngModel)]="usuario.USR_IDENTIFICACION"></td>
+                        <td> <input type="text" name="USU_NOMBRE" [(ngModel)]="usuario.USU_NOMBRE"></td>
+                        <td> <input type="text" name="USU_APELLIDO" [(ngModel)]="usuario.USU_APELLIDO"></td>
+                        <td> <input type="text" name="USU_GENERO" [(ngModel)]="usuario.USU_GENERO"></td>
+                        <td> <input type="text" name="USU_ESTUDIO" [(ngModel)]="usuario.USU_ESTUDIO"></td>
                         <td>
-                            <button class="btn btn-warning"(click)="saveNewUsuario()">Guardar</button>
-                            <button class="btn btn-warning" style="margin-left: 10px;">Eliminar</button>
+                          <button class="btn btn-warning" (click)="edit ? updateUsuario() : saveNewUsuario()">Guardar</button>
+                          <div *ngIf="usuarioAgregado">
+                            Usuario agregado exitosamente.
+                          </div>
                         </td>
-                    </tr>
+                      </tr>
+                      
                 </tbody>
             </table>
         </div>
