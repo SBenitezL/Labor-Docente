@@ -5,14 +5,14 @@ import { LoginComponent } from './layout/public/login/login.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ListarComponent } from './usuario/listar/listar.component';
 import { AgregarComponent } from './usuario/agregar/agregar.component';
-import { EditarComponent } from './usuario/editar/editar.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'usuario', component: UsuarioComponent },
   { path: 'listar', component: ListarComponent },
   { path: 'agregar', component: AgregarComponent },
-  { path: 'editar', component: EditarComponent},
+  { path: 'editar/:id',component: AgregarComponent},
 
 ];
 @NgModule({

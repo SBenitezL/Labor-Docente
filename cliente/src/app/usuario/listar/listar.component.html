@@ -16,15 +16,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-center">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr *ngFor="let usuario of usuarios" class="text-center">
+                        <td>{{ usuario.USR_IDENTIFICACION}}</td>
+                        <td>{{ usuario.USU_NOMBRE }}</td>
+                        <td>{{ usuario.USU_APELLIDO }}</td>
+                        <td>{{ usuario.USU_GENERO }}</td>
+                        <td>{{ usuario.USU_ESTUDIO }}</td>
                         <td>
-                            <button class="btn btn-warning">Editar</button>
-                            <button class="btn btn-warning" style="margin-left: 10px;">Eliminar</button>
+                            <button [routerLink]="['/editar',usuario.USR_IDENTIFICACION]" class="btn btn-warning">Editar</button>
+                            <button class="btn btn-warning" (click)="deleteUsuario(usuario.USR_IDENTIFICACION)" style="margin-left: 10px;">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>

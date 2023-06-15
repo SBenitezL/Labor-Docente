@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import usuariosRoutes from './routes/usuariosRoutes';
+import laborRoutes from './routes/LaborDocenteRoutes';
 
 class Servidor{
     public app: Application;
@@ -21,6 +22,7 @@ class Servidor{
     routes():void{
         this.app.use(indexRoutes);
         this.app.use('/api/usuarios',usuariosRoutes);
+        this.app.use('/api/labor',laborRoutes);
         
     }
     start():void{
