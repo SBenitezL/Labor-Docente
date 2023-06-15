@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import usuariosRoutes from './routes/usuariosRoutes';
-import laborRoutes from './routes/LaborRoutes';
+import laborRoutes from './routes/LaborDocenteRoutes';
 
 class Servidor{
     public app: Application;
