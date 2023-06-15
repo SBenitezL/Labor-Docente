@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import  usuariosControllers from '../controllers/usuariosControllers'; 
+import  laborDocenteControllers from '../controllers/laborDocenteControllers';
 
 class LaborRoutes{
     public router:Router= Router();
@@ -11,11 +11,11 @@ class LaborRoutes{
     config():void{
 
        
-        this.router.get('/',laborDocenteController.list);
-        this.router.get('/:id', laborDocenteController.getOne);
-        this.router.post('/', laborDocenteController.create);
-        this.router.put('/:id', laborDocenteController.update );
-        this.router.delete('/:id',laborDocenteController.delete);
+        this.router.get('/',laborDocenteControllers.list);
+        this.router.get('/:id', laborDocenteControllers.getOne);
+        this.router.post('/', laborDocenteControllers.create);
+        this.router.put('/:id', laborDocenteControllers.update );
+        this.router.delete('/:id',laborDocenteControllers.delete);
 
     }
 }
