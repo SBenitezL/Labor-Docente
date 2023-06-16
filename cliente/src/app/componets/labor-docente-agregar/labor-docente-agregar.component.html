@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="card">
+        <div class="card-head">
+            <h3>Usuarios</h3>
+            
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id Labor</th>
+                        <th>Id Tipo Labor</th>
+                        <th>Nombre</th>
+                        <th>Horas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center">
+                        <td> <input type="text" name="USR_IDENTIFICACION" [(ngModel)]="laborDocente.LAB_ID" class="left-align-input"></td>
+                        <td> <input type="text" name="USU_NOMBRE" [(ngModel)]="laborDocente.TL_ID" class="left-align-input"></td>
+                        <td> <input type="text" name="USU_APELLIDO" [(ngModel)]="laborDocente.LAB_NOMBRE" class="left-align-input"></td>
+                        <td> <input type="text" name="USU_GENERO" [(ngModel)]="laborDocente.LAB_HORAS" class="left-align-input"></td>
+                        <td>
+                          <button class="btn btn-warning" (click)="edit ? updateLabor() : saveNewLabor()">Guardar</button>
+                          <div *ngIf="laborAgregado">
+                            Usuario agregado exitosamente.
+                          </div>
+                        </td>
+                      </tr>
+                      
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -3,33 +3,36 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule}from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './layout/public/login/login.component';
-import { UsuarioComponent } from './usuario/usuario.component';
+import { LoginComponent } from './componets/login/login.component';
+
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { ListarComponent } from './usuario/listar/listar.component';
-import { AgregarComponent } from './usuario/agregar/agregar.component';
 import { FormsModule } from '@angular/forms';
 
 
 import {ServiceService} from './Service/service.service';
-import { LaborDocenteComponent } from './labor-docente/labor-docente.component';
-import { ListarLaborComponent } from './labor-docente/listar-labor/listar-labor.component';
-import { AgregarLaborComponent } from './labor-docente/agregar-labor/agregar-labor.component';
+import { NavigationComponent } from './componets/navigation/navigation.component';
+import { LaborDocenteAgregarComponent } from './componets/labor-docente-agregar/labor-docente-agregar.component';
+import { LaborDocenteListarComponent } from './componets/labor-docente-listar/labor-docente-listar.component';
+import { UsuarioListarComponent } from './componets/usuario-listar/usuario-listar.component';
+import { UsuarioAgregarComponent } from './componets/usuario-agregar/usuario-agregar.component';
+import { UsuarioEditarComponent } from './componets/usuario-editar/usuario-editar.component';
+import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/labor-docente-editar.component';
+import { MenuCoordinadorComponent } from './componets/menu-coordinador/menu-coordinador.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UsuarioComponent,
-    ListarComponent,
-    AgregarComponent,
-    LaborDocenteComponent,
-    ListarLaborComponent,
-    AgregarLaborComponent,
-
-
+    LaborDocenteAgregarComponent,
+    LaborDocenteListarComponent,
+    UsuarioListarComponent,
+    UsuarioAgregarComponent,
+    NavigationComponent,
+    UsuarioEditarComponent,
+    LaborDocenteEditarComponent,
+    MenuCoordinadorComponent
   ],
   imports: [
     BrowserModule,

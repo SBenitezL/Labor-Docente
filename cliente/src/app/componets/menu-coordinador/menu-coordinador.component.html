@@ -1,0 +1,22 @@
+<div id="cabecera" class="cabecera-con-imagen">
+	<div class="imagen-con-texto">
+	  <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+	  <div class="texto-con-linea">
+			<div >
+				<span>
+					Universidad del Cauca
+				</span>
+			</div>
+			
+	  </div>
+	</div>
+  </div>
+
+<hr>
+
+<div class="container-button d-flex justify-content-center">
+    <button (click)= "IrGestionDocente()" class="btn btn-info" style ="margin-left: 10px;">Gestion Docente</button>
+    <button (click)= "IrGestionLabor()" class="btn btn-info" style ="margin-left: 30px;">Gestion Labor</button>
+    <button (click)= "IrEvaluacion()" class="btn btn-info" style ="margin-left: 50px;">Evaluacion</button>
+</div>
+<router-outlet></router-outlet> 

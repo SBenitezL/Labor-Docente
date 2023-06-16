@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../Modelo/Usuario';
 
 import {} from '../Modelo/Usuario';
+import { LaborDocente } from '../Modelo/LaborDocente';
 import { Observable } from 'rxjs';
 
 
@@ -29,8 +30,27 @@ export class ServiceService {
   saveUsuario(usuario: Usuario) {
     return this.http.post(`${this.API_URI}/usuarios/`, usuario);
   }
-  updateUsuario(id: number, updatedUsuario: Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>(`${this.API_URI}/usuarios/${id}`, updatedUsuario);
+  updateUsuario(id: number, updatedUsuario: Usuario) {
+    console.log(updatedUsuario);
+    return this.http.put(`${this.API_URI}/usuarios/${id}`, updatedUsuario);
   }
   
+  getLabores(){
+    return this.http.get('http://localhost:3000/api/labor');
+  }
+
+  getLabor(id:number){
+    return this.http.get(`${this.API_URI}/labor/${id}`);
+  }
+
+  deleteLabor(id: number): Observable<any> {
+    return this.http.delete(`${this.API_URI}/labor/${id}`);
+  }
+  
+  saveLabor(laborDocente: LaborDocente) {
+    return this.http.post(`${this.API_URI}/labor/`, laborDocente);
+  }
+  updateLabor(id: number, updatedLabor: LaborDocente): Observable<LaborDocente> {
+    return this.http.put<LaborDocente>(`${this.API_URI}/labor/${id}`, updatedLabor);
+  }
 }

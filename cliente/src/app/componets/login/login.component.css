@@ -1,0 +1,252 @@
+*{
+  font-family: 'Arial', sons-serif;
+}
+.btn-info{
+  margin-top: 20px;
+  color: rgb(255, 255, 255);
+  background-color: #0D4185;
+  border-color: black;
+}
+#cabecera {
+  display: flex;
+  align-items: center;
+  
+  background: linear-gradient(to right,#0D4185,#770000);
+}
+.imagen-con-texto {
+  display: flex;
+  align-items: center;
+}
+
+.icono-izquierda {
+width: 100px; /* Ancho deseado */
+height: auto; /* La altura se ajusta automáticamente */
+margin: 10px;
+}
+.texto-con-linea {
+  display: flex;
+  align-items: center;
+}
+.texto-con-linea{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 25px; /* Tamaño de fuente deseado */
+  color: aliceblue;
+  margin-left: 20px;
+  
+}
+.texto-con-linea span{
+  padding-left: 15px;
+  
+}
+
+.texto-con-linea span {
+  margin-right: 10px; /* Ajusta el espacio entre el texto y la línea vertical */
+}
+
+.cabecera-con-imagen {
+  padding-left: 10px;
+}
+/**/
+*{
+    font-family: 'Arial', sons-serif;
+    padding: 0;
+    margin: 0;
+  }
+  body{
+   /* background: linear-gradient(to bottom,#051a54, #770000,#051a54);;*/
+    background-size:cover;
+    background-position: center;
+    height: 100vh;
+    margin-top: 0;
+    display: block;
+  }
+  main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .tittle-action{
+    color: rgb(187, 82, 12);
+  }
+  .main-container{
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: 10%;
+    display: flex;
+    position: relative;
+    width: 800px;
+    height: 350px;
+    border-radius: 5px;
+    background: linear-gradient(to bottom,#051a54, #770000,#051a54);
+  }
+  
+  #action1{
+    display: none;
+  }
+  #action1 .question{
+    color: white;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 35%;
+    text-align: left;
+    margin: 50px 30px 30px 0px;
+    padding-left: 30px;
+    right: 0;
+  }
+  
+  #action1 .question h1{
+    font-size: 25px;
+    font-weight: 200;
+  }
+  #action1 .question p{
+    font-size: 14px;
+    font-weight: 150;
+    margin-top: 15px;
+  }
+  
+  #action2{
+    display: flex;
+  }
+  
+  #action2 .question{
+    color: white;
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 35%;
+    text-align: left;
+    margin: 50px 30px 30px 50px;
+  }
+  
+  #action2 .question h1{
+    font-size: 25px;
+    font-weight: 200;
+  }
+  #action2 .question p{
+    font-size: 14px;
+    font-weight: 150;
+    margin-top: 15px;
+  }
+  
+  .switch{
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px; /* valor ajustable */
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Agrega transición a todos los cambios */
+    width: 110px;
+    margin-top: 30px;
+  }
+  .switch:hover{
+    background-color: white;
+  color: black;
+  }
+  
+  .formulario{
+    margin: 50px 30px 25px 40px;
+  }
+  .envio{
+    margin-top:20px;
+  }
+  .envio a{
+    font-size: 12px;
+    position: relative;
+    color:rgb(150, 148, 146);
+    text-decoration: none;
+  }
+  .entrada{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 14px;
+    margin-top: 15px;
+  }
+  .send{
+    background-color: rgb(230, 48, 63);
+    color:white;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Agrega transición a todos los cambios */
+    width: 110px;
+    position: absolute;
+    right: 30px;
+  }
+  #sign-up{
+    display: block;
+    background-color: white;
+    height: 400px;
+    z-index: 2;
+    position: absolute;
+    top: -25px;
+    width: 50%;
+    left: 0;
+    margin-left: 40px;
+    transition: transform 0.5s ease-in-out;
+    animation: vibration 0.3s ease-in-out;
+    border-radius: 5px;
+  }
+  #sign-up.active{
+    transform: translateX(80%);
+  }
+  @keyframes vibration {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(5px);
+    }
+    50% {
+      transform: translateX(-5px);
+    }
+    75% {
+      transform: translateX(3px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  #login{
+    display: block;
+    background-color: white;
+    border: 1px solid black;
+    height: 400px;
+    z-index: 2;
+    position: absolute;
+    top: -25px;
+    right: 0;
+    width: 50%;
+    margin-right: 40px;
+    transition: transform 0.5s ease-in-out;
+    animation: vibracion 0.3s ease-in-out;
+    border-radius: 5px;
+  }
+  #login.active{
+    transform: translateX(-80%);
+  }
+  
+  #username{
+    background-image: url('../../../../src/assets/user.svg');
+    background-repeat: no-repeat; /* Evita la repetición del icono */
+    background-position: right center; /* Colocar el icono en la izquierda centrado */
+    background-size: 20px; /* Ajustar el tamaño del icono */
+  }
+  #email{
+    background-image: url('../../../../src/assets/email.svg');
+    background-repeat: no-repeat; /* Evita la repetición del icono */
+    background-position: right center; /* Colocar el icono en la izquierda centrado */
+    background-size: 20px; /* Ajustar el tamaño del icono */
+  }
+  #password{
+    background-image: url('../../../../src/assets/candado.svg');
+    background-repeat: no-repeat; /* Evita la repetición del icono */
+    background-position: right center; /* Colocar el icono en la izquierda centrado */
+    background-size: 20px; /* Ajustar el tamaño del icono */
+  }
+  

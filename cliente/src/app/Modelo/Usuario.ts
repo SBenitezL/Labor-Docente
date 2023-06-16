@@ -4,4 +4,6 @@ export interface Usuario {
     USU_APELLIDO: string;
     USU_GENERO: string;
     USU_ESTUDIO: string;
+    UserName: string;
+    URS_Contrasenia:string;
   }
