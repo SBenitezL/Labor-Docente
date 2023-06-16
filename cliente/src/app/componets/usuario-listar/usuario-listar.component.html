@@ -20,7 +20,7 @@
                     <tr *ngFor="let usuario of usuarios" class="text-center">
                         <td>{{ usuario.USR_IDENTIFICACION}}</td>
                         <td>
-                            <button class="btn btn-warning" (click)="deleteUsuario(usuario.USR_IDENTIFICACION)" style="margin-left: 10px;">Ver labor</button>
+                            <button class="btn btn-warning" (click)="irALabor()" style="margin-left: 10px;">Ver labor</button>
                         </td>
                         <td>{{ usuario.USU_NOMBRE }}</td>
                         <td>{{ usuario.USU_APELLIDO }}</td>

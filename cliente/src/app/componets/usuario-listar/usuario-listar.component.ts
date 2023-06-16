@@ -38,4 +38,8 @@ export class UsuarioListarComponent {
     );
   }
 
+  irALabor() {
+    this.router.navigate(['/listarL']);
+  }
+
 }
