@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Usuario } from '../../Modelo/Usuario';
 
@@ -19,18 +19,11 @@ export class LoginComponent {
   };
   constructor(private fb:FormBuilder,private router:Router)
   {
-
-  }
-  ngOnInit():void{
-    this.myForm = this.createMyForm();
-  }
-  private createMyForm():FormGroup{
-      return this.fb.group(
-        {
-          user:[],
-          password:[]
-        }
-      );
+    this.myForm = this.fb.group({
+      user: ['', Validators.required],
+      password:['', Validators.required]
+    });
+    
   }
 
   public submitFormulario(){
@@ -38,7 +31,15 @@ export class LoginComponent {
     console.log(this.myForm.value);
   }
   login(){
+    const loginU = this.myForm.value.user;
+    const pass = this.myForm.value.password;
+    if (!loginU|| !pass) {
+      // Si los campos están vacíos, puedes mostrar un mensaje de error o realizar alguna acción adicional
+      alert("Campos vacios");
+      return;
+    }else{
 
+    }
     this.router.navigate(['/listar'])
   }
 
