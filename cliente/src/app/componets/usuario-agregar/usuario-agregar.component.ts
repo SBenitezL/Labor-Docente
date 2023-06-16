@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding} from '@angular/core';
 import { Usuario } from '../../Modelo/Usuario';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router ,Route} from '@angular/router';
+
 
 import { ServiceService } from '../../Service/service.service';
 @Component({
@@ -8,7 +9,7 @@ import { ServiceService } from '../../Service/service.service';
   templateUrl: './usuario-agregar.component.html',
   styleUrls: ['./usuario-agregar.component.css']
 })
-export class UsuarioAgregarComponent {
+export class UsuarioAgregarComponent implements OnInit{
   @HostBinding('class')classes= 'row'
 
     usuario:Usuario={

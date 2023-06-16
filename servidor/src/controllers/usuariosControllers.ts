@@ -36,11 +36,16 @@ class UsuariosControllers{
         await db.query('DELETE FROM USUARIO WHERE USR_IDENTIFICACION  = ?',[id]);
         res.json({text : 'Usuario Eliminado'});
     }
-    public async update(req: Request,res: Response): Promise<void>{
-        const {id} = req.params;
-        await db.query('UPDATE USUARIO set ? WHERE USR_IDENTIFICACION  = ?',[req.body,id]);
-        res.json({text : 'Actualizando usuario...'});
+    public async update(req: Request, res: Response): Promise<void> {
+      const { id } = req.params;
+      const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO } = req.body;
+      console.log(req.body);
+      await db.execute('UPDATE USUARIO SET USU_NOMBRE = ?, USU_APELLIDO = ?, USU_GENERO = ?, USU_ESTUDIO = ? WHERE USR_IDENTIFICACION = ?', [USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_IDENTIFICACION]);
+
+      res.json({ text: 'Actualizando usuario...' });
+
     }
+    
 }
 
 const usuariosController =new UsuariosControllers();
