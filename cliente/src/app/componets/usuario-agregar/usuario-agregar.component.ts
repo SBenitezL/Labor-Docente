@@ -17,8 +17,12 @@ export class UsuarioAgregarComponent implements OnInit{
       USU_NOMBRE: '',
       USU_APELLIDO: '',
       USU_GENERO: '',
-      USU_ESTUDIO: ''
+      USU_ESTUDIO: '',
+      UserName: '',
+      URS_Contrasenia:''
     };
+    
+
 
     edit : boolean =false;
     constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){
