@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 
 import {ServiceService} from './Service/service.service';
 import { LaborDocenteComponent } from './labor-docente/labor-docente.component';
+import { ListarLaborComponent } from './labor-docente/listar-labor/listar-labor.component';
+import { AgregarLaborComponent } from './labor-docente/agregar-labor/agregar-labor.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { LaborDocenteComponent } from './labor-docente/labor-docente.component';
     ListarComponent,
     AgregarComponent,
     LaborDocenteComponent,
+    ListarLaborComponent,
+    AgregarLaborComponent,
 
 
   ],
