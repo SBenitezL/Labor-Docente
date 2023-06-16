@@ -12,10 +12,11 @@
                 <form [formGroup]="myForm" (ngSubmit)="submitFormulario()" class = "formulario">
                     <h1 class="tittle-action">LOGIN</h1>
                     <label for="username">
-                        <input formGroupName="user" type="text" id="username" placeholder="Username" autocomplete="username" class="entrada" required>
+                        <input formGroupName="user" type="text" id="password" [(ngModel)]="usuario.USU_NOMBRE" class="entrada" required>
                     </label>
                     <label for="password">
-                        <input formGroupName="password" type="password" id="password" placeholder="Password" autocomplete="current-password" class="entrada" required>
+                        <input formGroupName="user" type="text" id="password" [(ngModel)]="usuario.USU_APELLIDO" class="entrada" required>
+
                     </label>
                     <div class="envio">
                         <a href="#" target="_blank">Forgot password?</a>

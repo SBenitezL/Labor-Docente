@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuario } from '../../Modelo/Usuario';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   public myForm!: FormGroup;
-
+   usuario:Usuario={
+    USR_IDENTIFICACION:0 ,
+    USU_NOMBRE: '',
+    USU_APELLIDO: '',
+    USU_GENERO: '',
+    USU_ESTUDIO: ''
+  };
   constructor(private fb:FormBuilder,private router:Router)
   {
 
@@ -31,6 +38,8 @@ export class LoginComponent {
     console.log(this.myForm.value);
   }
   login(){
+
+    this.router.navigate(['/listar'])
   }
 
 }
