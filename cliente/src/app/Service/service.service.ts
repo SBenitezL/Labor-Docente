@@ -30,9 +30,9 @@ export class ServiceService {
   saveUsuario(usuario: Usuario) {
     return this.http.post(`${this.API_URI}/usuarios/`, usuario);
   }
-  updateUsuario(id: number, updatedUsuario: Usuario): Observable<Usuario> {
+  updateUsuario(id: number, updatedUsuario: Usuario) {
     console.log(updatedUsuario);
-    return this.http.put<Usuario>(`${this.API_URI}/usuarios/${id}`, updatedUsuario);
+    return this.http.put(`${this.API_URI}/usuarios/${id}`, updatedUsuario);
   }
   
   getLabores(){
