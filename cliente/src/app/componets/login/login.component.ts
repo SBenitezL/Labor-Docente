@@ -40,7 +40,7 @@ export class LoginComponent {
     }else{
 
     }
-    this.router.navigate(['/listar'])
+    this.router.navigate(['/menuCoordinador'])
   }
 
 }
