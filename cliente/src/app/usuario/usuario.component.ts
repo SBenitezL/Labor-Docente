@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ListarComponent } from './listar/listar.component';
 
 @Component({
   selector: 'app-usuario',
@@ -8,11 +9,9 @@ import { Router } from '@angular/router';
 })
 export class UsuarioComponent {
   constructor(private router:Router){
-
-  }
-  listar(){
     this.router.navigate(["listar"])
   }
+  
   nuevo(){
     this.router.navigate(["agregar"])
   }
