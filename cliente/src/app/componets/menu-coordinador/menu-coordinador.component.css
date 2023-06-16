@@ -1,0 +1,9 @@
+*{
+    font-family: Arial, sans-serif;
+}
+
+
+  .nav-item-spaced .nav-link {
+    margin-right: 10px; /* Ajusta el valor según sea necesario */
+  }
+
