@@ -16,8 +16,9 @@ const routes: Routes = [
   { path: 'agregar', component: AgregarComponent },
   { path: 'editar/:id',component: AgregarComponent},
   { path: 'laborDocente', component: LaborDocenteComponent },
-  { path: 'listar', component: ListarLaborComponent },
-  { path: 'agregar', component: AgregarLaborComponent },
+  { path: 'listarL', component: ListarLaborComponent },
+  { path: 'agregarL', component: AgregarLaborComponent },
+  { path: 'editarL/:id',component: AgregarLaborComponent},
 
 ];
 @NgModule({
