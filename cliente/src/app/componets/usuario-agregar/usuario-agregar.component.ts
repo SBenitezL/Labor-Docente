@@ -1,15 +1,15 @@
-  import { Component, OnInit, HostBinding} from '@angular/core';
-  import { Usuario } from 'src/app/Modelo/Usuario';
-  import { ActivatedRoute, Router } from '@angular/router';
-  
-  import { ServiceService } from 'src/app/Service/service.service';
-  @Component({
-    selector: 'app-agregar',  
-    templateUrl: './agregar.component.html',
-    styleUrls: ['./agregar.component.css']
-  })
-  export class AgregarComponent implements OnInit {
-    @HostBinding('class')classes= 'row'
+import { Component, OnInit, HostBinding} from '@angular/core';
+import { Usuario } from '../../Modelo/Usuario';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { ServiceService } from '../../Service/service.service';
+@Component({
+  selector: 'app-usuario-agregar',
+  templateUrl: './usuario-agregar.component.html',
+  styleUrls: ['./usuario-agregar.component.css']
+})
+export class UsuarioAgregarComponent {
+  @HostBinding('class')classes= 'row'
 
     usuario:Usuario={
       USR_IDENTIFICACION:0 ,
@@ -57,4 +57,4 @@
       this.serviceService.updateUsuario(this.usuario.USR_IDENTIFICACION,this.usuario);
     }
 
-  }
+}

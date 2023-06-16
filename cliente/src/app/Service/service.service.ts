@@ -15,7 +15,7 @@ export class ServiceService {
   constructor(private http:HttpClient) { }
   //url = "http://localhost:8080/Labor-Docente/usuario";
   getUsuarios(){
-    return this.http.get('http://localhost:3000/api/usuarios');
+    return this.http.get('http://localhost:3000/api/navigation');
   }
 
   getUsuario(id:number){
