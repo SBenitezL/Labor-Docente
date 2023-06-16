@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServiceService } from '../../Service/service.service';
+import { Usuario } from '../../Modelo/Usuario';
 
 @Component({
   selector: 'app-usuario-listar',
@@ -7,12 +9,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./usuario-listar.component.css']
 })
 export class UsuarioListarComponent {
-  constructor(private router:Router){
-    this.router.navigate(["listar"])
+  usuarios: Usuario[]= [];
+  constructor(private serviceService :ServiceService,private router: Router){
+
+
   }
-  
-  nuevo(){
-    this.router.navigate(["agregar"])
+  ngOnInit(): void {
+    this.getUsuarios();
+
+  }
+  getUsuarios(){
+    this.serviceService.getUsuarios().subscribe(
+      (res: any) => {
+        console.log(res); 
+        this.usuarios = res;
+      },
+      err => console.log(err)
+    );
+  }
+  deleteUsuario(id: number) {
+    this.serviceService.deleteUsuario(id).subscribe(
+      () => {
+        console.log("Usuario eliminado exitosamente");
+        this.getUsuarios(); // Vuelve a cargar los usuarios después de eliminar uno
+
+      },
+      err => console.error(err)
+    );
   }
 
 }
