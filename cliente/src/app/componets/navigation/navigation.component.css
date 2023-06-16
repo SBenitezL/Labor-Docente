@@ -4,10 +4,10 @@
 .btn-info{
     margin-top: 20px;
     color: rgb(255, 255, 255);
-    background-color: rgb(35, 35, 163);
+    background-color: #0D4185;
     border-color: black;
 }
 #cabecera {
     height: 105px;
-    background: #0D4185;
+    background: linear-gradient(to right,#0D4185,#770000);
 }

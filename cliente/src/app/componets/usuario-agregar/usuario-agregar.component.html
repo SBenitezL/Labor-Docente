@@ -17,11 +17,11 @@
                 </thead>
                 <tbody>
                     <tr class="text-center">
-                        <td> <input type="text" name="USR_IDENTIFICACION" [(ngModel)]="usuario.USR_IDENTIFICACION"></td>
-                        <td> <input type="text" name="USU_NOMBRE" [(ngModel)]="usuario.USU_NOMBRE"></td>
-                        <td> <input type="text" name="USU_APELLIDO" [(ngModel)]="usuario.USU_APELLIDO"></td>
-                        <td> <input type="text" name="USU_GENERO" [(ngModel)]="usuario.USU_GENERO"></td>
-                        <td> <input type="text" name="USU_ESTUDIO" [(ngModel)]="usuario.USU_ESTUDIO"></td>
+                        <td> <input type="text" name="USR_IDENTIFICACION" [(ngModel)]="usuario.USR_IDENTIFICACION" class="left-align-input"></td>
+                        <td> <input type="text" name="USU_NOMBRE" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input"></td>
+                        <td> <input type="text" name="USU_APELLIDO" [(ngModel)]="usuario.USU_APELLIDO" class="left-align-input"></td>
+                        <td> <input type="text" name="USU_GENERO" [(ngModel)]="usuario.USU_GENERO" class="left-align-input"></td>
+                        <td> <input type="text" name="USU_ESTUDIO" [(ngModel)]="usuario.USU_ESTUDIO" class="left-align-input"></td>
                         <td>
                           <button class="btn btn-warning" (click)="edit ? updateUsuario() : saveNewUsuario()">Guardar</button>
                           <div *ngIf="usuarioAgregado">
@@ -33,5 +33,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </div>
 </div>

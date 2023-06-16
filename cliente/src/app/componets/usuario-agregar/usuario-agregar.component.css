@@ -1,7 +1,25 @@
 *{
     font-family: 'Arial', sons-serif;
-
 }
-.table table-hover{
+.card{
     margin: 20px;
+}
+
+.btn.btn.btn-warning{
+
+    background-color: rgb(49, 44, 44);
+    border-color: black;
+    color: aliceblue;
+    margin-right: 40px;
+}
+
+h3{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+input[type="text"] {
+    border-radius: 10px;
+}
+thead th {
+    margin-left: 50px;
 }
