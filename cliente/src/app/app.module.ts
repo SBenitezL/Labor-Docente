@@ -19,6 +19,7 @@ import { UsuarioListarComponent } from './componets/usuario-listar/usuario-lista
 import { UsuarioAgregarComponent } from './componets/usuario-agregar/usuario-agregar.component';
 import { UsuarioEditarComponent } from './componets/usuario-editar/usuario-editar.component';
 import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/labor-docente-editar.component';
+import { MenuCoordinadorComponent } from './componets/menu-coordinador/menu-coordinador.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/la
     UsuarioAgregarComponent,
     NavigationComponent,
     UsuarioEditarComponent,
-    LaborDocenteEditarComponent
+    LaborDocenteEditarComponent,
+    MenuCoordinadorComponent
   ],
   imports: [
     BrowserModule,
