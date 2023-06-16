@@ -44,13 +44,13 @@ class UsuariosControllers {
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN } = req.body;
+            const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID } = req.body;
             try {
                 // Paso 1: Insertar el usuario en la tabla USUARIO
                 yield database_1.default.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO) VALUES (?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO]);
                 // Paso 2: Insertar el registro en la tabla USEROL con las fechas correspondientes
                 yield database_1.default.query('INSERT INTO USEROL (USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN) VALUES (?, ?, ?, ?)', [USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN]);
-                res.json({ message: 'Usuario insertado correctamente .' });
+                res.json({ message: 'Usuario insertado correctamente.' });
             }
             catch (error) {
                 res.status(500).json({ message: 'Error al insertar el usuario.' });
