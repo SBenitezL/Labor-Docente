@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent {
   constructor(private router:Router){
-   // this.router.navigate(["listar"])
-   this.router.navigate(["login"])
+    this.router.navigate(['login'])
+    //this.router.navigate(["listar"])
   }
   
   nuevo(){

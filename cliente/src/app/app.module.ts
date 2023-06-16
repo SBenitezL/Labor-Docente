@@ -17,6 +17,8 @@ import { LaborDocenteAgregarComponent } from './componets/labor-docente-agregar/
 import { LaborDocenteListarComponent } from './componets/labor-docente-listar/labor-docente-listar.component';
 import { UsuarioListarComponent } from './componets/usuario-listar/usuario-listar.component';
 import { UsuarioAgregarComponent } from './componets/usuario-agregar/usuario-agregar.component';
+import { UsuarioEditarComponent } from './componets/usuario-editar/usuario-editar.component';
+import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/labor-docente-editar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { UsuarioAgregarComponent } from './componets/usuario-agregar/usuario-agr
     LaborDocenteListarComponent,
     UsuarioListarComponent,
     UsuarioAgregarComponent,
-    NavigationComponent
+    NavigationComponent,
+    UsuarioEditarComponent,
+    LaborDocenteEditarComponent
   ],
   imports: [
     BrowserModule,
