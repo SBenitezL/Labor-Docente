@@ -1,10 +1,59 @@
 *{
+  font-family: 'Arial', sons-serif;
+}
+.btn-info{
+  margin-top: 20px;
+  color: rgb(255, 255, 255);
+  background-color: #0D4185;
+  border-color: black;
+}
+#cabecera {
+  display: flex;
+  align-items: center;
+  
+  background: linear-gradient(to right,#0D4185,#770000);
+}
+.imagen-con-texto {
+  display: flex;
+  align-items: center;
+}
+
+.icono-izquierda {
+width: 100px; /* Ancho deseado */
+height: auto; /* La altura se ajusta automáticamente */
+margin: 10px;
+}
+.texto-con-linea {
+  display: flex;
+  align-items: center;
+}
+.texto-con-linea{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 25px; /* Tamaño de fuente deseado */
+  color: aliceblue;
+  margin-left: 20px;
+  
+}
+.texto-con-linea span{
+  padding-left: 15px;
+  
+}
+
+.texto-con-linea span {
+  margin-right: 10px; /* Ajusta el espacio entre el texto y la línea vertical */
+}
+
+.cabecera-con-imagen {
+  padding-left: 10px;
+}
+/**/
+*{
     font-family: 'Arial', sons-serif;
     padding: 0;
     margin: 0;
   }
   body{
-    background: linear-gradient(to bottom,#051a54, #770000,#051a54);;
+   /* background: linear-gradient(to bottom,#051a54, #770000,#051a54);;*/
     background-size:cover;
     background-position: center;
     height: 100vh;
@@ -27,6 +76,7 @@
     width: 800px;
     height: 350px;
     border-radius: 5px;
+    background: linear-gradient(to bottom,#051a54, #770000,#051a54);
   }
   
   #action1{
@@ -165,6 +215,7 @@
   #login{
     display: block;
     background-color: white;
+    border: 1px solid black;
     height: 400px;
     z-index: 2;
     position: absolute;

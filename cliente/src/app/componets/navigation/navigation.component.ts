@@ -13,8 +13,8 @@ export class NavigationComponent {
     //this.router.navigate(["listar"])
   }
   
-  nuevo(){
+  /*nuevo(){
     this.router.navigate(["agregar"])
-  }
+  }*/
 
 }

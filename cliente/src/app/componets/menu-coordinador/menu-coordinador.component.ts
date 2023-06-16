@@ -21,5 +21,5 @@ export class MenuCoordinadorComponent {
   IrEvaluacion() {
     this.router.navigate(['/listarL']);
   }
-
+  
 }
