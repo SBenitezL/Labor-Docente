@@ -1,18 +1,60 @@
+
+
+h3{
+
+    margin-top: 20px;
+    margin-left: 20px;
+}
 *{
     font-family: 'Arial', sons-serif;
 }
 .btn-info{
     margin-top: 20px;
     color: rgb(255, 255, 255);
-    background-color: rgb(35, 35, 163);
+    background-color: #0D4185;
     border-color: black;
 }
 #cabecera {
-    height: 105px;
-    background: #0D4185;
+    display: flex;
+    align-items: center;
+    
+    background: linear-gradient(to right,#0D4185,#770000);
 }
-h3{
-
-    margin-top: 20px;
+.imagen-con-texto {
+    display: flex;
+    align-items: center;
+  }
+  
+.icono-izquierda {
+  width: 100px; /* Ancho deseado */
+  height: auto; /* La altura se ajusta automáticamente */
+  margin: 10px;
+}
+.texto-con-linea {
+    display: flex;
+    align-items: center;
+  }
+.texto-con-linea{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 25px; /* Tamaño de fuente deseado */
+    color: aliceblue;
     margin-left: 20px;
+    
+}
+.texto-con-linea span{
+    padding-left: 15px;
+    
+}
+.linea-vertical {
+    border-right: 2px solid rgb(255, 255, 255);
+    padding-right: 15px; /* Añade espacio entre la línea y el texto */
+    margin-right: 15px; 
+
+}
+.texto-con-linea span {
+    margin-right: 10px; /* Ajusta el espacio entre el texto y la línea vertical */
+}
+  
+.cabecera-con-imagen {
+    padding-left: 10px;
 }

@@ -17,7 +17,7 @@ export class LoginComponent {
     USU_GENERO: '',
     USU_ESTUDIO: '',
     UserName: '',
-    URS_Contrasenia:''
+    USR_Contrasenia:''
   };
   constructor(private fb:FormBuilder,private router:Router)
   {

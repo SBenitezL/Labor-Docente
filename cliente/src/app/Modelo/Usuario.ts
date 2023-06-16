@@ -5,5 +5,5 @@ export interface Usuario {
     USU_GENERO: string;
     USU_ESTUDIO: string;
     UserName: string;
-    URS_Contrasenia:string;
+    USR_Contrasenia:string;
   }
