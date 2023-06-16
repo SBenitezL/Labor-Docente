@@ -23,12 +23,13 @@ export class UsuarioAgregarComponent {
     constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){
     }
     ngOnInit(): void {
+      
       const params = this.activeRouter.snapshot.params;
       if (params['id']) {
         this.serviceService.getUsuario(params['id']).subscribe(
           res => {
             console.log(res);
-            Object.assign(this.usuario, res);
+            this.usuario=res as Usuario ;
             this.edit = true;
           },
           err => console.error(err)
