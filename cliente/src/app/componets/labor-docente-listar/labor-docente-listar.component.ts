@@ -40,4 +40,13 @@ export class LaborDocenteListarComponent {
   nuevo() {
     this.router.navigate(['/agregarL']);
   }
+  IrGestionDocente() {
+    this.router.navigate(['/listar']);
+  }
+  IrGestionLabor() {
+    this.router.navigate(['/listarL']);
+  }
+  IrEvaluacion() {
+    this.router.navigate(['/listarL']);
+  }
 }
