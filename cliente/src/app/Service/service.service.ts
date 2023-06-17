@@ -56,4 +56,8 @@ export class ServiceService {
   updateLabor(id: number, updatedLabor: LaborDocente): Observable<LaborDocente> {
     return this.http.put<LaborDocente>(`${this.API_URI}/labor/${id}`, updatedLabor);
   }
+
+  getTipo(id:number){
+
+  }
 }

@@ -8,18 +8,26 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Id Labor</th>
-                        <th>Id Tipo Labor</th>
+                        <th>Tiapo labor</th>
+                        <th>Identificación</th>
                         <th>Nombre</th>
                         <th>Horas</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="text-center">
-                        <td> <input type="text" name="USR_IDENTIFICACION" [(ngModel)]="laborDocente.LAB_ID" class="left-align-input"></td>
-                        <td> <input type="text" name="USU_NOMBRE" [(ngModel)]="laborDocente.TL_ID" class="left-align-input"></td>
-                        <td> <input type="text" name="USU_APELLIDO" [(ngModel)]="laborDocente.LAB_NOMBRE" class="left-align-input"></td>
-                        <td> <input type="text" name="USU_GENERO" [(ngModel)]="laborDocente.LAB_HORAS" class="left-align-input"></td>
+                        
+                        <select [(ngModel)]="seleccionTipoLab" (change)="seleccionarTipoLabor()">
+                            <option value="opt1">Docencia Directa</option>
+                            <option value="opt2">Director Tesis</option>
+                            <option value="opt3">Investigación</option>
+                            <option value="opt4">Labor Social</option>
+                          </select>
+                          
+                        <td> <input type="text" name="LAB_IDENTIFICACION" [(ngModel)]="laborDocente.LAB_ID" class="left-align-input"></td>  
+                        <td> <input type="text" name="LAB_NOMBRE" [(ngModel)]="laborDocente.LAB_NOMBRE" class="left-align-input"></td>
+                        <td> <input type="text" name="LAB_HORAS" [(ngModel)]="laborDocente.LAB_HORAS" class="left-align-input"></td>
+                        
                         <td>
                           <button class="btn btn-warning" (click)="edit ? updateLabor() : saveNewLabor()">Guardar</button>
                           <div *ngIf="laborAgregado">
