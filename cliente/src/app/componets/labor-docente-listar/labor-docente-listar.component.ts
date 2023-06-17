@@ -37,5 +37,7 @@ export class LaborDocenteListarComponent {
       err => console.error(err)
     );
   }
-
+  nuevo() {
+    this.router.navigate(['/agregarL']);
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, HostBinding} from '@angular/core';
 import { Usuario } from '../../Modelo/Usuario';
+import { UseRol} from '../../Modelo/UseRol';
 import { ActivatedRoute, Router ,Route} from '@angular/router';
 
 
@@ -12,17 +13,18 @@ import { ServiceService } from '../../Service/service.service';
 export class UsuarioAgregarComponent implements OnInit{
   @HostBinding('class')classes= 'row'
 
-    usuario:Usuario={
-      USR_IDENTIFICACION:0 ,
-      USU_NOMBRE: '',
-      USU_APELLIDO: '',
-      USU_GENERO: '',
-      USU_ESTUDIO: '',
-      UserName: '',
-      URS_Contrasenia:''
-    };
-    
-
+  usuario: Usuario & UseRol = {
+    USR_IDENTIFICACION: 0,
+    USU_NOMBRE: '',
+    USU_APELLIDO: '',
+    USU_GENERO: '',
+    USU_ESTUDIO: '',
+    UserName: '',
+    USR_Contrasenia: '',
+    UR_FECHAINICIO: new Date(),
+    UR_FECHAFIN: new Date(),
+    ROL_ID: 0,
+  };
 
     edit : boolean =false;
     constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){
@@ -34,7 +36,7 @@ export class UsuarioAgregarComponent implements OnInit{
         this.serviceService.getUsuario(params['id']).subscribe(
           res => {
             console.log(res);
-            this.usuario=res as Usuario ;
+            this.usuario=res as Usuario&UseRol ;
             this.edit = true;
           },
           err => console.error(err)
@@ -42,9 +44,8 @@ export class UsuarioAgregarComponent implements OnInit{
       }
     }
     
-    
-    usuarioAgregado: boolean = false;
-    saveNewUsuario(){
+   
+   /*saveNewUsuario(){
       
       this.serviceService.saveUsuario(this.usuario)
       .subscribe(
@@ -56,7 +57,24 @@ export class UsuarioAgregarComponent implements OnInit{
         },
         err =>console.error(err)
       )
+    }*/
+    usuarioAgregado: boolean = false;
+
+    saveNewUsuario(): void {
+      console.log(this.usuario.UserName);
+      this.serviceService.saveUsuario(this.usuario)
+        .subscribe(
+          res => {
+            console.log(res);
+            this.usuarioAgregado = true;
+            
+            this.router.navigate(['/listar']);
+          },
+          err => console.error(err)
+        );
     }
+    
+    
 
     updateUsuario(){
       console.log(this.usuario);

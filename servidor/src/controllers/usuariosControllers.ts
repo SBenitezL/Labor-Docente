@@ -27,22 +27,23 @@ class UsuariosControllers{
         res.status(404).json({text:'Usuario no encontrado'});
 
     } 
-    public async create(req: Request,res: Response): Promise<void>{
-      const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN } = req.body;
-  
+    public async create(req: Request, res: Response): Promise<void> {
+      const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
+    
       try {
         // Paso 1: Insertar el usuario en la tabla USUARIO
-        await db.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO) VALUES (?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO]);
-        
+        await db.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName ]);
+    
         // Paso 2: Insertar el registro en la tabla USEROL con las fechas correspondientes
         await db.query('INSERT INTO USEROL (USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN) VALUES (?, ?, ?, ?)', [USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN]);
     
-        res.json({ message: 'Usuario insertado correctamente .' });
+        res.json({ message: 'Usuario insertado correctamente.' });
       } catch (error) {
         res.status(500).json({ message: 'Error al insertar el usuario.' });
       }
-    
     }
+    
+    
     public async delete(req: Request,res: Response): Promise<void>{
         const {id} = req.params;
         await db.query('DELETE FROM USUARIO WHERE USR_IDENTIFICACION  = ?',[id]);

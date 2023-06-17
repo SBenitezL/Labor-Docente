@@ -41,5 +41,17 @@ export class UsuarioListarComponent {
   irALabor() {
     this.router.navigate(['/listarL']);
   }
-
+  nuevo() {
+    this.router.navigate(['/agregar']);
+  }
+  
+  IrGestionDocente() {
+    this.router.navigate(['/listar']);
+  }
+  IrGestionLabor() {
+    this.router.navigate(['/listarL']);
+  }
+  IrEvaluacion() {
+    this.router.navigate(['/listarL']);
+  }
 }

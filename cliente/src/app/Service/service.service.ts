@@ -30,6 +30,9 @@ export class ServiceService {
   saveUsuario(usuario: Usuario) {
     return this.http.post(`${this.API_URI}/usuarios/`, usuario);
   }
+  saveUserol(userol: any) {
+    return this.http.post(`${this.API_URI}/userol/`, userol);
+  }
   updateUsuario(id: number, updatedUsuario: Usuario) {
     console.log(updatedUsuario);
     return this.http.put(`${this.API_URI}/usuarios/${id}`, updatedUsuario);
@@ -52,5 +55,9 @@ export class ServiceService {
   }
   updateLabor(id: number, updatedLabor: LaborDocente): Observable<LaborDocente> {
     return this.http.put<LaborDocente>(`${this.API_URI}/labor/${id}`, updatedLabor);
+  }
+
+  getTipo(id:number){
+
   }
 }

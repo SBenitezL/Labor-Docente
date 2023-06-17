@@ -11,7 +11,6 @@ import { ServiceService } from '../../Service/service.service';
 })
 export class LaborDocenteAgregarComponent {
   @HostBinding('class')classes= 'row'
-
   laborDocente:LaborDocente={
     LAB_ID:0,
     TL_ID:0,
@@ -19,11 +18,15 @@ export class LaborDocenteAgregarComponent {
     LAB_HORAS:0,
 
   };
-
+  
   edit : boolean =false;
+  seleccionTipoLab : string = "";
   constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){
+    
+
   }
   ngOnInit(): void {
+   
     const params = this.activeRouter.snapshot.params;
     if (params['id']) {
       this.serviceService.getLabor(params['id']).subscribe(
@@ -47,7 +50,7 @@ export class LaborDocenteAgregarComponent {
         console.log(res);
         
         this.laborAgregado = true;
-        this.router.navigate(['/listar']);
+        this.router.navigate(['/listarL']);
       },
       err =>console.error(err)
     )
@@ -58,4 +61,18 @@ export class LaborDocenteAgregarComponent {
     this.serviceService.updateLabor(this.laborDocente.LAB_ID,this.laborDocente);
   }
 
+  seleccionarTipoLabor(){
+    console.log(this.seleccionTipoLab);
+    if(this.seleccionTipoLab=="opt1"){
+      this.laborDocente.TL_ID=1;
+    } else if(this.seleccionTipoLab=="opt2"){
+      this.laborDocente.TL_ID=2;
+    } else if(this.seleccionTipoLab=="opt3"){
+      this.laborDocente.TL_ID=3;
+    } else{
+      this.laborDocente.TL_ID=4;
+    }
+
+    console.log(this.laborDocente.TL_ID);
+  }
 }
