@@ -11,9 +11,16 @@
 	  </div>
 	</div>
   </div>
-  <div class="container-button">
-    <button (click)= "nuevo()" class="btn btn-info" style ="margin-left: 10px;">Nuevo</button>
-</div>
+
+<nav class="menu-navegacion">
+	<ul>
+	  <li><a (click)= "IrGestionDocente()">Gestión docente</a></li>
+	  <li><a (click)= "IrGestionLabor()">Gestión labor docente</a></li>
+	  <li><a (click)= "IrEvaluacion()">Evaluación</a></li>
+      <li><a (click)= "nuevo()">Nueva labor</a></li>
+	</ul>
+</nav>
+
 <div class="container">
     <div class="card">
         <div class="card-head">
