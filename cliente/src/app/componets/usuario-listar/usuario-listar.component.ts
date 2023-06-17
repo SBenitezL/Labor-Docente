@@ -54,4 +54,8 @@ export class UsuarioListarComponent {
   IrEvaluacion() {
     this.router.navigate(['/listarL']);
   }
+  editarUsuario(id: number){
+    console.log(id);
+    this.router.navigate(['/editar/'+id]);
+  }
 }

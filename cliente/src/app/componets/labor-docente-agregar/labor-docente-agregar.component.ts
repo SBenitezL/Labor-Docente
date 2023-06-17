@@ -75,4 +75,15 @@ export class LaborDocenteAgregarComponent {
 
     console.log(this.laborDocente.TL_ID);
   }
+
+  
+  IrGestionDocente() {
+    this.router.navigate(['/listar']);
+  }
+  IrGestionLabor() {
+    this.router.navigate(['/listarL']);
+  }
+  IrEvaluacion() {
+    this.router.navigate(['/listarL']);
+  }
 }
