@@ -7,15 +7,22 @@
 					Universidad del Cauca
 				</span>
 			</div>
-			<span>Gestión usuario</span>
+			<span>Gestión docente</span>
 	  </div>
 	</div>
   </div>
 
-<div class="container-button">
-    <button (click)= "nuevo()" class="btn btn-info" style ="margin-left: 10px;">Nuevo</button>
-</div>
-<hr>
+
+<nav class="menu-navegacion">
+	<ul>
+	  <li><a (click)= "IrGestionDocente()">Gestión Docente</a></li>
+	  <li><a (click)= "IrGestionLabor()">Gestión Labor Docente</a></li>
+	  <li><a (click)= "IrEvaluacion()">Evaluación</a></li>
+      <li><a (click)= "nuevo()">Nuevo usuario</a></li>
+	</ul>
+</nav>
+
+
 <div class="container">
     <div class="card">
         <div class="card-head">
