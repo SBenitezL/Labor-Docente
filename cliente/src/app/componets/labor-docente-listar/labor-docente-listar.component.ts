@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ServiceService } from '../../Service/service.service';
 import { LaborDocente } from '../../Modelo/LaborDocente';
 
+
 @Component({
   selector: 'app-labor-docente-listar',
   templateUrl: './labor-docente-listar.component.html',
@@ -48,5 +49,8 @@ export class LaborDocenteListarComponent {
   }
   IrEvaluacion() {
     this.router.navigate(['/listarL']);
+  }
+  IrInicio(){
+    this.router.navigate(['/menuCoordinador']);
   }
 }

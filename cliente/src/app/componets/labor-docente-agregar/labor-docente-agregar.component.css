@@ -8,7 +8,6 @@ h3{
 #cabecera {
     display: flex;
     align-items: center;
-    
     background: linear-gradient(to right,#0D4185,#770000);
 }
 .imagen-con-texto {
