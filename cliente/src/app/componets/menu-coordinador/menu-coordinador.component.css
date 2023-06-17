@@ -25,7 +25,7 @@
   }
   
 .icono-izquierda {
-  width: 86px; /* Ancho deseado */
+  width: 100px; /* Ancho deseado */
   height: auto; /* La altura se ajusta automáticamente */
   margin: 10px;
 }

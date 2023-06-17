@@ -44,9 +44,7 @@ export class LaborDocenteListarComponent {
   IrGestionDocente() {
     this.router.navigate(['/listar']);
   }
-  IrGestionLabor() {
-    this.router.navigate(['/listarL']);
-  }
+ 
   IrEvaluacion() {
     this.router.navigate(['/listarL']);
   }

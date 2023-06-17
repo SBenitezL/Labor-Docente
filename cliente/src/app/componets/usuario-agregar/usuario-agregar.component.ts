@@ -80,5 +80,17 @@ export class UsuarioAgregarComponent implements OnInit{
       console.log(this.usuario);
       this.serviceService.updateUsuario(this.usuario.USR_IDENTIFICACION,this.usuario);
     }
+    IrGestionDocente() {
+      this.router.navigate(['/listar']);
+    }
+    IrGestionLabor() {
+      this.router.navigate(['/listarL']);
+    }
+    IrEvaluacion() {
+      this.router.navigate(['/listarL']);
+    }
+    IrInicio(){
+      this.router.navigate(['/menuCoordinador']);
+    }
 
 }

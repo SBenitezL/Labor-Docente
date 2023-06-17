@@ -78,7 +78,7 @@ h3{
     text-decoration: none;
     color: #333;
     padding: 10px;
-    border-left: 1px solid rgba(39, 35, 35, 0.212);
+    border-right: 1px solid rgba(39, 35, 35, 0.212);
   }
   .menu-navegacion ul li a {
     cursor: pointer; /* Cambia el cursor a un puntero */
@@ -88,7 +88,4 @@ h3{
   }
 .container{
     margin-top: 30px;
-}
-.bx{
-
 }
