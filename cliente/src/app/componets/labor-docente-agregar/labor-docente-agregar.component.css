@@ -1,6 +1,10 @@
 *{
     font-family: 'Arial', sons-serif;
 }
+h3{
+    margin: 30px;
+
+}
 #cabecera {
     display: flex;
     align-items: center;
@@ -85,3 +89,27 @@
 .card{
     margin: 20px;
 }
+.table td {
+    text-align: left;
+    
+}
+input[type="text"] {
+    border: 1px solid #686565;
+    border-radius: 5px ;
+}
+.container select {
+    text-align: left;
+    margin: 10px;
+    margin-left: -53px;
+    border: 1px solid #686565;
+    border-radius: 10px;
+}
+.btn.btn-warning{
+    border-color: aliceblue;
+    
+}
+.btn.btn-warning:hover{
+    background-color: #686565;
+    color: #ddd;
+}
+
