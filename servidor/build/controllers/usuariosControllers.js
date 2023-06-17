@@ -60,17 +60,32 @@ class UsuariosControllers {
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM USUARIO WHERE USR_IDENTIFICACION  = ?', [id]);
-            res.json({ text: 'Usuario Eliminado' });
+            try {
+                // Paso 1: Eliminar los registros relacionados en la tabla `userol`
+                yield database_1.default.query('DELETE FROM userol WHERE USR_IDENTIFICACION = ?', [id]);
+                // Paso 2: Eliminar la fila en la tabla `usuario`
+                yield database_1.default.query('DELETE FROM usuario WHERE USR_IDENTIFICACION = ?', [id]);
+                res.json({ text: 'Usuario eliminado correctamente' });
+            }
+            catch (error) {
+                res.status(500).json({ message: 'Error al eliminar el usuario' });
+            }
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO } = req.body;
-            console.log(req.body);
-            yield database_1.default.execute('UPDATE USUARIO SET USU_NOMBRE = ?, USU_APELLIDO = ?, USU_GENERO = ?, USU_ESTUDIO = ? WHERE USR_IDENTIFICACION = ?', [USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_IDENTIFICACION]);
-            res.json({ text: 'Actualizando usuario...' });
+            const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN } = req.body;
+            try {
+                // Paso 1: Actualizar los datos en la tabla `usuario`
+                yield database_1.default.query('UPDATE usuario SET USU_NOMBRE = ?, USU_APELLIDO = ?, USU_GENERO = ?, USU_ESTUDIO = ? WHERE USR_IDENTIFICACION = ?', [USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_IDENTIFICACION]);
+                // Paso 2: Actualizar los datos en la tabla `userol`
+                yield database_1.default.query('UPDATE userol SET ROL_ID = ?, UR_FECHAINICIO = ?, UR_FECHAFIN = ? WHERE USR_IDENTIFICACION = ?', [ROL_ID, UR_FECHAINICIO, UR_FECHAFIN, USR_IDENTIFICACION]);
+                res.json({ text: 'Usuario actualizado correctamente' });
+            }
+            catch (error) {
+                res.status(500).json({ message: 'Error al actualizar el usuario' });
+            }
         });
     }
 }
