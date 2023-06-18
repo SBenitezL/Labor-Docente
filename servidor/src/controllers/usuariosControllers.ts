@@ -17,16 +17,30 @@ class UsuariosControllers{
           res.status(500).json({ message: 'Internal Server Error' });
         }
       }
-    public async getOne (req: Request,res: Response): Promise<any>{
-        const {id} = req.params;
-        const usuario= await db.query('SELECT * FROM USUARIO WHERE USR_IDENTIFICACION  = ?',[id]);
-        //console.log(usuario);
-        if(usuario.length>0){
-            return res.json(usuario[0]);
+      public async getOne(req: Request, res: Response): Promise<any> {
+        const { id } = req.params;
+        const query = `
+          SELECT U.*, UR.*
+          FROM USUARIO U
+          INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
+          WHERE U.USR_IDENTIFICACION = ?
+        `;
+        
+        try {
+          const [rows] = await db.query(query, [id]);
+      
+          if (Array.isArray(rows) && rows.length > 0) {
+            const usuario = rows[0];
+            return res.json(usuario);
+          }
+      
+          res.status(404).json({ text: 'Usuario no encontrado' });
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ text: 'Error al obtener el usuario' });
         }
-        res.status(404).json({text:'Usuario no encontrado'});
-
-    } 
+      }
+      
     public async create(req: Request, res: Response): Promise<void> {
       const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
     
@@ -44,20 +58,39 @@ class UsuariosControllers{
     }
     
     
-    public async delete(req: Request,res: Response): Promise<void>{
-        const {id} = req.params;
-        await db.query('DELETE FROM USUARIO WHERE USR_IDENTIFICACION  = ?',[id]);
-        res.json({text : 'Usuario Eliminado'});
+    public async delete(req: Request, res: Response): Promise<void> {
+      const { id } = req.params;
+      
+      try {
+        // Paso 1: Eliminar los registros relacionados en la tabla `userol`
+        await db.query('DELETE FROM userol WHERE USR_IDENTIFICACION = ?', [id]);
+    
+        // Paso 2: Eliminar la fila en la tabla `usuario`
+        await db.query('DELETE FROM usuario WHERE USR_IDENTIFICACION = ?', [id]);
+    
+        res.json({ text: 'Usuario eliminado correctamente' });
+      } catch (error) {
+        res.status(500).json({ message: 'Error al eliminar el usuario' });
+      }
     }
+    
     public async update(req: Request, res: Response): Promise<void> {
       const { id } = req.params;
-      const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO } = req.body;
-      console.log(req.body);
-      await db.execute('UPDATE USUARIO SET USU_NOMBRE = ?, USU_APELLIDO = ?, USU_GENERO = ?, USU_ESTUDIO = ? WHERE USR_IDENTIFICACION = ?', [USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_IDENTIFICACION]);
-
-      res.json({ text: 'Actualizando usuario...' });
-
+      const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO,UserName,USR_Contrasenia, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN } = req.body;
+    
+      try {
+        // Paso 1: Actualizar los datos en la tabla `usuario`
+        await db.query('UPDATE usuario SET USU_NOMBRE = ?, USU_APELLIDO = ?, USU_GENERO = ?, USU_ESTUDIO = ?,UserName = ?,USR_Contrasenia = ? WHERE USR_IDENTIFICACION = ?', [USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO,UserName,USR_Contrasenia, USR_IDENTIFICACION]);
+    
+        // Paso 2: Actualizar los datos en la tabla `userol`
+        await db.query('UPDATE userol SET ROL_ID = ?, UR_FECHAINICIO = ?, UR_FECHAFIN = ? WHERE USR_IDENTIFICACION = ?', [ROL_ID, UR_FECHAINICIO, UR_FECHAFIN, USR_IDENTIFICACION]);
+    
+        res.json({ text: 'Usuario actualizado correctamente' });
+      } catch (error) {
+        res.status(500).json({ message: 'Error al actualizar el usuario' });
+      }
     }
+    
     
 }
 

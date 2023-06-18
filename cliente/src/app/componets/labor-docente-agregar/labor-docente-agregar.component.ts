@@ -86,4 +86,7 @@ export class LaborDocenteAgregarComponent {
   IrEvaluacion() {
     this.router.navigate(['/listarL']);
   }
+  IrInicio(){
+    this.router.navigate(['/menuCoordinador']);
+  }
 }

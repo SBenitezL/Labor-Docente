@@ -19,11 +19,12 @@ export class UsuarioAgregarComponent implements OnInit{
     USU_APELLIDO: '',
     USU_GENERO: '',
     USU_ESTUDIO: '',
-    UserName: '',
+    userName: '',
     USR_Contrasenia: '',
+    ROL_ID: 0,
     UR_FECHAINICIO: new Date(),
     UR_FECHAFIN: new Date(),
-    ROL_ID: 0,
+    
   };
 
     edit : boolean =false;
@@ -61,7 +62,7 @@ export class UsuarioAgregarComponent implements OnInit{
     usuarioAgregado: boolean = false;
 
     saveNewUsuario(): void {
-      console.log(this.usuario.UserName);
+      console.log(this.usuario.userName);
       this.serviceService.saveUsuario(this.usuario)
         .subscribe(
           res => {
@@ -79,6 +80,18 @@ export class UsuarioAgregarComponent implements OnInit{
     updateUsuario(){
       console.log(this.usuario);
       this.serviceService.updateUsuario(this.usuario.USR_IDENTIFICACION,this.usuario);
+    }
+    IrGestionDocente() {
+      this.router.navigate(['/listar']);
+    }
+    IrGestionLabor() {
+      this.router.navigate(['/listarL']);
+    }
+    IrEvaluacion() {
+      this.router.navigate(['/listarL']);
+    }
+    IrInicio(){
+      this.router.navigate(['/menuCoordinador']);
     }
 
 }

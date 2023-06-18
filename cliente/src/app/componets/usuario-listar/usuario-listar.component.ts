@@ -45,9 +45,6 @@ export class UsuarioListarComponent {
     this.router.navigate(['/agregar']);
   }
   
-  IrGestionDocente() {
-    this.router.navigate(['/listar']);
-  }
   IrGestionLabor() {
     this.router.navigate(['/listarL']);
   }
@@ -57,5 +54,8 @@ export class UsuarioListarComponent {
   editarUsuario(id: number){
     console.log(id);
     this.router.navigate(['/editar/'+id]);
+  }
+  IrInicio(){
+    this.router.navigate(['/menuCoordinador']);
   }
 }

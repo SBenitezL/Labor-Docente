@@ -34,12 +34,24 @@ class UsuariosControllers {
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const usuario = yield database_1.default.query('SELECT * FROM USUARIO WHERE USR_IDENTIFICACION  = ?', [id]);
-            //console.log(usuario);
-            if (usuario.length > 0) {
-                return res.json(usuario[0]);
+            const query = `
+          SELECT U.*, UR.*
+          FROM USUARIO U
+          INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
+          WHERE U.USR_IDENTIFICACION = ?
+        `;
+            try {
+                const [rows] = yield database_1.default.query(query, [id]);
+                if (Array.isArray(rows) && rows.length > 0) {
+                    const usuario = rows[0];
+                    return res.json(usuario);
+                }
+                res.status(404).json({ text: 'Usuario no encontrado' });
             }
-            res.status(404).json({ text: 'Usuario no encontrado' });
+            catch (error) {
+                console.error(error);
+                res.status(500).json({ text: 'Error al obtener el usuario' });
+            }
         });
     }
     create(req, res) {
@@ -60,17 +72,32 @@ class UsuariosControllers {
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM USUARIO WHERE USR_IDENTIFICACION  = ?', [id]);
-            res.json({ text: 'Usuario Eliminado' });
+            try {
+                // Paso 1: Eliminar los registros relacionados en la tabla `userol`
+                yield database_1.default.query('DELETE FROM userol WHERE USR_IDENTIFICACION = ?', [id]);
+                // Paso 2: Eliminar la fila en la tabla `usuario`
+                yield database_1.default.query('DELETE FROM usuario WHERE USR_IDENTIFICACION = ?', [id]);
+                res.json({ text: 'Usuario eliminado correctamente' });
+            }
+            catch (error) {
+                res.status(500).json({ message: 'Error al eliminar el usuario' });
+            }
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO } = req.body;
-            console.log(req.body);
-            yield database_1.default.execute('UPDATE USUARIO SET USU_NOMBRE = ?, USU_APELLIDO = ?, USU_GENERO = ?, USU_ESTUDIO = ? WHERE USR_IDENTIFICACION = ?', [USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_IDENTIFICACION]);
-            res.json({ text: 'Actualizando usuario...' });
+            const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UserName, USR_Contrasenia, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN } = req.body;
+            try {
+                // Paso 1: Actualizar los datos en la tabla `usuario`
+                yield database_1.default.query('UPDATE usuario SET USU_NOMBRE = ?, USU_APELLIDO = ?, USU_GENERO = ?, USU_ESTUDIO = ?,UserName = ?,USR_Contrasenia = ? WHERE USR_IDENTIFICACION = ?', [USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UserName, USR_Contrasenia, USR_IDENTIFICACION]);
+                // Paso 2: Actualizar los datos en la tabla `userol`
+                yield database_1.default.query('UPDATE userol SET ROL_ID = ?, UR_FECHAINICIO = ?, UR_FECHAFIN = ? WHERE USR_IDENTIFICACION = ?', [ROL_ID, UR_FECHAINICIO, UR_FECHAFIN, USR_IDENTIFICACION]);
+                res.json({ text: 'Usuario actualizado correctamente' });
+            }
+            catch (error) {
+                res.status(500).json({ message: 'Error al actualizar el usuario' });
+            }
         });
     }
 }

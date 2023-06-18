@@ -20,6 +20,8 @@ import { UsuarioAgregarComponent } from './componets/usuario-agregar/usuario-agr
 import { UsuarioEditarComponent } from './componets/usuario-editar/usuario-editar.component';
 import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/labor-docente-editar.component';
 import { MenuCoordinadorComponent } from './componets/menu-coordinador/menu-coordinador.component';
+import { EvaluacionListComponent } from './componets/evaluacion-list/evaluacion-list.component';
+import { EvaluacionFormComponent } from './componets/evaluacion-form/evaluacion-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { MenuCoordinadorComponent } from './componets/menu-coordinador/menu-coor
     NavigationComponent,
     UsuarioEditarComponent,
     LaborDocenteEditarComponent,
-    MenuCoordinadorComponent
+    MenuCoordinadorComponent,
+    EvaluacionListComponent,
+    EvaluacionFormComponent
   ],
   imports: [
     BrowserModule,

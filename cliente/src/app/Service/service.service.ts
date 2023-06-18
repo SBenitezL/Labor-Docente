@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../Modelo/Usuario';
+import { Evaluacion } from '../Modelo/Evaluacion';
+import { EvaluacionEst } from '../Modelo/EvaluacionEstructura';
 
 import {} from '../Modelo/Usuario';
 import { LaborDocente } from '../Modelo/LaborDocente';
@@ -33,10 +35,10 @@ export class ServiceService {
   saveUserol(userol: any) {
     return this.http.post(`${this.API_URI}/userol/`, userol);
   }
-  updateUsuario(id: number, updatedUsuario: Usuario) {
-    console.log(updatedUsuario);
-    return this.http.put(`${this.API_URI}/usuarios/${id}`, updatedUsuario);
-  }
+    updateUsuario(id: number, updatedUsuario: Usuario) {
+      console.log(updatedUsuario);
+      return this.http.put(`${this.API_URI}/usuarios/${id}`, updatedUsuario);
+    }
   
   getLabores(){
     return this.http.get('http://localhost:3000/api/labor');
@@ -59,5 +61,28 @@ export class ServiceService {
 
   getTipo(id:number){
 
+  }
+
+  getEvaluaciones(){
+    return this.http.get(`${this.API_URI}/evaluacion`);
+  }
+
+  getEvaluacion(id:number)
+  {
+    return this.http.get(`${this.API_URI}/evaluacion/${id}`);
+  }
+
+  saveEvaluacion(evaluacion:EvaluacionEst)
+  {
+    return this.http.post(`${this.API_URI}/evaluacion`,evaluacion);
+  }
+
+  deleteEvaluacion(id:number)
+  {
+    return this.http.delete(`${this.API_URI}/evaluacion/${id}`);
+  }
+  updateEvaluacion(id:number, updatedEvaluacion:EvaluacionEst)
+  {
+    return this.http.put(`${this.API_URI}/evaluacion/${id}`,updatedEvaluacion);
   }
 }
