@@ -34,12 +34,24 @@ class UsuariosControllers {
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const usuario = yield database_1.default.query('SELECT * FROM USUARIO WHERE USR_IDENTIFICACION  = ?', [id]);
-            //console.log(usuario);
-            if (usuario.length > 0) {
-                return res.json(usuario[0]);
+            const query = `
+          SELECT U.*, UR.*
+          FROM USUARIO U
+          INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
+          WHERE U.USR_IDENTIFICACION = ?
+        `;
+            try {
+                const [rows] = yield database_1.default.query(query, [id]);
+                if (Array.isArray(rows) && rows.length > 0) {
+                    const usuario = rows[0];
+                    return res.json(usuario);
+                }
+                res.status(404).json({ text: 'Usuario no encontrado' });
             }
-            res.status(404).json({ text: 'Usuario no encontrado' });
+            catch (error) {
+                console.error(error);
+                res.status(500).json({ text: 'Error al obtener el usuario' });
+            }
         });
     }
     create(req, res) {
