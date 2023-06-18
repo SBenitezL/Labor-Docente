@@ -17,16 +17,30 @@ class UsuariosControllers{
           res.status(500).json({ message: 'Internal Server Error' });
         }
       }
-    public async getOne (req: Request,res: Response): Promise<any>{
-        const {id} = req.params;
-        const usuario= await db.query('SELECT * FROM USUARIO WHERE USR_IDENTIFICACION  = ?',[id]);
-        //console.log(usuario);
-        if(usuario.length>0){
-            return res.json(usuario[0]);
+      public async getOne(req: Request, res: Response): Promise<any> {
+        const { id } = req.params;
+        const query = `
+          SELECT U.*, UR.*
+          FROM USUARIO U
+          INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
+          WHERE U.USR_IDENTIFICACION = ?
+        `;
+        
+        try {
+          const [rows] = await db.query(query, [id]);
+      
+          if (Array.isArray(rows) && rows.length > 0) {
+            const usuario = rows[0];
+            return res.json(usuario);
+          }
+      
+          res.status(404).json({ text: 'Usuario no encontrado' });
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ text: 'Error al obtener el usuario' });
         }
-        res.status(404).json({text:'Usuario no encontrado'});
-
-    } 
+      }
+      
     public async create(req: Request, res: Response): Promise<void> {
       const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
     

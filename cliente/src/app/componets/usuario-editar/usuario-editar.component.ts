@@ -20,9 +20,10 @@ export class UsuarioEditarComponent implements OnInit {
     USU_ESTUDIO: '',
     UserName: '',
     USR_Contrasenia: '',
+    ROL_ID: 0,
     UR_FECHAINICIO: new Date(),
     UR_FECHAFIN: new Date(),
-    ROL_ID: 0,
+  
   };
   edit: boolean = false;
 
@@ -39,7 +40,6 @@ export class UsuarioEditarComponent implements OnInit {
         res => {
           console.log(res);
           this.usuario = Object.assign({}, res) as Usuario & UseRol;
-
           console.log(this.usuario);
           this.edit = true;
         },

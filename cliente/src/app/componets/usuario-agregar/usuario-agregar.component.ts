@@ -21,9 +21,10 @@ export class UsuarioAgregarComponent implements OnInit{
     USU_ESTUDIO: '',
     UserName: '',
     USR_Contrasenia: '',
+    ROL_ID: 0,
     UR_FECHAINICIO: new Date(),
     UR_FECHAFIN: new Date(),
-    ROL_ID: 0,
+    
   };
 
     edit : boolean =false;
