@@ -19,7 +19,7 @@ export class UsuarioAgregarComponent implements OnInit{
     USU_APELLIDO: '',
     USU_GENERO: '',
     USU_ESTUDIO: '',
-    UserName: '',
+    userName: '',
     USR_Contrasenia: '',
     ROL_ID: 0,
     UR_FECHAINICIO: new Date(),
@@ -49,7 +49,7 @@ export class UsuarioAgregarComponent implements OnInit{
     usuarioAgregado: boolean = false;
 
     saveNewUsuario(): void {
-      console.log(this.usuario.UserName);
+      console.log(this.usuario.userName);
       this.serviceService.saveUsuario(this.usuario)
         .subscribe(
           res => {

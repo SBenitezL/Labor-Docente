@@ -18,7 +18,7 @@ class EvaluacionController {
         return __awaiter(this, void 0, void 0, function* () {
             const query = "CALL sp_consultar_evaluaciones()";
             let evaluaciones = yield database_1.default.query(query);
-            res.json(evaluaciones[0]);
+            res.json(evaluaciones[0][0]);
         });
     }
     getToOne(req, res) {

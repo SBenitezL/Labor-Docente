@@ -2,7 +2,8 @@ DELIMITER //
 
 CREATE OR REPLACE PROCEDURE sp_consultar_evaluacion(IN usr_id INT)
 BEGIN
-  SELECT 
+  SELECT
+    evaluacion.EVA_ID as ID, 
     labor.LAB_NOMBRE as Nombre, 
     labor.LAB_HORAS as Horas, 
     periodo.PER_FECHAINICIO as Inicio, 
