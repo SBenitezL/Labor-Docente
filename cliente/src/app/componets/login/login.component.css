@@ -154,7 +154,7 @@ margin: 10px;
   .envio a{
     font-size: 12px;
     position: relative;
-    color:rgb(150, 148, 146);
+    color:rgb(182, 180, 177);
     text-decoration: none;
   }
   .entrada{
@@ -251,5 +251,8 @@ margin: 10px;
     background-repeat: no-repeat; /* Evita la repetición del icono */
     background-position: right center; /* Colocar el icono en la izquierda centrado */
     background-size: 20px; /* Ajustar el tamaño del icono */
+  }
+  .input-with-cursor{
+    text-indent: 10px;
   }
   
