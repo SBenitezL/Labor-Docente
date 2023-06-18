@@ -34,12 +34,24 @@ class UsuariosControllers {
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const usuario = yield database_1.default.query('SELECT * FROM USUARIO WHERE USR_IDENTIFICACION  = ?', [id]);
-            //console.log(usuario);
-            if (usuario.length > 0) {
-                return res.json(usuario[0]);
+            const query = `
+          SELECT U.*, UR.*
+          FROM USUARIO U
+          INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
+          WHERE U.USR_IDENTIFICACION = ?
+        `;
+            try {
+                const [rows] = yield database_1.default.query(query, [id]);
+                if (Array.isArray(rows) && rows.length > 0) {
+                    const usuario = rows[0];
+                    return res.json(usuario);
+                }
+                res.status(404).json({ text: 'Usuario no encontrado' });
             }
-            res.status(404).json({ text: 'Usuario no encontrado' });
+            catch (error) {
+                console.error(error);
+                res.status(500).json({ text: 'Error al obtener el usuario' });
+            }
         });
     }
     create(req, res) {
@@ -75,10 +87,10 @@ class UsuariosControllers {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN } = req.body;
+            const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UserName, USR_Contrasenia, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN } = req.body;
             try {
                 // Paso 1: Actualizar los datos en la tabla `usuario`
-                yield database_1.default.query('UPDATE usuario SET USU_NOMBRE = ?, USU_APELLIDO = ?, USU_GENERO = ?, USU_ESTUDIO = ? WHERE USR_IDENTIFICACION = ?', [USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_IDENTIFICACION]);
+                yield database_1.default.query('UPDATE usuario SET USU_NOMBRE = ?, USU_APELLIDO = ?, USU_GENERO = ?, USU_ESTUDIO = ?,UserName = ?,USR_Contrasenia = ? WHERE USR_IDENTIFICACION = ?', [USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UserName, USR_Contrasenia, USR_IDENTIFICACION]);
                 // Paso 2: Actualizar los datos en la tabla `userol`
                 yield database_1.default.query('UPDATE userol SET ROL_ID = ?, UR_FECHAINICIO = ?, UR_FECHAFIN = ? WHERE USR_IDENTIFICACION = ?', [ROL_ID, UR_FECHAINICIO, UR_FECHAFIN, USR_IDENTIFICACION]);
                 res.json({ text: 'Usuario actualizado correctamente' });

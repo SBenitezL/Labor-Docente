@@ -112,3 +112,52 @@ input[type="text"] {
     color: #ddd;
 }
 
+/*Footer*/
+#footer {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    background: linear-gradient(to right,#0D4185,#770000);
+  }
+  .imagen-con-textoF{
+    display: flex;
+    align-items: center;
+  }
+  
+  .icono-izquierdaF{
+  width: 40px; /* Ancho deseado */
+  height: auto; /* La altura se ajusta automáticamente */
+  margin: 10px;
+  }
+  .texto-con-lineaF{
+    display: flex;
+    align-items: center;
+  }
+  .texto-con-lineaF{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 14px; /* Tamaño de fuente deseado */
+    color: aliceblue;
+    margin-left: 20px;
+    
+  }
+  .texto-con-lineaF span{
+    padding-left: 15px;
+    margin-right: 10px; /* Ajusta el espacio entre el texto y la línea vertical */
+    
+  }
+  .linea-verticalF {
+    border-right: 2px solid rgb(255, 255, 255);
+    padding-right: 15px; /* Añade espacio entre la línea y el texto */
+    margin-right: 15px; 
+  
+  }
+  .footer-con-imagen {
+    padding-left: 10px;
+  }
+  .container-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

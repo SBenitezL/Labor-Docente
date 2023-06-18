@@ -35,10 +35,10 @@ export class ServiceService {
   saveUserol(userol: any) {
     return this.http.post(`${this.API_URI}/userol/`, userol);
   }
-  updateUsuario(id: number, updatedUsuario: Usuario) {
-    console.log(updatedUsuario);
-    return this.http.put(`${this.API_URI}/usuarios/${id}`, updatedUsuario);
-  }
+    updateUsuario(id: number, updatedUsuario: Usuario) {
+      console.log(updatedUsuario);
+      return this.http.put(`${this.API_URI}/usuarios/${id}`, updatedUsuario);
+    }
   
   getLabores(){
     return this.http.get('http://localhost:3000/api/labor');
