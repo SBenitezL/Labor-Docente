@@ -5,8 +5,8 @@ import { RowDataPacket } from 'mysql2';
 class EvaluacionController{
     public async list(req:Request,res:Response):Promise<void>{
         const query = "CALL sp_consultar_evaluaciones()";
-        let evaluaciones = await db.query(query);
-        res.json(evaluaciones[0]);
+        let evaluaciones:any = await db.query(query);
+        res.json(evaluaciones[0][0]);
     }
     public async getToOne(req:Request,res:Response):Promise<void>
     {
