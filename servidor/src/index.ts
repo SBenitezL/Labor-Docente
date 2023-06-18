@@ -4,6 +4,7 @@ import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import usuariosRoutes from './routes/usuariosRoutes';
 import laborRoutes from './routes/LaborDocenteRoutes';
+import evaluacionRoutes from "./routes/evaluacionRoutes";
 
 class Servidor{
     public app: Application;
@@ -23,6 +24,7 @@ class Servidor{
         this.app.use(indexRoutes);
         this.app.use('/api/usuarios',usuariosRoutes);
         this.app.use('/api/labor',laborRoutes);
+        this.app.use('/api/evaluacion',evaluacionRoutes);
         
     }
     start():void{

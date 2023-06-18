@@ -9,6 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
 const LaborDocenteRoutes_1 = __importDefault(require("./routes/LaborDocenteRoutes"));
+const evaluacionRoutes_1 = __importDefault(require("./routes/evaluacionRoutes"));
 class Servidor {
     constructor() {
         this.app = (0, express_1.default)();
@@ -26,6 +27,7 @@ class Servidor {
         this.app.use(indexRoutes_1.default);
         this.app.use('/api/usuarios', usuariosRoutes_1.default);
         this.app.use('/api/labor', LaborDocenteRoutes_1.default);
+        this.app.use('/api/evaluacion', evaluacionRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
