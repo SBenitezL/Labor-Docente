@@ -42,10 +42,16 @@
                     <tr class="text-center">
                         
                         <select [(ngModel)]="seleccionTipoLab" (change)="seleccionarTipoLabor()">
-                            <option value="opt1">Docencia Directa</option>
-                            <option value="opt2">Director Tesis</option>
-                            <option value="opt3">Investigación</option>
-                            <option value="opt4">Labor Social</option>
+                            <option value="opt1">Docencia </option>
+                            <option value="opt2">Trabajos Docencia</option>
+                            <option value="opt3">Proyecto Investigación</option>
+                            <option value="opt4">Trabajos Investigacion</option>
+                            <option value="opt5">Administracion</option>
+                            <option value="opt6">Asesoria</option>
+                            <option value="opt7">Servicios</option>
+                            <option value="opt8">Extensión</option>
+                            <option value="opt9">Capacitación</option>
+                            <option value="opt10">Otros Servicios</option>
                           </select>
                           
                         <td> <input type="text" name="LAB_IDENTIFICACION" [(ngModel)]="laborDocente.LAB_ID" class="left-align-input"></td>  

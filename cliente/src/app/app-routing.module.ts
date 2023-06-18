@@ -9,6 +9,7 @@ import { UsuarioListarComponent } from './componets/usuario-listar/usuario-lista
 import { UsuarioAgregarComponent } from './componets/usuario-agregar/usuario-agregar.component';
 import { MenuCoordinadorComponent } from './componets/menu-coordinador/menu-coordinador.component';
 import {UsuarioEditarComponent} from './componets/usuario-editar/usuario-editar.component';
+import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/labor-docente-editar.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'editar/:id',component: UsuarioEditarComponent},
   { path: 'listarL', component: LaborDocenteListarComponent },
   { path: 'agregarL', component: LaborDocenteAgregarComponent },
-  { path: 'editarL/:id',component: LaborDocenteAgregarComponent},
+  { path: 'editarL/:id',component: LaborDocenteEditarComponent},
 
 ];
 @NgModule({
