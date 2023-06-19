@@ -1,5 +1,7 @@
 import {Request, Response} from 'express';
 import db from '../database';
+import * as bcrypt from 'bcrypt';
+
 class UsuariosControllers{
 
     /*public async list(req: Request, res: Response) {
@@ -43,10 +45,13 @@ class UsuariosControllers{
       
     public async create(req: Request, res: Response): Promise<void> {
       const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
-    
+      
+      const constraseniaHash =  await bcrypt.hash(USR_Contrasenia, 10);
+      
+
       try {
         // Paso 1: Insertar el usuario en la tabla USUARIO
-        await db.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName ]);
+        await db.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, UserName ]);
     
         // Paso 2: Insertar el registro en la tabla USEROL con las fechas correspondientes
         await db.query('INSERT INTO USEROL (USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN) VALUES (?, ?, ?, ?)', [USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN]);
@@ -80,7 +85,7 @@ class UsuariosControllers{
     
       try {
         // Paso 1: Actualizar los datos en la tabla `usuario`
-        await db.query('UPDATE usuario SET USU_NOMBRE = ?, USU_APELLIDO = ?, USU_GENERO = ?, USU_ESTUDIO = ?,UserName = ?,USR_Contrasenia = ? WHERE USR_IDENTIFICACION = ?', [USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO,UserName,USR_Contrasenia, USR_IDENTIFICACION]);
+        await db.query('UPDATE usuario SET USU_NOMBRE = ?, USU_APELLIDO = ?, USU_GENERO = ?, USU_ESTUDIO = ?,UserName = ?,USR_Contrasenia = ? WHERE USR_IDENTIFICACION = ?', [USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO,UserName,USR_Contrasenia,  USR_IDENTIFICACION]);
     
         // Paso 2: Actualizar los datos en la tabla `userol`
         await db.query('UPDATE userol SET ROL_ID = ?, UR_FECHAINICIO = ?, UR_FECHAFIN = ? WHERE USR_IDENTIFICACION = ?', [ROL_ID, UR_FECHAINICIO, UR_FECHAFIN, USR_IDENTIFICACION]);
@@ -91,6 +96,31 @@ class UsuariosControllers{
       }
     }
     
+    public async getUserLogin(req: Request, res: Response){
+      const { contrasenia,login } = req.params;
+        const query = `
+          SELECT UR.ROL_ID
+          FROM USUARIO U
+          INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
+          WHERE U.UserName = ? AND U.USR_Contrasenia = ? AND CURRENT_DATE BETWEEN UR.UR_FECHAINICIO and UR.UR_FECHAFIN;
+        `;
+        
+        try {
+          const rows = await db.query(query, [login , contrasenia]);
+      
+          if (rows.length > 0) {
+            
+            return res.json((rows[0]));
+          }
+      
+          res.status(404).json({ text: 'Usuario no encontrado' });
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ text: 'Error al obtener el usuario' });
+        }
+        
+    }
+   
     
 }
 

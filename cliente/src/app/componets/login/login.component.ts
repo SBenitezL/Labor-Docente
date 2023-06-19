@@ -18,7 +18,7 @@ export class LoginComponent {
     USU_APELLIDO: '',
     USU_GENERO: '',
     USU_ESTUDIO: '',
-    userName: '',
+    UserName: '',
     USR_Contrasenia: '',
     ROL_ID: 0,
     UR_FECHAINICIO: new Date(),
@@ -69,35 +69,25 @@ export class LoginComponent {
     const pass = this.myForm.value.password;
     
     if (!loginU|| !pass) {
-      // Si los campos están vacíos, puedes mostrar un mensaje de error o realizar alguna acción adicional
       alert("Campos vacios");
       return;
     }else{
+     this.serviceService.validarContrasenia(pass,loginU).subscribe(
+        res => {
+          console.log(res);
+          
+        },
+        err => console.error(err)
+      );
+      /*if((this.serviceService.validarContrasenia(pass,loginU))==2){
 
-     // this.getUsuariosAll();
-      this.verificarAcceso(pass,loginU);
-     
+      }*/
+      this.router.navigate(['/menuCoordinador']);
     }
     
   }
-  verificarAcceso(pass:string, loginU:string){
-      for(let i=0; i<this.usuarios.length;i++){
-        
-
-        if((this.usuarios[i].USR_Contrasenia == pass) && (this.usuarios[i].userName == loginU)){
-          console.log(this.usuarios[i].USR_IDENTIFICACION);
-        
-            this.serviceService.getUsuario(this.usuarios[i].USR_IDENTIFICACION).subscribe(
-              res => {
-                console.log(res);
-                this.usuario = Object.assign({}, res) as Usuario & UseRol;
-                if(this.usuario.ROL_ID== 2){
-                  this.router.navigate(['/menuCoordinador'])
-                }
-              },
-              err => console.error(err)
-              );
-        }
-      }
+  verificarContrasenia(pass:string, login:string){
+      
   }
+  
 }

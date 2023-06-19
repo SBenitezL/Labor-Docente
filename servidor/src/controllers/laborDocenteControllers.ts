@@ -12,17 +12,28 @@ class LaborDocenteControllers{
           res.status(500).json({ message: 'Internal Server Error' });
         }
       }
-    public async getOne (req: Request,res: Response): Promise<any>{
-        const { labId} = req.params;
-        const laborD = await db.query('SELECT * FROM LABOR WHERE LAB_ID = ? ',[labId]);
+    public async getOne(req: Request, res: Response): Promise<any> {
+        const { id } = req.params;
+        const query = 'SELECT * FROM LABOR WHERE LAB_ID = ?';
+      
+        try {
+            const [rows] = await db.query(query, [id]);
         
-        //console.log(usuario);
-        if(laborD.length>0){
-            return res.json(laborD[0]);
-        }
-        res.status(404).json({text:'Labor docente no encontrada'});
-
-    } 
+            if (Array.isArray(rows) && rows.length > 0) {
+              const laborDocente = rows[0];
+              return res.json(laborDocente);
+            }
+        
+            res.status(404).json({ text: 'Labor no encontrado' });
+          } catch (error) {
+            console.error(error);
+            res.status(500).json({ text: 'Error al obtener la labor' });
+          }
+     
+      }
+      
+      
+      
     public async create(req: Request,res: Response): Promise<void>{
         await db.query('INSERT INTO LABOR SET ?', [req.body]);
         res.json({message: 'Labor docente insertada'});

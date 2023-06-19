@@ -16,6 +16,7 @@ class UsuariosRoutes{
         this.router.post('/', usuariosControllers.create);
         this.router.put('/:id', usuariosControllers.update );
         this.router.delete('/:id',usuariosControllers.delete);
+        this.router.get('/:contrasenia/:login',usuariosControllers.getUserLogin);
 
     }
 }

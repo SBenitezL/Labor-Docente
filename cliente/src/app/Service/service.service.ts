@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../Modelo/Usuario';
 import { Evaluacion } from '../Modelo/Evaluacion';
 import { EvaluacionEst } from '../Modelo/EvaluacionEstructura';
-
 import {} from '../Modelo/Usuario';
 import { LaborDocente } from '../Modelo/LaborDocente';
 import { Observable } from 'rxjs';
@@ -30,15 +29,16 @@ export class ServiceService {
   }
   
   saveUsuario(usuario: Usuario) {
+    console.log(usuario.UserName);
     return this.http.post(`${this.API_URI}/usuarios/`, usuario);
   }
   saveUserol(userol: any) {
     return this.http.post(`${this.API_URI}/userol/`, userol);
   }
-    updateUsuario(id: number, updatedUsuario: Usuario) {
+  updateUsuario(id: number, updatedUsuario: Usuario) {
       console.log(updatedUsuario);
       return this.http.put(`${this.API_URI}/usuarios/${id}`, updatedUsuario);
-    }
+  }
   
   getLabores(){
     return this.http.get('http://localhost:3000/api/labor');
@@ -55,9 +55,10 @@ export class ServiceService {
   saveLabor(laborDocente: LaborDocente) {
     return this.http.post(`${this.API_URI}/labor/`, laborDocente);
   }
-  updateLabor(id: number, updatedLabor: LaborDocente): Observable<LaborDocente> {
-    return this.http.put<LaborDocente>(`${this.API_URI}/labor/${id}`, updatedLabor);
-  }
+  updateLabor(id: number, updatedLabor: LaborDocente) {
+    console.log(updatedLabor);
+    return this.http.put(`${this.API_URI}/labor/${id}`, updatedLabor);
+}
 
   getTipo(id:number){
 
@@ -84,5 +85,9 @@ export class ServiceService {
   updateEvaluacion(id:number, updatedEvaluacion:EvaluacionEst)
   {
     return this.http.put(`${this.API_URI}/evaluacion/${id}`,updatedEvaluacion);
+  }
+  validarContrasenia(contrasenia:string, login:string){
+    return this.http.get(`${this.API_URI}/usuarios/${contrasenia}/${login}`);
+
   }
 }
