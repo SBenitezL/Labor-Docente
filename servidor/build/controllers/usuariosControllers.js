@@ -37,6 +37,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 const bcrypt = __importStar(require("bcrypt"));
+const saltRounds = 10; // Número de rondas de hashing
+const salt = bcrypt.genSaltSync(saltRounds);
 class UsuariosControllers {
     /*public async list(req: Request, res: Response) {
         const usuarios = await db.query('SELECT * FROM USUARIO');
@@ -81,7 +83,9 @@ class UsuariosControllers {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
-            const constraseniaHash = yield bcrypt.hash(USR_Contrasenia, 10);
+            //const constraseniaHash =  await bcrypt.hash(USR_Contrasenia, 10);
+            const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, salt); // Genera el hash utilizando la contraseña y la "sal"
+            console.log(constraseniaHash); // Imprime el hash generado 
             try {
                 // Paso 1: Insertar el usuario en la tabla USUARIO
                 yield database_1.default.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, UserName]);
@@ -128,6 +132,10 @@ class UsuariosControllers {
     getUserLogin(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { contrasenia, login } = req.params;
+            //const constraseniaHash =  await bcrypt.hash(contrasenia, 10);
+            //console.log(constraseniaHash);
+            const constraseniaHash = bcrypt.hashSync(contrasenia, salt); // Genera el hash utilizando la contraseña y la "sal"
+            console.log(constraseniaHash); // Imprime el hash generado 
             const query = `
           SELECT UR.ROL_ID
           FROM USUARIO U
@@ -135,7 +143,7 @@ class UsuariosControllers {
           WHERE U.UserName = ? AND U.USR_Contrasenia = ? AND CURRENT_DATE BETWEEN UR.UR_FECHAINICIO and UR.UR_FECHAFIN;
         `;
             try {
-                const rows = yield database_1.default.query(query, [login, contrasenia]);
+                const rows = yield database_1.default.query(query, [login, constraseniaHash]);
                 if (rows.length > 0) {
                     return res.json((rows[0]));
                 }
