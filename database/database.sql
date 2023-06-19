@@ -3,6 +3,7 @@ USE labor_docente_bd;
 /*==============================================================*/
 /* Table: USUARIO                                               */
 /*==============================================================*/
+/*actualizar xcon username y contraseña(long)*/
 create table USUARIO 
 (
    USR_IDENTIFICACION   INT               not null,
@@ -10,6 +11,8 @@ create table USUARIO
    USU_APELLIDO         VARCHAR(50),
    USU_GENERO           VARCHAR(1)          not null,
    USU_ESTUDIO          VARCHAR(100),
+   UserName             VARCHAR(100)          not null,
+   USR_Contrasenia      VARCHAR(150)          not null,
    constraint PK_USUARIO primary key (USR_IDENTIFICACION)
 );
 /*==============================================================*/

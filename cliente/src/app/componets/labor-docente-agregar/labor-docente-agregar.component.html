@@ -1,87 +1,93 @@
-
-<div id="cabecera" class="cabecera-con-imagen">
-	<div class="imagen-con-texto">
-	  <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
-	  <div class="texto-con-linea">
-			<div class="linea-vertical">
-				<span>
-					Universidad del Cauca
-				</span>
-			</div>
-			<span>Agregar labor docente</span>
-	  </div>
-	</div>
-  </div>
-
-<nav class="menu-navegacion">
-	<ul>
-    <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
-	  <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
-	  <li><a (click)= "IrGestionLabor()">Gestión Labor Docente <i class='bx bx-book-open'></i></a></li>
-	  <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
-	</ul>
-</nav>
-
-<div class="container">
-    <div class="card">
-        <div class="card-head">
-            <h3>Usuarios</h3>
-            
+<div class="wrapper">  
+  <div class="content"> 
+    
+    
+    <div id="cabecera" class="cabecera-con-imagen">
+      <div class="imagen-con-texto">
+        <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+        <div class="texto-con-linea">
+          <div class="linea-vertical">
+            <span>
+              Universidad del Cauca
+            </span>
+          </div>
+          <span>Agregar labor docente</span>
         </div>
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Tipo labor</th>
-                        <th>Identificación</th>
-                        <th>Nombre</th>
-                        <th>Horas</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="text-center">
-                        
-                        <select [(ngModel)]="seleccionTipoLab" (change)="seleccionarTipoLabor()">
-                            <option value="opt1">Docencia </option>
-                            <option value="opt2">Trabajos Docencia</option>
-                            <option value="opt3">Proyecto Investigación</option>
-                            <option value="opt4">Trabajos Investigacion</option>
-                            <option value="opt5">Administracion</option>
-                            <option value="opt6">Asesoria</option>
-                            <option value="opt7">Servicios</option>
-                            <option value="opt8">Extensión</option>
-                            <option value="opt9">Capacitación</option>
-                            <option value="opt10">Otros Servicios</option>
-                          </select>
+      </div>
+      </div>
+
+    <nav class="menu-navegacion">
+      <ul>
+        <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
+        <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
+        <li><a (click)= "IrGestionLabor()">Gestión Labor Docente <i class='bx bx-book-open'></i></a></li>
+        <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-head">
+                <h3>Usuarios</h3>
+                
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Tipo labor</th>
+                            <th>Identificación</th>
+                            <th>Nombre</th>
+                            <th>Horas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center">
+                            
+                            <select [(ngModel)]="seleccionTipoLab" (change)="seleccionarTipoLabor()">
+                                <option value="opt1">Docencia </option>
+                                <option value="opt2">Trabajos Docencia</option>
+                                <option value="opt3">Proyecto Investigación</option>
+                                <option value="opt4">Trabajos Investigacion</option>
+                                <option value="opt5">Administracion</option>
+                                <option value="opt6">Asesoria</option>
+                                <option value="opt7">Servicios</option>
+                                <option value="opt8">Extensión</option>
+                                <option value="opt9">Capacitación</option>
+                                <option value="opt10">Otros Servicios</option>
+                              </select>
+                              
+                            <td> <input type="text" name="LAB_IDENTIFICACION" [(ngModel)]="laborDocente.LAB_ID" class="left-align-input"></td>  
+                            <td> <input type="text" name="LAB_NOMBRE" [(ngModel)]="laborDocente.LAB_NOMBRE" class="left-align-input"></td>
+                            <td> <input type="text" name="LAB_HORAS" [(ngModel)]="laborDocente.LAB_HORAS" class="left-align-input"></td>
+                            
+                            <td>
+                              <button class="btn btn-warning" (click)="edit ? updateLabor() : saveNewLabor()">Guardar</button>
+                              <div *ngIf="laborAgregado">
+                                Usuario agregado exitosamente.
+                              </div>
+                            </td>
+                          </tr>
                           
-                        <td> <input type="text" name="LAB_IDENTIFICACION" [(ngModel)]="laborDocente.LAB_ID" class="left-align-input"></td>  
-                        <td> <input type="text" name="LAB_NOMBRE" [(ngModel)]="laborDocente.LAB_NOMBRE" class="left-align-input"></td>
-                        <td> <input type="text" name="LAB_HORAS" [(ngModel)]="laborDocente.LAB_HORAS" class="left-align-input"></td>
-                        
-                        <td>
-                          <button class="btn btn-warning" (click)="edit ? updateLabor() : saveNewLabor()">Guardar</button>
-                          <div *ngIf="laborAgregado">
-                            Usuario agregado exitosamente.
-                          </div>
-                        </td>
-                      </tr>
-                      
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+                    </tbody>
+                </table>
+            </div>
+       </div>
+    </div>
 
-<div id="footer" class="footer-con-imagen">
-	<div class="imagen-con-textoF">
-	  <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierdaF">
-	  <div class="texto-con-lineaF">
-			<div class="linea-verticalF">
-				<span>
-					© 2023 Universidad del Cauca, Inc.
-				</span>
-			</div>
-			<span>Terms Privacy Security</span>
-	  </div>
-	</div>
-</div>
+  </div> 
+
+
+  <div id="footer" class="footer-con-imagen">
+    <div class="imagen-con-textoF">
+      <div class="texto-con-lineaF">
+        <div class="linea-verticalF">
+          <span>
+            © 2023 Universidad del Cauca, Inc.
+          </span>
+        </div>
+        <span>Terms Privacy Security</span>
+      </div>
+    </div>
+  </div>
+</div> 
