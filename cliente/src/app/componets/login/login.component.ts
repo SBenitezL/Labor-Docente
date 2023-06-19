@@ -54,9 +54,7 @@ export class LoginComponent {
         },
         err => console.error(err)
       );
-      /*if((this.serviceService.validarContrasenia(pass,loginU))==2){
-
-      }*/
+      
       
     }
     
