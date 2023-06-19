@@ -66,10 +66,8 @@
           <input type="text" name="USU_ESTUDIO" [(ngModel)]="usuario.USU_ESTUDIO" class="left-align-input">
         </div>
       </div>
-    
-
-  </div> 
-</div>
+    </div> 
+  </div>
   <button class="btn btn-warning" (click)="edit ? updateUsuario() : saveNewUsuario()">Guardar</button>
   <div *ngIf="usuarioAgregado">
     Usuario agregado exitosamente.
