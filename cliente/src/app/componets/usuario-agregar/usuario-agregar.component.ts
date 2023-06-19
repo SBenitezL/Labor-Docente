@@ -29,6 +29,7 @@ export class UsuarioAgregarComponent implements OnInit{
    
     edit : boolean =false;
     constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){
+      
     }
     ngOnInit(): void {
       
