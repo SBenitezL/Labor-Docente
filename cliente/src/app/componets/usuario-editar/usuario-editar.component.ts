@@ -65,4 +65,18 @@ export class UsuarioEditarComponent implements OnInit {
       err => console.error(err)
     );
   }
+
+  IrGestionDocente() {
+    this.router.navigate(['/listar']);
+  }
+  IrGestionLabor() {
+    this.router.navigate(['/listarL']);
+  }
+  IrEvaluacion() {
+    this.router.navigate(['/listarL']);
+  }
+  IrInicio(){
+    this.router.navigate(['/menuCoordinador']);
+  }
+
 }
