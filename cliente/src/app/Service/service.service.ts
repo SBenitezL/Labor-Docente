@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../Modelo/Usuario';
 import { Evaluacion } from '../Modelo/Evaluacion';
 import { EvaluacionEst } from '../Modelo/EvaluacionEstructura';
-
 import {} from '../Modelo/Usuario';
 import { LaborDocente } from '../Modelo/LaborDocente';
 import { Observable } from 'rxjs';
@@ -84,5 +83,8 @@ export class ServiceService {
   updateEvaluacion(id:number, updatedEvaluacion:EvaluacionEst)
   {
     return this.http.put(`${this.API_URI}/evaluacion/${id}`,updatedEvaluacion);
+  }
+  validarContrasenia(contrasenia:string){
+
   }
 }

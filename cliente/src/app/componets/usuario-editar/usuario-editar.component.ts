@@ -18,7 +18,7 @@ export class UsuarioEditarComponent implements OnInit {
     USU_APELLIDO: '',
     USU_GENERO: '',
     USU_ESTUDIO: '',
-    userName: '',
+    UserName: '',
     USR_Contrasenia: '',
     ROL_ID: 0,
     UR_FECHAINICIO: new Date(),
