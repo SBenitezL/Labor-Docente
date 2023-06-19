@@ -26,7 +26,7 @@ export class UsuarioAgregarComponent implements OnInit{
     UR_FECHAFIN: new Date(),
     
   };
-
+   
     edit : boolean =false;
     constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){
     }
@@ -63,10 +63,12 @@ export class UsuarioAgregarComponent implements OnInit{
     }
     
     
-
+    mostrar: boolean = false;
     updateUsuario(){
+      this.mostrar = true;
       console.log(this.usuario);
       this.serviceService.updateUsuario(this.usuario.USR_IDENTIFICACION,this.usuario);
+      
     }
     IrGestionDocente() {
       this.router.navigate(['/listar']);
@@ -79,6 +81,10 @@ export class UsuarioAgregarComponent implements OnInit{
     }
     IrInicio(){
       this.router.navigate(['/menuCoordinador']);
+    }
+    
+    cerrarModal() {
+      this.mostrar = false;
     }
 
 }
