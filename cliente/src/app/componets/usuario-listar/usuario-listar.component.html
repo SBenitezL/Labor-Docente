@@ -1,75 +1,78 @@
-<div id="cabecera" class="cabecera-con-imagen">
-	<div class="imagen-con-texto">
-	  <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
-	  <div class="texto-con-linea">
-			<div class="linea-vertical">
-				<span>
-					Universidad del Cauca
-				</span>
-			</div>
-			<span>Gestión docente</span>
-	  </div>
-	</div>
-</div>
-
-<nav class="menu-navegacion">
-	<ul>
-      <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
-	  <li><a (click)= "IrGestionLabor()">Gestión Labor Docente <i class='bx bx-book-open'></i></a></li>
-	  <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
-      <li><a (click)= "nuevo()">Nuevo usuario <i class='bx bx-plus-circle' ></i></a></li>
-	</ul>
-</nav>
-
-<div class="container">
-    <div class="card">
-        <div class="card-head">
-            <h3>Usuarios</h3>
-            
+<div class="wrapper">  
+    <div class="content">          
+        
+        <div id="cabecera" class="cabecera-con-imagen">
+            <div class="imagen-con-texto">
+            <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+            <div class="texto-con-linea">
+                    <div class="linea-vertical">
+                        <span>
+                            Universidad del Cauca
+                        </span>
+                    </div>
+                    <span>Gestión docente</span>
+            </div>
+            </div>
         </div>
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Identificación</th>
-                        <th>Labor docente</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Género</th>
-                        <th>Estudio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let usuario of usuarios" class="text-center">
-                        <td>{{ usuario.USR_IDENTIFICACION}}</td>
-                        <td>
-                            <button class="btn btn-warning" (click)="irALabor()" style="margin-left: 10px;">Ver evaluación</button>
-                        </td>
-                        <td>{{ usuario.USU_NOMBRE }}</td>
-                        <td>{{ usuario.USU_APELLIDO }}</td>
-                        <td>{{ usuario.USU_GENERO }}</td>
-                        <td>{{ usuario.USU_ESTUDIO }}</td>
-                        <td>
-                           <button class="btn btn-warning" (click)="editarUsuario(usuario.USR_IDENTIFICACION)" style="margin-left: 10px;">Editar</button>
-                           <button class="btn btn-warning" (click)="deleteUsuario(usuario.USR_IDENTIFICACION)" style="margin-left: 10px;">Eliminar</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
 
-<div id="footer" class="footer-con-imagen">
-    <div class="imagen-con-textoF">
-	  <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierdaF">
-	  <div class="texto-con-lineaF">
-			<div class="linea-verticalF">
-				<span>
-					© 2023 Universidad del Cauca, Inc.
-				</span>
-			</div>
-			<span>Terms Privacy Security</span>
-	  </div>
-	</div>
-</div>
+        <nav class="menu-navegacion">
+            <ul>
+            <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
+            <li><a (click)= "IrGestionLabor()">Gestión Labor Docente <i class='bx bx-book-open'></i></a></li>
+            <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+            <li><a (click)= "nuevo()">Nuevo usuario <i class='bx bx-plus-circle' ></i></a></li>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <div class="card">
+                <div class="card-head">
+                    <h3>Usuarios</h3>
+                    
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Identificación</th>
+                                <th>Labor docente</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Género</th>
+                                <th>Estudio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of usuarios" class="text-center">
+                                <td>{{ usuario.USR_IDENTIFICACION}}</td>
+                                <td>
+                                    <button class="btn btn-warning" (click)="irALabor()" style="margin-left: 10px;">Ver evaluación</button>
+                                </td>
+                                <td>{{ usuario.USU_NOMBRE }}</td>
+                                <td>{{ usuario.USU_APELLIDO }}</td>
+                                <td>{{ usuario.USU_GENERO }}</td>
+                                <td>{{ usuario.USU_ESTUDIO }}</td>
+                                <td>
+                                <button class="btn btn-warning" (click)="editarUsuario(usuario.USR_IDENTIFICACION)" style="margin-left: 10px;">Editar</button>
+                                <button class="btn btn-warning" (click)="deleteUsuario(usuario.USR_IDENTIFICACION)" style="margin-left: 10px;">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+           </div>
+        </div>
+    </div>
+    <div id="footer" class="footer-con-imagen">
+        <div class="imagen-con-textoF">
+          <div class="texto-con-lineaF">
+            <div class="linea-verticalF">
+              <span>
+                © 2023 Universidad del Cauca, Inc.
+              </span>
+            </div>
+            <span>Terms Privacy Security</span>
+          </div>
+        </div>
+      </div>
+    </div> 
