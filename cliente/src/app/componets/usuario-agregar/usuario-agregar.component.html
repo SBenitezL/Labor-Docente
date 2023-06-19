@@ -24,9 +24,11 @@
       </ul>
     </nav>
 
-      <hr>
-          <h3>Usuarios</h3>
-      <hr>
+    <div class="titulo"> 
+      <h3>Usuarios</h3>
+      <button class="btn btn-warning" (click)="edit ? updateUsuario() : saveNewUsuario()">Guardar</button>
+    </div> 
+
     <div class="container-main">
       <div class="container">
         <div class="card">
@@ -70,10 +72,6 @@
             </div>
           </div>
         </div> 
-      </div>
-      <button class="btn btn-warning" (click)="edit ? updateUsuario() : saveNewUsuario()">Guardar</button>
-      <div *ngIf="usuarioAgregado">
-        Usuario agregado exitosamente.
       </div>
     </div> 
 
