@@ -80,13 +80,12 @@ class UsuariosControllers {
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, userName } = req.body;
-            console.log("ENTRA AL HASH");
-            const constraseniaHash = bcrypt.hash(USR_Contrasenia, 10);
-            console.log("ENTRA AL HASH 2");
+            const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
+            const constraseniaHash = yield bcrypt.hash(USR_Contrasenia, 10);
+            console.log("ENTRA AL HASH 2" + UserName);
             try {
                 // Paso 1: Insertar el usuario en la tabla USUARIO
-                yield database_1.default.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, userName]);
+                yield database_1.default.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, UserName]);
                 // Paso 2: Insertar el registro en la tabla USEROL con las fechas correspondientes
                 yield database_1.default.query('INSERT INTO USEROL (USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN) VALUES (?, ?, ?, ?)', [USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN]);
                 res.json({ message: 'Usuario insertado correctamente.' });

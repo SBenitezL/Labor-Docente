@@ -29,6 +29,7 @@ export class ServiceService {
   }
   
   saveUsuario(usuario: Usuario) {
+    console.log(usuario.UserName);
     return this.http.post(`${this.API_URI}/usuarios/`, usuario);
   }
   saveUserol(userol: any) {
