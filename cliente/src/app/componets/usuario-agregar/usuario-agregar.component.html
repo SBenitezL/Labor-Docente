@@ -1,91 +1,93 @@
-<div id="cabecera" class="cabecera-con-imagen">
-	<div class="imagen-con-texto">
-	  <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
-	  <div class="texto-con-linea">
-			<div class="linea-vertical">
-				<span>
-					Universidad del Cauca
-				</span>
-			</div>
-			<span>Agregar docente</span>
-	  </div>
-	</div>
-</div>
-
-<nav class="menu-navegacion">
-	<ul>
-        <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
-        <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
-	    <li><a (click)= "IrGestionLabor()">Gestión labor docente <i class='bx bx-book-open'></i></a></li>
-	    <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
-	</ul>
-</nav>
-
-  <hr>
-      <h3>Usuarios</h3>
-  <hr>
-<div class="container-main">
-  <div class="container">
-    <div class="card">
-      <div class="card-body">
-        <div class="vertical-columnIzquierda">
-          <label for="UserName">Usuario:</label>
-          <input type="text" name="UserName" [(ngModel)]="usuario.userName" class="left-align-input">
-
-          <label for="USR_Contrasenia">Contraseña:</label>
-          <input type="text" name="USR_Contrasenia" [(ngModel)]="usuario.USR_Contrasenia" class="left-align-input">
-
-          <label for="UR_FECHAINICIO">Fecha Inicio:</label>
-          <input type="text" name="UR_FECHAINICIO" [(ngModel)]="usuario.UR_FECHAINICIO" class="left-align-input">
-
-          <label for="UR_FECHAFIN">Fecha Fin:</label>
-          <input type="text" name="UR_FECHAFIN" [(ngModel)]="usuario.UR_FECHAFIN" class="left-align-input">
-
-          <label for="ROL_ID">ID Tipo Rol:</label>
-          <input type="text" name="ROL_ID" [(ngModel)]="usuario.ROL_ID" class="left-align-input">
+<div class="wrapper">  
+  <div class="content"> 
+   
+   <div id="cabecera" class="cabecera-con-imagen">
+      <div class="imagen-con-texto">
+        <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+        <div class="texto-con-linea">
+          <div class="linea-vertical">
+            <span>
+              Universidad del Cauca
+            </span>
+          </div>
+          <span>Agregar docente</span>
         </div>
       </div>
     </div>
-      
-    <div class="card">
-      <div class="card-body">
-        <div class="vertical-columnDerecha">
-          <label for="USR_IDENTIFICACION">Identificación:</label>
-          <input type="text" name="USR_IDENTIFICACION" [(ngModel)]="usuario.USR_IDENTIFICACION" class="left-align-input">
 
-          <label for="USU_NOMBRE">Nombre:</label> 
-          <input type="text" name="USU_NOMBRE" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input">
+    <nav class="menu-navegacion">
+      <ul>
+            <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
+            <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
+          <li><a (click)= "IrGestionLabor()">Gestión labor docente <i class='bx bx-book-open'></i></a></li>
+          <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+      </ul>
+    </nav>
 
-          <label for="USU_APELLIDO">Apellido:</label>
-          <input type="text" name="USU_APELLIDO" [(ngModel)]="usuario.USU_APELLIDO" class="left-align-input">
+    <div class="titulo"> 
+      <h3>Usuarios</h3>
+      <button class="btn btn-warning" (click)="edit ? updateUsuario() : saveNewUsuario()">Guardar</button>
+    </div> 
 
-          <label for="USU_GENERO">Género:</label>
-          <input type="text" name="USU_GENERO" [(ngModel)]="usuario.USU_GENERO" class="left-align-input">
+    <div class="container-main">
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <div class="vertical-columnIzquierda">
+              <label for="UserName">Usuario:</label>
+              <input type="text" name="UserName" [(ngModel)]="usuario.UserName" class="left-align-input">
 
-          <label for="USU_ESTUDIO">Estudio:</label>
-          <input type="text" name="USU_ESTUDIO" [(ngModel)]="usuario.USU_ESTUDIO" class="left-align-input">
+              <label for="USR_Contrasenia">Contraseña:</label>
+              <input type="text" name="USR_Contrasenia" [(ngModel)]="usuario.USR_Contrasenia" class="left-align-input">
+
+              <label for="UR_FECHAINICIO">Fecha Inicio:</label>
+              <input type="text" name="UR_FECHAINICIO" [(ngModel)]="usuario.UR_FECHAINICIO" class="left-align-input">
+
+              <label for="UR_FECHAFIN">Fecha Fin:</label>
+              <input type="text" name="UR_FECHAFIN" [(ngModel)]="usuario.UR_FECHAFIN" class="left-align-input">
+
+              <label for="ROL_ID">ID Tipo Rol:</label>
+              <input type="text" name="ROL_ID" [(ngModel)]="usuario.ROL_ID" class="left-align-input">
+            </div>
+          </div>
         </div>
+          
+        <div class="card">
+          <div class="card-body">
+            <div class="vertical-columnDerecha">
+              <label for="USR_IDENTIFICACION">Identificación:</label>
+              <input type="text" name="USR_IDENTIFICACION" [(ngModel)]="usuario.USR_IDENTIFICACION" class="left-align-input">
+
+              <label for="USU_NOMBRE">Nombre:</label> 
+              <input type="text" name="USU_NOMBRE" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input">
+
+              <label for="USU_APELLIDO">Apellido:</label>
+              <input type="text" name="USU_APELLIDO" [(ngModel)]="usuario.USU_APELLIDO" class="left-align-input">
+
+              <label for="USU_GENERO">Género:</label>
+              <input type="text" name="USU_GENERO" [(ngModel)]="usuario.USU_GENERO" class="left-align-input">
+
+              <label for="USU_ESTUDIO">Estudio:</label>
+              <input type="text" name="USU_ESTUDIO" [(ngModel)]="usuario.USU_ESTUDIO" class="left-align-input">
+            </div>
+          </div>
+        </div> 
       </div>
-    
+    </div> 
 
   </div> 
-</div>
-  <button class="btn btn-warning" (click)="edit ? updateUsuario() : saveNewUsuario()">Guardar</button>
-  <div *ngIf="usuarioAgregado">
-    Usuario agregado exitosamente.
+
+
+  <div id="footer" class="footer-con-imagen">
+    <div class="imagen-con-textoF">
+      <div class="texto-con-lineaF">
+        <div class="linea-verticalF">
+          <span>
+            © 2023 Universidad del Cauca, Inc.
+          </span>
+        </div>
+        <span>Terms Privacy Security</span>
+      </div>
+    </div>
   </div>
 </div> 
-
-<div id="footer" class="footer-con-imagen">
-	<div class="imagen-con-textoF">
-	  <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierdaF">
-	  <div class="texto-con-lineaF">
-			<div class="linea-verticalF">
-				<span>
-					© 2023 Universidad del Cauca, Inc.
-				</span>
-			</div>
-			<span>Terms Privacy Security</span>
-	  </div>
-	</div>
-</div>

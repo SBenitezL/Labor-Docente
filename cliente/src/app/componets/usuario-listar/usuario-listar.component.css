@@ -1,12 +1,9 @@
-
-
-h3{
-
-    margin-top: 20px;
-    margin-left: 20px;
-}
 *{
-    font-family: 'Arial', sons-serif;
+  font-family: 'Arial', sons-serif;
+  box-sizing: border-box;
+}
+h3{
+    margin: 20px;
 }
 .btn-info{
     margin-top: 20px;
@@ -101,22 +98,14 @@ h3{
 #footer {
   display: flex;
   align-items: center;
-  position: fixed;
-  bottom: 0;
-  background: linear-gradient(to right,#0D4185,#770000);
-  width: 100%; /* Ancho igual al ancho de la ventana del navegador */
-  bottom: 0;
-  left: 0;
+  margin-top: auto;
+  padding: 10px;
+  background: #0D4185;
+  height: 50px;
 }
 .imagen-con-textoF{
   display: flex;
   align-items: center;
-}
-
-.icono-izquierdaF{
-width: 40px; /* Ancho deseado */
-height: auto; /* La altura se ajusta automáticamente */
-margin: 10px;
 }
 .texto-con-lineaF{
   display: flex;
@@ -143,9 +132,9 @@ margin: 10px;
 .footer-con-imagen {
   padding-left: 10px;
 }
-.container-main{
+
+.wrapper {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 }

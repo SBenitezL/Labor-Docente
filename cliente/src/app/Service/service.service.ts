@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../Modelo/Usuario';
 import { Evaluacion } from '../Modelo/Evaluacion';
 import { EvaluacionEst } from '../Modelo/EvaluacionEstructura';
-
 import {} from '../Modelo/Usuario';
 import { LaborDocente } from '../Modelo/LaborDocente';
 import { Observable } from 'rxjs';
@@ -30,6 +29,7 @@ export class ServiceService {
   }
   
   saveUsuario(usuario: Usuario) {
+    console.log(usuario.UserName);
     return this.http.post(`${this.API_URI}/usuarios/`, usuario);
   }
   saveUserol(userol: any) {
@@ -97,5 +97,9 @@ export class ServiceService {
   getPeriodoToAdd()
   {
     return this.http.get(`${this.API_URI}/periodo/ToAdd`);
+  }
+  validarContrasenia(contrasenia:string, login:string){
+    return this.http.get(`${this.API_URI}/usuarios/${contrasenia}/${login}`);
+
   }
 }

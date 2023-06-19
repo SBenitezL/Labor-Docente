@@ -12,19 +12,7 @@ import { ServiceService } from '../../Service/service.service';
 })
 export class LoginComponent {
   public myForm!: FormGroup;
-  usuario: Usuario & UseRol = {
-    USR_IDENTIFICACION: 0,
-    USU_NOMBRE: '',
-    USU_APELLIDO: '',
-    USU_GENERO: '',
-    USU_ESTUDIO: '',
-    userName: '',
-    USR_Contrasenia: '',
-    ROL_ID: 0,
-    UR_FECHAINICIO: new Date(),
-    UR_FECHAFIN: new Date(),
   
-  };
   usuarios: Usuario[]= [];
   constructor(private fb:FormBuilder, private serviceService: ServiceService,
     private router: Router,
@@ -42,24 +30,7 @@ export class LoginComponent {
       err => console.log(err)
     );
   }
- /*  getUsuariosAll(){
-    this.serviceService.getUsuarios().subscribe(
-      (res: any) => {
-        console.log(res); 
-        this.usuarios = res;
-      },
-      err => console.log(err)
-    );
-  }*/
-  getUsuarioOne(id:number){
-      this.serviceService.getUsuario(id).subscribe(
-        res => {
-          console.log(res);
-          this.usuario = Object.assign({}, res) as Usuario & UseRol;
-        },
-        err => console.error(err)
-      );
-  }
+ 
   public submitFormulario(){
     //alert("Se va a enviar el formulario");
     console.log(this.myForm.value);
@@ -69,35 +40,31 @@ export class LoginComponent {
     const pass = this.myForm.value.password;
     
     if (!loginU|| !pass) {
-      // Si los campos están vacíos, puedes mostrar un mensaje de error o realizar alguna acción adicional
       alert("Campos vacios");
       return;
     }else{
+     this.serviceService.validarContrasenia(pass,loginU).subscribe(
+        res => {
+          if (Array.isArray(res) && res.length > 0) {
+            const rolId = res[0].ROL_ID;
+            this.verificarVista(rolId);
+          } else {
+            console.log("El array res está vacío o no es un array");
+          }
+        },
+        err => console.error(err)
+      );
+      /*if((this.serviceService.validarContrasenia(pass,loginU))==2){
 
-     // this.getUsuariosAll();
-      this.verificarAcceso(pass,loginU);
-     
+      }*/
+      
     }
     
   }
-  verificarAcceso(pass:string, loginU:string){
-      for(let i=0; i<this.usuarios.length;i++){
-        
-
-        if((this.usuarios[i].USR_Contrasenia == pass) && (this.usuarios[i].userName == loginU)){
-          console.log(this.usuarios[i].USR_IDENTIFICACION);
-        
-            this.serviceService.getUsuario(this.usuarios[i].USR_IDENTIFICACION).subscribe(
-              res => {
-                console.log(res);
-                this.usuario = Object.assign({}, res) as Usuario & UseRol;
-                if(this.usuario.ROL_ID== 2){
-                  this.router.navigate(['/menuCoordinador'])
-                }
-              },
-              err => console.error(err)
-              );
-        }
+  verificarVista(rol:number){
+      if(rol==2){
+        this.router.navigate(['/menuCoordinador']);
       }
   }
+  
 }

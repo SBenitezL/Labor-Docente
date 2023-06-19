@@ -99,7 +99,7 @@ input[type="text"] {
 .container select {
     text-align: left;
     margin: 10px;
-    margin-left: -53px;
+    margin-left: -22px;
     border: 1px solid #686565;
     border-radius: 10px;
 }
@@ -114,50 +114,45 @@ input[type="text"] {
 
 /*Footer*/
 #footer {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    background: linear-gradient(to right,#0D4185,#770000);
-  }
-  .imagen-con-textoF{
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  padding: 10px;
+  background: #0D4185;
+  height: 50px;
+}
+.imagen-con-textoF{
+  display: flex;
+  align-items: center;
+}
+.texto-con-lineaF{
+  display: flex;
+  align-items: center;
+}
+.texto-con-lineaF{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 14px; /* Tamaño de fuente deseado */
+  color: aliceblue;
+  margin-left: 20px;
   
-  .icono-izquierdaF{
-  width: 40px; /* Ancho deseado */
-  height: auto; /* La altura se ajusta automáticamente */
-  margin: 10px;
-  }
-  .texto-con-lineaF{
-    display: flex;
-    align-items: center;
-  }
-  .texto-con-lineaF{
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-size: 14px; /* Tamaño de fuente deseado */
-    color: aliceblue;
-    margin-left: 20px;
-    
-  }
-  .texto-con-lineaF span{
-    padding-left: 15px;
-    margin-right: 10px; /* Ajusta el espacio entre el texto y la línea vertical */
-    
-  }
-  .linea-verticalF {
-    border-right: 2px solid rgb(255, 255, 255);
-    padding-right: 15px; /* Añade espacio entre la línea y el texto */
-    margin-right: 15px; 
+}
+.texto-con-lineaF span{
+  padding-left: 15px;
+  margin-right: 10px; /* Ajusta el espacio entre el texto y la línea vertical */
   
-  }
-  .footer-con-imagen {
-    padding-left: 10px;
-  }
-  .container-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+}
+.linea-verticalF {
+  border-right: 2px solid rgb(255, 255, 255);
+  padding-right: 15px; /* Añade espacio entre la línea y el texto */
+  margin-right: 15px; 
+
+}
+.footer-con-imagen {
+  padding-left: 10px;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
