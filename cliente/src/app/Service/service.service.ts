@@ -86,7 +86,8 @@ export class ServiceService {
   {
     return this.http.put(`${this.API_URI}/evaluacion/${id}`,updatedEvaluacion);
   }
-  validarContrasenia(contrasenia:string){
+  validarContrasenia(contrasenia:string, login:string){
+    return this.http.get(`${this.API_URI}/usuarios/${contrasenia}/${login}`);
 
   }
 }

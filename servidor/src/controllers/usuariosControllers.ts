@@ -47,7 +47,7 @@ class UsuariosControllers{
       const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
       
       const constraseniaHash =  await bcrypt.hash(USR_Contrasenia, 10);
-      console.log("ENTRA AL HASH 2"+ UserName);
+      
 
       try {
         // Paso 1: Insertar el usuario en la tabla USUARIO
@@ -96,6 +96,30 @@ class UsuariosControllers{
       }
     }
     
+    public async getUserLogin(req: Request, res: Response){
+      const { contrasenia,login } = req.params;
+        const query = `
+          SELECT UR.ROL_ID
+          FROM USUARIO U
+          INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
+          WHERE U.UserName = ? AND U.USR_Contrasenia = ? AND CURRENT_DATE BETWEEN UR.UR_FECHAINICIO and UR.UR_FECHAFIN;
+        `;
+        
+        try {
+          const rows = await db.query(query, [login , contrasenia]);
+      
+          if (rows.length > 0) {
+            
+            return res.json((rows[0]));
+          }
+      
+          res.status(404).json({ text: 'Usuario no encontrado' });
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ text: 'Error al obtener el usuario' });
+        }
+        
+    }
    
     
 }

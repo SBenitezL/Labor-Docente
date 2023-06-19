@@ -82,7 +82,6 @@ class UsuariosControllers {
         return __awaiter(this, void 0, void 0, function* () {
             const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
             const constraseniaHash = yield bcrypt.hash(USR_Contrasenia, 10);
-            console.log("ENTRA AL HASH 2" + UserName);
             try {
                 // Paso 1: Insertar el usuario en la tabla USUARIO
                 yield database_1.default.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, UserName]);
@@ -123,6 +122,28 @@ class UsuariosControllers {
             }
             catch (error) {
                 res.status(500).json({ message: 'Error al actualizar el usuario' });
+            }
+        });
+    }
+    getUserLogin(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { contrasenia, login } = req.params;
+            const query = `
+          SELECT UR.ROL_ID
+          FROM USUARIO U
+          INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
+          WHERE U.UserName = ? AND U.USR_Contrasenia = ? AND CURRENT_DATE BETWEEN UR.UR_FECHAINICIO and UR.UR_FECHAFIN;
+        `;
+            try {
+                const rows = yield database_1.default.query(query, [login, contrasenia]);
+                if (rows.length > 0) {
+                    return res.json((rows[0]));
+                }
+                res.status(404).json({ text: 'Usuario no encontrado' });
+            }
+            catch (error) {
+                console.error(error);
+                res.status(500).json({ text: 'Error al obtener el usuario' });
             }
         });
     }
