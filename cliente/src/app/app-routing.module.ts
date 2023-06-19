@@ -11,6 +11,7 @@ import { MenuCoordinadorComponent } from './componets/menu-coordinador/menu-coor
 import {UsuarioEditarComponent} from './componets/usuario-editar/usuario-editar.component';
 import { EvaluacionListComponent } from './componets/evaluacion-list/evaluacion-list.component';
 import { EvaluacionFormComponent } from './componets/evaluacion-form/evaluacion-form.component';
+import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/labor-docente-editar.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'editar/:id',component: UsuarioEditarComponent},
   { path: 'listarL', component: LaborDocenteListarComponent },
   { path: 'agregarL', component: LaborDocenteAgregarComponent },
-  { path: 'editarL/:id',component: LaborDocenteAgregarComponent},
+  { path: 'editarL/:id',component: LaborDocenteEditarComponent},
   {path: 'evaluacion', component: EvaluacionListComponent},
   {path: 'evaluacion/add', component: EvaluacionFormComponent}
 

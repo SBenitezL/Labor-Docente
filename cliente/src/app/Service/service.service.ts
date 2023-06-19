@@ -34,10 +34,10 @@ export class ServiceService {
   saveUserol(userol: any) {
     return this.http.post(`${this.API_URI}/userol/`, userol);
   }
-    updateUsuario(id: number, updatedUsuario: Usuario) {
+  updateUsuario(id: number, updatedUsuario: Usuario) {
       console.log(updatedUsuario);
       return this.http.put(`${this.API_URI}/usuarios/${id}`, updatedUsuario);
-    }
+  }
   
   getLabores(){
     return this.http.get('http://localhost:3000/api/labor');
@@ -54,9 +54,10 @@ export class ServiceService {
   saveLabor(laborDocente: LaborDocente) {
     return this.http.post(`${this.API_URI}/labor/`, laborDocente);
   }
-  updateLabor(id: number, updatedLabor: LaborDocente): Observable<LaborDocente> {
-    return this.http.put<LaborDocente>(`${this.API_URI}/labor/${id}`, updatedLabor);
-  }
+  updateLabor(id: number, updatedLabor: LaborDocente) {
+    console.log(updatedLabor);
+    return this.http.put(`${this.API_URI}/labor/${id}`, updatedLabor);
+}
 
   getTipo(id:number){
 

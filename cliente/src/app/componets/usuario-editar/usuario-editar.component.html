@@ -1,47 +1,75 @@
-<div class="container">
-    <div class="card">
-        <div class="card-head">
-            <h3>Usuarios</h3>
-            
-        </div>
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Identificación</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Género</th>
-                        <th>Estudio</th>
-                        <th>Usuario</th>
-                        <th>Constraseña</th>
-                        <th>ID Tipo Rol</th>
-                        <th>Fecha Inicio</th>
-                        <th>Fecha Fin</th>
-                       
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr  class="text-center">
-                        <td> <input type="text" name="USR_IDENTIFICACION" [(ngModel)]="usuario.USR_IDENTIFICACION" class="left-align-input"  disabled> </td>
-                        <td> <input type="text" name="USU_NOMBRE" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input"></td>
-                        <td> <input type="text" name="USU_APELLIDO" [(ngModel)]="usuario.USU_APELLIDO" class="left-align-input"></td>
-                        <td> <input type="text" name="USU_GENERO" [(ngModel)]="usuario.USU_GENERO" class="left-align-input"></td>
-                        <td> <input type="text" name="USU_ESTUDIO" [(ngModel)]="usuario.USU_ESTUDIO" class="left-align-input"></td>
-                        
-                        <td> <input type="text" name="UserName" [(ngModel)]="usuario.UserName" class="left-align-input"></td>
-                        <td> <input type="text" name="USR_Contrasenia" [(ngModel)]="usuario.USR_Contrasenia" class="left-align-input"></td>
-                        <td> <input type="text" name="ROL_ID" [(ngModel)]="usuario.ROL_ID" class="left-align-input"></td>
-                        <td><input type="text" name="UR_FECHAINICIO" [(ngModel)]="usuario.UR_FECHAINICIO" class="left-align-input"></td>
-                        <td><input type="text" name="UR_FECHAFIN" [(ngModel)]="usuario.UR_FECHAFIN" class="left-align-input"></td>
-                        <td>
-                          <button class="btn btn-warning" (click)=" updateUsuario() ">Guardar</button>
-                          
-                        </td>
-                      </tr>
-                      
-                </tbody>
-            </table>
-        </div>
-    </div>
+<div id="cabecera" class="cabecera-con-imagen">
+	<div class="imagen-con-texto">
+	  <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+	  <div class="texto-con-linea">
+			<div class="linea-vertical">
+				<span>
+					Universidad del Cauca
+				</span>
+			</div>
+			<span>Editar docente</span>
+	  </div>
+	</div>
 </div>
+
+<nav class="menu-navegacion">
+	<ul>
+        <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
+        <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
+	    <li><a (click)= "IrGestionLabor()">Gestión labor docente <i class='bx bx-book-open'></i></a></li>
+	    <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+	</ul>
+</nav>
+
+<hr>
+    <h3>Usuarios</h3>
+<hr>
+
+<div class="container-main">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="vertical-columnIzquierda">
+                    <label for="USR_IDENTIFICACION">Identificación</label>
+                    <input type="text" name="USR_IDENTIFICACION" [(ngModel)]="usuario.USR_IDENTIFICACION" class="left-align-input"  disabled> 
+
+                    
+                    <label for="USU_NOMBRE">Usuario</label>
+                    <input type="text" name="USU_NOMBRE" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input">
+
+                    <label for="USU_APELLIDO">Apellidos</label>
+                    <input type="text" name="USU_APELLIDO" [(ngModel)]="usuario.USU_APELLIDO" class="left-align-input">
+                    
+                    <label for="USU_GENERO">Género</label>
+                    <input type="text" name="USU_GENERO" [(ngModel)]="usuario.USU_GENERO" class="left-align-input">
+
+                    <label for="USU_ESTUDIO">Estudio</label>
+                    <input type="text" name="USU_ESTUDIO" [(ngModel)]="usuario.USU_ESTUDIO" class="left-align-input">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="vertical-columnDerecha">
+                    <label for="UserName">Usuario</label>
+                    <input type="text" name="UserName" [(ngModel)]="usuario.UserName" class="left-align-input">
+
+                    <label for="USR_Contrasenia">Contraseña</label>
+                    <input type="text" name="USR_Contrasenia" [(ngModel)]="usuario.USR_Contrasenia" class="left-align-input">
+
+                    <label for="ROL_ID">Rol ID</label>
+                    <input type="text" name="ROL_ID" [(ngModel)]="usuario.ROL_ID" class="left-align-input">
+                    
+                    <label for="UR_FECHAINICIO">Fecha de inicio</label>
+                    <input type="text" name="USU_GENERO" [(ngModel)]="usuario.USU_GENERO" class="left-align-input">
+
+                    <label for="UR_FECHAFIN">Fecha de fin</label>
+                    <input type="text" name="USU_ESTUDIO" [(ngModel)]="usuario.USU_ESTUDIO" class="left-align-input">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <button class="btn btn-warning" (click)=" updateUsuario() ">Guardar</button>
+</div>
+    

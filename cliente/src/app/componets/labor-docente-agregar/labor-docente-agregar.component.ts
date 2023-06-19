@@ -14,7 +14,7 @@ export class LaborDocenteAgregarComponent {
   laborDocente:LaborDocente={
     LAB_ID:0,
     TL_ID:0,
-    LAB_NOMBRE:'string',
+    LAB_NOMBRE:'',
     LAB_HORAS:0,
 
   };
@@ -69,8 +69,20 @@ export class LaborDocenteAgregarComponent {
       this.laborDocente.TL_ID=2;
     } else if(this.seleccionTipoLab=="opt3"){
       this.laborDocente.TL_ID=3;
-    } else{
-      this.laborDocente.TL_ID=4;
+    }else if(this.seleccionTipoLab=="opt4"){
+        this.laborDocente.TL_ID=4;
+    }else if(this.seleccionTipoLab=="opt5"){
+        this.laborDocente.TL_ID=5;
+    }else if(this.seleccionTipoLab=="opt6"){
+        this.laborDocente.TL_ID=6;
+   }else if(this.seleccionTipoLab=="opt7"){
+        this.laborDocente.TL_ID=7;
+   }else if(this.seleccionTipoLab=="opt8"){
+        this.laborDocente.TL_ID=8;
+    }else if(this.seleccionTipoLab=="opt9"){
+        this.laborDocente.TL_ID=9;
+    }else{
+      this.laborDocente.TL_ID=10;
     }
 
     console.log(this.laborDocente.TL_ID);

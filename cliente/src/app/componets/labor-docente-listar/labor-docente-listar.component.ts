@@ -31,12 +31,16 @@ export class LaborDocenteListarComponent {
   deleteLabor(id: number) {
     this.serviceService.deleteLabor(id).subscribe(
       () => {
-        console.log("Usuario eliminado exitosamente");
+        console.log("Labor eliminada exitosamente");
         this.getLabores(); // Vuelve a cargar los usuarios después de eliminar uno
 
       },
       err => console.error(err)
     );
+  }
+  editarLabor(id: number){
+    console.log(id);
+    this.router.navigate(['/editarL/'+id]);
   }
   nuevo() {
     this.router.navigate(['/agregarL']);
