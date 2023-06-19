@@ -29,13 +29,20 @@ class LaborDocenteControllers {
     }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { labId } = req.params;
-            const laborD = yield database_1.default.query('SELECT * FROM LABOR WHERE LAB_ID = ? ', [labId]);
-            //console.log(usuario);
-            if (laborD.length > 0) {
-                return res.json(laborD[0]);
+            const { id } = req.params;
+            const query = 'SELECT * FROM LABOR WHERE LAB_ID = ?';
+            try {
+                const [rows] = yield database_1.default.query(query, [id]);
+                if (Array.isArray(rows) && rows.length > 0) {
+                    const laborDocente = rows[0];
+                    return res.json(laborDocente);
+                }
+                res.status(404).json({ text: 'Labor no encontrado' });
             }
-            res.status(404).json({ text: 'Labor docente no encontrada' });
+            catch (error) {
+                console.error(error);
+                res.status(500).json({ text: 'Error al obtener la labor' });
+            }
         });
     }
     create(req, res) {

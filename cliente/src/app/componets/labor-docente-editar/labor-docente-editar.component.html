@@ -8,15 +8,17 @@
             <table class="table table-hover">
                 <thead>
                     <tr> 
-                        <th>Tipo labor</th>
                         <th>Identificación</th>
+                        <th>Tipo labor</th>
                         <th>Nombre</th>
                         <th>Horas</th>
                        
                     </tr>
                 </thead>
                 <tbody>
-                   <tr> 
+                   <tr>
+                    <td> <input type="text" name="LAB_ID" [(ngModel)]="laborDocente.LAB_ID" class="left-align-input"></td>  
+ 
                     <select [(ngModel)]="seleccionTipoLab" (change)="seleccionarTipoLabor()">
                         <option value="opt1">Docencia </option>
                         <option value="opt2">Trabajos Docencia</option>
@@ -30,7 +32,6 @@
                         <option value="opt10">Otros Servicios</option>
                       </select>
                       
-                    <td> <input type="text" name="LAB_IDENTIFICACION" [(ngModel)]="laborDocente.LAB_ID" class="left-align-input"></td>  
                     <td> <input type="text" name="LAB_NOMBRE" [(ngModel)]="laborDocente.LAB_NOMBRE" class="left-align-input"></td>
                     <td> <input type="text" name="LAB_HORAS" [(ngModel)]="laborDocente.LAB_HORAS" class="left-align-input"></td>
                     
