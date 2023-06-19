@@ -1,5 +1,6 @@
 *{
     font-family: 'Arial', sons-serif;
+    box-sizing: border-box;
 }
 #cabecera {
     display: flex;

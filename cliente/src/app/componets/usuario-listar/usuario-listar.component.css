@@ -1,12 +1,9 @@
-
-
-h3{
-
-    margin-top: 20px;
-    margin-left: 20px;
-}
 *{
-    font-family: 'Arial', sons-serif;
+  font-family: 'Arial', sons-serif;
+  box-sizing: border-box;
+}
+h3{
+    margin: 20px;
 }
 .btn-info{
     margin-top: 20px;
