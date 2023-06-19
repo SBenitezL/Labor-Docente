@@ -16,6 +16,7 @@ class LaborRoutes {
         this.router.post('/', laborDocenteControllers_1.default.create);
         this.router.put('/:id', laborDocenteControllers_1.default.update);
         this.router.delete('/:id', laborDocenteControllers_1.default.delete);
+        this.router.get('/ToAdd', laborDocenteControllers_1.default.getToAdd);
     }
 }
 const laborRoutesRoutes = new LaborRoutes();

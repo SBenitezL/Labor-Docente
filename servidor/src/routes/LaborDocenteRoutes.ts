@@ -16,6 +16,7 @@ class LaborRoutes{
         this.router.post('/', laborDocenteControllers.create);
         this.router.put('/:id', laborDocenteControllers.update );
         this.router.delete('/:id',laborDocenteControllers.delete);
+        this.router.get('/ToAdd',laborDocenteControllers.getToAdd);
 
     }
 }

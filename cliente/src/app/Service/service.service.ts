@@ -86,4 +86,16 @@ export class ServiceService {
   {
     return this.http.put(`${this.API_URI}/evaluacion/${id}`,updatedEvaluacion);
   }
+
+  getLaborToAdd(){
+    return this.http.get(`${this.API_URI}/labor/ToAdd`);
+  }
+  getUseRolToAdd()
+  {
+    return this.http.get(`${this.API_URI}/userol/ToAdd`)
+  }
+  getPeriodoToAdd()
+  {
+    return this.http.get(`${this.API_URI}/periodo/ToAdd`);
+  }
 }

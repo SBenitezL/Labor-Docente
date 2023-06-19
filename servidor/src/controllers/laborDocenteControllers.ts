@@ -37,6 +37,11 @@ class LaborDocenteControllers{
         await db.query('UPDATE LABOR set ? WHERE LAB_ID  = ?',[req.body,id]);
         res.json({text : 'Actualizando labor docente...'});
     }
+    public async getToAdd(req: Request,res: Response): Promise<void>{
+        const rows:any = await db.query('SELECT LAB_ID, LAB_NOMBRE FROM labor;');
+        res.json(rows[0][0]);
+    }
+
 }
 const laborDocenteController =new LaborDocenteControllers();
 export default laborDocenteController;

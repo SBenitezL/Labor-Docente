@@ -58,6 +58,12 @@ class LaborDocenteControllers {
             res.json({ text: 'Actualizando labor docente...' });
         });
     }
+    getToAdd(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const rows = yield database_1.default.query('SELECT LAB_ID, LAB_NOMBRE FROM labor;');
+            res.json(rows[0][0]);
+        });
+    }
 }
 const laborDocenteController = new LaborDocenteControllers();
 exports.default = laborDocenteController;

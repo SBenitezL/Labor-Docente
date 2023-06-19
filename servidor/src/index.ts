@@ -5,6 +5,8 @@ import indexRoutes from './routes/indexRoutes';
 import usuariosRoutes from './routes/usuariosRoutes';
 import laborRoutes from './routes/LaborDocenteRoutes';
 import evaluacionRoutes from "./routes/evaluacionRoutes";
+import periodoRoutes from "./routes/periodoRoutes";
+import userrolRoutes from "./routes/userrolRoutes";
 
 class Servidor{
     public app: Application;
@@ -25,6 +27,8 @@ class Servidor{
         this.app.use('/api/usuarios',usuariosRoutes);
         this.app.use('/api/labor',laborRoutes);
         this.app.use('/api/evaluacion',evaluacionRoutes);
+        this.app.use('api/periodo',periodoRoutes);
+        this.app.use('api/userol',userrolRoutes);
         
     }
     start():void{
