@@ -192,3 +192,84 @@ input[type="text"] {
   display: flex;
   flex-direction: column;
 }
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .cabecera-con-imagen {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  .icono-izquierda {
+    width: 50px; /* Ancho deseado */
+    height: auto; /* La altura se ajusta automáticamente */
+    margin: 10px;
+  }
+  .imagen-con-texto {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    
+  }
+  .texto-con-linea {
+    margin-left: 0;
+  }
+
+  .menu-navegacion {
+    height: auto;
+  }
+
+  .menu-navegacion ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-navegacion a {
+    display: block;
+    padding: 10px 15px;
+    border-right: none;
+    border-bottom: 1px solid rgba(39, 35, 35, 0.212);
+  }
+
+  .titulo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vertical-columnDerecha,
+  .vertical-columnIzquierda {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .card {
+    max-width: none;
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .container-main {
+    align-items: flex-start;
+  }
+
+  #footer {
+    justify-content: center;
+  }
+}
+
+/* Estilos adicionales para pantallas aún más pequeñas */
+@media (max-width: 576px) {
+  .texto-con-linea {
+    font-size: 20px;
+  }
+
+  .titulo h3 {
+    font-size: 18px;
+  }
+}
+
