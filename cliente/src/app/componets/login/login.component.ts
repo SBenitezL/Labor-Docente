@@ -18,7 +18,7 @@ export class LoginComponent {
     USU_APELLIDO: '',
     USU_GENERO: '',
     USU_ESTUDIO: '',
-    userName: '',
+    UserName: '',
     USR_Contrasenia: '',
     ROL_ID: 0,
     UR_FECHAINICIO: new Date(),
@@ -75,16 +75,16 @@ export class LoginComponent {
     }else{
 
      // this.getUsuariosAll();
-      this.verificarAcceso(pass,loginU);
-     
+      //this.verificarAcceso(pass,loginU);
+      this.router.navigate(['/menuCoordinador'])
     }
     
   }
   verificarAcceso(pass:string, loginU:string){
       for(let i=0; i<this.usuarios.length;i++){
         
-
-        if((this.usuarios[i].USR_Contrasenia == pass) && (this.usuarios[i].userName == loginU)){
+          console.log(this.usuarios[i].USR_Contrasenia +"=="+ pass+"hola"+this.usuarios[i].UserName +"== "+loginU)
+        if((this.usuarios[i].USR_Contrasenia == pass) && (this.usuarios[i].UserName == loginU)){
           console.log(this.usuarios[i].USR_IDENTIFICACION);
         
             this.serviceService.getUsuario(this.usuarios[i].USR_IDENTIFICACION).subscribe(
