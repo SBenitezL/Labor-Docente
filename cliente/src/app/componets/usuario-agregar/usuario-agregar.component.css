@@ -88,13 +88,23 @@ h3{
 }
 .btn.btn.btn-warning{
 
-    background-color: rgb(49, 44, 44);
-    border-color: black;
-    color: aliceblue;
-    margin-right: 40px;
+  background-color: rgb(49, 44, 44);
+  border-color: black;
+  color: aliceblue;
+  margin: 20px;
+  width: 90px;
+  height: 40px;
+  padding: auto;
 }
+
 .btn.btn.btn-warning:hover{
   background-color: brown;
+}
+/*Titulo*/
+.titulo{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(39, 35, 35, 0.212);
 }
 /*container*/
 .container{
