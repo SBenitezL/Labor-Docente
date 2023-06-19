@@ -48,15 +48,15 @@ export class UsuarioAgregarComponent implements OnInit{
     
    
     usuarioAgregado: boolean = false;
-
+    mostrar: boolean = true;
     saveNewUsuario(): void {
       console.log(this.usuario.UserName);
       this.serviceService.saveUsuario(this.usuario)
         .subscribe(
           res => {
             console.log(res);
-            this.usuarioAgregado = true;
-            
+            this.mostrar = true;
+            this.usuarioAgregado = true;       
             this.router.navigate(['/listar']);
           },
           err => console.error(err)
@@ -64,9 +64,9 @@ export class UsuarioAgregarComponent implements OnInit{
     }
     
     
-    mostrar: boolean = false;
+    
     updateUsuario(){
-      this.mostrar = true;
+      
       console.log(this.usuario);
       this.serviceService.updateUsuario(this.usuario.USR_IDENTIFICACION,this.usuario);
       
