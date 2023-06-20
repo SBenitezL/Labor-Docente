@@ -54,8 +54,10 @@
                                 <td>{{ usuario.USU_ESTUDIO }}</td>
                                 <td>
                                 <button class="btn btn-warning" (click)="editarUsuario(usuario.USR_IDENTIFICACION)" style="margin-left: 10px;">Editar</button>
-                                <button class="btn btn-warning" (click)="deleteUsuario(usuario.USR_IDENTIFICACION)" style="margin-left: 10px;">Eliminar</button>
-                                </td>
+                                <!-- <button class="btn btn-warning" (click)="deleteUsuario(usuario.USR_IDENTIFICACION)" style="margin-left: 10px;">Eliminar</button> -->
+                                <button class="btn btn-warning" (click)="confirmarEliminarUsuario(usuario.USR_IDENTIFICACION)" style="margin-left: 10px;">Eliminar</button>
+
+                            </td>
                             </tr>
                         </tbody>
                     </table>

@@ -40,6 +40,13 @@ export class UsuarioListarComponent {
       err => console.error(err)
     );
   }
+  confirmarEliminarUsuario(id: number) {
+    const confirmacion = window.confirm('¿Está seguro de que desea eliminar este usuario?');
+    if (confirmacion) {
+      this.deleteUsuario(id);
+    }
+  }
+  
 
   irALabor() {
     this.router.navigate(['/listarL']);
