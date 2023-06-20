@@ -231,7 +231,30 @@ input[type="text"] {
     flex-direction: column;
     align-items: flex-start;
   }
-
+  .ventana-emergente {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+  }
+  
+  .contenido {
+    text-align: center;
+  }
+  
+  .contenido p {
+    margin-bottom: 10px;
+  }
+  
+  .contenido button {
+    margin-top: 10px;
+  }
+  
   .container {
     flex-direction: column;
     align-items: flex-start;

@@ -24,18 +24,18 @@
       </ul>
     </nav>
 
-    <div class="titulo"> 
+    <div class="titulo">
       <h3>Usuarios</h3>
       <button class="btn btn-warning" (click)="saveNewUsuario()">Guardar</button>
-    </div> 
-
-    <div id="miModal" class="modal" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
-      <div class="modal-contenido">
-        <span class="cerrar" (click)="cerrarModal()">&times;</span>
-        <h2>Título del mensaje</h2>
-        <p>Contenido del mensaje.</p>
+    </div>
+    
+    <div class="ventana-emergente" *ngIf="mostrarVentana">
+      <div class="contenido">
+        <p>{{ mensaje }}</p>
+        <button class="btn btn-primary" (click)="cerrarVentana()">Cerrar</button>
       </div>
     </div>
+    
 
     <div class="container-main">
       <div class="container">

@@ -48,19 +48,30 @@ export class UsuarioAgregarComponent implements OnInit{
     
    
     usuarioAgregado: boolean = false;
-    mostrar: boolean = true;
+    mostrarVentana: boolean = false;
+    mensaje: string = '';
+  
     saveNewUsuario(): void {
       console.log(this.usuario.UserName);
       this.serviceService.saveUsuario(this.usuario)
         .subscribe(
           res => {
             console.log(res);
-            this.mostrar = true;
-            this.usuarioAgregado = true;       
+            this.usuarioAgregado = true;
+            this.mostrarVentana = true;
+            this.mensaje = '¡Usuario guardado correctamente!';
             this.router.navigate(['/listar']);
           },
-          err => console.error(err)
+          err => {
+            console.error(err);
+          }
         );
+    }
+  
+    cerrarVentana(): void {
+      // Cerrar la ventana emergente
+      this.mostrarVentana = false;
+      this.mensaje = '';
     }
     
     
@@ -84,8 +95,5 @@ export class UsuarioAgregarComponent implements OnInit{
       this.router.navigate(['/menuCoordinador']);
     }
     
-    cerrarModal() {
-      this.mostrar = false;
-    }
-
+  
 }
