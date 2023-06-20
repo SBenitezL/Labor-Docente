@@ -17,7 +17,7 @@ export class LaborDocenteEditarComponent implements OnInit{
 
   };
   edit: boolean = false;
-  seleccionTipoLab : string = "";
+  seleccionTipoLab ='';
   constructor(
     private serviceService: ServiceService,
     private router: Router,

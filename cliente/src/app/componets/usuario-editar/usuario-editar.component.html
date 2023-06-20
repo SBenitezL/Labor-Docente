@@ -28,6 +28,14 @@
             <button class="btn btn-warning" (click)=" updateUsuario() ">Guardar</button>
         </div>  
 
+        <div id="miModal" class="modal" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+            <div class="modal-contenido">
+              <span class="cerrar" (click)="cerrarModal()">&times;</span>
+              <h2>Usuario actualizado <i class='bx bx-user'></i></h2>
+              <p>El usuario se ha podido actualizar con éxito</p>
+            </div>
+          </div>
+
 
         <div class="container-main">
             <div class="container">

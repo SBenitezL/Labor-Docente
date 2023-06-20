@@ -29,7 +29,7 @@ export class UsuarioAgregarComponent implements OnInit{
    
     edit : boolean =false;
     constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){
-      
+
     }
     ngOnInit(): void {
       
@@ -48,33 +48,24 @@ export class UsuarioAgregarComponent implements OnInit{
     
    
     usuarioAgregado: boolean = false;
-    mostrarVentana: boolean = false;
-    mensaje: string = '';
-  
+    mostrar: boolean = false;
     saveNewUsuario(): void {
       console.log(this.usuario.UserName);
+      //this.mostrar = true;
       this.serviceService.saveUsuario(this.usuario)
         .subscribe(
           res => {
+            this.mostrar = true;
             console.log(res);
-            this.usuarioAgregado = true;
-            this.mostrarVentana = true;
-            this.mensaje = '¡Usuario guardado correctamente!';
-            this.router.navigate(['/listar']);
+            this.usuarioAgregado = true;       
+            
           },
           err => {
             console.error(err);
           }
         );
     }
-  
-    cerrarVentana(): void {
-      // Cerrar la ventana emergente
-      this.mostrarVentana = false;
-      this.mensaje = '';
-    }
-    
-    
+ 
     
     updateUsuario(){
       
@@ -95,5 +86,9 @@ export class UsuarioAgregarComponent implements OnInit{
       this.router.navigate(['/menuCoordinador']);
     }
     
-  
+    cerrarModal() {
+      this.mostrar = false;
+      this.router.navigate(['/listar']);
+    }
+
 }

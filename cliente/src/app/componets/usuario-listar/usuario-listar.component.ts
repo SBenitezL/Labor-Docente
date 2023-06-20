@@ -27,9 +27,12 @@ export class UsuarioListarComponent {
       err => console.log(err)
     );
   }
+  mostrar: boolean = false;
+
   deleteUsuario(id: number) {
     this.serviceService.deleteUsuario(id).subscribe(
       () => {
+        this.mostrar = true;
         console.log("Usuario eliminado exitosamente");
         this.getUsuarios(); // Vuelve a cargar los usuarios después de eliminar uno
 
@@ -57,5 +60,8 @@ export class UsuarioListarComponent {
   }
   IrInicio(){
     this.router.navigate(['/menuCoordinador']);
+  }
+  cerrarModal() {
+    this.mostrar = false;
   }
 }
