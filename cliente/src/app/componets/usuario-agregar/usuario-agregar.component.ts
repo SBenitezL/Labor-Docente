@@ -51,15 +51,14 @@ export class UsuarioAgregarComponent implements OnInit{
     mostrar: boolean = false;
     saveNewUsuario(): void {
       console.log(this.usuario.UserName);
-      //this.mostrar = true;
+      this.mostrar = true;
       this.serviceService.saveUsuario(this.usuario)
-        
         .subscribe(
           res => {
-            this.mostrar = true;
+            //this.mostrar = true;
             console.log(res);
             this.usuarioAgregado = true;       
-            this.router.navigate(['/listar']);
+            
           },
           err => console.error(err)
         );
@@ -88,6 +87,7 @@ export class UsuarioAgregarComponent implements OnInit{
     
     cerrarModal() {
       this.mostrar = false;
+      this.router.navigate(['/listar']);
     }
 
 }
