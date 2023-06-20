@@ -66,13 +66,16 @@
       return this.usuario.USR_IDENTIFICACION;
     }
 
+    mostrar: boolean = false;
     updateUsuario(): void {
       console.log(this.usuario.USR_IDENTIFICACION);
+      this.mostrar = true;
       this.serviceService.updateUsuario(
         this.usuario.USR_IDENTIFICACION,
         this.usuario
       ).subscribe(
         res => {
+          this.mostrar = true;
           console.log(res);
           this.router.navigate(['/listar']);
         },
@@ -101,6 +104,9 @@
     }
     IrInicio(){
       this.router.navigate(['/menuCoordinador']);
+    }
+    cerrarModal() {
+      this.mostrar = false;
     }
 
   }
