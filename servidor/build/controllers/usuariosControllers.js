@@ -119,7 +119,7 @@ class UsuariosControllers {
             hash.update(contrasenia);
             //console.log(hash.digest('hex'));
             const query = `
-          SELECT UR.ROL_ID
+          SELECT UR.ROL_ID, U.USR_IDENTIFICACION
           FROM USUARIO U
           INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
           WHERE U.UserName = ? AND U.USR_Contrasenia = ? AND CURRENT_DATE BETWEEN UR.UR_FECHAINICIO and UR.UR_FECHAFIN;
