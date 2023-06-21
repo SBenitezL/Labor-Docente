@@ -17,11 +17,17 @@ export class MenuCoordinadorComponent {
     
   
   }
-  userIdG ='';
-  ngOnInit(): void {
-    
-    
-  
+  ngOnInit(): void { 
+
+
+        this.serviceService.getUsuario(this.activeRouter.snapshot.params["id"]).subscribe(
+          res => {
+            this.usuario = res as Usuario;
+            } 
+            ,
+          err => console.error(err)
+        );
+
   }
   IrGestionDocente() {
     this.router.navigate(['/listar']);
@@ -29,9 +35,9 @@ export class MenuCoordinadorComponent {
   IrGestionLabor() {
     this.router.navigate(['/listarL']);
   }
-  IrEvaluacion() {
-    console.log(this.userIdG);
-    this.router.navigate(['/coordinador/'+this.userIdG]);
+  IrEvaluacion(id: number) {
+    console.log(id);
+    this.router.navigate(['/coordinador/'+this.usuario.USR_IDENTIFICACION]);
   }
 
   IrGestionEvaluacion() {

@@ -51,6 +51,38 @@ class EvaluacionController{
         const evaluacion:any = await db.query(query,id);
         res.json(evaluacion[0][0]);
     }
+    
+    public async getToNotify(req:Request, res: Response) {
+    const query = "CALL sp_get_to_notificar()";
+    const query2 = "CALL sp_get_administradores()";
+    const query3 = "CALL sp_insert_notificacion(?,?)";
+  
+    try {
+      const evaluaciones: any = await db.query(query);
+      const rows = evaluaciones[0][0];
+      console.log(rows);
+      let msg: string;
+  
+      if (rows.length > 0) {
+        const admins: any = await db.query(query2);
+        const rowsAdmins = admins[0][0];
+        console.log(rowsAdmins);
+        for (let i = 0; i < rows.length; i++) {
+          msg = `La evaluacion ${rows[i].LAB_NOMBRE} del usuario ${rows[i].USU_NOMBRE} sigue en ${rows[i].EVA_ESTADO == 1 ? "ejecucion" : "suspendido"} y se encuentra próxima a finalizar el tiempo establecido`;
+            console.log(msg);
+          for (let j = 0; j < rowsAdmins.length; j++) {
+            console.log(rowsAdmins[j].USR_IDENTIFICACION);
+            await db.query(query3, [rowsAdmins[j].USR_IDENTIFICACION, msg]);
+          }
+        }
+      }
+      res.json({message:"Se realizo el proceso"});
+    } catch (error) {
+      res.json({mesagge:'Error al obtener y notificar:'});
+    }
+  }
+
+    
 }
 const evaluacionController = new EvaluacionController();
 
