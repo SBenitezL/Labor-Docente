@@ -11,7 +11,7 @@ class UsuariosControllers{
       }*/
       public async list(req: Request, res: Response) {
         const [rows] = await db.query('SELECT * FROM USUARIO'); // Desestructurar el resultado para obtener solo el primer elemento (las filas)
-      
+        console.log(salt);
         if (Array.isArray(rows)) {
           const usuarios = rows.map((row: any) => row); // Utilizar cualquier tipo genérico para 'row' según tus necesidades
           res.json(usuarios);
@@ -50,7 +50,7 @@ class UsuariosControllers{
       //const constraseniaHash =  await bcrypt.hash(USR_Contrasenia, 10);
      
 
-      const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, salt); // Genera el hash utilizando la contraseña y la "sal"
+      const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
       console.log(constraseniaHash); // Imprime el hash generado 
 
       try {
@@ -106,7 +106,7 @@ class UsuariosControllers{
        //console.log(constraseniaHash);
       
 
-      const constraseniaHash = bcrypt.hashSync(contrasenia, salt); // Genera el hash utilizando la contraseña y la "sal"
+      const constraseniaHash = bcrypt.hashSync(contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
       console.log(constraseniaHash); // Imprime el hash generado 
        const query = `
           SELECT UR.ROL_ID
