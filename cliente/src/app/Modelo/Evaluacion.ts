@@ -1,4 +1,6 @@
 export interface Evaluacion{
+    NombreCompleto:string;
+    Rol:string;
     ID:number;    
     Nombre:string;
     Horas:number;

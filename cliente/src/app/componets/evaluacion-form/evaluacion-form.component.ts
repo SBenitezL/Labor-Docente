@@ -27,6 +27,7 @@ export class EvaluacionFormComponent {
     USR_ID: 0,
     USR_NOMBRE: "",
     ROL_ID: 0,
+    ROL_NAME: "",
     PER_ID:  0,
     PER_NOMBRE: ""
   }
@@ -41,15 +42,16 @@ export class EvaluacionFormComponent {
     Id:0,
     RolID:0
   };
-
+evaEdit:number = 0;
   constructor(private evaluacionServices:ServiceService, private router:Router, private activatedRoute:ActivatedRoute){
 
   }
-  ngOnInit(){
-    this.cargarFormulario();
+  async ngOnInit(){
+    await this.cargarFormulario();
     const params = this.activatedRoute.snapshot.params;
+    this.evaEdit = params["id"];
     console.log(params);
-    if(params["id"]){
+    if(this.evaEdit){
       this.evaluacionServices.getToEditEvaluacion(params["id"]).subscribe(
         (res:any)=>{
           this.evaluacionEdit = res[0];          
@@ -57,18 +59,19 @@ export class EvaluacionFormComponent {
           this.evaluacion.PER_ID = this.evaluacionEdit.PER_ID;          
           this.evaluacion.ROL_ID = this.evaluacionEdit.ROL_ID;          
           this.evaluacion.USR_IDENTIFICACION = this.evaluacionEdit.USR_ID;
-          this.seleccion.Id = this.evaluacionEdit.USR_ID;
-          this.seleccion.RolID = this.evaluacion.ROL_ID;
-          this.seleccion.Nombre = this.evaluacionEdit.USR_NOMBRE;
-          this.seleccion.Rol = "aaa";
-          console.log(this.evaluacionEdit);
+          console.log(this.seleccion);
+          for(let i = 0; i < this.usuarios.length; i++)
+          {
+            if(this.usuarios[i].Id == this.evaluacionEdit.USR_ID && this.usuarios[i].RolID == this.evaluacionEdit.ROL_ID)
+            {
+              this.seleccion = this.usuarios[i];
+              break;
+            }
+          }
         },
         err=>console.log(err)
       );
     }
-  }
-  cargarValores():void{
-
   }
   cargarFormulario():void
   {
@@ -96,10 +99,19 @@ export class EvaluacionFormComponent {
   }
   updateEvaluacion()
   {
-    console.log(this.evaluacion);
+    this.evaluacionServices.updateEvaluacion(this.evaEdit, this.evaluacion).subscribe(
+      res =>{
+        console.log(res);
+        
+        this.bandera = true;
+        this.router.navigate(['/evaluacion']);
+      },
+      err =>console.error(err)
+    )
   }
   saveEvaluacion()
   {
+    console.log("seleccion:");
     console.log(this.seleccion);
     this.evaluacion.USR_IDENTIFICACION = this.seleccion.Id
     this.evaluacion.ROL_ID = this.seleccion.RolID;
