@@ -50,6 +50,40 @@
 .cabecera-con-imagen {
     padding-left: 10px;
 }
+/*mostrar usuario*/
+.card-body{
+    display: flex;
+}
+.columna-derecha{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+.mostrar-usuario .card:first-child {
+    margin: 50px;
+    max-width: 370px;
+}
+
+.columna-izquierda {
+    display: flex;
+    flex-direction: column;
+}
+.campos{
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.columna-derecha input[type="text"] {
+    border-radius: 5px ;
+    border: 1px solid #686565;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+/**/
+h3{
+    margin: 20px;
+}
 /*Footer*/
 #footer {
     display: flex;
