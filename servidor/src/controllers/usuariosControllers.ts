@@ -3,7 +3,6 @@ import db from '../database';
 import * as bcrypt from 'bcrypt';
 const saltRounds = 10; // Número de rondas de hashing
 const salt = bcrypt.genSaltSync(saltRounds);
-
 class UsuariosControllers{
      
     /*public async list(req: Request, res: Response) {
@@ -12,7 +11,7 @@ class UsuariosControllers{
       }*/
       public async list(req: Request, res: Response) {
         const [rows] = await db.query('SELECT * FROM USUARIO'); // Desestructurar el resultado para obtener solo el primer elemento (las filas)
-        
+        console.log(salt);
         if (Array.isArray(rows)) {
           const usuarios = rows.map((row: any) => row); // Utilizar cualquier tipo genérico para 'row' según tus necesidades
           res.json(usuarios);
@@ -48,14 +47,15 @@ class UsuariosControllers{
     public async create(req: Request, res: Response): Promise<void> {
       const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
       
+      //const constraseniaHash =  await bcrypt.hash(USR_Contrasenia, 10);
      
+
+      const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
+      console.log(constraseniaHash); // Imprime el hash generado 
       
-      const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, salt).split("."); // Genera el hash utilizando la contraseña y la "sal"
-      const contraseniaDef =constraseniaHash[1];
-      console.log(contraseniaDef); // Imprime el hash generado 
       try {
         // Paso 1: Insertar el usuario en la tabla USUARIO
-        await db.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, contraseniaDef, UserName ]);
+        await db.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, UserName ]);
     
         // Paso 2: Insertar el registro en la tabla USEROL con las fechas correspondientes
         await db.query('INSERT INTO USEROL (USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN) VALUES (?, ?, ?, ?)', [USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN]);
@@ -106,10 +106,8 @@ class UsuariosControllers{
        //console.log(constraseniaHash);
       
 
-      const constraseniaHash = bcrypt.hashSync(contrasenia, salt).split("."); // Genera el hash utilizando la contraseña y la "sal"
-      const contraseniaDef =constraseniaHash[1];
-      console.log(contraseniaDef); // Imprime el hash generado 
-      
+      const constraseniaHash = bcrypt.hashSync(contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
+      console.log(constraseniaHash); // Imprime el hash generado 
        const query = `
           SELECT UR.ROL_ID, U.USR_IDENTIFICACION
           FROM USUARIO U
@@ -118,7 +116,7 @@ class UsuariosControllers{
         `;
         
         try {
-          const rows = await db.query(query, [login , contraseniaDef]);
+          const rows = await db.query(query, [login , constraseniaHash]);
       
           if (rows.length > 0) {
             
