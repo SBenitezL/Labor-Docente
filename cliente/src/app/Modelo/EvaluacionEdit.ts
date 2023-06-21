@@ -7,4 +7,5 @@ export interface EvaluacionEdit{
     ROL_NAME:string;
     PER_ID:  number;
     PER_NOMBRE: string;
+    EVA_ESTADO: number;
 }

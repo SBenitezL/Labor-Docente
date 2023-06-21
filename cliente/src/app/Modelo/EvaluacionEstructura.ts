@@ -3,4 +3,5 @@ export interface EvaluacionEst{
     PER_ID: number;
     USR_IDENTIFICACION: number;
     ROL_ID: number;
+    EVA_ESTADO:number;
 }

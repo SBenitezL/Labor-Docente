@@ -10,4 +10,5 @@ export interface Evaluacion{
     Puntaje:number;
     Resultado:string;
     TipoLabor:string;
+    PER_NOMBRE:string;
 }
