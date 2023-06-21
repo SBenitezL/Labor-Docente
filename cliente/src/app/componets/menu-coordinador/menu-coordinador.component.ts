@@ -9,6 +9,7 @@ import { ServiceService } from 'src/app/Service/service.service';
   templateUrl: './menu-coordinador.component.html',
   styleUrls: ['./menu-coordinador.component.css']
 })
+
 export class MenuCoordinadorComponent {
   usuario: Usuario  = {
     USR_IDENTIFICACION: 0,
@@ -17,14 +18,17 @@ export class MenuCoordinadorComponent {
     USU_GENERO: '',
     USU_ESTUDIO: '',
     UserName: '',
-    USR_Contrasenia: '',   
+    USR_Contrasenia: '',
+  
   };
+  sesion = 0;
   constructor(private router:Router,private activeRouter: ActivatedRoute,private serviceService: ServiceService){
+    this.sesion = this.activeRouter.snapshot.params["id"];
   }
   ngOnInit(): void { 
 
 
-        this.serviceService.getUsuario(this.activeRouter.snapshot.params["id"]).subscribe(
+        this.serviceService.getUsuario(this.sesion).subscribe(
           res => {
             this.usuario = res as Usuario;
             } 
@@ -39,8 +43,7 @@ export class MenuCoordinadorComponent {
   IrGestionLabor() {
     this.router.navigate(['/listarL']);
   }
-  IrEvaluacion(id: number) {
-    console.log(id);
+  IrEvaluacion() {
     this.router.navigate(['/coordinador/'+this.usuario.USR_IDENTIFICACION]);
   }
 

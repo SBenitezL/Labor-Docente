@@ -13,7 +13,7 @@ class UsuariosRoutes {
     config() {
         this.router.get('/', usuariosControllers_1.default.list);
         this.router.get('/:id', usuariosControllers_1.default.getOne);
-        this.router.get('/:rol', usuariosControllers_1.default.getOneRol);
+        this.router.get('/getRol/:rol', usuariosControllers_1.default.getRol);
         this.router.post('/', usuariosControllers_1.default.create);
         this.router.put('/:id', usuariosControllers_1.default.update);
         this.router.delete('/:id', usuariosControllers_1.default.delete);
