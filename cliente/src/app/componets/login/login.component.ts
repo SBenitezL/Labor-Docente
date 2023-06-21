@@ -62,6 +62,8 @@ export class LoginComponent {
   verificarVista(rol:number){
       if(rol==2){
         this.router.navigate(['/menuCoordinador']);
+      }else if(rol==3){
+        this.router.navigate(['/docente']);
       }
   }
   
