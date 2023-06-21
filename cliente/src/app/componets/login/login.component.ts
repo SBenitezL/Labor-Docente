@@ -47,7 +47,8 @@ export class LoginComponent {
         res => {
           if (Array.isArray(res) && res.length > 0) {
             const rolId = res[0].ROL_ID;
-            this.verificarVista(rolId);
+            const userId=  res[0].USR_IDENTIFICACION;
+            this.verificarVista(rolId,userId);
           } else {
             console.log("El array res está vacío o no es un array");
           }
@@ -59,11 +60,11 @@ export class LoginComponent {
     }
     
   }
-  verificarVista(rol:number){
+  verificarVista(rol:number,userId:number){
       if(rol==2){
         this.router.navigate(['/menuCoordinador']);
       }else if(rol==3 || rol==4 || rol==5){
-        this.router.navigate(['/docente']);
+        this.router.navigate([`/docente/${userId}`]);
       }
   }
   

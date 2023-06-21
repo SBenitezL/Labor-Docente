@@ -109,7 +109,7 @@ class UsuariosControllers{
       const constraseniaHash = bcrypt.hashSync(contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
       console.log(constraseniaHash); // Imprime el hash generado 
        const query = `
-          SELECT UR.ROL_ID
+          SELECT UR.ROL_ID, U.USR_IDENTIFICACION
           FROM USUARIO U
           INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
           WHERE U.UserName = ? AND U.USR_Contrasenia = ? AND CURRENT_DATE BETWEEN UR.UR_FECHAINICIO and UR.UR_FECHAFIN;

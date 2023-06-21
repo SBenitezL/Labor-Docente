@@ -9,7 +9,7 @@ import { Usuario } from 'src/app/Modelo/Usuario';
   templateUrl: './docente.component.html',
   styleUrls: ['./docente.component.css']
 })
-export class DocenteComponent implements OnInit {
+export class DocenteComponent implements OnInit { 
   evaluaciones: Evaluacion[] = [];
   usuario: Usuario  = {
     USR_IDENTIFICACION: 0,
@@ -22,35 +22,39 @@ export class DocenteComponent implements OnInit {
   };
 
 
-  constructor(private activeRouter: ActivatedRoute, private serviceService: ServiceService, private router: Router) { }
+  constructor(private activeRouter: ActivatedRoute, private serviceService: ServiceService) { }
 
   ngOnInit() {
-    this.getEvaluacion();
-  }
-  getEvaluacion() {
     const id = this.activeRouter.snapshot.params['id'];
-    const per_id = this.activeRouter.snapshot.params['per_id'];
-    if (id && per_id) {
-      console.log("Entro");
-      this.serviceService.getEvaluacion(id, per_id).subscribe(
-        (res: any) => {
-          console.log(res);
-          this.evaluaciones = res;
-        },
-        err => console.error(err)
-      );
-  
-      // Obtener información del usuario
+    console.log('Valor de id :', id); 
+
+    if (id) {
       this.serviceService.getUsuario(id).subscribe(
         (res: any) => {
           console.log(res);
-          this.usuario = res;
+          this.usuario = res as Usuario;
+          this.getEvaluacion(id);
         },
         err => console.error(err)
       );
     }
   }
-  
-}  
 
-
+  getEvaluacion(docenteId: number) {
+    console.log('Valor de id en getEvaluacion:', docenteId); 
+    this.serviceService.getEvaluacion(docenteId).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.evaluaciones = res;
+      },
+      err => console.error(err)
+    );
+  }
+  formatFecha(fecha: string | Date): string {
+    if (typeof fecha === 'string') {
+      fecha = new Date(fecha);
+    }
+    const formattedDate = fecha.toISOString().split('T')[0];
+    return formattedDate;
+  }
+}
