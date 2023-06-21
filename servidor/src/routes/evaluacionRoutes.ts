@@ -15,6 +15,7 @@ class EvaluacionRoutes {
         this.router.put("/update/:id", evaluacionController.update);
         this.router.delete("/:id", evaluacionController.delete);
         this.router.get("/edit/:id",evaluacionController.getToEdit);
+        this.router.get("/notificar",evaluacionController.getToNotify);
     }
 }
 
