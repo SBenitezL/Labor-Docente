@@ -21,7 +21,7 @@ import { CoordinadorComponent } from './componets/coordinador/coordinador.compon
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'menuCoordinador',component : MenuCoordinadorComponent },
+  { path: 'menuCoordinador/:id',component : MenuCoordinadorComponent },
   { path: 'listar', component: UsuarioListarComponent },
   { path: 'agregar', component: UsuarioAgregarComponent },
   { path: 'editar/:id',component: UsuarioEditarComponent},

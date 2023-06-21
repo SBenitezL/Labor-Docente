@@ -2,7 +2,7 @@ const cron = require('node-cron');
 const axios = require('axios');
 
 // Programa la tarea para que se ejecute según tu horario deseado
-cron.schedule('50 15 * * *', async () => {
+cron.schedule('30 16 * * *', async () => {
   try {
     // Realiza una solicitud HTTP a la ruta deseada en tu servidor
     const response = await axios.get('http://localhost:3000/api/evaluacion/notificar');
