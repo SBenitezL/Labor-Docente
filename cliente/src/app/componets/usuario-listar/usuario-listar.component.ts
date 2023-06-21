@@ -66,7 +66,7 @@ export class UsuarioListarComponent {
     this.router.navigate(['/editar/'+id]);
   }
   IrInicio(){
-    this.router.navigate(['/menuCoordinador']);
+    this.router.navigate(['/menuCoordinador/']);
   }
   cerrarModal() {
     this.mostrar = false;
