@@ -23,16 +23,12 @@ export class MenuCoordinadorComponent {
   }
   ngOnInit(): void { 
 
-        this.serviceService.getUsuarioRol(2).subscribe(
+
+        this.serviceService.getUsuario(this.activeRouter.snapshot.params["id"]).subscribe(
           res => {
-            
-            if (Array.isArray(res) && res.length > 0) {
-              const userId=  res[0].USR_IDENTIFICACION;
-              console.log(userId);
-            } else {
-              console.log("El array res está vacío o no es un array");
-            }
-          },
+            this.usuario = res as Usuario;
+            } 
+            ,
           err => console.error(err)
         );
 
@@ -45,7 +41,7 @@ export class MenuCoordinadorComponent {
   }
   IrEvaluacion(id: number) {
     console.log(id);
-    this.router.navigate(['/coordinador/'+id]);
+    this.router.navigate(['/coordinador/'+this.usuario.USR_IDENTIFICACION]);
   }
 
   IrGestionEvaluacion() {
