@@ -84,10 +84,24 @@ export class ServiceService {
   }
   updateEvaluacion(id:number, updatedEvaluacion:EvaluacionEst)
   {
-    return this.http.put(`${this.API_URI}/evaluacion/${id}`,updatedEvaluacion);
+    return this.http.put(`${this.API_URI}/evaluacion/update/${id}`,updatedEvaluacion);
+  }
+
+  getLaborToAdd(){
+    return this.http.get(`${this.API_URI}/labor/to/add`);
+  }
+  getUseRolToAdd()
+  {
+    return this.http.get(`${this.API_URI}/userol`)
+  }
+  getPeriodoToAdd()
+  {
+    return this.http.get(`${this.API_URI}/periodo`);
   }
   validarContrasenia(contrasenia:string, login:string){
     return this.http.get(`${this.API_URI}/usuarios/${contrasenia}/${login}`);
-
+  }
+  getToEditEvaluacion(id:number){
+    return this.http.get(`${this.API_URI}/evaluacion/edit/${id}`)
   }
 }

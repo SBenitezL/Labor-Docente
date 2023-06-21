@@ -14,8 +14,9 @@ class EvaluacionRoutes {
         this.router.get('/', evaluacionController_1.default.list);
         this.router.get('/:id', evaluacionController_1.default.getToOne);
         this.router.post('/', evaluacionController_1.default.create);
-        this.router.put("/:id", evaluacionController_1.default.update);
+        this.router.put("/update/:id", evaluacionController_1.default.update);
         this.router.delete("/:id", evaluacionController_1.default.delete);
+        this.router.get("/edit/:id", evaluacionController_1.default.getToEdit);
     }
 }
 const evaluacionRoutes = new EvaluacionRoutes();

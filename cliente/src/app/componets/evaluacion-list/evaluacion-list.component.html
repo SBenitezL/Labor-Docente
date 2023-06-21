@@ -47,8 +47,8 @@
                         <td>{{evaluacion.Puntaje}}</td>
                         <td>{{evaluacion.Resultado}}</td>
                         <td>
-                            <button [routerLink]="['/evaluacion/add',evaluacion.ID]" class="btn btn-warning">Editar</button>
-                            <!-- <button class="btn btn-warning" (click)="deleteEvaluacion(evaluacion.LAB_ID)" style="margin-left: 10px;">Eliminar</button> -->
+                            <button [routerLink]="['/evaluacion/edit',evaluacion.ID]" class="btn btn-warning">Editar</button>
+                            <button class="btn btn-warning" (click)="deleteEvaluacion(evaluacion.ID)" style="margin-left: 10px;">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>

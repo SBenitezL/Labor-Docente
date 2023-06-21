@@ -142,3 +142,4 @@ alter table EVALUACION
 alter table EVALUACION
    add constraint FK_EVALUACI_TIENES_PE_PERIODO foreign key (PER_ID)
       references PERIODO (PER_ID);
+ALTER TABLE evaluacion MODIFY COLUMN EVA_ID INT AUTO_INCREMENT;

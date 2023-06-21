@@ -16,7 +16,7 @@ class EvaluacionController{
         res.json(evaluaciones[0][0]);
     }
     public async create(req:Request,res:Response): Promise<void>{
-        const query = "CALL sp_actualizar_evaluacion_coordinador (?,?,?,?);";
+        const query = "CALL sp_insert_evaluacion(?,?,?,?);";
         const {LAB_ID,PER_ID,USR_IDENTIFICACION,ROL_ID} = req.body;
         await db.query(query, [LAB_ID,PER_ID,USR_IDENTIFICACION,ROL_ID]);
         res.json({text: "Creando evaluacion..."});
@@ -44,6 +44,12 @@ class EvaluacionController{
             res.json({message : "La evaluacion no se pudo actualizar"});
         }
 
+    }
+    public async getToEdit(req:Request, res: Response){
+        const {id} = req.params;
+        const query = "CALL consultar_evaluacion_edit (?);";
+        const evaluacion:any = await db.query(query,id);
+        res.json(evaluacion[0][0]);
     }
 }
 const evaluacionController = new EvaluacionController();
