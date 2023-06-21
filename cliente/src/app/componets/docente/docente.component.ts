@@ -50,4 +50,11 @@ export class DocenteComponent implements OnInit {
       err => console.error(err)
     );
   }
+  formatFecha(fecha: string | Date): string {
+    if (typeof fecha === 'string') {
+      fecha = new Date(fecha);
+    }
+    const formattedDate = fecha.toISOString().split('T')[0];
+    return formattedDate;
+  }
 }
