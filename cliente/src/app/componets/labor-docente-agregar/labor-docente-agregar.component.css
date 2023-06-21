@@ -102,10 +102,10 @@ input[type="text"] {
     margin-left: -22px;
     border: 1px solid #686565;
     border-radius: 10px;
+    height: 30px;
 }
 .btn.btn-warning{
     border-color: aliceblue;
-    
 }
 .btn.btn-warning:hover{
     background-color: #686565;

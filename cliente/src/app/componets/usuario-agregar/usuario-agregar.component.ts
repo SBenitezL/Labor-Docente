@@ -28,6 +28,8 @@ export class UsuarioAgregarComponent implements OnInit{
   };
    
     edit : boolean =false;
+    
+    seleccionRolId='';
     constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){
 
     }
@@ -49,7 +51,9 @@ export class UsuarioAgregarComponent implements OnInit{
    
     usuarioAgregado: boolean = false;
     mostrar: boolean = false;
+    auxIdentificacion : string = '';
     saveNewUsuario(): void {
+      this.usuario.USR_IDENTIFICACION = parseInt(this.auxIdentificacion);
       console.log(this.usuario.UserName);
       //this.mostrar = true;
       this.serviceService.saveUsuario(this.usuario)
@@ -65,7 +69,19 @@ export class UsuarioAgregarComponent implements OnInit{
           }
         );
     }
- 
+
+    seleccionarTipoLabor(){
+      console.log(this.seleccionRolId);
+      if(this.seleccionRolId=="opt1"){
+        this.usuario.ROL_ID=1;
+      } else if(this.seleccionRolId=="opt2"){
+        this.usuario.ROL_ID=2;
+      } else if(this.seleccionRolId=="opt3"){
+        this.usuario.ROL_ID=3;
+      }else{
+        this.usuario.ROL_ID=4;
+      }
+    }
     
     updateUsuario(){
       
