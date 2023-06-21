@@ -23,6 +23,9 @@ export class ServiceService {
   getUsuario(id:number){
     return this.http.get(`${this.API_URI}/usuarios/${id}`);
   }
+  getUsuarioRol(rol:number){
+    return this.http.get(`${this.API_URI}/usuarios/${rol}`);
+  }
 
   deleteUsuario(id: number): Observable<any> {
     return this.http.delete(`${this.API_URI}/usuarios/${id}`);
@@ -68,9 +71,9 @@ export class ServiceService {
     return this.http.get(`${this.API_URI}/evaluacion`);
   }
 
-  getEvaluacion(id:number, per_id:number)
+  getEvaluacion(id:number)
   {
-    return this.http.get(`${this.API_URI}/evaluacion/${id}/${per_id}`);
+    return this.http.get(`${this.API_URI}/evaluacion/${id}`);
   }
 
   saveEvaluacion(evaluacion:EvaluacionEst)

@@ -5,11 +5,11 @@ import { Evaluacion } from 'src/app/Modelo/Evaluacion';
 import { Usuario } from 'src/app/Modelo/Usuario';
 
 @Component({
-  selector: 'app-docente',
-  templateUrl: './docente.component.html',
-  styleUrls: ['./docente.component.css']
+  selector: 'app-coordinador',
+  templateUrl: './coordinador.component.html',
+  styleUrls: ['./coordinador.component.css']
 })
-export class DocenteComponent implements OnInit { 
+export class CoordinadorComponent implements OnInit{
   evaluaciones: Evaluacion[] = [];
   usuario: Usuario  = {
     USR_IDENTIFICACION: 0,
@@ -57,4 +57,5 @@ export class DocenteComponent implements OnInit {
     const formattedDate = fecha.toISOString().split('T')[0];
     return formattedDate;
   }
+
 }

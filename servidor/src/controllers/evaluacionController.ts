@@ -10,8 +10,8 @@ class EvaluacionController{
     }
     public async getToOne(req:Request,res:Response):Promise<void>
     {
-        const query = "CALL sp_consultar_evaluacion(?,?)";
-        const {id,per_id} = req.params;
+        const query = "CALL sp_consultar_evaluacion(?)";
+        const {id} = req.params;
         const evaluaciones:any = (await db.query(query,id));
         res.json(evaluaciones[0][0]);
     }

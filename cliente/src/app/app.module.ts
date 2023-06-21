@@ -22,7 +22,10 @@ import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/la
 import { MenuCoordinadorComponent } from './componets/menu-coordinador/menu-coordinador.component';
 import { EvaluacionListComponent } from './componets/evaluacion-list/evaluacion-list.component';
 import { EvaluacionFormComponent } from './componets/evaluacion-form/evaluacion-form.component';
-import { DocenteComponent } from './componets/docente/docente.component'; 
+import { DocenteComponent } from './componets/docente/docente.component';
+import { DecanoComponent } from './componets/decano/decano.component';
+import { CoordinadorComponent } from './componets/coordinador/coordinador.component';
+import { MiddlewareComponent } from './componets/middleware/middleware.component'; 
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { DocenteComponent } from './componets/docente/docente.component';
     MenuCoordinadorComponent,
     EvaluacionListComponent,
     EvaluacionFormComponent,
-    DocenteComponent
+    DocenteComponent,
+    DecanoComponent,
+    CoordinadorComponent,
+    MiddlewareComponent
   ],
   imports: [
     BrowserModule,

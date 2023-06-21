@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -13,10 +36,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-//const saltRounds = 10; // Número de rondas de hashing
-//const salt = bcrypt.genSaltSync(saltRounds);
-const crypto = require('crypto');
-const hash = crypto.createHash('sha256');
+const bcrypt = __importStar(require("bcrypt"));
+const saltRounds = 10; // Número de rondas de hashing
+const salt = bcrypt.genSaltSync(saltRounds);
 class UsuariosControllers {
     /*public async list(req: Request, res: Response) {
         const usuarios = await db.query('SELECT * FROM USUARIO');
@@ -25,6 +47,7 @@ class UsuariosControllers {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const [rows] = yield database_1.default.query('SELECT * FROM USUARIO'); // Desestructurar el resultado para obtener solo el primer elemento (las filas)
+            console.log(salt);
             if (Array.isArray(rows)) {
                 const usuarios = rows.map((row) => row); // Utilizar cualquier tipo genérico para 'row' según tus necesidades
                 res.json(usuarios);
@@ -58,17 +81,39 @@ class UsuariosControllers {
             }
         });
     }
+    getOneRol(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { rol } = req.params;
+            const query = `
+        SELECT U.USR_IDENTIFICACION
+        FROM USUARIO U INNER JOIN
+        USEROL UR 
+        ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
+        WHERE UR.ROL_ID = ?
+        `;
+            try {
+                const [rows] = yield database_1.default.query(query, [rol]);
+                if (Array.isArray(rows) && rows.length > 0) {
+                    const usuario = rows[0];
+                    return res.json(usuario);
+                }
+                res.status(404).json({ text: 'Usuario no encontrado' });
+            }
+            catch (error) {
+                console.error(error);
+                res.status(500).json({ text: 'Error al obtener el usuario' });
+            }
+        });
+    }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
             //const constraseniaHash =  await bcrypt.hash(USR_Contrasenia, 10);
-            // const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
-            //console.log(constraseniaHash); // Imprime el hash generado 
-            hash.update(USR_Contrasenia);
-            //console.log(hash.digest('hex'));
+            const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
+            console.log(constraseniaHash); // Imprime el hash generado 
             try {
                 // Paso 1: Insertar el usuario en la tabla USUARIO
-                yield database_1.default.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, hash.digest('hex'), UserName]);
+                yield database_1.default.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, UserName]);
                 // Paso 2: Insertar el registro en la tabla USEROL con las fechas correspondientes
                 yield database_1.default.query('INSERT INTO USEROL (USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN) VALUES (?, ?, ?, ?)', [USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN]);
                 res.json({ message: 'Usuario insertado correctamente.' });
@@ -114,18 +159,16 @@ class UsuariosControllers {
             const { contrasenia, login } = req.params;
             //const constraseniaHash =  await bcrypt.hash(contrasenia, 10);
             //console.log(constraseniaHash);
-            //const constraseniaHash = bcrypt.hashSync(contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
-            //console.log(constraseniaHash); // Imprime el hash generado 
-            hash.update(contrasenia);
-            //console.log(hash.digest('hex'));
+            const constraseniaHash = bcrypt.hashSync(contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
+            console.log(constraseniaHash); // Imprime el hash generado 
             const query = `
-          SELECT UR.ROL_ID
+          SELECT UR.ROL_ID, U.USR_IDENTIFICACION
           FROM USUARIO U
           INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
           WHERE U.UserName = ? AND U.USR_Contrasenia = ? AND CURRENT_DATE BETWEEN UR.UR_FECHAINICIO and UR.UR_FECHAFIN;
         `;
             try {
-                const rows = yield database_1.default.query(query, [login, hash.digest('hex')]);
+                const rows = yield database_1.default.query(query, [login, constraseniaHash]);
                 if (rows.length > 0) {
                     return res.json((rows[0]));
                 }

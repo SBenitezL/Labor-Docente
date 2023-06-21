@@ -23,8 +23,8 @@ class EvaluacionController {
     }
     getToOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "CALL sp_consultar_evaluacion(?,?)";
-            const { id, per_id } = req.params;
+            const query = "CALL sp_consultar_evaluacion(?)";
+            const { id } = req.params;
             const evaluaciones = (yield database_1.default.query(query, id));
             res.json(evaluaciones[0][0]);
         });

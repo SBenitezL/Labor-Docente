@@ -12,7 +12,7 @@ class EvaluacionRoutes {
     }
     config() {
         this.router.get('/', evaluacionController_1.default.list);
-        this.router.get('/:id/:per_id', evaluacionController_1.default.getToOne);
+        this.router.get('/:id', evaluacionController_1.default.getToOne);
         this.router.post('/', evaluacionController_1.default.create);
         this.router.put("/update/:id", evaluacionController_1.default.update);
         this.router.delete("/:id", evaluacionController_1.default.delete);

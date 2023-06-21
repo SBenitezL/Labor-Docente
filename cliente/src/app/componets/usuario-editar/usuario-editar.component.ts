@@ -94,7 +94,7 @@
 
     
     IrGestionDocente() {
-      this.router.navigate(['/list  ar']);
+      this.router.navigate(['/listar']);
     }
     IrGestionLabor() {
       this.router.navigate(['/listarL']);

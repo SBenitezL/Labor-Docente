@@ -52,7 +52,7 @@
 }
 /*mostrar usuario*/
 .card-body{
-  display: flex;
+    display: flex;
 }
 .columna-derecha{
     display: flex;
@@ -71,7 +71,7 @@
 .campos{
     display: flex;
     margin-bottom: 10px;
-    margin-top: 12px;
+    margin-top: 10px;
 }
 
 .columna-derecha input[type="text"] {
@@ -80,71 +80,10 @@
     margin-bottom: 10px;
     margin-top: 10px;
 }
-
-
-/*container*/
+/**/
 h3{
     margin: 20px;
 }
-
-.container .card:last-child {
-  margin: 0;
-}
-.container .card-body .primerI{
-  width: 25px;
-  border-radius: 5px;
-  border: 1px solid #686565;
-}
-.container .card-body .segundoI{
-  width: 150px;
-  border-radius: 5px;
-  border: 1px solid #686565;
-}
-.container .card-body .tercerI{
-  width: 130px;
-  border-radius: 5px;
-  border: 1px solid #686565;
-}
-
-.container .card-body .cuartoI{
-  width: 25px;
-  border-radius: 5px;
-  border: 1px solid #686565;
-}
-.container .card-body .quintoI{
-  width: 100px;
-  border-radius: 5px;
-  border: 1px solid #686565;
-}
-
-.container .card-body .sextoI{
-  width: 100px;
-  border-radius: 5px;
-  border: 1px solid #686565;
-}
-
-.container .card-body .sextoI{
-  width: 100px;
-  border-radius: 5px;
-  border: 1px solid #686565;
-}
-.container .card-body .septimoI{
-  width: 100px;
-  border-radius: 5px;
-  border: 1px solid #686565;
-}
-.container .card-body .octavoI{
-  width: 130px;
-  border-radius: 5px;
-  border: 1px solid #686565;
-}
-
-.container .card-body .novenoI{
-  width: 45px;
-  border-radius: 5px;
-  border: 1px solid #686565;
-}
-
 /*Footer*/
 #footer {
     display: flex;
