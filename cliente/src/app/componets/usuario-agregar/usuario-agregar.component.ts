@@ -30,6 +30,7 @@ export class UsuarioAgregarComponent implements OnInit{
     edit : boolean =false;
     
     seleccionRolId='';
+    seleccionGenero='';
     constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){
 
     }
@@ -53,6 +54,7 @@ export class UsuarioAgregarComponent implements OnInit{
     mostrar: boolean = false;
     auxIdentificacion : string = '';
     saveNewUsuario(): void {
+      this.usuario.USR_Contrasenia = this.contrasenia;
       this.usuario.USR_IDENTIFICACION = parseInt(this.auxIdentificacion);
       console.log(this.usuario.UserName);
       //this.mostrar = true;
@@ -82,7 +84,14 @@ export class UsuarioAgregarComponent implements OnInit{
         this.usuario.ROL_ID=4;
       }
     }
-    
+    seleccionarGenero(){
+      console.log(this.seleccionGenero);
+      if(this.seleccionGenero=="M"){
+        this.usuario.USU_GENERO="M";
+      } else{
+        this.usuario.USU_GENERO="F";
+      }
+    }
     updateUsuario(){
       
       console.log(this.usuario);
@@ -106,5 +115,11 @@ export class UsuarioAgregarComponent implements OnInit{
       this.mostrar = false;
       this.router.navigate(['/listar']);
     }
+  public mostrarContrasenia: boolean = false;
+  public contrasenia: string = '';
+
+  public toggleMostrarContrasenia(): void {
+    this.mostrarContrasenia = !this.mostrarContrasenia;
+  }
 
 }
