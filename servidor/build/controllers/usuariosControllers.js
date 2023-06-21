@@ -47,6 +47,7 @@ class UsuariosControllers {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const [rows] = yield database_1.default.query('SELECT * FROM USUARIO'); // Desestructurar el resultado para obtener solo el primer elemento (las filas)
+            console.log(salt);
             if (Array.isArray(rows)) {
                 const usuarios = rows.map((row) => row); // Utilizar cualquier tipo genérico para 'row' según tus necesidades
                 res.json(usuarios);
@@ -84,7 +85,7 @@ class UsuariosControllers {
         return __awaiter(this, void 0, void 0, function* () {
             const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
             //const constraseniaHash =  await bcrypt.hash(USR_Contrasenia, 10);
-            const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, salt); // Genera el hash utilizando la contraseña y la "sal"
+            const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
             console.log(constraseniaHash); // Imprime el hash generado 
             try {
                 // Paso 1: Insertar el usuario en la tabla USUARIO
@@ -134,10 +135,10 @@ class UsuariosControllers {
             const { contrasenia, login } = req.params;
             //const constraseniaHash =  await bcrypt.hash(contrasenia, 10);
             //console.log(constraseniaHash);
-            const constraseniaHash = bcrypt.hashSync(contrasenia, salt); // Genera el hash utilizando la contraseña y la "sal"
+            const constraseniaHash = bcrypt.hashSync(contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
             console.log(constraseniaHash); // Imprime el hash generado 
             const query = `
-          SELECT UR.ROL_ID
+          SELECT UR.ROL_ID, U.USR_IDENTIFICACION
           FROM USUARIO U
           INNER JOIN USEROL UR ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
           WHERE U.UserName = ? AND U.USR_Contrasenia = ? AND CURRENT_DATE BETWEEN UR.UR_FECHAINICIO and UR.UR_FECHAFIN;
