@@ -43,7 +43,7 @@ class UsuariosControllers{
           res.status(500).json({ text: 'Error al obtener el usuario' });
         }
       }
-      public async getOneRol(req: Request, res: Response): Promise<any> {
+      public async getRol(req: Request, res: Response): Promise<any> {
         const { rol } = req.params;
         const query = `
         SELECT U.USR_IDENTIFICACION
@@ -52,6 +52,7 @@ class UsuariosControllers{
         ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
         WHERE UR.ROL_ID = ?
         `;
+        console.log("entra");
         
         try {
           const [rows] = await db.query(query, [rol]);

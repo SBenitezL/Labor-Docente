@@ -81,7 +81,7 @@ class UsuariosControllers {
             }
         });
     }
-    getOneRol(req, res) {
+    getRol(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { rol } = req.params;
             const query = `
@@ -91,6 +91,7 @@ class UsuariosControllers {
         ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
         WHERE UR.ROL_ID = ?
         `;
+            console.log("entra");
             try {
                 const [rows] = yield database_1.default.query(query, [rol]);
                 if (Array.isArray(rows) && rows.length > 0) {
