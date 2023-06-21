@@ -37,7 +37,7 @@ class LaborDocenteControllers {
                     const laborDocente = rows[0];
                     return res.json(laborDocente);
                 }
-                res.status(404).json({ text: 'Labor no encontrado' });
+                res.status(404).json({ text: 'Labor no encontrado aca' });
             }
             catch (error) {
                 console.error(error);
@@ -67,8 +67,8 @@ class LaborDocenteControllers {
     }
     getToAdd(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const rows = yield database_1.default.query('SELECT LAB_ID, LAB_NOMBRE FROM labor;');
-            res.json(rows[0][0]);
+            const rows = yield database_1.default.query('SELECT LAB_ID, LAB_NOMBRE FROM labor');
+            res.json(rows[0]);
         });
     }
 }

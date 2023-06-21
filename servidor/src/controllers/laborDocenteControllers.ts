@@ -24,16 +24,13 @@ class LaborDocenteControllers{
               return res.json(laborDocente);
             }
         
-            res.status(404).json({ text: 'Labor no encontrado' });
+            res.status(404).json({ text: 'Labor no encontrado aca' });
           } catch (error) {
             console.error(error);
             res.status(500).json({ text: 'Error al obtener la labor' });
           }
      
       }
-      
-      
-      
     public async create(req: Request,res: Response): Promise<void>{
         await db.query('INSERT INTO LABOR SET ?', [req.body]);
         res.json({message: 'Labor docente insertada'});
@@ -49,8 +46,8 @@ class LaborDocenteControllers{
         res.json({text : 'Actualizando labor docente...'});
     }
     public async getToAdd(req: Request,res: Response): Promise<void>{
-        const rows:any = await db.query('SELECT LAB_ID, LAB_NOMBRE FROM labor;');
-        res.json(rows[0][0]);
+        const rows:any = await db.query('SELECT LAB_ID, LAB_NOMBRE FROM labor');
+        res.json(rows[0]);
     }
 
 }

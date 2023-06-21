@@ -10,6 +10,9 @@ h3{
   align-items: center;
   background: linear-gradient(to right,#0D4185,#770000);
 }
+.labores{
+  width: 200px;
+}
 .imagen-con-texto {
   display: flex;
   align-items: center;
@@ -99,7 +102,6 @@ input[type="text"] {
 .container select {
   text-align: left;
   margin: 10px;
-  margin-left: -53px;
   border: 1px solid #686565;
   border-radius: 10px;
 }

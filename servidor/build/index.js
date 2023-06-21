@@ -30,8 +30,8 @@ class Servidor {
         this.app.use('/api/usuarios', usuariosRoutes_1.default);
         this.app.use('/api/labor', LaborDocenteRoutes_1.default);
         this.app.use('/api/evaluacion', evaluacionRoutes_1.default);
-        this.app.use('api/periodo', periodoRoutes_1.default);
-        this.app.use('api/userol', userrolRoutes_1.default);
+        this.app.use('/api/periodo', periodoRoutes_1.default);
+        this.app.use('/api/userol', userrolRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

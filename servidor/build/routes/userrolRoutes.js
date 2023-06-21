@@ -4,14 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const periodoController_1 = __importDefault(require("../controllers/periodoController"));
+const userrolController_1 = __importDefault(require("../controllers/userrolController"));
 class UserrolRoutes {
     constructor() {
         this.router = (0, express_1.Router)();
         this.config();
     }
     config() {
-        this.router.get('/ToAdd', periodoController_1.default.getToAdd);
+        this.router.get('/', userrolController_1.default.getToAdd);
     }
 }
 const userrolRoutes = new UserrolRoutes();

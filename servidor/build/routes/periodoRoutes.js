@@ -11,7 +11,7 @@ class PeriodoRoutes {
         this.config();
     }
     config() {
-        this.router.get('/ToAdd', periodoController_1.default.getToAdd);
+        this.router.get('/', periodoController_1.default.getToAdd);
     }
 }
 const periodoRoutes = new PeriodoRoutes();

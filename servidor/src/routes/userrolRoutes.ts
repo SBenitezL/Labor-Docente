@@ -1,5 +1,5 @@
 import { Router } from "express";
-import periodoController from "../controllers/periodoController";
+import userrolController from "../controllers/userrolController";
 class UserrolRoutes{
     public router:Router = Router();
     
@@ -9,7 +9,7 @@ class UserrolRoutes{
     }
     public config():void{
         
-        this.router.get('/ToAdd',periodoController.getToAdd);
+        this.router.get('/',userrolController.getToAdd);
     }
 }
 

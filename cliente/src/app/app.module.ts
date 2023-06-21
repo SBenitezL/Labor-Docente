@@ -22,6 +22,7 @@ import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/la
 import { MenuCoordinadorComponent } from './componets/menu-coordinador/menu-coordinador.component';
 import { EvaluacionListComponent } from './componets/evaluacion-list/evaluacion-list.component';
 import { EvaluacionFormComponent } from './componets/evaluacion-form/evaluacion-form.component';
+import { EvaluacionEditarComponent } from './componets/evaluacion-editar/evaluacion-editar.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EvaluacionFormComponent } from './componets/evaluacion-form/evaluacion-
     LaborDocenteEditarComponent,
     MenuCoordinadorComponent,
     EvaluacionListComponent,
-    EvaluacionFormComponent
+    EvaluacionFormComponent,
+    EvaluacionEditarComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@ export class LaborDocenteAgregarComponent {
     LAB_HORAS:0,
 
   };
-  
+
   edit : boolean =false;
   seleccionTipoLab : string = "";
   constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){

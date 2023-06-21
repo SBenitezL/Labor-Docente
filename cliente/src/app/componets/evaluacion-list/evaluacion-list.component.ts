@@ -40,4 +40,14 @@ export class EvaluacionListComponent {
   {
     this.router.navigate(['/evaluacion/add']);
   }
+  deleteEvaluacion(evaID:number)
+  {
+    this.evaluacionServices.deleteEvaluacion(evaID).subscribe(
+      (res:any)=> {
+        console.log(res);
+        this.getEvaluaciones();
+      },
+      err=>console.log(err)
+    );
+  }
 }

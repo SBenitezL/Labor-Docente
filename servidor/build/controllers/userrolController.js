@@ -27,7 +27,7 @@ class UserrolController {
             userol INNER JOIN usuario ON userol.USR_IDENTIFICACION = usuario.USR_IDENTIFICACION
             INNER JOIN rol ON userol.ROL_ID = rol.ROL_ID
         where CURRENT_DATE BETWEEN userol.UR_FECHAINICIO and userol.UR_FECHAFIN;`);
-            res.json(rows[0][0]);
+            res.json(rows[0]);
         });
     }
 }

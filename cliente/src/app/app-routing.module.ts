@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'agregarL', component: LaborDocenteAgregarComponent },
   { path: 'editarL/:id',component: LaborDocenteEditarComponent},
   {path: 'evaluacion', component: EvaluacionListComponent},
-  {path: 'evaluacion/add', component: EvaluacionFormComponent}
+  {path: 'evaluacion/add', component: EvaluacionFormComponent},
+  {path: 'evaluacion/edit/:id', component: EvaluacionFormComponent}
 
 ];
 @NgModule({

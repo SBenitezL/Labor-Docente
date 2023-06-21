@@ -27,8 +27,8 @@ class Servidor{
         this.app.use('/api/usuarios',usuariosRoutes);
         this.app.use('/api/labor',laborRoutes);
         this.app.use('/api/evaluacion',evaluacionRoutes);
-        this.app.use('api/periodo',periodoRoutes);
-        this.app.use('api/userol',userrolRoutes);
+        this.app.use('/api/periodo',periodoRoutes);
+        this.app.use('/api/userol',userrolRoutes);
         
     }
     start():void{

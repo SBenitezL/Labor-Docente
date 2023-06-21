@@ -9,7 +9,7 @@ class PeriodoRoutes{
     }
     public config():void{
         
-        this.router.get('/ToAdd',periodoController.getToAdd);
+        this.router.get('/',periodoController.getToAdd);
     }
 }
 

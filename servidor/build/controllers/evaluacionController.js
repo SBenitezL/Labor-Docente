@@ -31,7 +31,7 @@ class EvaluacionController {
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "CALL sp_actualizar_evaluacion_coordinador (?,?,?,?);";
+            const query = "CALL sp_insert_evaluacion(?,?,?,?);";
             const { LAB_ID, PER_ID, USR_IDENTIFICACION, ROL_ID } = req.body;
             yield database_1.default.query(query, [LAB_ID, PER_ID, USR_IDENTIFICACION, ROL_ID]);
             res.json({ text: "Creando evaluacion..." });
@@ -62,6 +62,14 @@ class EvaluacionController {
             else {
                 res.json({ message: "La evaluacion no se pudo actualizar" });
             }
+        });
+    }
+    getToEdit(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const query = "CALL consultar_evaluacion_edit (?);";
+            const evaluacion = yield database_1.default.query(query, id);
+            res.json(evaluacion[0][0]);
         });
     }
 }
