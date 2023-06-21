@@ -7,6 +7,7 @@ import laborRoutes from './routes/LaborDocenteRoutes';
 import evaluacionRoutes from "./routes/evaluacionRoutes";
 import periodoRoutes from "./routes/periodoRoutes";
 import userrolRoutes from "./routes/userrolRoutes";
+import notificacionRoutes from "./routes/notificacionRoutes";
 
 class Servidor{
     public app: Application;
@@ -29,6 +30,7 @@ class Servidor{
         this.app.use('/api/evaluacion',evaluacionRoutes);
         this.app.use('/api/periodo',periodoRoutes);
         this.app.use('/api/userol',userrolRoutes);
+        this.app.use('api/notificacion',notificacionRoutes);
         
     }
     start():void{

@@ -77,6 +77,7 @@ class EvaluacionController {
             const query = "CALL sp_get_to_notificar()";
             const query2 = "CALL sp_get_administradores()";
             const query3 = "CALL sp_insert_notificacion(?,?)";
+            console.log("entra");
             try {
                 const evaluaciones = yield database_1.default.query(query);
                 const rows = evaluaciones[0][0];

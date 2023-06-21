@@ -12,6 +12,7 @@ const LaborDocenteRoutes_1 = __importDefault(require("./routes/LaborDocenteRoute
 const evaluacionRoutes_1 = __importDefault(require("./routes/evaluacionRoutes"));
 const periodoRoutes_1 = __importDefault(require("./routes/periodoRoutes"));
 const userrolRoutes_1 = __importDefault(require("./routes/userrolRoutes"));
+const notificacionRoutes_1 = __importDefault(require("./routes/notificacionRoutes"));
 class Servidor {
     constructor() {
         this.app = (0, express_1.default)();
@@ -32,6 +33,7 @@ class Servidor {
         this.app.use('/api/evaluacion', evaluacionRoutes_1.default);
         this.app.use('/api/periodo', periodoRoutes_1.default);
         this.app.use('/api/userol', userrolRoutes_1.default);
+        this.app.use('api/notificacion', notificacionRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
