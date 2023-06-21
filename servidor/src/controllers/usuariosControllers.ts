@@ -3,6 +3,8 @@ import db from '../database';
 import * as bcrypt from 'bcrypt';
 const saltRounds = 10; // Número de rondas de hashing
 const salt = bcrypt.genSaltSync(saltRounds);
+const crypto = require('crypto');
+const hash = crypto.createHash('sha256');
 class UsuariosControllers{
      
     /*public async list(req: Request, res: Response) {
@@ -52,7 +54,10 @@ class UsuariosControllers{
 
       const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
       console.log(constraseniaHash); // Imprime el hash generado 
-
+      
+      hash.update("value");
+       
+      console.log(hash.digest('hex'));
       try {
         // Paso 1: Insertar el usuario en la tabla USUARIO
         await db.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, UserName ]);
@@ -108,6 +113,9 @@ class UsuariosControllers{
 
       const constraseniaHash = bcrypt.hashSync(contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
       console.log(constraseniaHash); // Imprime el hash generado 
+      hash.update("value");
+       
+      console.log(hash.digest('hex'));
        const query = `
           SELECT UR.ROL_ID
           FROM USUARIO U
