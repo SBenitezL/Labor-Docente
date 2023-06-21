@@ -147,7 +147,7 @@ ALTER TABLE evaluacion MODIFY COLUMN EVA_ID INT AUTO_INCREMENT;
 
 create table NOTIFICACION 
 (  
-   NOT_ID               INT AUTO_INCREMENT
+   NOT_ID               INT AUTO_INCREMENT,
    USR_IDENTIFICACION   INT,
    NOT_FECHA            DATE,
    NOTI_MSJ             VARCHAR(500),
