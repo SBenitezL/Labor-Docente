@@ -36,8 +36,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="text-center">
-                                
+                          <tr *ngFor="let evaluacion of evaluaciones" class="text-center">                                
                               <td> <input type="text" name="ID" [(ngModel)]="evaluacion.ID" class="left-align-input"></td>
                               <td> <input type="text" name="Nombre" [(ngModel)]="evaluacion.Nombre" class="left-align-input"></td>
                               <td> <input type="text" name="TipoLabor" [(ngModel)]="evaluacion.Rol" class="left-align-input"></td>

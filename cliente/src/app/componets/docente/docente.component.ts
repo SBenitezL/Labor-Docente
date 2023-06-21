@@ -9,21 +9,26 @@ import { Evaluacion } from 'src/app/Modelo/Evaluacion';
   styleUrls: ['./docente.component.css']
 })
 export class DocenteComponent implements OnInit {
-  evaluacion: Evaluacion = {} as Evaluacion;
+  evaluaciones: Evaluacion[] = [];
 
   constructor(private activeRouter: ActivatedRoute, private serviceService: ServiceService, private router: Router) { }
- 
+
   ngOnInit() {
-    const params = this.activeRouter.snapshot.params;
-    if (params['id']) {
-      const id = +params['id'];
+    this.getEvaluacion();
+  }
+
+  getEvaluacion() {
+    const id = this.activeRouter.snapshot.params['id'];
+    if (id) {
       this.serviceService.getEvaluacion(id).subscribe(
         (res: any) => {
           console.log(res);
-          this.evaluacion = res;
+          this.evaluaciones = res;
         },
         err => console.error(err)
       );
     }
   }
 }
+
+
