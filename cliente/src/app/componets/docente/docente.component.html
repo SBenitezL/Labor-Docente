@@ -31,9 +31,9 @@
                         </div>
                     </div>
                     <div class="columna-derecha">
-                        <td> <input type="text" name="UserName" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input" readonly></td>
-                        <td> <input type="text" name="UserName" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input" readonly></td>
-                        <td> <input type="text" name="UserIdentificacion" [(ngModel)]="usuario.USR_IDENTIFICACION" class="left-align-input" readonly></td>
+                        <td class = "left-align-input">{{usuario.USU_NOMBRE}}</td>
+                        <td class = "left-align-input"> {{usuario.USU_NOMBRE}}</td>
+                        <td class = "left-align-input">{{usuario.USR_IDENTIFICACION}}</td>
                     </div>
                 </div>
             </div>
@@ -62,15 +62,15 @@
                         </thead>
                         <tbody>
                           <tr *ngFor="let evaluacion of evaluaciones" class="text-center">                                
-                              <td> <input type="text" name="ID" [(ngModel)]="evaluacion.ID" class="primerI"></td>
-                              <td> <input type="text" name="Nombre" [(ngModel)]="evaluacion.Nombre" class="segundoI"></td>
-                              <td> <input type="text" name="TipoLabor" [(ngModel)]="evaluacion.TipoLabor" class="tercerI"></td>
-                              <td> <input type="text" name="Horas" [(ngModel)]="evaluacion.Horas" class="cuartoI"></td>
-                              <td> <input type="text" name="Inicio" [ngModel]="formatFecha(evaluacion.Inicio)" class="quintoI"></td>
-                              <td> <input type="text" name="Fin" [ngModel]="formatFecha(evaluacion.Fin)" class="sextoI"></td>
-                              <td> <input type="text" name="Estado" [(ngModel)]="evaluacion.Estado" class="septimoI"></td>
-                              <td> <input type="text" name="Puntaje" [(ngModel)]="evaluacion.Resultado" class="octavoI"></td>
-                              <td> <input type="text" name="Resultado" [(ngModel)]="evaluacion.Puntaje" class="novenoI"></td>
+                              <td  class="primerI"> {{evaluacion.ID}}</td>
+                              <td class="segundoI"> {{evaluacion.Nombre}}</td>
+                              <td class="tercerI"> {{evaluacion.TipoLabor}} </td>
+                              <td  class="cuartoI">{{evaluacion.Horas}}</td>
+                              <td class="quintoI">{{evaluacion.Inicio | date:'dd/MM/yyyy'}} </td>
+                              <td class="sextoI"> {{evaluacion.Fin | date:'dd/MM/yyyy'}}</td>
+                              <td class="septimoI"> {{evaluacion.Estado}} </td>
+                              <td class="octavoI"> {{evaluacion.Resultado}} </td>
+                              <td class="novenoI"> {{evaluacion.Puntaje}} </td>
 
                               </tr>
                         </tbody>

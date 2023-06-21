@@ -21,15 +21,14 @@ export class MenuCoordinadorComponent {
     USR_Contrasenia: '',
   
   };
+  sesion = 0;
   constructor(private router:Router,private activeRouter: ActivatedRoute,private serviceService: ServiceService){
-  
-    
-  
+    this.sesion = this.activeRouter.snapshot.params["id"];
   }
   ngOnInit(): void { 
 
 
-        this.serviceService.getUsuario(this.activeRouter.snapshot.params["id"]).subscribe(
+        this.serviceService.getUsuario(this.sesion).subscribe(
           res => {
             this.usuario = res as Usuario;
             } 
