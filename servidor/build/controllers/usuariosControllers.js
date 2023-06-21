@@ -81,6 +81,30 @@ class UsuariosControllers {
             }
         });
     }
+    getOneRol(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { rol } = req.params;
+            const query = `
+        SELECT U.USR_IDENTIFICACION
+        FROM USUARIO U INNER JOIN
+        USEROL UR 
+        ON U.USR_IDENTIFICACION = UR.USR_IDENTIFICACION
+        WHERE UR.ROL_ID = ?
+        `;
+            try {
+                const [rows] = yield database_1.default.query(query, [rol]);
+                if (Array.isArray(rows) && rows.length > 0) {
+                    const usuario = rows[0];
+                    return res.json(usuario);
+                }
+                res.status(404).json({ text: 'Usuario no encontrado' });
+            }
+            catch (error) {
+                console.error(error);
+                res.status(500).json({ text: 'Error al obtener el usuario' });
+            }
+        });
+    }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
