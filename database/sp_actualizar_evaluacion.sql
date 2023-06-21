@@ -5,7 +5,8 @@ CREATE OR REPLACE PROCEDURE sp_actualizar_evaluacion_coordinador(
   IN p_lab_id INT,
   IN p_per_id INT,
   IN p_usr_identificacion INT,
-  IN p_rol_id INT
+  IN p_rol_id INT,
+  IN p_estado INT
 )
 BEGIN
 
@@ -14,7 +15,8 @@ BEGIN
   SET LAB_ID = p_lab_id,
       PER_ID = p_per_id,
       USR_IDENTIFICACION = p_usr_identificacion,
-      ROL_ID = p_rol_id
+      ROL_ID = p_rol_id,
+      EVA_ESTADO = p_estado
   WHERE EVA_ID = p_eva_id;
 
 END //

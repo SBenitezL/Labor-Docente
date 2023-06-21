@@ -19,7 +19,8 @@ export class EvaluacionFormComponent {
     LAB_ID: 0,
     PER_ID: 0,
     USR_IDENTIFICACION: 0,
-    ROL_ID: 0
+    ROL_ID: 0,
+    EVA_ESTADO: 1
   };
   evaluacionEdit:EvaluacionEdit={
     LAB_ID: 0,
@@ -29,20 +30,28 @@ export class EvaluacionFormComponent {
     ROL_ID: 0,
     ROL_NAME: "",
     PER_ID:  0,
-    PER_NOMBRE: ""
+    PER_NOMBRE: "",
+    EVA_ESTADO: 0
   }
 
   usuarios:UseRolUtil[]=[];
   labores:LaborUtil[]=[];
   periodos:PeriodoUtil[]=[];
   bandera:boolean =false;
+  edit:boolean = false;
   seleccion:UseRolUtil={
     Nombre:"",
     Rol:"",
     Id:0,
     RolID:0
   };
-evaEdit:number = 0;
+  estados: { [key: number]: string } = {
+    1: "Ejecución",
+    2: "Terminado",
+    3: "Suspendido",
+  };
+  estadoForm= [1,2,3];
+  evaEdit:number = 0;
   constructor(private evaluacionServices:ServiceService, private router:Router, private activatedRoute:ActivatedRoute){
 
   }
@@ -53,13 +62,21 @@ evaEdit:number = 0;
     console.log(params);
     if(this.evaEdit){
       this.evaluacionServices.getToEditEvaluacion(params["id"]).subscribe(
-        (res:any)=>{
+        (res:any)=>{          
           this.evaluacionEdit = res[0];          
+          this.edit = true;
           this.evaluacion.LAB_ID = this.evaluacionEdit.LAB_ID;
           this.evaluacion.PER_ID = this.evaluacionEdit.PER_ID;          
           this.evaluacion.ROL_ID = this.evaluacionEdit.ROL_ID;          
-          this.evaluacion.USR_IDENTIFICACION = this.evaluacionEdit.USR_ID;
-          console.log(this.seleccion);
+          this.evaluacion.USR_IDENTIFICACION = this.evaluacionEdit.USR_ID;           
+          for (let i = 0; i < this.estadoForm.length ; i++)
+          {
+            if(this.evaluacionEdit.EVA_ESTADO == this.estadoForm[i])
+            {
+              this.evaluacion.EVA_ESTADO = this.estadoForm[i];
+              break;
+            }
+          }
           for(let i = 0; i < this.usuarios.length; i++)
           {
             if(this.usuarios[i].Id == this.evaluacionEdit.USR_ID && this.usuarios[i].RolID == this.evaluacionEdit.ROL_ID)
@@ -71,7 +88,11 @@ evaEdit:number = 0;
         },
         err=>console.log(err)
       );
+      this.getEstadosKeys();
     }
+  }
+  getEstadosKeys(){
+    console.log(Object.keys(this.estados));
   }
   cargarFormulario():void
   {

@@ -68,9 +68,9 @@ export class ServiceService {
     return this.http.get(`${this.API_URI}/evaluacion`);
   }
 
-  getEvaluacion(id:number)
+  getEvaluacion(id:number, per_id:number)
   {
-    return this.http.get(`${this.API_URI}/evaluacion/${id}`);
+    return this.http.get(`${this.API_URI}/evaluacion/${id}/${per_id}`);
   }
 
   saveEvaluacion(evaluacion:EvaluacionEst)
