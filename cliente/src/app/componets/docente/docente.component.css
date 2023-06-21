@@ -52,7 +52,7 @@
 }
 /*mostrar usuario*/
 .card-body{
-    display: flex;
+  display: flex;
 }
 .columna-derecha{
     display: flex;
@@ -71,7 +71,7 @@
 .campos{
     display: flex;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 12px;
 }
 
 .columna-derecha input[type="text"] {
@@ -80,9 +80,18 @@
     margin-bottom: 10px;
     margin-top: 10px;
 }
-/**/
+
+
+/*container*/
 h3{
     margin: 20px;
+}
+
+.container .card:last-child {
+  margin: 0;
+}
+.container .card-body table tbody tr:first-child input {
+  width: 40px;
 }
 /*Footer*/
 #footer {

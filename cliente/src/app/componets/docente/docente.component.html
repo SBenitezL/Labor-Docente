@@ -27,13 +27,13 @@
                             <label for="UserName">Nombre</label>
                         </div>
                         <div class="campos">
-                            <label for="USR_IDENTIFICACION">Identificacion</label>
+                            <label for="USR_IDENTIFICACION">Identificación</label>
                         </div>
                     </div>
                     <div class="columna-derecha">
-                        <label>{{ usuario.USU_NOMBRE }}</label>
-                        <label>{{ usuario.USR_IDENTIFICACION}}</label>
-                  
+                        <td> <input type="text" name="UserName" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input"></td>
+                        <td> <input type="text" name="UserName" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input"></td>
+                        <td> <input type="text" name="UserIdentificacion" [(ngModel)]="usuario.USR_IDENTIFICACION" class="left-align-input"></td>
                     </div>
                 </div>
             </div>
