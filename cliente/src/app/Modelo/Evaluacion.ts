@@ -9,5 +9,5 @@ export interface Evaluacion{
     Estado:number;
     Puntaje:number;
     Resultado:string;
-
+    TipoLabor:string;
 }
