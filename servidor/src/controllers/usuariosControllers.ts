@@ -19,6 +19,7 @@ class UsuariosControllers{
           console.error('Invalid result format');
           res.status(500).json({ message: 'Internal Server Error' });
         }
+        console.log(salt);
       }
       public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
