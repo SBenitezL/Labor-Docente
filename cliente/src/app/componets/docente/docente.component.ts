@@ -23,7 +23,12 @@ export class DocenteComponent implements OnInit {
 
 
   constructor(private activeRouter: ActivatedRoute, private serviceService: ServiceService) { }
-
+  estados: { [key: number]: string } = {
+    1: "Ejecución",
+    2: "Terminado",
+    3: "Suspendido",
+  };
+  estadoForm= [1,2,3];
   ngOnInit() {
     const id = this.activeRouter.snapshot.params['id'];
     console.log('Valor de id :', id); 
@@ -56,5 +61,8 @@ export class DocenteComponent implements OnInit {
     }
     const formattedDate = fecha.toISOString().split('T')[0];
     return formattedDate;
+  }
+  getEstadosKeys(){
+    console.log(Object.keys(this.estados));
   }
 }
