@@ -63,7 +63,7 @@ export class LoginComponent {
       if(rol==2){
         this.router.navigate(['/menuCoordinador']);
       }else if(rol==3 || rol==4 || rol==5){
-        this.router.navigate(['/docente']);
+       // this.router.navigate([`/docente/${id}`]);
       }
   }
   
