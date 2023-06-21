@@ -13,6 +13,10 @@ import { EvaluacionListComponent } from './componets/evaluacion-list/evaluacion-
 import { EvaluacionFormComponent } from './componets/evaluacion-form/evaluacion-form.component';
 import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/labor-docente-editar.component';
 import { DocenteComponent } from './componets/docente/docente.component'; 
+import { DecanoComponent } from './componets/decano/decano.component'; 
+import { CoordinadorComponent } from './componets/coordinador/coordinador.component'; 
+
+
 
 
 const routes: Routes = [
@@ -27,7 +31,9 @@ const routes: Routes = [
   {path: 'evaluacion', component: EvaluacionListComponent},
   {path: 'evaluacion/add', component: EvaluacionFormComponent},
   {path: 'evaluacion/edit/:id', component: EvaluacionFormComponent},
-  {path: 'docente/:id', component: DocenteComponent}
+  {path: 'docente/:id', component: DocenteComponent},
+  {path: 'decano/:id', component: DecanoComponent},
+  {path: 'coordinador/:id', component: CoordinadorComponent}
 
 ];
 @NgModule({

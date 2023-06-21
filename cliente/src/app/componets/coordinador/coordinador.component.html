@@ -1,0 +1,96 @@
+<div class="wrapper">  
+	<div class="content">   		
+		
+		<div id="cabecera" class="cabecera-con-imagen">
+            <div class="imagen-con-texto">
+              <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+              <div class="texto-con-linea">
+                <div class="linea-vertical">
+                  <span>
+                    Universidad del Cauca
+                  </span>
+                </div>
+                <span>Reporte de actividades de labor docente</span>
+              </div>
+            </div>
+          </div>
+
+
+        <div class="mostrar-usuario">
+            <div class="card">
+                <div class="card-body">
+                    <div class="columna-izquierda">
+                        <div class="campos">
+                            <label for="Periodo">Periodo</label>
+                        </div>
+                        <div class="campos">
+                            <label for="UserName">Nombre</label>
+                        </div>
+                        <div class="campos">
+                            <label for="USR_IDENTIFICACION">Identificacion</label>
+                        </div>
+                    </div>
+                    <div class="columna-derecha">
+                        <label>{{ usuario.USU_NOMBRE }}</label>
+                        <label>{{ usuario.USR_IDENTIFICACION}}</label>
+                  
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="card">
+                <div class="card-head">
+                    <h3>Usuarios</h3>
+                    
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nombre labor</th>
+                                <th>Tipo labor</th>
+                                <th>Horas</th>
+                                <th>Fecha inicio</th>
+                                <th>Fecha fin</th>
+                                <th>Estado</th>
+                                <th>Resultado</th>
+                                <th>Evaluación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let evaluacion of evaluaciones" class="text-center">                                
+                              <td> <input type="text" name="ID" [(ngModel)]="evaluacion.ID" class="left-align-input"></td>
+                              <td> <input type="text" name="Nombre" [(ngModel)]="evaluacion.Nombre" class="left-align-input"></td>
+                              <td> <input type="text" name="TipoLabor" [(ngModel)]="evaluacion.TipoLabor" class="left-align-input"></td>
+                              <td> <input type="text" name="Horas" [(ngModel)]="evaluacion.Horas" class="left-align-input"></td>
+                              <td> <input type="text" name="Inicio" [ngModel]="formatFecha(evaluacion.Inicio)" class="left-align-input"></td>
+                              <td> <input type="text" name="Fin" [ngModel]="formatFecha(evaluacion.Fin)" class="left-align-input"></td>
+                              <td> <input type="text" name="Estado" [(ngModel)]="evaluacion.Estado" class="left-align-input"></td>
+                              <td> <input type="text" name="Puntaje" [(ngModel)]="evaluacion.Resultado" class="left-align-input"></td>
+                              <td> <input type="text" name="Resultado" [(ngModel)]="evaluacion.Puntaje" class="left-align-input"></td>
+
+                              </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+	</div> 
+	<div id="footer" class="footer-con-imagen">
+	  <div class="imagen-con-textoF">
+		<div class="texto-con-lineaF">
+		  <div class="linea-verticalF">
+			<span>
+			  © 2023 Universidad del Cauca, Inc.
+			</span>
+		  </div>
+		  <span>Terms Privacy Security</span>
+		</div>
+	  </div>
+	</div>
+  </div> 
