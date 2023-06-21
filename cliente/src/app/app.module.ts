@@ -25,7 +25,7 @@ import { EvaluacionFormComponent } from './componets/evaluacion-form/evaluacion-
 import { DocenteComponent } from './componets/docente/docente.component';
 import { DecanoComponent } from './componets/decano/decano.component';
 import { CoordinadorComponent } from './componets/coordinador/coordinador.component';
-import { MiddlewareComponent } from './componets/middleware/middleware.component'; 
+import { MiddlewareComponent } from './componets/middleware/middleware.component';
 
 @NgModule({
   declarations: [
