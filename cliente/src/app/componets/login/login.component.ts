@@ -4,6 +4,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { Usuario } from '../../Modelo/Usuario';
 import { UseRol } from '../../Modelo/UseRol';
 import { ServiceService } from '../../Service/service.service';
+import { currentUser } from '../control-vista/control-vista.component';
 
 @Component({
   selector: 'app-login',
@@ -61,6 +62,7 @@ export class LoginComponent {
     
   }
   verificarVista(rol:number,userId:number){
+    currentUser.setCurrent(userId);
       if(rol==2){
         console.log(userId);
         this.router.navigate([`/menuCoordinador/${userId}`]);

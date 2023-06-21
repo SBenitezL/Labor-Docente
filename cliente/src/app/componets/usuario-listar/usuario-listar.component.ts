@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../Service/service.service';
 import { Usuario } from '../../Modelo/Usuario';
-
+import { currentUser } from '../control-vista/control-vista.component';
 @Component({
   selector: 'app-usuario-listar',
   templateUrl: './usuario-listar.component.html',
@@ -66,7 +66,7 @@ export class UsuarioListarComponent {
     this.router.navigate(['/editar/'+id]);
   }
   IrInicio(){
-    this.router.navigate(['/menuCoordinador']);
+    this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
   }
   cerrarModal() {
     this.mostrar = false;
