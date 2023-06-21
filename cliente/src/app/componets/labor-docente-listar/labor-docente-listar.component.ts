@@ -38,6 +38,13 @@ export class LaborDocenteListarComponent {
       err => console.error(err)
     );
   }
+  confirmarEliminarLabor(id: number) {
+    const confirmacion = window.confirm('¿Está seguro de que desea eliminar la Labor?');
+    if (confirmacion) {
+      this.deleteLabor(id);
+    }
+  }
+  
   editarLabor(id: number){
     console.log(id);
     this.router.navigate(['/editarL/'+id]);

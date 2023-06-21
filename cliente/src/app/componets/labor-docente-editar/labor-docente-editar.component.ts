@@ -17,7 +17,7 @@ export class LaborDocenteEditarComponent implements OnInit{
 
   };
   edit: boolean = false;
-  seleccionTipoLab : string = "";
+  seleccionTipoLab ='';
   constructor(
     private serviceService: ServiceService,
     private router: Router,
@@ -81,6 +81,20 @@ export class LaborDocenteEditarComponent implements OnInit{
       },
       err => console.error(err)
     );
+  }
+
+
+  IrGestionDocente() {
+    this.router.navigate(['/listar']);
+  }
+  IrGestionLabor() {
+    this.router.navigate(['/listarL']);
+  }
+  IrEvaluacion() {
+    this.router.navigate(['/listarL']);
+  }
+  IrInicio(){
+    this.router.navigate(['/menuCoordinador']);
   }
 }
 
