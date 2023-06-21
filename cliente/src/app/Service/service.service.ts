@@ -23,9 +23,7 @@ export class ServiceService {
   getUsuario(id:number){
     return this.http.get(`${this.API_URI}/usuarios/${id}`);
   }
-  getUsuarioRol(rol:number){
-    return this.http.get(`${this.API_URI}/usuarios/${rol}`);
-  }
+
 
   deleteUsuario(id: number): Observable<any> {
     return this.http.delete(`${this.API_URI}/usuarios/${id}`);

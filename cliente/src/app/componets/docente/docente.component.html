@@ -31,9 +31,11 @@
                         </div>
                     </div>
                     <div class="columna-derecha">
-                        <td class = "left-align-input">{{usuario.USU_NOMBRE}}</td>
+                      <tr *ngFor="let evaluacion of evaluaciones" class="text-center">  
+                        <td class = "left-align-input">{{evaluacion.PER_NOMBRE}}</td>
                         <td class = "left-align-input"> {{usuario.USU_NOMBRE}}</td>
                         <td class = "left-align-input">{{usuario.USR_IDENTIFICACION}}</td>
+                      </tr>
                     </div>
                 </div>
             </div>
@@ -68,8 +70,9 @@
                               <td  class="cuartoI">{{evaluacion.Horas}}</td>
                               <td class="quintoI">{{evaluacion.Inicio | date:'dd/MM/yyyy'}} </td>
                               <td class="sextoI"> {{evaluacion.Fin | date:'dd/MM/yyyy'}}</td>
-                              <td class="septimoI"> {{evaluacion.Estado}} </td>
-                              <td class="octavoI"> {{evaluacion.Resultado}} </td>
+                              <td> <select [(ngModel)]="evaluacion.Estado"required>
+                                <option *ngFor="let key of estadoForm" [ngValue]="key">{{ estados[key] }}</option>                      
+                              </select>   </td>                              <td class="octavoI"> {{evaluacion.Resultado}} </td>
                               <td class="novenoI"> {{evaluacion.Puntaje}} </td>
 
                               </tr>
