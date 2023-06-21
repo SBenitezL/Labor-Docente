@@ -12,6 +12,8 @@ import {UsuarioEditarComponent} from './componets/usuario-editar/usuario-editar.
 import { EvaluacionListComponent } from './componets/evaluacion-list/evaluacion-list.component';
 import { EvaluacionFormComponent } from './componets/evaluacion-form/evaluacion-form.component';
 import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/labor-docente-editar.component';
+import { DocenteComponent } from './componets/docente/docente.component'; 
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,7 +26,8 @@ const routes: Routes = [
   { path: 'editarL/:id',component: LaborDocenteEditarComponent},
   {path: 'evaluacion', component: EvaluacionListComponent},
   {path: 'evaluacion/add', component: EvaluacionFormComponent},
-  {path: 'evaluacion/edit/:id', component: EvaluacionFormComponent}
+  {path: 'evaluacion/edit/:id', component: EvaluacionFormComponent},
+  {path: 'docente', component: DocenteComponent}
 
 ];
 @NgModule({
