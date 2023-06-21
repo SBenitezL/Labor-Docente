@@ -11,7 +11,16 @@ import { ServiceService } from 'src/app/Service/service.service';
 })
 
 export class MenuCoordinadorComponent {
+  usuario: Usuario  = {
+    USR_IDENTIFICACION: 0,
+    USU_NOMBRE: '',
+    USU_APELLIDO: '',
+    USU_GENERO: '',
+    USU_ESTUDIO: '',
+    UserName: '',
+    USR_Contrasenia: '',
   
+  };
   constructor(private router:Router,private activeRouter: ActivatedRoute,private serviceService: ServiceService){
   
     
@@ -35,8 +44,7 @@ export class MenuCoordinadorComponent {
   IrGestionLabor() {
     this.router.navigate(['/listarL']);
   }
-  IrEvaluacion(id: number) {
-    console.log(id);
+  IrEvaluacion() {
     this.router.navigate(['/coordinador/'+this.usuario.USR_IDENTIFICACION]);
   }
 
