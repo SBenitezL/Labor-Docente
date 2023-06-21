@@ -8,7 +8,8 @@ BEGIN
     CONCAT(usuario.USU_NOMBRE, ' ', usuario.USU_APELLIDO) as USR_NOMBRE,
     evaluacion.ROL_ID as ROL_ID,
     periodo.PER_ID as PER_ID,
-    periodo.PER_NOMBRE as PER_NOMBRE
+    periodo.PER_NOMBRE as PER_NOMBRE,
+    evaluacion.EVA_ESTADO as EVA_ESTADO
     from evaluacion INNER JOIN labor on evaluacion.LAB_ID = labor.LAB_ID
     INNER JOIN usuario on evaluacion.USR_IDENTIFICACION = usuario.USR_IDENTIFICACION 
     INNER JOIN periodo on evaluacion.PER_ID = periodo.PER_ID

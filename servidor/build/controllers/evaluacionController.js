@@ -23,17 +23,17 @@ class EvaluacionController {
     }
     getToOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "CALL sp_consultar_evaluacion(?)";
-            const { id } = req.params;
+            const query = "CALL sp_consultar_evaluacion(?,?)";
+            const { id, per_id } = req.params;
             const evaluaciones = (yield database_1.default.query(query, id));
             res.json(evaluaciones[0][0]);
         });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "CALL sp_insert_evaluacion(?,?,?,?);";
-            const { LAB_ID, PER_ID, USR_IDENTIFICACION, ROL_ID } = req.body;
-            yield database_1.default.query(query, [LAB_ID, PER_ID, USR_IDENTIFICACION, ROL_ID]);
+            const query = "CALL sp_insert_evaluacion(?,?,?,?,?)";
+            const { LAB_ID, PER_ID, USR_IDENTIFICACION, ROL_ID, EVA_ESTADO } = req.body;
+            yield database_1.default.query(query, [LAB_ID, PER_ID, USR_IDENTIFICACION, ROL_ID, EVA_ESTADO]);
             res.json({ text: "Creando evaluacion..." });
         });
     }
@@ -53,9 +53,9 @@ class EvaluacionController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const query = "CALL sp_actualizar_evaluacion_coordinador (?,?,?,?,?);";
-            const { LAB_ID, PER_ID, USR_IDENTIFICACION, ROL_ID } = req.body;
-            const evaluaciones = yield database_1.default.query(query, [id, LAB_ID, PER_ID, USR_IDENTIFICACION, ROL_ID]);
+            const query = "CALL sp_actualizar_evaluacion_coordinador (?,?,?,?,?,?);";
+            const { LAB_ID, PER_ID, USR_IDENTIFICACION, ROL_ID, EVA_ESTADO } = req.body;
+            const evaluaciones = yield database_1.default.query(query, [id, LAB_ID, PER_ID, USR_IDENTIFICACION, ROL_ID, EVA_ESTADO]);
             if (evaluaciones[0].affectedRows > 0) {
                 res.json({ message: "La evaluacion fue actualizada" });
             }

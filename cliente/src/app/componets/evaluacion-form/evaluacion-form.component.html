@@ -27,32 +27,38 @@
                     <tr>
                         <th>Labor</th>
                         <th>Periodo</th>
-                        <th>Docente</th>                       
+                        <th>Docente</th>    
+                        <th>Estado</th>                   
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="text-center">
                         <td>
-                          <select [(ngModel)]="evaluacion.LAB_ID" class = "labores">
+                          <select [(ngModel)]="evaluacion.LAB_ID" class = "labores" required>
                             <option *ngFor="let labor of labores" [ngValue]="labor.LAB_ID">{{labor.LAB_NOMBRE}} </option>                            
                           </select>
                         </td>
                         <td>
-                          <select [(ngModel)]="evaluacion.PER_ID">
+                          <select [(ngModel)]="evaluacion.PER_ID" required>
                             <option *ngFor="let periodo of periodos" [ngValue]="periodo.PER_ID">{{periodo.PER_NOMBRE}} </option>                            
                           </select>
                         </td> 
                         <td>
-                          <select [(ngModel)]="seleccion">
+                          <select [(ngModel)]="seleccion" required>
                           <option *ngFor="let usuario of usuarios" [ngValue]="usuario">{{usuario.Nombre}} </option>                            
                           </select>     
                         </td>
                         <td>
-                          <button class="btn btn-warning" (click)="saveEvaluacion()">Guardar</button> 
+                          <select [(ngModel)]="evaluacion.EVA_ESTADO"required>
+                            <option *ngFor="let key of estadoForm" [ngValue]="key">{{ estados[key] }}</option>                      
+                          </select>     
+                        </td> 
+                        <td>
+                          <input type="submit" class="btn btn-warning" (click)="edit ? updateEvaluacion() : saveEvaluacion()" value="Guardar "/>
                           <!-- <div *ngIf="laborAgregado">
                             Usuario agregado exitosamente.
                           </div> -->
-                        </td>
+                        </td>                      
                       </tr>
                       
                 </tbody>
