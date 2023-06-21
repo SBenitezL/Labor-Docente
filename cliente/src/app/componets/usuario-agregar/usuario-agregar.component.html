@@ -47,8 +47,12 @@
               <input type="text" name="UserName" [(ngModel)]="usuario.UserName" class="left-align-input">
 
               <label for="USR_Contrasenia">Contraseña:</label>
-              <input type="text" name="USR_Contrasenia" [(ngModel)]="usuario.USR_Contrasenia" class="left-align-input">
-
+              <div class="input-wrapper">
+                <input type="{{ mostrarContrasenia ? 'text' : 'password' }}" name="USR_Contrasenia"[(ngModel)]="contrasenia"class="left-align-input custom-input">
+                <button (click)="toggleMostrarContrasenia()" class="ojo">
+                  <i class="bx bx-low-vision" [ngClass]="mostrarContrasenia ? 'fa-eye-slash' : 'fa-eye'"></i>
+                </button>
+            </div>
               <label for="UR_FECHAINICIO">Fecha Inicio:</label>
               <input type="date" name="UR_FECHAINICIO" [(ngModel)]="usuario.UR_FECHAINICIO" class="left-align-input">
 
@@ -79,7 +83,10 @@
               <input type="text" name="USU_APELLIDO" [(ngModel)]="usuario.USU_APELLIDO" class="left-align-input">
 
               <label for="USU_GENERO">Género:</label>
-              <input type="text" name="USU_GENERO" [(ngModel)]="usuario.USU_GENERO" class="left-align-input">
+              <select [(ngModel)]="seleccionGenero" (change)="seleccionarGenero()">
+                <option [ngValue]="1" [selected]="usuario.USU_GENERO === 'M'">Masculino</option>
+                <option [ngValue]="2" [selected]="usuario.USU_GENERO === 'F'">Femenino</option>
+              </select>
 
               <label for="USU_ESTUDIO">Estudio:</label>
               <input type="text" name="USU_ESTUDIO" [(ngModel)]="usuario.USU_ESTUDIO" class="left-align-input">
