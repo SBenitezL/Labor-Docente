@@ -69,6 +69,7 @@ create table PERIODO
    PER_FECHAFIN         DATE,
    constraint PK_PERIODO primary key (PER_ID)
 );
+ALTER TABLE periodo MODIFY COLUMN PER_ID INT AUTO_INCREMENT;
 /*==============================================================*/
 /* Table: TIPOLABOR                                             */
 /*==============================================================*/

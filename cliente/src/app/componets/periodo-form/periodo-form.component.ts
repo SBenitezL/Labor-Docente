@@ -25,12 +25,26 @@ export class PeriodoFormComponent {
     this.evaluacionServices.insertPeriodo(this.periodo).subscribe(
       res =>{
         console.log(res);
-        this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
+        this.router.navigate([`/periodo`]);
       },
       err => console.log(err)
-    );
-    
+    );    
+  }
+  IrGestionDocente() {
+    this.router.navigate(['/listar']);
+  }
+  IrGestionLabor() {
+    this.router.navigate(['/listarL']);
+  }
+  IrEvaluacion() {
+    this.router.navigate(['/coordinador/'+currentUser.getCurrent()]);
   }
 
+  IrGestionEvaluacion() {
+    this.router.navigate(['/evaluacion']);
+  }
+  IrPeriodo(){
+    this.router.navigate(['/periodo']);
+  }
 
 }

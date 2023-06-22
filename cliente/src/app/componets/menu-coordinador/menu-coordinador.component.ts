@@ -63,5 +63,8 @@ export class MenuCoordinadorComponent {
   IrGestionEvaluacion() {
     this.router.navigate(['/evaluacion']);
   }
-  
+  IrPeriodo()
+  {
+    this.router.navigate(['/periodo']);
+  }
 }
