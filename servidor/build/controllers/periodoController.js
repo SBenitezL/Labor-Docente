@@ -14,6 +14,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 class PeriodoController {
+    insert(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const query = "CALL sp_insertar_periodo(?,?,?)";
+            const { PER_NOMBRE, PER_FECHAINICIO, PER_FECHAFIN } = req.body;
+            yield database_1.default.query(query, [PER_FECHAINICIO, PER_FECHAFIN, PER_NOMBRE]);
+            res.json({ message: "Insertando ..." });
+        });
+    }
     getToAdd(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const rows = yield database_1.default.query('CALL sp_consultar_periodos()');

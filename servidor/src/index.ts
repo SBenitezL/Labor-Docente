@@ -30,8 +30,7 @@ class Servidor{
         this.app.use('/api/evaluacion',evaluacionRoutes);
         this.app.use('/api/periodo',periodoRoutes);
         this.app.use('/api/userol',userrolRoutes);
-        this.app.use('/api/notificacion',notificacionRoutes);
-        
+        this.app.use('/api/notificacion',notificacionRoutes);        
     }
     start():void{
         this.app.listen(this.app.get('port'),()=>{

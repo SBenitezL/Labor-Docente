@@ -7,6 +7,7 @@ import { EvaluacionEdit } from '../Modelo/EvaluacionEdit';
 import {} from '../Modelo/Usuario';
 import { LaborDocente } from '../Modelo/LaborDocente';
 import { Observable } from 'rxjs';
+import { PeriodoUtil } from '../Modelo/PeriodoUtil';
 
 
 @Injectable({
@@ -95,6 +96,10 @@ export class ServiceService {
   getUseRolToAdd()
   {
     return this.http.get(`${this.API_URI}/userol`)
+  }
+  insertPeriodo(periodo:PeriodoUtil)
+  {
+    return this.http.post(`${this.API_URI}/periodo/add`,periodo);
   }
   getPeriodoToAdd()
   {

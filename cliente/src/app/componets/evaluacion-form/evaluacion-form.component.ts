@@ -135,15 +135,11 @@ export class EvaluacionFormComponent {
   }
   saveEvaluacion()
   {
-    console.log("seleccion:");
-    console.log(this.seleccion);
     this.evaluacion.USR_IDENTIFICACION = this.seleccion.Id
     this.evaluacion.ROL_ID = this.seleccion.RolID;
-    console.log(this.evaluacion);
     this.evaluacionServices.saveEvaluacion(this.evaluacion).subscribe(
       res =>{
         console.log(res);
-        
         this.bandera = true;
         this.router.navigate(['/evaluacion']);
       },
