@@ -118,19 +118,14 @@ input[type="text"] {
 #footer {
   display: flex;
   align-items: center;
-  position: fixed;
-  bottom: 0;
-  background: linear-gradient(to right,#0D4185,#770000);
+  margin-top: auto;
+  padding: 10px;
+  background: #0D4185;
+  height: 50px;
 }
 .imagen-con-textoF{
   display: flex;
   align-items: center;
-}
-
-.icono-izquierdaF{
-width: 40px; /* Ancho deseado */
-height: auto; /* La altura se ajusta automáticamente */
-margin: 10px;
 }
 .texto-con-lineaF{
   display: flex;
@@ -156,6 +151,12 @@ margin: 10px;
 }
 .footer-con-imagen {
   padding-left: 10px;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .container-main{
   display: flex;

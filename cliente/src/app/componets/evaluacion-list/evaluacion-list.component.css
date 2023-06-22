@@ -57,7 +57,9 @@
   .cabecera-con-imagen {
       padding-left: 10px;
   }
-  
+  h3{
+    margin: 20px;
+  }
   .menu-navegacion {
     background: #f9f9f9;
     position: sticky;
@@ -67,7 +69,9 @@
     border-bottom: 1px solid rgba(39, 35, 35, 0.212);
     
   }
-  
+  .card{
+    margin-top: 20px;
+  }
   .menu-navegacion ul {
     list-style: none;
     padding: 0;

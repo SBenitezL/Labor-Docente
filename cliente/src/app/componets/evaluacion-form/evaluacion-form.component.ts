@@ -6,6 +6,7 @@ import { LaborUtil } from 'src/app/Modelo/LaborUtill';
 import { PeriodoUtil } from 'src/app/Modelo/PeriodoUtil';
 import { UseRolUtil } from 'src/app/Modelo/UseRolUtil';
 import { ServiceService } from 'src/app/Service/service.service';
+import { currentUser } from '../control-vista/control-vista.component';
 
 @Component({
   selector: 'app-evaluacion-form',
@@ -121,10 +122,12 @@ export class EvaluacionFormComponent {
       err=>console.log(err)
     );
   }
+  
   updateEvaluacion()
   {
     this.evaluacionServices.updateEvaluacion(this.evaEdit, this.evaluacion).subscribe(
       res =>{
+        
         console.log(res);
         
         this.bandera = true;
@@ -133,6 +136,7 @@ export class EvaluacionFormComponent {
       err =>console.error(err)
     )
   }
+  mostrar: boolean = false;
   saveEvaluacion()
   {
     console.log("seleccion:");
@@ -140,8 +144,10 @@ export class EvaluacionFormComponent {
     this.evaluacion.USR_IDENTIFICACION = this.seleccion.Id
     this.evaluacion.ROL_ID = this.seleccion.RolID;
     console.log(this.evaluacion);
+    this.mostrar = true;
     this.evaluacionServices.saveEvaluacion(this.evaluacion).subscribe(
       res =>{
+        
         console.log(res);
         
         this.bandera = true;
@@ -149,5 +155,21 @@ export class EvaluacionFormComponent {
       },
       err =>console.error(err)
     )
+  }
+
+  IrGestionDocente() {
+    this.router.navigate(['/listar']);
+  }
+  IrGestionLabor() {
+    this.router.navigate(['/listarL']);
+  }
+  IrEvaluacion() {
+    this.router.navigate(['/evaluacion']);
+  }
+  IrInicio(){
+    this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
+  }
+  cerrarModal() {
+    this.mostrar = false;
   }
 }

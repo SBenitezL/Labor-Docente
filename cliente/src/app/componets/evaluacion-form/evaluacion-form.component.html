@@ -1,82 +1,97 @@
+<div class="wrapper">  
+	<div class="content">   
+    <div id="cabecera" class="cabecera-con-imagen">
+      <div class="imagen-con-texto">
+        <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+        <div class="texto-con-linea">
+          <div class="linea-vertical">
+            <span>
+              Universidad del Cauca
+            </span>
+          </div>
+          <span>Agregar evaluación</span>
+        </div>
+      </div>
+      </div>
 
-<div id="cabecera" class="cabecera-con-imagen">
-	<div class="imagen-con-texto">
-	  <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
-	  <div class="texto-con-linea">
-			<div class="linea-vertical">
-				<span>
-					Universidad del Cauca
-				</span>
-			</div>
-			<span>Agregar labor docente</span>
-	  </div>
-	</div>
+      <nav class="menu-navegacion">
+        <ul>
+            <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
+            <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
+            <li><a (click)= "IrGestionLabor()">Gestión labor docente <i class='bx bx-book-open'></i></a></li>
+            <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-head">
+                <h3>Evaluacion</h3>           
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Labor</th>
+                            <th>Periodo</th>
+                            <th>Docente</th>    
+                            <th>Estado</th>                   
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center">
+                            <td>
+                              <select [(ngModel)]="evaluacion.LAB_ID" class = "labores" required>
+                                <option *ngFor="let labor of labores" [ngValue]="labor.LAB_ID">{{labor.LAB_NOMBRE}} </option>                            
+                              </select>
+                            </td>
+                            <td>
+                              <select [(ngModel)]="evaluacion.PER_ID" required>
+                                <option *ngFor="let periodo of periodos" [ngValue]="periodo.PER_ID">{{periodo.PER_NOMBRE}} </option>                            
+                              </select>
+                            </td> 
+                            <td>
+                              <select [(ngModel)]="seleccion" required>
+                              <option *ngFor="let usuario of usuarios" [ngValue]="usuario">{{usuario.Nombre}} </option>                            
+                              </select>     
+                            </td>
+                            <td>
+                              <select [(ngModel)]="evaluacion.EVA_ESTADO"required>
+                                <option *ngFor="let key of estadoForm" [ngValue]="key">{{ estados[key] }}</option>                      
+                              </select>     
+                            </td> 
+                            <td>
+                              <input type="submit" class="btn btn-warning" (click)="edit ? updateEvaluacion() : saveEvaluacion()" value="Guardar "/>
+                              
+                              <!-- <div *ngIf="laborAgregado">
+                                Usuario agregado exitosamente.
+                              </div> -->
+                            </td>                      
+                          </tr>
+                          
+                    </tbody>
+                </table>
+            </div>
+       </div>
+      <div id="miModal" class="modal" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+        <div class="modal-contenido">
+          <span class="cerrar" (click)="cerrarModal()">&times;</span>
+          <h2>Usuario agregado <i class='bx bx-user'></i></h2>
+          <p>El usuario se ha posido agregar con éxito</p>
+        </div>
+      </div>
+    </div>
   </div>
-
-<nav class="menu-navegacion">
-</nav>
-
-<div class="container">
-    <div class="card">
-        <div class="card-head">
-            <h3>Evaluacion</h3>           
-        </div>
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Labor</th>
-                        <th>Periodo</th>
-                        <th>Docente</th>    
-                        <th>Estado</th>                   
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="text-center">
-                        <td>
-                          <select [(ngModel)]="evaluacion.LAB_ID" class = "labores" required>
-                            <option *ngFor="let labor of labores" [ngValue]="labor.LAB_ID">{{labor.LAB_NOMBRE}} </option>                            
-                          </select>
-                        </td>
-                        <td>
-                          <select [(ngModel)]="evaluacion.PER_ID" required>
-                            <option *ngFor="let periodo of periodos" [ngValue]="periodo.PER_ID">{{periodo.PER_NOMBRE}} </option>                            
-                          </select>
-                        </td> 
-                        <td>
-                          <select [(ngModel)]="seleccion" required>
-                          <option *ngFor="let usuario of usuarios" [ngValue]="usuario">{{usuario.Nombre}} </option>                            
-                          </select>     
-                        </td>
-                        <td>
-                          <select [(ngModel)]="evaluacion.EVA_ESTADO"required>
-                            <option *ngFor="let key of estadoForm" [ngValue]="key">{{ estados[key] }}</option>                      
-                          </select>     
-                        </td> 
-                        <td>
-                          <input type="submit" class="btn btn-warning" (click)="edit ? updateEvaluacion() : saveEvaluacion()" value="Guardar "/>
-                          <!-- <div *ngIf="laborAgregado">
-                            Usuario agregado exitosamente.
-                          </div> -->
-                        </td>                      
-                      </tr>
-                      
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<div id="footer" class="footer-con-imagen">
-	<div class="imagen-con-textoF">
-	  <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierdaF">
-	  <div class="texto-con-lineaF">
-			<div class="linea-verticalF">
-				<span>
-					© 2023 Universidad del Cauca, Inc.
-				</span>
-			</div>
-			<span>Terms Privacy Security</span>
-	  </div>
-	</div>
-</div>
+  <div id="footer" class="footer-con-imagen">
+    <div class="imagen-con-textoF">
+    <div class="texto-con-lineaF">
+      <div class="linea-verticalF">
+      <span>
+        © 2023 Universidad del Cauca, Inc.
+      </span>
+      </div>
+      <span>Terms Privacy Security</span>
+    </div>
+    </div>
+  </div>
+</div> 
