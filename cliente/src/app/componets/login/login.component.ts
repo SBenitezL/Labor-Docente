@@ -69,7 +69,9 @@ export class LoginComponent {
 
       }else if(rol==3 || rol==4 || rol==5){
         this.router.navigate([`/docente/${userId}`]);
-      }
+      }else if(rol == 1){
+        this.router.navigate([`/decano/`]);
+      }
   }
   
 }
