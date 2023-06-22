@@ -27,6 +27,7 @@ import { DecanoComponent } from './componets/decano/decano.component';
 import { CoordinadorComponent } from './componets/coordinador/coordinador.component';
 import { MiddlewareComponent } from './componets/middleware/middleware.component';
 import { PeriodoFormComponent } from './componets/periodo-form/periodo-form.component';
+import { PeriodoListComponent } from './componets/periodo-list/periodo-list.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { PeriodoFormComponent } from './componets/periodo-form/periodo-form.comp
     DecanoComponent,
     CoordinadorComponent,
     MiddlewareComponent,
-    PeriodoFormComponent
+    PeriodoFormComponent,
+    PeriodoListComponent
   ],
   imports: [
     BrowserModule,

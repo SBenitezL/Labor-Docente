@@ -15,6 +15,8 @@ import { LaborDocenteEditarComponent } from './componets/labor-docente-editar/la
 import { DocenteComponent } from './componets/docente/docente.component'; 
 import { DecanoComponent } from './componets/decano/decano.component'; 
 import { CoordinadorComponent } from './componets/coordinador/coordinador.component'; 
+import { PeriodoListComponent } from './componets/periodo-list/periodo-list.component';
+import { PeriodoFormComponent } from './componets/periodo-form/periodo-form.component';
 
 
 
@@ -33,8 +35,10 @@ const routes: Routes = [
   {path: 'evaluacion/edit/:id', component: EvaluacionFormComponent},
   {path: 'docente/:id', component: DocenteComponent},
   {path: 'decano', component: DecanoComponent},
-  {path: 'coordinador/:id', component: CoordinadorComponent}
-
+  {path: 'coordinador/:id', component: CoordinadorComponent},
+  {path: 'periodo', component: PeriodoListComponent},
+  {path: 'periodo/add', component: PeriodoFormComponent},
+  {path: 'periodo/edit/:id', component: PeriodoFormComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
