@@ -3,6 +3,7 @@
   import { UseRol } from '../../Modelo/UseRol';
   import { ActivatedRoute, Router } from '@angular/router';
   import { ServiceService } from '../../Service/service.service';
+  import { currentUser } from '../control-vista/control-vista.component';
 
   @Component({
     selector: 'app-usuario-editar',
@@ -103,7 +104,7 @@
       this.router.navigate(['/listarL']);
     }
     IrInicio(){
-      this.router.navigate(['/menuCoordinador']);
+      this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
     }
     cerrarModal() {
       this.mostrar = false;

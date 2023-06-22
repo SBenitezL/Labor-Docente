@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../Service/service.service';
 import { LaborDocente } from '../../Modelo/LaborDocente';
+import { currentUser } from '../control-vista/control-vista.component';
 
 
 @Component({
@@ -60,6 +61,6 @@ export class LaborDocenteListarComponent {
     this.router.navigate(['/listarL']);
   }
   IrInicio(){
-    this.router.navigate(['/menuCoordinador']);
+    this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
   }
 }

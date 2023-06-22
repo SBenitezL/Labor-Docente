@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { LaborDocente } from '../../Modelo/LaborDocente';
 import { ActivatedRoute, Router } from '@angular/router';
+import { currentUser } from '../control-vista/control-vista.component';
 
 import { ServiceService } from '../../Service/service.service';
 @Component({
@@ -94,7 +95,7 @@ export class LaborDocenteEditarComponent implements OnInit{
     this.router.navigate(['/listarL']);
   }
   IrInicio(){
-    this.router.navigate(['/menuCoordinador']);
+    this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
   }
 }
 

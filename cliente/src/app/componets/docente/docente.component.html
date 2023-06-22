@@ -31,9 +31,9 @@
                         </div>
                     </div>
                     <div class="columna-derecha">
-                      <tr *ngFor="let evaluacion of evaluaciones; let isFirst = first">
-                        <td> <input *ngIf="isFirst" type="text" name="UserName" [(ngModel)]="evaluacion.PER_NOMBRE" class="left-align-input"> </td>
-                      </tr>
+                     
+                        <td> <input type="text" name="UserName" [(ngModel)]="evaluacion.PER_NOMBRE" class="left-align-input"> </td>
+                      
                         <td> <input type="text" name="UserName" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input"></td>
                         <td> <input type="text" name="UserIdentificacion" [(ngModel)]="usuario.USR_IDENTIFICACION" class="left-align-input"></td>
                       
@@ -64,19 +64,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let evaluacion of evaluaciones">
-                            <td class="primerI">{{ evaluacion.ID }}</td>
-                            <td class="segundoI">{{ evaluacion.Nombre }}</td>
-                            <td class="tercerI">{{ evaluacion.TipoLabor }}</td>
-                            <td class="cuartoI">{{ evaluacion.Horas }}</td>
-                            <td class="quintoI">{{ evaluacion.Inicio | date:'dd/MM/yyyy' }}</td>
-                            <td class="sextoI">{{ evaluacion.Fin | date:'dd/MM/yyyy' }}</td>
-                            <td class="septimoI">{{ estados[evaluacion.Estado] }}</td>
-                            <td class="octavoI"><input type="text" [(ngModel)]="evaluacion.Resultado" required></td>
-                            <td class="novenoI"><input type="text" [(ngModel)]="evaluacion.Puntaje" required></td>
+                          <tr *ngIf="edit">
+                            <td>{{ evaluacionEdit.LAB_ID }}</td>
+                            <td>{{ evaluacionEdit.LAB_NOMBRE }}</td>
+                            <td>{{ evaluacionEdit.USR_ID }}</td>
+                            <td>{{ evaluacion.Horas }}</td>
+                            <td>{{ evaluacion.Inicio | date:'dd/MM/yyyy' }}</td>
+                            <td>{{ evaluacion.Fin | date:'dd/MM/yyyy' }}</td>
+                            <td>{{ estados[evaluacion.Estado] }}</td>
+                            <td><input type="text" [(ngModel)]="evaluacionEdit.EVA_RESULTADO" required></td>
+                            <td><input type="text" [(ngModel)]="evaluacionEdit.EVA_PUNTAJE" required></td>
                           </tr>
-                          
+                    
                         </tbody>
+                        
+                          <!-- Otro código HTML ... -->
+
+                          <button (click)="updateOwnEvaluacion()" class="btn btn-primary">Guardar</button>
+
+<!-- Otro código HTML ... -->
+
+                          
+                        
                     </table>
                 </div>
             </div>
