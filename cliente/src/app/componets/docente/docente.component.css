@@ -75,13 +75,11 @@
 }
 
 .columna-derecha input[type="text"] {
-    border-radius: 5px ;
-    border: 1px solid #686565;
-    margin-bottom: 10px;
-    margin-top: 10px;
+  border-radius: 5px ;
+  border: 1px solid #686565;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
-
-
 /*container*/
 h3{
     margin: 20px;
