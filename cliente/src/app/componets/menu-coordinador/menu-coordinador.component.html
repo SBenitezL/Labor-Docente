@@ -33,17 +33,21 @@
 	  
 	
 	<table *ngIf="notificaciones.length > 0" class="table table-hover">
-	<caption>Notificaciones</caption>
-		<thead>
-			<td>Mensaje</td>
-			<td>Fecha</td>
-		</thead>
-		<tbody>
-			<tr *ngFor="let notificacion of notificaciones" >
-				<td class = "msj" data-label="Mensaje">{{notificacion.NOTI_MSJ}}</td>
-				<td data-label="Fecha">{{notificacion.NOT_FECHA|date:'dd/MM/yyyy'}}</td>
-			</tr>
-		</tbody>
+		<div class="mensajes-caption">
+			<caption>Notificaciones</caption>
+		</div>
+		<div class="mensajes-cuerpo">
+			<thead>
+				<td>Mensaje</td>
+				<td>Fecha</td>
+			</thead>
+			<tbody>
+				<tr *ngFor="let notificacion of notificaciones" >
+					<td class = "msj" data-label="Mensaje">{{notificacion.NOTI_MSJ}}</td>
+					<td data-label="Fecha">{{notificacion.NOT_FECHA|date:'dd/MM/yyyy'}}</td>
+				</tr>
+			</tbody>
+		</div>
 	</table>		
 
 	<div id="footer" class="footer-con-imagen">
