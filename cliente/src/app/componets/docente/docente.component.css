@@ -74,14 +74,12 @@
     margin-top: 12px;
 }
 
-.columna-derecha .left-align-input{
+.tex-center .left-align-input{
     border-radius: 5px ;
     border: 1px solid #686565;
     margin-bottom: 10px;
     margin-top: 10px;
 }
-
-
 /*container*/
 h3{
     margin: 20px;
