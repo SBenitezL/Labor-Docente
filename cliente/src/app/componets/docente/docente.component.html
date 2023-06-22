@@ -15,32 +15,26 @@
             </div>
           </div>
 
-
-        <div class="mostrar-usuario">
+          <div class="mostrar-usuario">
             <div class="card">
-                <div class="card-body">
-                    <div class="columna-izquierda">
-                        <div class="campos">
-                            <label for="Periodo">Periodo</label>
-                        </div>
-                        <div class="campos">
-                            <label for="UserName">Nombre</label>
-                        </div>
-                        <div class="campos">
-                            <label for="USR_IDENTIFICACION">Identificación</label>
-                        </div>
-                    </div>
-                    <div class="columna-derecha">
-                      <tr *ngFor="let evaluacion of evaluaciones; let isFirst = first">
-                        <td> <input *ngIf="isFirst" type="text" name="UserName" [(ngModel)]="evaluacion.PER_NOMBRE" class="left-align-input"> </td>
-                      </tr>
-                        <td> <input type="text" name="UserName" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input"></td>
-                        <td> <input type="text" name="UserIdentificacion" [(ngModel)]="usuario.USR_IDENTIFICACION" class="left-align-input"></td>
-                      
-                    </div>
-                </div>
+              <div class="card-body">
+                <table>
+                  <tr *ngFor="let evaluacion of evaluaciones; let isFirst = first">
+                    <th>Periodo</th>
+                    <td class = "label-dato" *ngIf="isFirst">{{evaluacion.PER_NOMBRE}}</td>
+                  </tr>
+                  <tr>
+                    <th>Nombre</th>
+                    <td class = "label-dato">{{usuario.USU_NOMBRE + " " + usuario.USU_APELLIDO}}</td>
+                  </tr>
+                  <tr>
+                    <th>Identificacion</th>
+                    <td class = "label-dato">{{usuario.USR_IDENTIFICACION}}</td>
+                  </tr>
+                </table>
+              </div>
             </div>
-        </div>
+          </div>
 
         <div class="container">
             <div class="card">
@@ -65,15 +59,15 @@
                         </thead>
                         <tbody>
                           <tr *ngFor="let evaluacion of evaluaciones">
-                            <td class="primerI">{{ evaluacion.ID }}</td>
-                            <td class="segundoI">{{ evaluacion.Nombre }}</td>
-                            <td class="tercerI">{{ evaluacion.TipoLabor }}</td>
-                            <td class="cuartoI">{{ evaluacion.Horas }}</td>
-                            <td class="quintoI">{{ evaluacion.Inicio | date:'dd/MM/yyyy' }}</td>
-                            <td class="sextoI">{{ evaluacion.Fin | date:'dd/MM/yyyy' }}</td>
-                            <td class="septimoI">{{ estados[evaluacion.Estado] }}</td>
-                            <td class="octavoI"><input type="text" [(ngModel)]="evaluacion.Resultado" required></td>
-                            <td class="novenoI"><input type="text" [(ngModel)]="evaluacion.Puntaje" required></td>
+                            <td>{{ evaluacion.ID }}</td>
+                            <td>{{ evaluacion.Nombre }}</td>
+                            <td>{{ evaluacion.TipoLabor }}</td>
+                            <td>{{ evaluacion.Horas }}</td>
+                            <td>{{ evaluacion.Inicio | date:'dd/MM/yyyy' }}</td>
+                            <td> {{ evaluacion.Fin | date:'dd/MM/yyyy' }}</td>
+                            <td>{{ estados[evaluacion.Estado] }}</td>
+                            <td><input type="text" [(ngModel)]="evaluacion.Resultado" required></td>
+                            <td><input type="text" [(ngModel)]="evaluacion.Puntaje" required></td>
                           </tr>
                           
                         </tbody>
