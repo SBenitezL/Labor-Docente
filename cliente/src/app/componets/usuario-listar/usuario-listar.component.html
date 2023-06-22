@@ -38,7 +38,7 @@
                         <thead>
                             <tr>
                                 <th>Identificación</th>
-                                <th>Labor docente</th>
+                                
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Género</th>
@@ -48,9 +48,6 @@
                         <tbody>
                             <tr *ngFor="let usuario of usuarios" class="text-center">
                                 <td>{{ usuario.USR_IDENTIFICACION}}</td>
-                                <td>
-                                    <button class="btn btn-warning" (click)="irALabor()" style="margin-left: 10px;">Ver evaluación</button>
-                                </td>
                                 <td>{{ usuario.USU_NOMBRE }}</td>
                                 <td>{{ usuario.USU_APELLIDO }}</td>
                                 <td>{{ usuario.USU_GENERO }}</td>

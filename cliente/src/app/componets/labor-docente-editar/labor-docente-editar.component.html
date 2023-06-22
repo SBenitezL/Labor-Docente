@@ -72,7 +72,16 @@
                 </div>
            </div>
         </div>
+
+        <div id="miModal" class="modal" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+            <div class="modal-contenido">
+              <span class="cerrar" (click)="cerrarModal()">&times;</span>
+              <h2>Labor docente actualizada <i class='bx bx-book-open'></i></h2>
+              <p>La labor docente se ha podido actualizar con éxito</p>
+            </div>
+          </div>
     </div>
+
     <div id="footer" class="footer-con-imagen">
         <div class="imagen-con-textoF">
             <div class="texto-con-lineaF">
