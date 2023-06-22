@@ -1,65 +1,84 @@
-<div id="cabecera" class="cabecera-con-imagen">
-	<div class="imagen-con-texto">
-	  <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
-	  <div class="texto-con-linea">
-			<div class="linea-vertical">
-				<span>
-					Universidad del Cauca
-				</span>
-			</div>
-			<span>Gestión Evaluacion</span>
-	  </div>
-	</div>
-  </div>
-
-<nav class="menu-navegacion">
-    <ul>
-        <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
-        <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
-        <li><a (click)= "IrGestionLabor()">Gestión labor docente <i class='bx bx-book-open'></i></a></li>
-        <li><a (click)= "nuevo()">Nueva Evaluacion <i class='bx bx-plus-circle' ></i></a></li>
-    </ul>
-</nav>
-
-<div class="container">
-    <div class="card">
-        <div class="card-head">
-            <h3>Evaluación</h3>
-            
+<div class="wrapper">  
+	<div class="content">   
+       
+       <div id="cabecera" class="cabecera-con-imagen">
+            <div class="imagen-con-texto">
+            <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+            <div class="texto-con-linea">
+                    <div class="linea-vertical">
+                        <span>
+                            Universidad del Cauca
+                        </span>
+                    </div>
+                    <span>Gestión evaluación</span>
+            </div>
+            </div>
         </div>
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Propietario</th>
-                        <th>Rol</th>
-                        <th>Labor</th>
-                        <th>Horas</th>
-                        <th>Inicio</th>
-                        <th>Fin</th>
-                        <th>Estado</th>
-                        <th>Puntaje</th>
-                        <th>Resultado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let evaluacion of evaluaciones" class="text-center">
-                        <td>{{evaluacion.NombreCompleto}}</td>
-                        <td>{{evaluacion.Rol}}</td>
-                        <td>{{evaluacion.Nombre}}</td>        
-                        <td>{{evaluacion.Horas}}</td>
-                        <td>{{evaluacion.Inicio | date:'dd/MM/yyyy'}}</td>
-                        <td>{{evaluacion.Fin | date:'dd/MM/yyyy'}}</td>
-                        <td>{{getEstado(evaluacion.Estado)}}</td>
-                        <td>{{evaluacion.Puntaje}}</td>
-                        <td>{{evaluacion.Resultado}}</td>
-                        <td>
-                            <button [routerLink]="['/evaluacion/edit',evaluacion.ID]" class="btn btn-warning">Editar</button>
-                            <button class="btn btn-warning" (click)="deleteEvaluacion(evaluacion.ID)" style="margin-left: 10px;">Eliminar</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <nav class="menu-navegacion">
+            <ul>
+                <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
+                <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
+                <li><a (click)= "IrGestionLabor()">Gestión labor docente <i class='bx bx-book-open'></i></a></li>
+                <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+                <li><a (click)= "nuevo()">Nueva Evaluacion <i class='bx bx-plus-circle' ></i></a></li>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <div class="card">
+                <div class="card-head">
+                    <h3>Evaluación</h3>
+                    
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Propietario</th>
+                                <th>Rol</th>
+                                <th>Labor</th>
+                                <th>Horas</th>
+                                <th>Inicio</th>
+                                <th>Fin</th>
+                                <th>Estado</th>
+                                <th>Puntaje</th>
+                                <th>Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let evaluacion of evaluaciones" class="text-center">
+                                <td>{{evaluacion.NombreCompleto}}</td>
+                                <td>{{evaluacion.Rol}}</td>
+                                <td>{{evaluacion.Nombre}}</td>        
+                                <td>{{evaluacion.Horas}}</td>
+                                <td>{{evaluacion.Inicio | date:'dd/MM/yyyy'}}</td>
+                                <td>{{evaluacion.Fin | date:'dd/MM/yyyy'}}</td>
+                                <td>{{getEstado(evaluacion.Estado)}}</td>
+                                <td>{{evaluacion.Puntaje}}</td>
+                                <td>{{evaluacion.Resultado}}</td>
+                                <td>
+                                    <button [routerLink]="['/evaluacion/edit',evaluacion.ID]" class="btn btn-warning">Editar</button>
+                                    <button class="btn btn-warning" (click)="deleteEvaluacion(evaluacion.ID)" style="margin-left: 10px;">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+           </div>
         </div>
-    </div>
+    </div>
+    <div id="footer" class="footer-con-imagen">
+        <div class="imagen-con-textoF">
+        <div class="texto-con-lineaF">
+          <div class="linea-verticalF">
+          <span>
+            © 2023 Universidad del Cauca, Inc.
+          </span>
+          </div>
+          <span>Terms Privacy Security</span>
+        </div>
+        </div>
+      </div>
 </div>
+        

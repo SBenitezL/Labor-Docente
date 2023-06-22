@@ -56,11 +56,13 @@ export class LaborDocenteListarComponent {
   IrGestionDocente() {
     this.router.navigate(['/listar']);
   }
- 
   IrEvaluacion() {
-    this.router.navigate(['/listarL']);
+    this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
   }
   IrInicio(){
     this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
+  }
+  IrGestionEvaluacion() {
+    this.router.navigate(['/evaluacion']);
   }
 }

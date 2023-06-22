@@ -59,7 +59,7 @@ export class UsuarioListarComponent {
     this.router.navigate(['/listarL']);
   }
   IrEvaluacion() {
-    this.router.navigate(['/listarL']);
+    this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
   }
   editarUsuario(id: number){
     console.log(id);
@@ -67,6 +67,9 @@ export class UsuarioListarComponent {
   }
   IrInicio(){
     this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
+  }
+  IrGestionEvaluacion() {
+    this.router.navigate(['/evaluacion']);
   }
   cerrarModal() {
     this.mostrar = false;

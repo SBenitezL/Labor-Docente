@@ -97,9 +97,12 @@ export class LaborDocenteAgregarComponent {
     this.router.navigate(['/listarL']);
   }
   IrEvaluacion() {
-    this.router.navigate(['/listarL']);
+    this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
   }
   IrInicio(){
     this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
+  }
+  IrGestionEvaluacion() {
+    this.router.navigate(['/evaluacion']);
   }
 }

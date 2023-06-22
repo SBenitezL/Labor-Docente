@@ -62,10 +62,6 @@
                             </td> 
                             <td>
                               <input type="submit" class="btn btn-warning" (click)="edit ? updateEvaluacion() : saveEvaluacion()" value="Guardar "/>
-                              
-                              <!-- <div *ngIf="laborAgregado">
-                                Usuario agregado exitosamente.
-                              </div> -->
                             </td>                      
                           </tr>
                           
@@ -73,13 +69,6 @@
                 </table>
             </div>
        </div>
-      <div id="miModal" class="modal" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
-        <div class="modal-contenido">
-          <span class="cerrar" (click)="cerrarModal()">&times;</span>
-          <h2>Usuario agregado <i class='bx bx-user'></i></h2>
-          <p>El usuario se ha posido agregar con éxito</p>
-        </div>
-      </div>
     </div>
   </div>
   <div id="footer" class="footer-con-imagen">

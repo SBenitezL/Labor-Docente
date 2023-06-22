@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
 import { Evaluacion } from 'src/app/Modelo/Evaluacion';
 import { Usuario } from 'src/app/Modelo/Usuario';
+import { currentUser } from '../control-vista/control-vista.component';
 
 @Component({
   selector: 'app-coordinador',
@@ -22,7 +23,7 @@ export class CoordinadorComponent implements OnInit{
   };
 
 
-  constructor(private activeRouter: ActivatedRoute, private serviceService: ServiceService) { }
+  constructor(private activeRouter: ActivatedRoute, private serviceService: ServiceService, private router: Router) { }
   estados: { [key: number]: string } = {
     1: "Ejecución",
     2: "Terminado",
@@ -64,6 +65,18 @@ export class CoordinadorComponent implements OnInit{
   }
   getEstadosKeys(){
     console.log(Object.keys(this.estados));
+  }
+  IrGestionDocente() {
+    this.router.navigate(['/listar']);
+  }
+  IrGestionLabor() {
+    this.router.navigate(['/listarL']);
+  }
+  IrInicio(){
+    this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
+  }
+  IrGestionEvaluacion() {
+    this.router.navigate(['/evaluacion']);
   }
 
 }

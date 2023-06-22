@@ -94,6 +94,51 @@
   .menu-navegacion a:hover {
     background: #ddd;
   }
+  
+/*Footer*/
+#footer {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  padding: 10px;
+  background: #0D4185;
+  height: 50px;
+}
+.imagen-con-textoF{
+  display: flex;
+  align-items: center;
+}
+.texto-con-lineaF{
+  display: flex;
+  align-items: center;
+}
+.texto-con-lineaF{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 14px; /* Tamaño de fuente deseado */
+  color: aliceblue;
+  margin-left: 20px;
+  
+}
+.texto-con-lineaF span{
+  padding-left: 15px;
+  margin-right: 10px; /* Ajusta el espacio entre el texto y la línea vertical */
+  
+}
+.linea-verticalF {
+  border-right: 2px solid rgb(255, 255, 255);
+  padding-right: 15px; /* Añade espacio entre la línea y el texto */
+  margin-right: 15px; 
+
+}
+.footer-con-imagen {
+  padding-left: 10px;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
   /**/
   @media screen and (max-width: 768px) {
     .cabecera-con-imagen {

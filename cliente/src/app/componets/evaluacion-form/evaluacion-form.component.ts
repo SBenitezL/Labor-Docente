@@ -161,7 +161,7 @@ export class EvaluacionFormComponent {
     this.router.navigate(['/listarL']);
   }
   IrEvaluacion() {
-    this.router.navigate(['/evaluacion']);
+    this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
   }
   IrInicio(){
     this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);

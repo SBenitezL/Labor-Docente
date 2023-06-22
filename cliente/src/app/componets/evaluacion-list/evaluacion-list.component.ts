@@ -60,4 +60,7 @@ export class EvaluacionListComponent {
   IrInicio(){
     this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
   }
+  IrEvaluacion() {
+    this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
+  }
 }
