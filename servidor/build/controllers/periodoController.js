@@ -16,8 +16,8 @@ const database_1 = __importDefault(require("../database"));
 class PeriodoController {
     getToAdd(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const rows = yield database_1.default.query('SELECT PER_ID, PER_NOMBRE FROM periodo');
-            res.json(rows[0]);
+            const rows = yield database_1.default.query('CALL sp_consultar_periodos()');
+            res.json(rows[0][0]);
         });
     }
 }

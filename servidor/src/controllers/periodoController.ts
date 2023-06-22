@@ -5,8 +5,8 @@ class PeriodoController{
 
     
     public async getToAdd(req: Request,res: Response): Promise<void>{
-        const rows:any = await db.query('SELECT PER_ID, PER_NOMBRE FROM periodo');
-        res.json(rows[0]);
+        const rows:any = await db.query('CALL sp_consultar_periodos()');
+        res.json(rows[0][0]);
     }
 }
 

@@ -12,6 +12,9 @@
     
     background: linear-gradient(to right,#0D4185,#770000);
 }
+.label-dato{    
+  padding-left: 15px;
+}
 .imagen-con-texto {
     display: flex;
     align-items: center;

@@ -11,20 +11,8 @@ import { Usuario } from 'src/app/Modelo/Usuario';
   styleUrls: ['./docente.component.css']
 })
 export class DocenteComponent implements OnInit {
-  evaluacion:Evaluacion={
-    NombreCompleto:'',
-    Rol:'',
-    ID:0,    
-    Nombre:'',
-    Horas:0,
-    Inicio:new Date(),
-    Fin:new Date(),
-    Estado:0,
-    Puntaje:0,
-    Resultado:'',
-    TipoLabor:'',
-    PER_NOMBRE:''
-}
+  evaluaciones : Evaluacion[]=[]
+
   evaluacionEdit:EvaluacionEdit={
     LAB_ID: 0,
     LAB_NOMBRE: "",
@@ -76,7 +64,7 @@ export class DocenteComponent implements OnInit {
     this.serviceService.getEvaluacion(id).subscribe(
       (res: any) => {
         console.log(res);
-        this.evaluacion = res;
+        this.evaluaciones = res;
       },
       err => console.error(err)
     );

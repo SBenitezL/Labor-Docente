@@ -1,0 +1,7 @@
+DELIMITER //
+
+CREATE OR REPLACE PROCEDURE sp_consultar_periodos()
+BEGIN
+    SELECT PER_ID, PER_NOMBRE FROM periodo;
+END //
+DELIMITER ;
