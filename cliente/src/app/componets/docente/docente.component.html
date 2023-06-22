@@ -31,11 +31,10 @@
                         </div>
                     </div>
                     <div class="columna-derecha">
-                      <tr *ngFor="let evaluacion of evaluaciones" class="text-center">  
-                        <td class = "left-align-input">{{evaluacion.PER_NOMBRE}}</td>
-                        <td class = "left-align-input"> {{usuario.USU_NOMBRE}}</td>
-                        <td class = "left-align-input">{{usuario.USR_IDENTIFICACION}}</td>
-                      </tr>
+                        <td> <input type="text" name="UserName" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input"></td>
+                        <td> <input type="text" name="UserName" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input"></td>
+                        <td> <input type="text" name="UserIdentificacion" [(ngModel)]="usuario.USR_IDENTIFICACION" class="left-align-input"></td>
+                    
                     </div>
                 </div>
             </div>
