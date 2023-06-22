@@ -21,6 +21,17 @@ class EvaluacionController{
         await db.query(query, [LAB_ID,PER_ID,USR_IDENTIFICACION,ROL_ID,EVA_ESTADO]);
         res.json({text: "Creando evaluacion..."});
     }
+    public async updateOwn(req:Request,res:Response){
+      const query = "CALL sp_ingresar_values(?,?,?)"
+      const {EVA_ID, EVA_PUNTAJE, EVA_RESULTADO} = req.body;
+      const result:any= await db.query(query,[EVA_ID, EVA_PUNTAJE, EVA_RESULTADO]);
+      if(result[0].affectedRows > 0)
+      {
+        res.json({message: "Se actualizó correctamente"});
+      }else{
+        res.json({message: "No se pudo actualizar|"});
+      }
+    }
     public async delete(req:Request, res:Response):Promise<void>{
         const query = "CALL sp_eliminar_evaluacion(?)";
         const {id} = req.params;

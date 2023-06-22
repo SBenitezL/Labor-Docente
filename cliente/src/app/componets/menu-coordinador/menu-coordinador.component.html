@@ -27,6 +27,25 @@
 
 
 	</div> 
+	<div *ngIf="notificaciones.length == 0">
+		<p>No se encuentran notificaciones registradas para usted.</p>
+	</div>
+	  
+	
+	<table *ngIf="notificaciones.length > 0">
+	<caption>Notificaciones</caption>
+		<thead>
+			<td>Mensaje</td>
+			<td>Fecha</td>
+		</thead>
+		<tbody>
+			<tr *ngFor="let notificacion of notificaciones" >
+				<td class = "msj" data-label="Mensaje">{{notificacion.NOTI_MSJ}}</td>
+				<td data-label="Fecha">{{notificacion.NOT_FECHA|date:'dd/MM/yyyy'}}</td>
+			</tr>
+		</tbody>
+	</table>		
+
 	<div id="footer" class="footer-con-imagen">
 	  <div class="imagen-con-textoF">
 		<div class="texto-con-lineaF">

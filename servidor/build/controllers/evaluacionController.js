@@ -37,6 +37,19 @@ class EvaluacionController {
             res.json({ text: "Creando evaluacion..." });
         });
     }
+    updateOwn(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const query = "CALL sp_ingresar_values(?,?,?)";
+            const { EVA_ID, EVA_PUNTAJE, EVA_RESULTADO } = req.body;
+            const result = yield database_1.default.query(query, [EVA_ID, EVA_PUNTAJE, EVA_RESULTADO]);
+            if (result[0].affectedRows > 0) {
+                res.json({ message: "Se actualizó correctamente" });
+            }
+            else {
+                res.json({ message: "No se pudo actualizar|" });
+            }
+        });
+    }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const query = "CALL sp_eliminar_evaluacion(?)";

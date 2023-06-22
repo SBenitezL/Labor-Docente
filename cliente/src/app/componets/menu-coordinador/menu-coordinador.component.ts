@@ -3,6 +3,7 @@ import { Component ,OnInit} from '@angular/core';
 import { Usuario } from '../../Modelo/Usuario';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
+import { Notificacion } from 'src/app/Modelo/Notificacion';
 
 @Component({
   selector: 'app-menu-coordinador',
@@ -21,6 +22,7 @@ export class MenuCoordinadorComponent {
     USR_Contrasenia: '',
   
   };
+  notificaciones:Notificacion[] = [];
   sesion = 0;
   constructor(private router:Router,private activeRouter: ActivatedRoute,private serviceService: ServiceService){
     this.sesion = this.activeRouter.snapshot.params["id"];
@@ -35,7 +37,18 @@ export class MenuCoordinadorComponent {
             ,
           err => console.error(err)
         );
-
+        this.cargarNotificaciones();
+  }
+  cargarNotificaciones()
+  {
+    this.serviceService.getNotificacionesUser(this.sesion).subscribe(
+      res => {
+        this.notificaciones = res as Notificacion[];
+        console.log(this.notificaciones);
+        } 
+        ,
+      err => console.error(err)
+    );
   }
   IrGestionDocente() {
     this.router.navigate(['/listar']);

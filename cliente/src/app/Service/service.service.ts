@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../Modelo/Usuario';
 import { Evaluacion } from '../Modelo/Evaluacion';
 import { EvaluacionEst } from '../Modelo/EvaluacionEstructura';
+import { EvaluacionEdit } from '../Modelo/EvaluacionEdit';
 import {} from '../Modelo/Usuario';
 import { LaborDocente } from '../Modelo/LaborDocente';
 import { Observable } from 'rxjs';
@@ -104,5 +105,11 @@ export class ServiceService {
   }
   getToEditEvaluacion(id:number){
     return this.http.get(`${this.API_URI}/evaluacion/edit/${id}`)
+  }
+  getNotificacionesUser(id:number){
+    return this.http.get(`${this.API_URI}/notificacion/${id}`);
+  }
+  updateOwnEvaluacion(datos:EvaluacionEdit){
+    return this.http.post(`${this.API_URI}/evaluacion/update/own`,datos);
   }
 }

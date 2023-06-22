@@ -18,6 +18,7 @@ class EvaluacionRoutes {
         this.router.delete("/:id", evaluacionController_1.default.delete);
         this.router.get("/edit/:id", evaluacionController_1.default.getToEdit);
         this.router.get("/notificar/funcion", evaluacionController_1.default.getToNotify);
+        this.router.post("/update/own", evaluacionController_1.default.updateOwn);
     }
 }
 const evaluacionRoutes = new EvaluacionRoutes();

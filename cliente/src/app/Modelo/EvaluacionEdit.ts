@@ -8,4 +8,7 @@ export interface EvaluacionEdit{
     PER_ID:  number;
     PER_NOMBRE: string;
     EVA_ESTADO: number;
+    EVA_RESULTADO: string;
+    EVA_PUNTAJE:number;
+    EVA_ID:number;
 }

@@ -31,7 +31,10 @@ export class EvaluacionFormComponent {
     ROL_NAME: "",
     PER_ID:  0,
     PER_NOMBRE: "",
-    EVA_ESTADO: 0
+    EVA_ESTADO: 0,
+    EVA_RESULTADO: "",
+    EVA_PUNTAJE:0,
+    EVA_ID:0
   }
 
   usuarios:UseRolUtil[]=[];

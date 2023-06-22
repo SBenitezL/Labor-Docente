@@ -17,11 +17,11 @@ const database_1 = __importDefault(require("../database"));
 class NotificacionController {
     getNotificaciones(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "CALL sp_getnotificaciones(?)";
+            const query = "CALL sp_get_notificaciones(?)";
             const { id } = req.params;
             const notificaciones = yield database_1.default.query(query, [id]);
-            console.log(notificaciones);
-            res.json({ message: "Realizado" });
+            const rows = notificaciones[0][0];
+            res.json(rows);
         });
     }
 }
