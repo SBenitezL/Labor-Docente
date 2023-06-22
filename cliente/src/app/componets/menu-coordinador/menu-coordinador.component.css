@@ -139,3 +139,13 @@
   width: 60%;
   height: auto;
 }
+.table{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+.table caption{
+  font-size: 28px;
+  text-transform: uppercase;
+}
