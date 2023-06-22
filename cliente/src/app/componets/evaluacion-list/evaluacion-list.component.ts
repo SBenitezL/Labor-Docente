@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Evaluacion } from 'src/app/Modelo/Evaluacion';
 import { ServiceService } from 'src/app/Service/service.service';
 import { Router } from '@angular/router';
+import { currentUser } from '../control-vista/control-vista.component';
 
 @Component({
   selector: 'app-evaluacion-list',
@@ -49,5 +50,14 @@ export class EvaluacionListComponent {
       },
       err=>console.log(err)
     );
+  }
+  IrGestionDocente() {
+    this.router.navigate(['/listar']);
+  }
+  IrGestionLabor() {
+    this.router.navigate(['/listarL']);
+  }
+  IrInicio(){
+    this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
+import { EvaluacionEdit } from 'src/app/Modelo/EvaluacionEdit';
 import { Evaluacion } from 'src/app/Modelo/Evaluacion';
 import { Usuario } from 'src/app/Modelo/Usuario';
 
@@ -9,8 +10,23 @@ import { Usuario } from 'src/app/Modelo/Usuario';
   templateUrl: './docente.component.html',
   styleUrls: ['./docente.component.css']
 })
-export class DocenteComponent implements OnInit { 
-  evaluaciones: Evaluacion[] = [];
+export class DocenteComponent implements OnInit {
+  evaluaciones : Evaluacion[]=[]
+
+  evaluacionEdit:EvaluacionEdit={
+    LAB_ID: 0,
+    LAB_NOMBRE: "",
+    USR_ID: 0,
+    USR_NOMBRE: "",
+    ROL_ID: 0,
+    ROL_NAME: "",
+    PER_ID:  0,
+    PER_NOMBRE: "",
+    EVA_ESTADO: 0,
+    EVA_RESULTADO: "",
+    EVA_PUNTAJE:0,
+    EVA_ID:0
+  }
   usuario: Usuario  = {
     USR_IDENTIFICACION: 0,
     USU_NOMBRE: '',
@@ -21,8 +37,10 @@ export class DocenteComponent implements OnInit {
     USR_Contrasenia: '' 
   };
 
+  bandera:boolean =false;
+  edit:boolean = false;
 
-  constructor(private activeRouter: ActivatedRoute, private serviceService: ServiceService) { }
+  constructor(private router: Router,private activeRouter: ActivatedRoute, private serviceService: ServiceService) { }
   estados: { [key: number]: string } = {
     1: "Ejecución",
     2: "Terminado",
@@ -31,29 +49,40 @@ export class DocenteComponent implements OnInit {
   estadoForm= [1,2,3];
   ngOnInit() {
     const id = this.activeRouter.snapshot.params['id'];
-    console.log('Valor de id :', id); 
+    console.log('Valor de id:', id);
 
     if (id) {
-      this.serviceService.getUsuario(id).subscribe(
-        (res: any) => {
-          console.log(res);
-          this.usuario = res as Usuario;
-          this.getEvaluacion(id);
-        },
-        err => console.error(err)
-      );
+        this.serviceService.getEvaluacion(id).subscribe(
+          (res: any) => {
+            console.log(res);
+            this.evaluacionEdit = res as EvaluacionEdit;
+            this.edit = true;
+          },
+          err => console.error(err)
+        );
     }
-  }
-
-  getEvaluacion(docenteId: number) {
-    console.log('Valor de id en getEvaluacion:', docenteId); 
-    this.serviceService.getEvaluacion(docenteId).subscribe(
+    this.serviceService.getEvaluacion(id).subscribe(
       (res: any) => {
         console.log(res);
         this.evaluaciones = res;
       },
       err => console.error(err)
     );
+  }
+  
+
+  updateOwnEvaluacion()
+  {
+    this.serviceService.updateOwnEvaluacion(this.evaluacionEdit).subscribe(
+      res =>{
+        
+        console.log(res);
+        
+        this.bandera = true;
+        this.router.navigate(['/evaluacion']);
+      },
+      err =>console.error(err)
+    )
   }
   formatFecha(fecha: string | Date): string {
     if (typeof fecha === 'string') {
