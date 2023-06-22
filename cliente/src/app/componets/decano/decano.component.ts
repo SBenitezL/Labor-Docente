@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
 import { Evaluacion } from 'src/app/Modelo/Evaluacion';
 import { Usuario } from 'src/app/Modelo/Usuario';
+import { currentUser } from '../control-vista/control-vista.component';
+import { Notificacion } from 'src/app/Modelo/Notificacion';
 
 @Component({
   selector: 'app-decano',
@@ -20,24 +22,32 @@ export class DecanoComponent implements OnInit{
       UserName: '',
       USR_Contrasenia: '' 
     };
-  
-  
-    constructor(private activeRouter: ActivatedRoute, private serviceService: ServiceService) { }
+    notificaciones:Notificacion[] = [];
+    id = currentUser.getCurrent();
+    constructor(private serviceService: ServiceService) { }
   
     ngOnInit() {
-      const id = this.activeRouter.snapshot.params['id'];
-      console.log('Valor de id :', id); 
+      console.log('Valor de id :', this.id); 
   
-      if (id) {
-        this.serviceService.getUsuario(id).subscribe(
+      if (this.id) {
+        this.serviceService.getUsuario(this.id).subscribe(
           (res: any) => {
             console.log(res);
             this.usuario = res as Usuario;
-            this.getEvaluacion(id);
+            this.getEvaluacion(this.id);
           },
           err => console.error(err)
         );
       }
+    }
+    getNotificaciones()
+    {
+     this.serviceService.getNotificacionesUser(this.id).subscribe(
+      res=>{
+        this.notificaciones = res as Notificacion[];
+      },
+      err=>console.log(err)
+     );
     }
   
     getEvaluacion(docenteId: number) {
