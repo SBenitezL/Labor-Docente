@@ -87,4 +87,8 @@ export class LaborDocenteListarComponent {
   cerrarModal() {
     this.mostrar = false;
   }
+  IrPeriodo()
+  {
+    this.router.navigate(['/periodo']);
+  }
 }

@@ -105,6 +105,10 @@ export class LaborDocenteEditarComponent implements OnInit{
     this.mostrar = false;
     this.router.navigate(['/listarL']);
   }
+  IrPeriodo()
+  {
+    this.router.navigate(['/periodo']);
+  }
 }
 
 

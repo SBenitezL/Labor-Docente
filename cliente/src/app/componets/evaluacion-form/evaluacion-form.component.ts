@@ -167,6 +167,10 @@ export class EvaluacionFormComponent {
   IrInicio(){
     this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
   }
+  IrPeriodo()
+  {
+    this.router.navigate(['/periodo']);
+  }
   cerrarModal() {
     this.mostrar = false;
   }

@@ -124,6 +124,10 @@ export class UsuarioAgregarComponent implements OnInit{
       this.mostrar = false;
       this.router.navigate(['/listar']);
     }
+    IrPeriodo()
+    {
+      this.router.navigate(['/periodo']);
+    }
     public mostrarContrasenia: boolean = false;
     public contrasenia: string = '';
 

@@ -111,4 +111,8 @@ export class LaborDocenteAgregarComponent {
     this.mostrar = false;
     this.router.navigate(['/listarL']);
   }
+  IrPeriodo()
+  {
+    this.router.navigate(['/periodo']);
+  }
 }

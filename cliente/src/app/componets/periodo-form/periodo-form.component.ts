@@ -89,5 +89,8 @@ export class PeriodoFormComponent {
   IrPeriodo(){
     this.router.navigate(['/periodo']);
   }
+  IrInicio(){
+    this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
+  }
 
 }

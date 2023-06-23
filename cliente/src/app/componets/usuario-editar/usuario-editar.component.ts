@@ -94,7 +94,10 @@
     }
     
 
-    
+  IrPeriodo()
+  {
+    this.router.navigate(['/periodo']);
+  }
     IrGestionDocente() {
       this.router.navigate(['/listar']);
     }

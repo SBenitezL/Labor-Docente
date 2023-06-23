@@ -63,4 +63,8 @@ export class EvaluacionListComponent {
   IrEvaluacion() {
     this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
   }
+  IrPeriodo()
+  {
+    this.router.navigate(['/periodo']);
+  }
 }

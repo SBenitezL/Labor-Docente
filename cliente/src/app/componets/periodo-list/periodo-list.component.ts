@@ -46,4 +46,7 @@ export class PeriodoListComponent {
   {
     this.router.navigate(['/periodo/add']);
   }
+  IrInicio(){
+    this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
+  }
 }
