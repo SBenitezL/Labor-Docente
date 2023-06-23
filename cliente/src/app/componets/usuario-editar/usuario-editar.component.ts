@@ -80,7 +80,6 @@
         res => {
           this.mostrar = true;
           console.log(res);
-          this.router.navigate(['/listar']);
         },
         err => console.error(err)
       );
@@ -113,6 +112,8 @@
     }
     cerrarModal() {
       this.mostrar = false;
+      this.router.navigate(['/listar']);
+
     }
 
   }
