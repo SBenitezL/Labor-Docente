@@ -16,6 +16,7 @@ class PeriodoRoutes {
         this.router.post('/add', periodoController_1.default.insert);
         this.router.get('/to/list', periodoController_1.default.getAll);
         this.router.post('/edit', periodoController_1.default.editPeriodo);
+        this.router.put('/delete/:id', periodoController_1.default.eliminar);
     }
 }
 const periodoRoutes = new PeriodoRoutes();
