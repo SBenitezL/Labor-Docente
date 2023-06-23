@@ -98,6 +98,7 @@
       this.evaluacionEdit.EVA_ID= inst.ID;
       this.evaluacionEdit.EVA_RESULTADO=inst.Resultado;
       this.evaluacionEdit.EVA_PUNTAJE= inst.Puntaje;
+      console.log(this.evaluacionEdit);
       this.serviceService.updateOwnEvaluacion(this.evaluacionEdit).subscribe(
         res =>{
           console.log(res);
@@ -115,7 +116,6 @@
           }else{
                this.guardarArchivo(event);
           } 
-
       
     }
     
