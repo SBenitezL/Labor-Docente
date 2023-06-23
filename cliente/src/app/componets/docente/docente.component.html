@@ -80,15 +80,20 @@
                             <td class="quintoI">{{ evaluacion.Inicio | date:'dd/MM/yyyy' }}</td>
                             <td class="sextoI">{{ evaluacion.Fin | date:'dd/MM/yyyy' }}</td>
                             <td class="septimoI">{{ estados[evaluacion.Estado] }}</td>
-                            <ng-container *ngIf="rol === 5">
+                            
+                            <div *ngIf="rol === 5">
                               <td><input class="octavoI" type="text" required></td>
                               <td><input class="novenoI" type="text" required></td>
-                            </ng-container>
+                            </div>
                             
-                            <ng-container *ngIf="rol === 3 || rol === 4">
-                              <td><input class="octavoI"type="file" (change)="guardarArchivo($event)"></td>
+                            <div *ngIf="rol === 3 ">
+                              <td><input class="octavoI"type="file" required (change)="guardarArchivo($event) "></td>
                               <td><input class="novenoI" type="text" required></td>
-                            </ng-container>
+                            </div>
+                            <div *ngIf=" rol === 4">
+                              <td><input class="octavoI"type="file" required (change)="guardarArchivo($event) "></td>
+                              <td><input class="novenoI" type="text" required></td>
+                            </div>
                           </tr>
                         </tbody>
               

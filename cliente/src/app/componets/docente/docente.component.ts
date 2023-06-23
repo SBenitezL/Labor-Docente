@@ -17,7 +17,7 @@
   })
 
   export class DocenteComponent implements OnInit {
-    rol=0;
+    rol:number=0;
     evaluaciones : Evaluacion[]=[]
     evaluacionEdita : EvaluacionEdit[]=[]
 
@@ -67,11 +67,12 @@
         (res: any) => {
           console.log(res);
           this.usuario = Object.assign({}, res) as Usuario & UseRol;
+          this.rol=this.usuario.ROL_ID;
           this.edit = true;
         },
         err => console.error(err)
       );
-      this.rol=this.usuario.ROL_ID;
+      
       console.log(this.rol);
       if (id) {
         console.log("entra"+id)
@@ -90,8 +91,7 @@
       
       
     }
-    
-    guardarEvaluacion() {
+    guardarDocenteCAT_TC(){
       const input1 = this.elementRef.nativeElement.querySelectorAll('.octavoI');
       const input2 = this.elementRef.nativeElement.querySelectorAll('.novenoI');
 
@@ -112,6 +112,14 @@
       console.log(valoresColumna2);
     
       // Aquí puedes realizar acciones adicionales, como asignar los valores capturados a la evaluación editada o llamar a un método para procesarlos.
+    
+    }
+    guardarEvaluacion() {
+      if(this.rol ==3 || this.rol==4){
+          this.guardarDocenteCAT_TC();
+      }else{
+
+      }
     }
     
     
