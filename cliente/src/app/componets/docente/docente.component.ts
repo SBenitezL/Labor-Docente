@@ -103,7 +103,7 @@
         res =>{
           console.log(res);
           this.bandera = true;
-          this.router.navigate(['/evaluacion']);
+          this.mostrar=true;
         },
         err =>console.error(err)
       )
@@ -112,9 +112,10 @@
     updateOwnEvaluacion(inst:Evaluacion)
     {
           if(this.rol ==3 || this.rol==4){
-               this.guardarDocenteCAT_TC(inst);
+            this.guardarArchivo(event);
+               
           }else{
-               this.guardarArchivo(event);
+            this.guardarDocenteCAT_TC(inst);    
           } 
       
     }
@@ -156,7 +157,8 @@
     }
     cerrarModal() {
       this.mostrar = false;
-      this.router.navigate(['/evaluacion']);
+      this.router.navigate(['/docente']);
+
     }
   }
   
