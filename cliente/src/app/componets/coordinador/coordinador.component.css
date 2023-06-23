@@ -179,7 +179,15 @@ h3{
   border-radius: 5px;
   border: 1px solid #686565;
 }
-
+.btn.btn-primary{
+  background: #0D4185;
+  color: #ddd;
+  margin: 10px;
+}
+.btn.btn-primary:hover{
+  background: #ffffff;
+  color: #151414;
+}
 /*Footer*/
 #footer {
     display: flex;

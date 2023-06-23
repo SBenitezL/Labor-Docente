@@ -97,24 +97,39 @@
       this.evaluacionEdit.EVA_ID= inst.ID;
       this.evaluacionEdit.EVA_RESULTADO=inst.Resultado;
       this.evaluacionEdit.EVA_PUNTAJE= inst.Puntaje;
+      console.log(this.evaluacionEdit);
       this.serviceService.updateOwnEvaluacion(this.evaluacionEdit).subscribe(
         res =>{
           console.log(res);
           this.bandera = true;
-          this.router.navigate(['/evaluacion']);
+          this.mostrar=true;
         },
         err =>console.error(err)
       )
     }
-    
-    updateOwnEvaluacion(evaI:Evaluacion )
+    mostrar:boolean = false;
+    guardarPuntajeDocentes(inst:Evaluacion){
+      console.log(this.evaluacionEdit.EVA_ID)
+      this.evaluacionEdit.EVA_ID= inst.ID;
+      this.evaluacionEdit.EVA_PUNTAJE= inst.Puntaje;
+      console.log(this.evaluacionEdit);
+      this.serviceService.updateOwnEvaluacion(this.evaluacionEdit).subscribe(
+        res =>{
+          console.log(res);
+          this.bandera = true;
+          this.mostrar=true;
+        },
+        err =>console.error(err)
+      )
+    }
+    updateOwnEvaluacion(inst:Evaluacion)
     {
-          /*if(this.rol ==3 || this.rol==4){
-               this.guardarDocenteCAT_TC(evaI);
+          if(this.rol ==3 || this.rol==4){
+             this.guardarPuntajeDocentes(inst);
+               
           }else{
-               this.guardarArchivo(event);
-          } */
-
+            this.guardarDocenteCAT_TC(inst);    
+          } 
       
     }
     
@@ -156,4 +171,10 @@
     getEstadosKeys(){
       console.log(Object.keys(this.estados));
     }
+    cerrarModal() {
+      this.mostrar = false;
+      this.router.navigate(['/docente']);
+
+    }
   }
+  
