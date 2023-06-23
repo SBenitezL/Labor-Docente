@@ -8,7 +8,7 @@ import evaluacionRoutes from "./routes/evaluacionRoutes";
 import periodoRoutes from "./routes/periodoRoutes";
 import userrolRoutes from "./routes/userrolRoutes";
 import notificacionRoutes from "./routes/notificacionRoutes";
-
+import multer from 'multer';
 class Servidor{
     public app: Application;
     constructor(){
@@ -37,7 +37,14 @@ class Servidor{
             console.log('Servidor en puerto', this.app.get('port'));
         });
     }
-
+    storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+          cb(null, 'uploads/'); // Carpeta donde se guardarán los archivos
+        },
+        filename: function (req, file, cb) {
+          cb(null, file.originalname); // Nombre del archivo original
+        }
+      });
 
 }
 const server=new Servidor();
