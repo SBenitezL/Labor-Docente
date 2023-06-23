@@ -21,7 +21,7 @@ export class PeriodoFormComponent {
   active:boolean = false
   edit:number = 0;
   constructor(private evaluacionServices:ServiceService, private router:Router,  private activatedRoute:ActivatedRoute){
-    
+    this.onInit();
   }
   onInit(){
     const params = this.activatedRoute.snapshot.params;
@@ -29,6 +29,8 @@ export class PeriodoFormComponent {
     if(this.edit){
       this.active = true;
       this.recuperarPeriodo();
+      console.log(this.edit);
+      console.log(this.active);
     }
   }
 

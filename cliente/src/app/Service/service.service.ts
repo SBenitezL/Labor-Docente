@@ -118,7 +118,7 @@ export class ServiceService {
   }
   updatePeriodo(periodo:PeriodoUtil)
   {
-    return this.http.post(`${this.API_URI}/periodo/edit`, periodo);
+    return this.http.post(`${this.API_URI}/periodo/edit`,periodo);
   }
   validarContrasenia(contrasenia:string, login:string){
     return this.http.get(`${this.API_URI}/usuarios/${contrasenia}/${login}`);

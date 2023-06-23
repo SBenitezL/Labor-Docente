@@ -26,7 +26,7 @@
 <div class="container">
             <div class="form-container">
 				<h2>Periodo Académico</h2>
-				<form action="#" method="post">
+				<form action="#">
 				  <label for="name">Nombre:</label>
 				  <input type="text" id="name" name="name" required [(ngModel)]="periodo.PER_NOMBRE">
 			
@@ -36,7 +36,7 @@
 				  <label for="end-date">Fecha de fin:</label>
 				  <input type="date" id="end-date" name="end-date" required [(ngModel)]="periodo.PER_FECHAFIN">
 			
-				  <input type="submit" value="Guardar" (click)= "active ? editar() : insertar()" class="btn btn-warning">
+				  <input type="submit" value="Guardar" (click)= " active ? editar() : insertar() " class="btn btn-warning">
 				</form>
 			  </div>
         </div>

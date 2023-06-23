@@ -36,15 +36,6 @@ class PeriodoController{
         else
             res.json({message:"No se logró actualizar.", icon: "error"});
     }
-    public async eliminar(req:Request, res:Response){
-        const query = "CALL sp_eliminar_periodo(?)"
-        const {id} = req.params;
-        const resultado:any = await db.query(query,[id]);
-        if(resultado.affectedRows>0)
-            res.json({message:"Se eliminó correctamente"});
-        else
-            res.json({message: "No se pudo eliminar."})
-    }
 }
 
 const periodoController = new PeriodoController();

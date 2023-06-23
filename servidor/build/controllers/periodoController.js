@@ -55,17 +55,6 @@ class PeriodoController {
                 res.json({ message: "No se logró actualizar.", icon: "error" });
         });
     }
-    eliminar(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const query = "CALL sp_eliminar_periodo(?)";
-            const { id } = req.params;
-            const resultado = yield database_1.default.query(query, [id]);
-            if (resultado.affectedRows > 0)
-                res.json({ message: "Se eliminó correctamente" });
-            else
-                res.json({ message: "No se pudo eliminar." });
-        });
-    }
 }
 const periodoController = new PeriodoController();
 exports.default = periodoController;

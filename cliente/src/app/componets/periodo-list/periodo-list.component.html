@@ -38,8 +38,7 @@
 					<td>{{periodo.PER_FECHAINICIO| date:'dd/MM/yyyy'}}</td>
 					<td>{{periodo.PER_FECHAFIN | date:'dd/MM/yyyy'}}</td>
 					<td>
-						<!-- <button [routerLink]="['/evaluacion/edit',evaluacion.ID]" class="btn btn-warning">Editar</button>
-						<button class="btn btn-warning" (click)="deleteEvaluacion(evaluacion.ID)" style="margin-left: 10px;">Eliminar</button> -->
+						<button  [routerLink]="['/periodo/edit',periodo.PER_ID]" class="btn btn-warning">Editar</button>
 					</td>
 				</tr>
 			</tbody>
