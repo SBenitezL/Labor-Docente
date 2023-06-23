@@ -69,7 +69,7 @@ class UsuariosControllers{
         }
       }
       
-    public async create(req: Request, res: Response): Promise<void> {
+    public async create(req: Request, res: Response) {
       const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
       
       //const constraseniaHash =  await bcrypt.hash(USR_Contrasenia, 10);
@@ -83,8 +83,8 @@ class UsuariosControllers{
         
         
         if (existingUser.length > 0) {
-          res.status(500).json({ message: 'El nombre de usuario ya está registrado.' });
-          return;
+          res.json({ message: 'El nombre de usuario ya está registrado.' });
+          return 0;
         }
         // Paso 1: Insertar el usuario en la tabla USUARIO
 
@@ -94,6 +94,7 @@ class UsuariosControllers{
         await db.query('INSERT INTO USEROL (USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN) VALUES (?, ?, ?, ?)', [USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN]);
     
         res.json({ message: 'Usuario insertado correctamente.' });
+        return 1;
       } catch (error) {
         res.status(500).json({ message: 'Error al insertar el usuario.' });
       }
