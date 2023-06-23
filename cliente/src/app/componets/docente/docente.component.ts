@@ -14,7 +14,7 @@ import { currentUser } from 'src/app/componets/control-vista/control-vista.compo
 })
 
 export class DocenteComponent implements OnInit {
-  rol=0;
+  rol:number=0;
   evaluaciones : Evaluacion[]=[]
   evaluacionEdita : EvaluacionEdit[]=[]
 
@@ -63,11 +63,12 @@ export class DocenteComponent implements OnInit {
       (res: any) => {
         console.log(res);
         this.usuario = Object.assign({}, res) as Usuario & UseRol;
+        this.rol= this.usuario.ROL_ID;
         this.edit = true;
       },
       err => console.error(err)
     );
-    this.rol=this.usuario.ROL_ID;
+    
     if (id) {
       console.log("entra"+id)
         this.serviceService.getEvaluacion(id).subscribe(
