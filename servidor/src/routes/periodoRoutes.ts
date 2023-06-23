@@ -10,7 +10,10 @@ class PeriodoRoutes{
     public config():void{
         
         this.router.get('/',periodoController.getToAdd);
+        this.router.get('/:id',periodoController.getToEdit);
         this.router.post('/add',periodoController.insert);
+        this.router.get('/to/list',periodoController.getAll);
+        this.router.post('/edit',periodoController.editPeriodo);
     }
 }
 

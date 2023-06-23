@@ -105,6 +105,17 @@ export class ServiceService {
   {
     return this.http.get(`${this.API_URI}/periodo`);
   }
+  getPeriodos()
+  {
+    return this.http.get(`${this.API_URI}/periodo/to/list`);
+  }
+  getPeriodoEdit(id:number){
+    return this.http.get(`${this.API_URI}/periodo/${id}`);
+  }
+  updatePeriodo(periodo:PeriodoUtil)
+  {
+    return this.http.post(`${this.API_URI}/periodo/edit`, periodo);
+  }
   validarContrasenia(contrasenia:string, login:string){
     return this.http.get(`${this.API_URI}/usuarios/${contrasenia}/${login}`);
   }

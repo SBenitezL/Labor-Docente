@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { currentUser } from '../control-vista/control-vista.component';
+import { PeriodoUtil } from 'src/app/Modelo/PeriodoUtil';
+import { ServiceService } from 'src/app/Service/service.service';
 
 @Component({
   selector: 'app-periodo-list',
@@ -9,11 +11,20 @@ import { currentUser } from '../control-vista/control-vista.component';
 })
 export class PeriodoListComponent {
 
-  constructor(private router:Router)
+  periodos:PeriodoUtil[]=[]
+  constructor(private router:Router, private periodoServices:ServiceService)
   {
-    
+    this.getRows();
   }
-
+  getRows(){
+    this.periodoServices.getPeriodos().subscribe(
+      res=>{
+        console.log(res);
+        this.periodos = res as PeriodoUtil[];
+      },
+      err=>console.log(err)
+    );
+  }
   IrGestionDocente() {
     this.router.navigate(['/listar']);
   }

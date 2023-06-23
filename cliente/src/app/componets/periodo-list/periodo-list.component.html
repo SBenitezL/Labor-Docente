@@ -33,15 +33,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!-- <tr *ngFor="let evaluacion of evaluaciones" class="text-center">
-					<td>{{evaluacion.NombreCompleto}}</td>				
-					<td>{{evaluacion.Inicio | date:'dd/MM/yyyy'}}</td>
-					<td>{{evaluacion.Fin | date:'dd/MM/yyyy'}}</td>
+				<tr *ngFor="let periodo of periodos" class="text-center">
+					<td>{{periodo.PER_NOMBRE}}</td>				
+					<td>{{periodo.PER_FECHAINICIO| date:'dd/MM/yyyy'}}</td>
+					<td>{{periodo.PER_FECHAFIN | date:'dd/MM/yyyy'}}</td>
 					<td>
-						<button [routerLink]="['/evaluacion/edit',evaluacion.ID]" class="btn btn-warning">Editar</button>
-						<button class="btn btn-warning" (click)="deleteEvaluacion(evaluacion.ID)" style="margin-left: 10px;">Eliminar</button>
+						<!-- <button [routerLink]="['/evaluacion/edit',evaluacion.ID]" class="btn btn-warning">Editar</button>
+						<button class="btn btn-warning" (click)="deleteEvaluacion(evaluacion.ID)" style="margin-left: 10px;">Eliminar</button> -->
 					</td>
-				</tr> -->
+				</tr>
 			</tbody>
 		</table>
 	</div>

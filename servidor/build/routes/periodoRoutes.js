@@ -12,7 +12,10 @@ class PeriodoRoutes {
     }
     config() {
         this.router.get('/', periodoController_1.default.getToAdd);
+        this.router.get('/:id', periodoController_1.default.getToEdit);
         this.router.post('/add', periodoController_1.default.insert);
+        this.router.get('/to/list', periodoController_1.default.getAll);
+        this.router.post('/edit', periodoController_1.default.editPeriodo);
     }
 }
 const periodoRoutes = new PeriodoRoutes();

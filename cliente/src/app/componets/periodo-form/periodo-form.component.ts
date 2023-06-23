@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { PeriodoUtil } from 'src/app/Modelo/PeriodoUtil';
 import { currentUser } from '../control-vista/control-vista.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
+import Swal from 'sweetalert2';
+import { Mensaje } from 'src/app/Modelo/Mensaje';
 
 @Component({
   selector: 'app-periodo-form',
@@ -16,15 +18,54 @@ export class PeriodoFormComponent {
     PER_FECHAINICIO: new Date(),
     PER_FECHAFIN: new Date()
   }
+  active:boolean = false
+  edit:number = 0;
+  constructor(private evaluacionServices:ServiceService, private router:Router,  private activatedRoute:ActivatedRoute){
+    
+  }
+  onInit(){
+    const params = this.activatedRoute.snapshot.params;
+    this.edit = params["id"];
+    if(this.edit){
+      this.active = true;
+      this.recuperarPeriodo();
+    }
+  }
 
-  constructor(private evaluacionServices:ServiceService, private router:Router){
-
+  recuperarPeriodo(){
+    this.evaluacionServices.getPeriodoEdit(this.edit).subscribe(
+      res=>{
+        console.log(res);
+        this.periodo = res as PeriodoUtil;
+      },
+      err=>console.log(err)
+    );
+    
+  }
+  editar(){
+    this.evaluacionServices.updatePeriodo(this.periodo).subscribe(
+      res=>{
+        const mensaje:Mensaje = res as Mensaje;
+        Swal.fire(
+          mensaje.message,
+          'info'
+        )
+        this.router.navigate([`/periodo`]);
+      },
+      err=>console.log(err)
+    );
   }
 
   insertar(){
     this.evaluacionServices.insertPeriodo(this.periodo).subscribe(
       res =>{
-        console.log(res);
+        const mensaje:Mensaje = res as Mensaje;
+        Swal.fire({
+          text:mensaje.message,
+          icon: "info"
+        }
+        
+        )
         this.router.navigate([`/periodo`]);
       },
       err => console.log(err)
