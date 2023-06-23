@@ -76,7 +76,7 @@ class UsuariosControllers{
      
 
       const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
-      console.log(constraseniaHash); // Imprime el hash generado 
+      console.log(UserName+"--"+constraseniaHash); // Imprime el hash generado 
       
       try {
         // Paso 1: Insertar el usuario en la tabla USUARIO
@@ -132,7 +132,7 @@ class UsuariosControllers{
       
 
       const constraseniaHash = bcrypt.hashSync(contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
-      console.log(constraseniaHash); // Imprime el hash generado 
+      console.log("VERIFICAR CONTRAEÑA"+constraseniaHash); // Imprime el hash generado 
        const query = `
           SELECT UR.ROL_ID, U.USR_IDENTIFICACION
           FROM USUARIO U
@@ -144,7 +144,7 @@ class UsuariosControllers{
           const rows = await db.query(query, [login , constraseniaHash]);
       
           if (rows.length > 0) {
-            
+            console.log()
             return res.json((rows[0]));
           }
       
