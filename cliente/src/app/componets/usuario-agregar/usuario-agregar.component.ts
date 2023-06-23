@@ -52,6 +52,7 @@ export class UsuarioAgregarComponent implements OnInit{
    
     usuarioAgregado: boolean = false;
     mostrar: boolean = false;
+    mensajeUsuario:string = "";
     auxIdentificacion : string = '';
     saveNewUsuario(): void {
       this.usuario.USR_Contrasenia = this.contrasenia;
@@ -60,9 +61,12 @@ export class UsuarioAgregarComponent implements OnInit{
       //this.mostrar = true;
       this.serviceService.saveUsuario(this.usuario)
         .subscribe(
-          res => {
+          (res:any) => {
+            
+            this.mensajeUsuario = res.message;
+            console.log(this.mensajeUsuario);
             this.mostrar = true;
-            console.log(res);
+            
             this.usuarioAgregado = true;       
             
           },

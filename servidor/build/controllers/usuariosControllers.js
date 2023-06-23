@@ -115,14 +115,15 @@ class UsuariosControllers {
             try {
                 const existingUser = yield database_1.default.query('SELECT UserName FROM USUARIO WHERE UserName = ?', [UserName]);
                 if (existingUser.length > 0) {
-                    res.status(500).json({ message: 'El nombre de usuario ya está registrado.' });
-                    return;
+                    res.json({ message: 'El nombre de usuario ya está registrado.' });
+                    return 0;
                 }
                 // Paso 1: Insertar el usuario en la tabla USUARIO
                 yield database_1.default.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, UserName]);
                 // Paso 2: Insertar el registro en la tabla USEROL con las fechas correspondientes
                 yield database_1.default.query('INSERT INTO USEROL (USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN) VALUES (?, ?, ?, ?)', [USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN]);
                 res.json({ message: 'Usuario insertado correctamente.' });
+                return 1;
             }
             catch (error) {
                 res.status(500).json({ message: 'Error al insertar el usuario.' });
