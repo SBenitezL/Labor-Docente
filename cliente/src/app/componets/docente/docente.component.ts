@@ -6,6 +6,7 @@
   import { Usuario } from 'src/app/Modelo/Usuario';
   import { UseRol } from '../../Modelo/UseRol';
   import { HttpClient } from '@angular/common/http';
+  import { Archivo } from '../../Modelo/Archivo';
 
 
   import { currentUser } from 'src/app/componets/control-vista/control-vista.component';
@@ -71,12 +72,14 @@
         err => console.error(err)
       );
       this.rol=this.usuario.ROL_ID;
+      console.log(this.rol);
       if (id) {
         console.log("entra"+id)
           this.serviceService.getEvaluacion(id).subscribe(
             (res: any) => {
 
               console.log(res);
+             
               this.evaluaciones = res;
               this.edit = true;
             },
@@ -128,21 +131,17 @@
     }
     
 
-  onArchivoSeleccionado(event: any) {
+ /* onArchivoSeleccionado(event: any) {
     this.archivoSeleccionado = event.target.files[0];
   }
+  */
 
-  guardarArchivo() {
+  guardarArchivo(event: any) {
     if (this.archivoSeleccionado) {
-      const nombreArchivo = this.archivoSeleccionado.name;
-      const tipoArchivo = this.archivoSeleccionado.type;
-
+      const file = event.target.files[0];
       const formData = new FormData();
-      formData.append('archivo', this.archivoSeleccionado);
-      formData.append('nombre', nombreArchivo);
-      formData.append('tipo', tipoArchivo);
 
-      this.http.post('/guardar-archivo', formData).subscribe(
+      this.serviceService.enviarArchivo(formData).subscribe(
         () => {
           console.log('Archivo enviado correctamente');
           // Realizar las acciones necesarias después de enviar el archivo
