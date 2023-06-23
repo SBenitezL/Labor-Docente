@@ -108,11 +108,11 @@
         err =>console.error(err)
       )
     }
-    
-    updateOwnEvaluacion(evaI:Evaluacion )
+    mostrar:boolean = false;
+    updateOwnEvaluacion(inst:Evaluacion)
     {
           if(this.rol ==3 || this.rol==4){
-               this.guardarDocenteCAT_TC(evaI);
+               this.guardarDocenteCAT_TC(inst);
           }else{
                this.guardarArchivo(event);
           } 
@@ -154,4 +154,9 @@
     getEstadosKeys(){
       console.log(Object.keys(this.estados));
     }
+    cerrarModal() {
+      this.mostrar = false;
+      this.router.navigate(['/evaluacion']);
+    }
   }
+  

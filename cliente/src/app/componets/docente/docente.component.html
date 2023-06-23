@@ -80,7 +80,11 @@
                             <td class="quintoI">{{ evaluacion.Inicio | date:'dd/MM/yyyy' }}</td>
                             <td class="sextoI">{{ evaluacion.Fin | date:'dd/MM/yyyy' }}</td>
                             <td class="septimoI">{{ estados[evaluacion.Estado] }}</td>
+                            <td><input class="octavoI"[(ngModel)]="evaluacion.Resultado"type="text" required></td>
+                            <td><input class="novenoI" [(ngModel)]="evaluacion.Puntaje"type="text" required></td>
                             
+                            <button (click)="updateOwnEvaluacion(evaluacion)" class="btn btn-primary">Guardar</button>
+
                             <div *ngIf="rol === 5">
                               <td><input class="octavoI"[(ngModel)]="evaluacion.Resultado"type="text" required></td>
                               <td><input class="novenoI" [(ngModel)]="evaluacion.Puntaje"type="text" required></td>
@@ -108,15 +112,18 @@
                           <!-- Otro código HTML ... -->
 
 
-<!-- Otro código HTML ... -->
 
-                          
-                        
                     </table>
                 </div>
             </div>
         </div>
-
+        <div id="miModal" class="modal" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+          <div class="modal-contenido">
+            <span class="cerrar" (click)="cerrarModal()">&times;</span>
+            <h2>Usuario agregado <i class='bx bx-user'></i></h2>
+            <p>El usuario se ha podido agregar con éxito</p>
+          </div>
+        </div>
 
 	</div> 
 	<div id="footer" class="footer-con-imagen">
