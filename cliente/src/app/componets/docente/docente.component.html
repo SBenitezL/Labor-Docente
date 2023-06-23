@@ -85,11 +85,32 @@
                             
                             <button (click)="updateOwnEvaluacion(evaluacion)" class="btn btn-primary">Guardar</button>
 
+                            <div *ngIf="rol === 5">
+                              <td><input class="octavoI"[(ngModel)]="evaluacion.Resultado"type="text" required></td>
+                              <td><input class="novenoI" [(ngModel)]="evaluacion.Puntaje"type="text" required></td>
+                              <button (click)="updateOwnEvaluacion(evaluacion)"class="btn btn-primary">Guardar</button>
+  
+                            </div>
+                            
+                            <div *ngIf="rol === 3 ">
+                              <td><input class="octavoI"type="file" required (change)="guardarArchivo($event) "></td>
+                              <input type="text" name="EVA_PUNTAJE" [(ngModel)]="evaluacionEdit.EVA_PUNTAJE" class="octavoI">
+                              <button (click)="updateOwnEvaluacion(evaluacion)" class="btn btn-primary">Editar</button>
+
+                            </div>
+                            <div *ngIf=" rol === 4">
+                              <td><input class="octavoI"type="file" required (change)="guardarArchivo($event) "></td>
+                              <input type="text" name="EVA_PUNTAJE" [(ngModel)]="evaluacionEdit.EVA_PUNTAJE" class="octavoI">
+                              <button (click)="updateOwnEvaluacion(evaluacion)" class="btn btn-primary">Editar</button>
+
+                            </div>
+
                           </tr>
                         </tbody>
               
-                        <button (click)="guardarEvaluacion()">Guardar</button>
+                     
                           <!-- Otro código HTML ... -->
+
 
 
                     </table>
