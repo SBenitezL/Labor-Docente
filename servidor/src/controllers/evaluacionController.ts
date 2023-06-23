@@ -24,7 +24,8 @@ class EvaluacionController{
     public async updateOwn(req:Request,res:Response){
       const query = "CALL sp_ingresar_values(?,?,?)"
       const {EVA_ID, EVA_PUNTAJE, EVA_RESULTADO} = req.body;
-      const result:any= await db.query(query,[EVA_ID, EVA_PUNTAJE, EVA_RESULTADO]);
+      const result:any= await db.query(query,[ EVA_PUNTAJE, EVA_RESULTADO,EVA_ID]);
+      console.log("ingreso servidor update docente eva")
       if(result[0].affectedRows > 0)
       {
         res.json({message: "Se actualizó correctamente"});
