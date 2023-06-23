@@ -104,16 +104,24 @@
         err =>console.error(err)
       )
     }
-    
-    updateOwnEvaluacion(evaI:Evaluacion )
+    mostrar:boolean = false;
+    updateOwnEvaluacion(inst:Evaluacion)
     {
-          if(this.rol ==3 || this.rol==4){
-               this.guardarDocenteCAT_TC(evaI);
-          }else{
-               this.guardarArchivo(event);
-          } 
+      console.log(this.evaluacionEdit.EVA_ID)
+      this.evaluacionEdit.EVA_ID= inst.ID;
+      this.evaluacionEdit.EVA_RESULTADO=inst.Resultado;
+      this.evaluacionEdit.EVA_PUNTAJE= inst.Puntaje;
+      console.log(this.evaluacionEdit);
+      this.serviceService.updateOwnEvaluacion(this.evaluacionEdit).subscribe(
+      res => {
 
-      
+        console.log(res);
+        this.mostrar = true;
+        this.bandera = true;
+        
+      },
+      err => console.error(err)
+      );
     }
     
 
@@ -140,9 +148,8 @@
     }
   }
 
-  guardarEvaluacion(){
+  guardarEvaluacion(){}
 
-  }
     formatFecha(fecha: string | Date): string {
       if (typeof fecha === 'string') {
         fecha = new Date(fecha);
@@ -153,4 +160,9 @@
     getEstadosKeys(){
       console.log(Object.keys(this.estados));
     }
+    cerrarModal() {
+      this.mostrar = false;
+      this.router.navigate(['/evaluacion']);
+    }
   }
+  

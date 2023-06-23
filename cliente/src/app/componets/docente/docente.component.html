@@ -80,22 +80,10 @@
                             <td class="quintoI">{{ evaluacion.Inicio | date:'dd/MM/yyyy' }}</td>
                             <td class="sextoI">{{ evaluacion.Fin | date:'dd/MM/yyyy' }}</td>
                             <td class="septimoI">{{ estados[evaluacion.Estado] }}</td>
+                            <td><input class="octavoI"[(ngModel)]="evaluacion.Resultado"type="text" required></td>
+                            <td><input class="novenoI" [(ngModel)]="evaluacion.Puntaje"type="text" required></td>
                             
-                            <div *ngIf="rol === 5">
-                              <input type="text" name="EVA_RESULTADO" [(ngModel)]="evaluacionEdit.EVA_RESULTADO" class="octavoI">
-                              <input type="text" name="EVA_PUNTAJE" [(ngModel)]="evaluacionEdit.EVA_PUNTAJE" class="octavoI">
-
-                            </div>
-                            
-                            <div *ngIf="rol === 3 ">
-                              <td><input class="octavoI"type="file" required (change)="guardarArchivo($event) "></td>
-                              <input type="text" name="EVA_PUNTAJE" [(ngModel)]="evaluacionEdit.EVA_PUNTAJE" class="octavoI">
-                            </div>
-                            <div *ngIf=" rol === 4">
-                              <td><input class="octavoI"type="file" required (change)="guardarArchivo($event) "></td>
-                              <input type="text" name="EVA_PUNTAJE" [(ngModel)]="evaluacionEdit.EVA_PUNTAJE" class="octavoI">
-                            </div>
-                            <button (click)="updateOwnEvaluacion(evaluacion)" class="btn btn-primary">Editar</button>
+                            <button (click)="updateOwnEvaluacion(evaluacion)" class="btn btn-primary">Guardar</button>
 
                           </tr>
                         </tbody>
@@ -104,15 +92,17 @@
                           <!-- Otro código HTML ... -->
 
 
-<!-- Otro código HTML ... -->
-
-                          
-                        
                     </table>
                 </div>
             </div>
         </div>
-
+        <div id="miModal" class="modal" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+          <div class="modal-contenido">
+            <span class="cerrar" (click)="cerrarModal()">&times;</span>
+            <h2>Usuario agregado <i class='bx bx-user'></i></h2>
+            <p>El usuario se ha podido agregar con éxito</p>
+          </div>
+        </div>
 
 	</div> 
 	<div id="footer" class="footer-con-imagen">
