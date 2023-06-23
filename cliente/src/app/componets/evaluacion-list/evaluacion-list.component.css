@@ -94,7 +94,10 @@
   .menu-navegacion a:hover {
     background: #ddd;
   }
-  
+  /*card*/
+  .table.table-hover td{
+    text-align: left;
+  }
 /*Footer*/
 #footer {
   display: flex;

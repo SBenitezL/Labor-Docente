@@ -37,6 +37,7 @@ class LaborDocenteControllers{
     }
     public async delete(req: Request,res: Response): Promise<void>{
         const {id} = req.params;
+        await db.query('DELETE FROM EVALUACION WHERE LAB_ID = ?',[id]);
         await db.query('DELETE FROM LABOR WHERE LAB_ID = ?',[id]);
         res.json({text : 'Labor docente Eliminada'});
     }
