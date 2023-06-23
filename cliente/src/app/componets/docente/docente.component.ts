@@ -138,7 +138,8 @@
     this.archivoSeleccionado = event.target.files[0];
   }
   */
-
+  mostrarA:boolean= false;
+  fileName:string = "";
   guardarArchivo(event: any, idEva:number) {
     const file = event.target.files[0];
     if (file) {
@@ -147,8 +148,10 @@
       const idUser = currentUser.getCurrent();
       formData.append('archivo', file, file.name);
       console.log('entro',formData.get('archivo'))
+      this.fileName = file.name;
       this.serviceService.enviarArchivo(formData, idEva,idUser).subscribe(
         (res) => {
+          this.mostrarA = true;
           console.log('Archivo enviado correctamente');
           // Realizar las acciones necesarias después de enviar el archivo
         },
@@ -173,6 +176,11 @@
     }
     cerrarModal() {
       this.mostrar = false;
+      this.router.navigate(['/docente']);
+
+    }
+    cerrarModalA() {
+      this.mostrarA = false;
       this.router.navigate(['/docente']);
 
     }

@@ -132,10 +132,11 @@ border-radius: 5px;
 border: 1px solid #686565;
 }
 .container .card-body .octavoI{
-width: 130px;
-border-radius: 5px;
-border: 1px solid #686565;
+  width: 150px;
+  border-radius: 5px;
+  border: 1px solid #686565;
 }
+
 
 .container .card-body .novenoI{
 width: 45px;

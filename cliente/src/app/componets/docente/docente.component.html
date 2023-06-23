@@ -73,12 +73,12 @@
                             </div>
                   
                             <div *ngIf="rol === 3 ">
-                              <td><input class="octavoI"type="file"  (change)="guardarArchivo($event, evaluacion.ID ) "></td>
+                              <td><input class="octavoI" type="file"  (change)="guardarArchivo($event, evaluacion.ID ) "></td>
                              
                             </div>
                             
                             <div *ngIf=" rol === 4">
-                              <td><input class="octavoI"type="file"  (change)="guardarArchivo($event, evaluacion.ID ) "></td>
+                              <td><input class="octavoI" type="file"  (change)="guardarArchivo($event, evaluacion.ID ) "></td>
                             
                             </div>
                             <td><input class="novenoI" [(ngModel)]="evaluacion.Puntaje"type="text" required></td>
@@ -96,6 +96,14 @@
                 </div>
             </div>
         </div>
+        <div id="miModal" class="modal" [ngStyle]="{'display': mostrarA ? 'block' : 'none'}">
+          <div class="modal-contenido">
+            <span class="cerrar" (click)="cerrarModalA()">&times;</span>
+            <h2>Se subió archivo <i class='bx bx-user'></i></h2>
+            <p>El archivo <strong>{{ fileName }}</strong> se ha cargado con éxito </p>
+          </div>
+        </div>
+
         <div id="miModal" class="modal" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
           <div class="modal-contenido">
             <span class="cerrar" (click)="cerrarModal()">&times;</span>
