@@ -8,7 +8,6 @@
   import { HttpClient } from '@angular/common/http';
   import { Archivo } from '../../Modelo/Archivo';
 
-
   import { currentUser } from 'src/app/componets/control-vista/control-vista.component';
   @Component({
     selector: 'app-docente',
@@ -110,11 +109,11 @@
     
     updateOwnEvaluacion(evaI:Evaluacion )
     {
-          if(this.rol ==3 || this.rol==4){
+          /*if(this.rol ==3 || this.rol==4){
                this.guardarDocenteCAT_TC(evaI);
           }else{
                this.guardarArchivo(event);
-          } 
+          } */
 
       
     }
@@ -125,13 +124,16 @@
   }
   */
 
-  guardarArchivo(event: any) {
-    if (this.archivoSeleccionado) {
-      const file = event.target.files[0];
+  guardarArchivo(event: any, idEva:number) {
+    const file = event.target.files[0];
+    if (file) {
+      
       const formData = new FormData();
-
-      this.serviceService.enviarArchivo(formData).subscribe(
-        () => {
+      const idUser = currentUser.getCurrent();
+      formData.append('archivo', file, file.name);
+      console.log('entro',formData.get('archivo'))
+      this.serviceService.enviarArchivo(formData, idEva,idUser).subscribe(
+        (res) => {
           console.log('Archivo enviado correctamente');
           // Realizar las acciones necesarias después de enviar el archivo
         },

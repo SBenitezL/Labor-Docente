@@ -26,8 +26,10 @@ export class ServiceService {
     return this.http.get(`${this.API_URI}/usuarios/${id}`);
   }
 
-  enviarArchivo(formData: FormData): Observable<any> {
-    return this.http.post(`${this.API_URI}/guardar-archivo`, formData);
+  enviarArchivo(formData: FormData, idEv:number, idUser:number) {
+    
+    console.log("antes de entrar al servidor"+ formData)
+    return this.http.post(`${this.API_URI}/guardarArchivo/${idEv}/${idUser}`, formData);
   }
   deleteUsuario(id: number): Observable<any> {
     return this.http.delete(`${this.API_URI}/usuarios/${id}`);

@@ -21,7 +21,7 @@ class DocenteArchivoRoutes{
     }
     config():void{
 
-        this.router.post('/guardarArchivo',upload.single('archivo'), docenteArchivoController.create);
+        this.router.post('/guardarArchivo/:idEv/:idUser',upload.single('archivo'), docenteArchivoController.create);
 
     }
 }

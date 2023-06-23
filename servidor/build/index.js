@@ -13,6 +13,7 @@ const evaluacionRoutes_1 = __importDefault(require("./routes/evaluacionRoutes"))
 const periodoRoutes_1 = __importDefault(require("./routes/periodoRoutes"));
 const userrolRoutes_1 = __importDefault(require("./routes/userrolRoutes"));
 const notificacionRoutes_1 = __importDefault(require("./routes/notificacionRoutes"));
+const docenteArchivoRoutes_1 = __importDefault(require("./routes/docenteArchivoRoutes"));
 const multer_1 = __importDefault(require("multer"));
 class Servidor {
     constructor() {
@@ -43,6 +44,7 @@ class Servidor {
         this.app.use('/api/periodo', periodoRoutes_1.default);
         this.app.use('/api/userol', userrolRoutes_1.default);
         this.app.use('/api/notificacion', notificacionRoutes_1.default);
+        this.app.use('/api', docenteArchivoRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

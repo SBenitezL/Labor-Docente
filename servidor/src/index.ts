@@ -8,6 +8,7 @@ import evaluacionRoutes from "./routes/evaluacionRoutes";
 import periodoRoutes from "./routes/periodoRoutes";
 import userrolRoutes from "./routes/userrolRoutes";
 import notificacionRoutes from "./routes/notificacionRoutes";
+import docenteArchivoRoutes from "./routes/docenteArchivoRoutes";
 import multer from 'multer';
 class Servidor{
     public app: Application;
@@ -30,7 +31,8 @@ class Servidor{
         this.app.use('/api/evaluacion',evaluacionRoutes);
         this.app.use('/api/periodo',periodoRoutes);
         this.app.use('/api/userol',userrolRoutes);
-        this.app.use('/api/notificacion',notificacionRoutes);        
+        this.app.use('/api/notificacion',notificacionRoutes);
+        this.app.use('/api',docenteArchivoRoutes);            
     }
     start():void{
         this.app.listen(this.app.get('port'),()=>{

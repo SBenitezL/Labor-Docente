@@ -17,10 +17,11 @@ class DocenteArchivoControllers {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const archiv = req.file;
-            const { ARC_NOMBRE, ARC_TIPO, USR_IDENTIFICACION, EVA_ID } = req.body;
+            const { ARC_TIPO, idEv, idUser } = req.params;
             const ARC_RUTA = archiv === null || archiv === void 0 ? void 0 : archiv.path;
+            const ARC_NOMBRE = archiv === null || archiv === void 0 ? void 0 : archiv.filename;
             try {
-                yield database_1.default.query('INSERT INTO ARCHIVODOCENTE ( ARC_NOMBRE, ARC_TIPO, ARC_RUTA, USR_IDENTIFICACION, EVA_ID) VALUES (?, ?, ?, ?, ?)', [ARC_NOMBRE, ARC_TIPO, ARC_RUTA, USR_IDENTIFICACION, EVA_ID]);
+                yield database_1.default.query('INSERT INTO ARCHIVODOCENTE ( ARC_NOMBRE, ARC_TIPO, ARC_RUTA, USR_IDENTIFICACION, EVA_ID) VALUES (?, ?, ?, ?, ?)', [ARC_NOMBRE, ARC_TIPO, ARC_RUTA, idUser, idEv]);
                 res.json({ message: 'Archivo insertado correctamente.' });
             }
             catch (error) {

@@ -21,7 +21,7 @@ class DocenteArchivoRoutes {
         this.config();
     }
     config() {
-        this.router.post('/guardarArchivo', upload.single('archivo'), docenteArchivoController_1.default.create);
+        this.router.post('/guardarArchivo/:idEv/:idUser', upload.single('archivo'), docenteArchivoController_1.default.create);
     }
 }
 const docenteArchivoRoutes = new DocenteArchivoRoutes();

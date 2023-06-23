@@ -89,13 +89,13 @@
                             </div>
                             
                             <div *ngIf="rol === 3 ">
-                              <td><input class="octavoI"type="file" required (change)="guardarArchivo($event) "></td>
+                              <td><input class="octavoI"type="file"  (change)="guardarArchivo($event, evaluacion.ID ) "></td>
                               <input type="text" name="EVA_PUNTAJE" [(ngModel)]="evaluacionEdit.EVA_PUNTAJE" class="octavoI">
                               <button (click)="updateOwnEvaluacion(evaluacion)" class="btn btn-primary">Editar</button>
 
                             </div>
                             <div *ngIf=" rol === 4">
-                              <td><input class="octavoI"type="file" required (change)="guardarArchivo($event) "></td>
+                              <td><input class="octavoI"type="file"  (change)="guardarArchivo($event, evaluacion.ID ) "></td>
                               <input type="text" name="EVA_PUNTAJE" [(ngModel)]="evaluacionEdit.EVA_PUNTAJE" class="octavoI">
                               <button (click)="updateOwnEvaluacion(evaluacion)" class="btn btn-primary">Editar</button>
 
