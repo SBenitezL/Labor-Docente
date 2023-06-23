@@ -46,6 +46,7 @@ export class LoginComponent {
     }else{
      this.serviceService.validarContrasenia(pass,loginU).subscribe(
         res => {
+          console.log(res)
           if (Array.isArray(res) && res.length > 0) {
             const rolId = res[0].ROL_ID;
             const userId=  res[0].USR_IDENTIFICACION;
