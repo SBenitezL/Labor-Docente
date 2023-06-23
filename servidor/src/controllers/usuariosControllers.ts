@@ -79,7 +79,15 @@ class UsuariosControllers{
       console.log(UserName+"--"+constraseniaHash); // Imprime el hash generado 
       
       try {
+        const existingUser = await db.query('SELECT UserName FROM USUARIO WHERE UserName = ?', [UserName]);
+        
+        
+        if (existingUser.length > 0) {
+          res.status(500).json({ message: 'El nombre de usuario ya está registrado.' });
+          return;
+        }
         // Paso 1: Insertar el usuario en la tabla USUARIO
+
         await db.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, UserName ]);
     
         // Paso 2: Insertar el registro en la tabla USEROL con las fechas correspondientes
@@ -91,6 +99,7 @@ class UsuariosControllers{
       }
     }
     
+   
     
     public async delete(req: Request, res: Response): Promise<void> {
       const { id } = req.params;

@@ -236,3 +236,14 @@ border: 1px solid #686565;
   .label-dato{    
     padding-left: 15px;
   }
+  tr > td.label-dato{
+    padding-left: 15px;
+  }
+  .card-body.row{
+    display: flex;
+    flex-direction: row;
+  }
+  .card-body.row th,
+  .card-body.row td {
+  flex: 1;
+}
