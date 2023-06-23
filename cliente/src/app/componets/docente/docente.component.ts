@@ -19,7 +19,7 @@
   export class DocenteComponent implements OnInit {
     rol:number=0;
     evaluaciones : Evaluacion[]=[]
-    evaluacionEdita : EvaluacionEdit[]=[]
+   
 
     evaluacionEdit:EvaluacionEdit={
       LAB_ID: 0,
@@ -91,51 +91,29 @@
       
       
     }
-    guardarDocenteCAT_TC(){
-      const input1 = this.elementRef.nativeElement.querySelectorAll('.octavoI');
-      const input2 = this.elementRef.nativeElement.querySelectorAll('.novenoI');
-
-      const valoresColumna1: string[] = [];
-      const valoresColumna2: string[] = [];
-
-      input1.forEach((input: HTMLInputElement) => {
-        valoresColumna1.push(input.value);
-      });
     
-      // Realiza acciones con los valores capturados
-      console.log(valoresColumna1);
-      input2.forEach((input: HTMLInputElement) => {
-        valoresColumna2.push(input.value);
-      });
-    
-      // Realiza acciones con los valores capturados
-      console.log(valoresColumna2);
-    
-      // Aquí puedes realizar acciones adicionales, como asignar los valores capturados a la evaluación editada o llamar a un método para procesarlos.
-    
-    }
-    guardarEvaluacion() {
-      if(this.rol ==3 || this.rol==4){
-          this.guardarDocenteCAT_TC();
-      }else{
-
-      }
-    }
-    
-    
-    updateOwnEvaluacion()
-    {
+    guardarDocenteCAT_TC(evaI:Evaluacion){
       console.log(this.evaluacionEdit.EVA_ID)
+      this.evaluacionEdit.EVA_ID= evaI.ID;
       this.serviceService.updateOwnEvaluacion(this.evaluacionEdit).subscribe(
         res =>{
-          
           console.log(res);
-          
           this.bandera = true;
           this.router.navigate(['/evaluacion']);
         },
         err =>console.error(err)
       )
+    }
+    
+    updateOwnEvaluacion(evaI:Evaluacion )
+    {
+          if(this.rol ==3 || this.rol==4){
+               this.guardarDocenteCAT_TC(evaI);
+          }else{
+               this.guardarArchivo(event);
+          } 
+
+      
     }
     
 
@@ -162,7 +140,9 @@
     }
   }
 
+  guardarEvaluacion(){
 
+  }
     formatFecha(fecha: string | Date): string {
       if (typeof fecha === 'string') {
         fecha = new Date(fecha);
