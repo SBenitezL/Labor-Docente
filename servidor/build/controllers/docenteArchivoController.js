@@ -16,9 +16,11 @@ const database_1 = __importDefault(require("../database"));
 class DocenteArchivoControllers {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
+            const archiv = req.file;
+            const { ARC_NOMBRE, ARC_TIPO, USR_IDENTIFICACION, EVA_ID } = req.body;
+            const ARC_RUTA = archiv === null || archiv === void 0 ? void 0 : archiv.path;
             try {
-                yield database_1.default.query('INSERT INTO USEROL (USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN) VALUES (?, ?, ?, ?)', [USR_IDENTIFICACION, ROL_ID, UR_FECHAINICIO, UR_FECHAFIN]);
+                yield database_1.default.query('INSERT INTO ARCHIVODOCENTE ( ARC_NOMBRE, ARC_TIPO, ARC_RUTA, USR_IDENTIFICACION, EVA_ID) VALUES (?, ?, ?, ?, ?)', [ARC_NOMBRE, ARC_TIPO, ARC_RUTA, USR_IDENTIFICACION, EVA_ID]);
                 res.json({ message: 'Archivo insertado correctamente.' });
             }
             catch (error) {

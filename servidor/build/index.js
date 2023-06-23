@@ -13,8 +13,17 @@ const evaluacionRoutes_1 = __importDefault(require("./routes/evaluacionRoutes"))
 const periodoRoutes_1 = __importDefault(require("./routes/periodoRoutes"));
 const userrolRoutes_1 = __importDefault(require("./routes/userrolRoutes"));
 const notificacionRoutes_1 = __importDefault(require("./routes/notificacionRoutes"));
+const multer_1 = __importDefault(require("multer"));
 class Servidor {
     constructor() {
+        this.storage = multer_1.default.diskStorage({
+            destination: function (req, file, cb) {
+                cb(null, 'uploads/'); // Carpeta donde se guardarán los archivos
+            },
+            filename: function (req, file, cb) {
+                cb(null, file.originalname); // Nombre del archivo original
+            }
+        });
         this.app = (0, express_1.default)();
         this.config();
         this.routes();
