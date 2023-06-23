@@ -80,8 +80,11 @@ export class UsuarioAgregarComponent implements OnInit{
         this.usuario.ROL_ID=2;
       } else if(this.seleccionRolId=="opt3"){
         this.usuario.ROL_ID=3;
-      }else{
+      }else if(this.seleccionRolId=="opt4"){
         this.usuario.ROL_ID=4;
+      }else{
+        this.usuario.ROL_ID=5;
+
       }
     }
     seleccionarGenero(){

@@ -111,7 +111,7 @@ class UsuariosControllers {
             const { USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, UR_FECHAINICIO, UR_FECHAFIN, ROL_ID, USR_Contrasenia, UserName } = req.body;
             //const constraseniaHash =  await bcrypt.hash(USR_Contrasenia, 10);
             const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
-            console.log(constraseniaHash); // Imprime el hash generado 
+            console.log(UserName + "--" + constraseniaHash); // Imprime el hash generado 
             try {
                 // Paso 1: Insertar el usuario en la tabla USUARIO
                 yield database_1.default.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, UserName]);
@@ -161,7 +161,7 @@ class UsuariosControllers {
             //const constraseniaHash =  await bcrypt.hash(contrasenia, 10);
             //console.log(constraseniaHash);
             const constraseniaHash = bcrypt.hashSync(contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
-            console.log(constraseniaHash); // Imprime el hash generado 
+            console.log("VERIFICAR CONTRAEÑA" + constraseniaHash); // Imprime el hash generado 
             const query = `
           SELECT UR.ROL_ID, U.USR_IDENTIFICACION
           FROM USUARIO U
@@ -171,6 +171,7 @@ class UsuariosControllers {
             try {
                 const rows = yield database_1.default.query(query, [login, constraseniaHash]);
                 if (rows.length > 0) {
+                    console.log();
                     return res.json((rows[0]));
                 }
                 res.status(404).json({ text: 'Usuario no encontrado' });

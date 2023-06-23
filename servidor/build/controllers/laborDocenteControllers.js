@@ -54,6 +54,7 @@ class LaborDocenteControllers {
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
+            yield database_1.default.query('DELETE FROM EVALUACION WHERE LAB_ID = ?', [id]);
             yield database_1.default.query('DELETE FROM LABOR WHERE LAB_ID = ?', [id]);
             res.json({ text: 'Labor docente Eliminada' });
         });

@@ -67,7 +67,8 @@ export class EvaluacionFormComponent {
     if(this.evaEdit){
       this.evaluacionServices.getToEditEvaluacion(params["id"]).subscribe(
         (res:any)=>{          
-          this.evaluacionEdit = res[0];          
+          this.evaluacionEdit = res[0];  
+          console.log(this.evaluacionEdit);        
           this.edit = true;
           this.evaluacion.LAB_ID = this.evaluacionEdit.LAB_ID;
           this.evaluacion.PER_ID = this.evaluacionEdit.PER_ID;          

@@ -53,7 +53,7 @@
         <div class="container">
             <div class="card">
                 <div class="card-head">
-                    <h3>Usuarios</h3>
+                    <h3>Evaluaciones</h3>
                     
                 </div>
                 <div class="card-body">
@@ -80,8 +80,10 @@
                             <td class="quintoI">{{ evaluacion.Inicio | date:'dd/MM/yyyy' }}</td>
                             <td class="sextoI">{{ evaluacion.Fin | date:'dd/MM/yyyy' }}</td>
                             <td class="septimoI">{{ estados[evaluacion.Estado] }}</td>
-                            <td class="octavoI"><input type="text" [(ngModel)]="evaluacion.Resultado" required></td>
-                            <td class="novenoI"><input type="text" [(ngModel)]="evaluacion.Puntaje" required></td>
+                            <td><input class="octavoI"[(ngModel)]="evaluacion.Resultado"type="text" required></td>
+                            <td><input class="novenoI" [(ngModel)]="evaluacion.Puntaje"type="text" required></td>
+                            <button (click)="updateOwnEvaluacion(evaluacion)"class="btn btn-primary">Guardar</button>
+
                           </tr>
                         </tbody>
                     </table>

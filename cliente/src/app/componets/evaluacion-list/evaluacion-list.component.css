@@ -94,7 +94,10 @@
   .menu-navegacion a:hover {
     background: #ddd;
   }
-  
+  /*card*/
+  .table.table-hover td{
+    text-align: left;
+  }
 /*Footer*/
 #footer {
   display: flex;
@@ -181,4 +184,10 @@
       flex-direction: column;
       align-items: flex-start;
     }
+  }
+
+  .btn.btn-warning{
+    width: 90px;
+    
+    margin:10px ;
   }

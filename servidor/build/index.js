@@ -13,8 +13,18 @@ const evaluacionRoutes_1 = __importDefault(require("./routes/evaluacionRoutes"))
 const periodoRoutes_1 = __importDefault(require("./routes/periodoRoutes"));
 const userrolRoutes_1 = __importDefault(require("./routes/userrolRoutes"));
 const notificacionRoutes_1 = __importDefault(require("./routes/notificacionRoutes"));
+const docenteArchivoRoutes_1 = __importDefault(require("./routes/docenteArchivoRoutes"));
+const multer_1 = __importDefault(require("multer"));
 class Servidor {
     constructor() {
+        this.storage = multer_1.default.diskStorage({
+            destination: function (req, file, cb) {
+                cb(null, 'uploads/'); // Carpeta donde se guardarán los archivos
+            },
+            filename: function (req, file, cb) {
+                cb(null, file.originalname); // Nombre del archivo original
+            }
+        });
         this.app = (0, express_1.default)();
         this.config();
         this.routes();
@@ -34,6 +44,7 @@ class Servidor {
         this.app.use('/api/periodo', periodoRoutes_1.default);
         this.app.use('/api/userol', userrolRoutes_1.default);
         this.app.use('/api/notificacion', notificacionRoutes_1.default);
+        this.app.use('/api', docenteArchivoRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

@@ -41,17 +41,19 @@ export class LaborDocenteAgregarComponent {
     }
   }
   
-  
+  auxIdentificacion : string = '';
+  auxHoras : string= '';
   laborAgregado: boolean = false;
+  mostrar: boolean = false;
   saveNewLabor(){
-    
+    this.laborDocente.LAB_ID = parseInt(this.auxIdentificacion);
+    this.laborDocente.LAB_HORAS = parseInt(this.auxHoras);
     this.serviceService.saveLabor(this.laborDocente)
     .subscribe(
       res =>{
+        this.mostrar = true;
         console.log(res);
-        
         this.laborAgregado = true;
-        this.router.navigate(['/listarL']);
       },
       err =>console.error(err)
     )
@@ -104,5 +106,9 @@ export class LaborDocenteAgregarComponent {
   }
   IrGestionEvaluacion() {
     this.router.navigate(['/evaluacion']);
+  }
+  cerrarModal() {
+    this.mostrar = false;
+    this.router.navigate(['/listarL']);
   }
 }

@@ -28,7 +28,6 @@ export class UsuarioListarComponent {
     );
   }
   mostrar: boolean = false;
-
   deleteUsuario(id: number) {
     this.serviceService.deleteUsuario(id).subscribe(
       () => {
