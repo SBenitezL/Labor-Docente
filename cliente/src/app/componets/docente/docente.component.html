@@ -19,11 +19,6 @@
             <div class="card">
               <div class="card-body">
                 <table>
-                  <th>Periodo</th>
-                  <tr *ngFor="let evaluacion of evaluaciones let isFirst = first">
-                    
-                    <td class = "label-dato" *ngIf="isFirst">{{evaluacion.PER_NOMBRE}}</td>
-                  </tr>
                   <tr>
                     <th>Nombre</th>
                     <td class = "label-dato">{{usuario.USU_NOMBRE + " " + usuario.USU_APELLIDO}}</td>

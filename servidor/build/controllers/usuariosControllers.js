@@ -113,6 +113,11 @@ class UsuariosControllers {
             const constraseniaHash = bcrypt.hashSync(USR_Contrasenia, "$2b$10$d32mcWs6/PVcPjr2Rulqv."); // Genera el hash utilizando la contraseña y la "sal"
             console.log(UserName + "--" + constraseniaHash); // Imprime el hash generado 
             try {
+                const existingUser = yield database_1.default.query('SELECT UserName FROM USUARIO WHERE UserName = ?', [UserName]);
+                if (existingUser.length > 0) {
+                    res.status(500).json({ message: 'El nombre de usuario ya está registrado.' });
+                    return;
+                }
                 // Paso 1: Insertar el usuario en la tabla USUARIO
                 yield database_1.default.query('INSERT INTO USUARIO (USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, USR_Contrasenia, UserName) VALUES (?, ?, ?, ?, ?, ?, ?)', [USR_IDENTIFICACION, USU_NOMBRE, USU_APELLIDO, USU_GENERO, USU_ESTUDIO, constraseniaHash, UserName]);
                 // Paso 2: Insertar el registro en la tabla USEROL con las fechas correspondientes
