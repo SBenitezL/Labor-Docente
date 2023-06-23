@@ -12,6 +12,18 @@ import { currentUser } from '../control-vista/control-vista.component';
 })
 export class LaborDocenteListarComponent {
   laborDocente: LaborDocente[]= [];
+  estados: { [key: number]: string } = {
+    1: "Docencia",
+    2: "Trabajos Docencia",
+    3: "Proyectos Investigación",
+    4: "Trabajos Investigaciónspendido",
+    5: "Administración",
+    6: "Asesoría",
+    7: "Servición",
+    8: "Extención",
+    9: "Capacitación",
+    10: "Otros servicios",
+  };
   constructor(private serviceService :ServiceService,private router: Router){
 
 
@@ -29,9 +41,12 @@ export class LaborDocenteListarComponent {
       err => console.log(err)
     );
   }
+  mostrar: boolean = false;
   deleteLabor(id: number) {
+    this.mostrar = true;
     this.serviceService.deleteLabor(id).subscribe(
       () => {
+        
         console.log("Labor eliminada exitosamente");
         this.getLabores(); // Vuelve a cargar los usuarios después de eliminar uno
 
@@ -45,6 +60,10 @@ export class LaborDocenteListarComponent {
       this.deleteLabor(id);
     }
   }
+  getEstado(state:number)
+  {
+    return this.estados[state];
+  }
   
   editarLabor(id: number){
     console.log(id);
@@ -56,11 +75,16 @@ export class LaborDocenteListarComponent {
   IrGestionDocente() {
     this.router.navigate(['/listar']);
   }
- 
   IrEvaluacion() {
-    this.router.navigate(['/listarL']);
+    this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
   }
   IrInicio(){
     this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
+  }
+  IrGestionEvaluacion() {
+    this.router.navigate(['/evaluacion']);
+  }
+  cerrarModal() {
+    this.mostrar = false;
   }
 }

@@ -20,6 +20,7 @@
                 <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
                 <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
                 <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+                <li><a (click)= "IrGestionEvaluacion()">Gestión evaluación <i class='bx bx-plus-circle' ></i></a></li>
                 <li><a (click)= "nuevo()">Nueva labor <i class='bx bx-plus-circle' ></i></a></li>
             </ul>
         </nav>
@@ -35,7 +36,7 @@
                         <thead>
                             <tr>
                                 <th>Id Labor</th>
-                                <th>Id Tipo Labor</th>
+                                <th>Tipo Labor</th>
                                 <th>Nombre</th>
                                 <th>Horas</th>
                             </tr>
@@ -43,8 +44,9 @@
                         <tbody>
                             <tr *ngFor="let labDocente of laborDocente" class="text-center">
                                 <td>{{ labDocente.LAB_ID}}</td>
-                                <td>{{ labDocente.TL_ID }}</td>
+                                <td>{{ getEstado(labDocente.TL_ID )}}</td>
                                 <td>{{ labDocente.LAB_NOMBRE }}</td>
+                                
                                 <td>{{ labDocente.LAB_HORAS }}</td>
                                 <td>
                                 </td>
@@ -52,13 +54,19 @@
                                 <button class="btn btn-warning" (click)="editarLabor(labDocente.LAB_ID)" style="margin-left: 10px;">Editar</button>
                                
                                 <button class="btn btn-warning" (click)="confirmarEliminarLabor(labDocente.LAB_ID)" style="margin-left: 10px;">Eliminar</button>
-                                <!-- <button class="btn btn-warning" (click)="deleteLabor(labDocente.LAB_ID)" style="margin-left: 10px;">Eliminar</button> -->
                             </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
            </div>
+        </div>
+        <div id="miModal" class="modal" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+            <div class="modal-contenido">
+              <span class="cerrar" (click)="cerrarModal()">&times;</span>
+              <h2>Labor docente eliminada<i class='bx bx-user'></i></h2>
+              <p>La labor docente se ha podido eliminar con éxito</p>
+            </div>
         </div>
 
     </div> 

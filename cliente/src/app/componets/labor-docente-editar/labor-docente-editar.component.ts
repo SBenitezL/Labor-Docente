@@ -69,7 +69,7 @@ export class LaborDocenteEditarComponent implements OnInit{
   obtenerId(): number {
     return this.laborDocente.LAB_ID;
   }
-
+  mostrar: boolean = false;
   updateLabor(): void {
     console.log(this.laborDocente.LAB_ID);
     this.serviceService.updateLabor(
@@ -77,8 +77,9 @@ export class LaborDocenteEditarComponent implements OnInit{
       this.laborDocente
     ).subscribe(
       res => {
+        this.mostrar = true;
         console.log(res);
-        this.router.navigate(['/listarL']);
+        //this.router.navigate(['/listarL']);
       },
       err => console.error(err)
     );
@@ -92,10 +93,17 @@ export class LaborDocenteEditarComponent implements OnInit{
     this.router.navigate(['/listarL']);
   }
   IrEvaluacion() {
-    this.router.navigate(['/listarL']);
+    this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
   }
   IrInicio(){
     this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
+  }
+  IrGestionEvaluacion() {
+    this.router.navigate(['/evaluacion']);
+  }
+  cerrarModal() {
+    this.mostrar = false;
+    this.router.navigate(['/listarL']);
   }
 }
 

@@ -2,7 +2,7 @@ import { Component, OnInit, HostBinding} from '@angular/core';
 import { Usuario } from '../../Modelo/Usuario';
 import { UseRol} from '../../Modelo/UseRol';
 import { ActivatedRoute, Router ,Route} from '@angular/router';
-
+import { currentUser } from '../control-vista/control-vista.component';
 
 import { ServiceService } from '../../Service/service.service';
 @Component({
@@ -108,21 +108,23 @@ export class UsuarioAgregarComponent implements OnInit{
       this.router.navigate(['/listarL']);
     }
     IrEvaluacion() {
-      this.router.navigate(['/listarL']);
+      this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
     }
     IrInicio(){
-      this.router.navigate(['/menuCoordinador']);
+      this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
     }
-    
+    IrGestionEvaluacion() {
+      this.router.navigate(['/evaluacion']);
+    }
     cerrarModal() {
       this.mostrar = false;
       this.router.navigate(['/listar']);
     }
-  public mostrarContrasenia: boolean = false;
-  public contrasenia: string = '';
+    public mostrarContrasenia: boolean = false;
+    public contrasenia: string = '';
 
-  public toggleMostrarContrasenia(): void {
-    this.mostrarContrasenia = !this.mostrarContrasenia;
-  }
+    public toggleMostrarContrasenia(): void {
+      this.mostrarContrasenia = !this.mostrarContrasenia;
+    }
 
 }

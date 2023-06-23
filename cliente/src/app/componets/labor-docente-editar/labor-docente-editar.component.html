@@ -20,6 +20,7 @@
                 <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
                 <li><a (click)= "IrGestionLabor()">Gestión labor docente <i class='bx bx-book-open'></i></a></li>
                 <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+                <li><a (click)= "IrGestionEvaluacion()">Gestión evaluación <i class='bx bx-plus-circle' ></i></a></li>
             </ul>
         </nav>
         <div class="container">
@@ -71,7 +72,16 @@
                 </div>
            </div>
         </div>
+
+        <div id="miModal" class="modal" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+            <div class="modal-contenido">
+              <span class="cerrar" (click)="cerrarModal()">&times;</span>
+              <h2>Labor docente actualizada <i class='bx bx-book-open'></i></h2>
+              <p>La labor docente se ha podido actualizar con éxito</p>
+            </div>
+          </div>
     </div>
+
     <div id="footer" class="footer-con-imagen">
         <div class="imagen-con-textoF">
             <div class="texto-con-lineaF">

@@ -140,8 +140,6 @@ export class EvaluacionFormComponent {
   mostrar: boolean = false;
   saveEvaluacion()
   {
-    console.log("seleccion:");
-    console.log(this.seleccion);
     this.evaluacion.USR_IDENTIFICACION = this.seleccion.Id
     this.evaluacion.ROL_ID = this.seleccion.RolID;
     console.log(this.evaluacion);
@@ -150,7 +148,6 @@ export class EvaluacionFormComponent {
       res =>{
         
         console.log(res);
-        
         this.bandera = true;
         this.router.navigate(['/evaluacion']);
       },
@@ -165,7 +162,7 @@ export class EvaluacionFormComponent {
     this.router.navigate(['/listarL']);
   }
   IrEvaluacion() {
-    this.router.navigate(['/evaluacion']);
+    this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
   }
   IrInicio(){
     this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);

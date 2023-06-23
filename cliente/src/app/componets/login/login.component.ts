@@ -63,6 +63,7 @@ export class LoginComponent {
   }
   verificarVista(rol:number,userId:number){
     currentUser.setCurrent(userId);
+    console.log(rol);
       if(rol==2){
         console.log(userId);
         this.router.navigate([`/menuCoordinador/${userId}`]);
