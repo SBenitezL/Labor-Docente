@@ -80,22 +80,29 @@
                             <td class="quintoI">{{ evaluacion.Inicio | date:'dd/MM/yyyy' }}</td>
                             <td class="sextoI">{{ evaluacion.Fin | date:'dd/MM/yyyy' }}</td>
                             <td class="septimoI">{{ estados[evaluacion.Estado] }}</td>
-                            <ng-container *ngIf="rol === 5">
-                              <td><input class="octavoI" type="text" required></td>
-                              <td><input class="novenoI" type="text" required></td>
-                            </ng-container>
                             
-                            <ng-container *ngIf="rol === 3 || rol === 4">
-                              <td><input class="octavoI"type="file" (change)="guardarArchivo($event)"></td>
-                              <td><input class="novenoI" type="text" required></td>
-                            </ng-container>
+                            <div *ngIf="rol === 5">
+                              <input type="text" name="EVA_RESULTADO" [(ngModel)]="evaluacionEdit.EVA_RESULTADO" class="octavoI">
+                              <input type="text" name="EVA_PUNTAJE" [(ngModel)]="evaluacionEdit.EVA_PUNTAJE" class="octavoI">
+
+                            </div>
+                            
+                            <div *ngIf="rol === 3 ">
+                              <td><input class="octavoI"type="file" required (change)="guardarArchivo($event) "></td>
+                              <input type="text" name="EVA_PUNTAJE" [(ngModel)]="evaluacionEdit.EVA_PUNTAJE" class="octavoI">
+                            </div>
+                            <div *ngIf=" rol === 4">
+                              <td><input class="octavoI"type="file" required (change)="guardarArchivo($event) "></td>
+                              <input type="text" name="EVA_PUNTAJE" [(ngModel)]="evaluacionEdit.EVA_PUNTAJE" class="octavoI">
+                            </div>
+                            <button (click)="updateOwnEvaluacion(evaluacion)" class="btn btn-primary">Editar</button>
+
                           </tr>
                         </tbody>
               
                         <button (click)="guardarEvaluacion()">Guardar</button>
                           <!-- Otro código HTML ... -->
 
-                          <button (click)="updateOwnEvaluacion()" class="btn btn-primary">Guardar</button>
 
 <!-- Otro código HTML ... -->
 
