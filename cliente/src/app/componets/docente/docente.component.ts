@@ -82,6 +82,7 @@
               console.log(res);
              
               this.evaluaciones = res;
+              this.evaluacionEdit = res[0]; 
               this.edit = true;
             },
             err => console.error(err)
@@ -92,9 +93,11 @@
       
     }
     
-    guardarDocenteCAT_TC(evaI:Evaluacion){
+    guardarDocenteCAT_TC(inst:Evaluacion){
       console.log(this.evaluacionEdit.EVA_ID)
-      this.evaluacionEdit.EVA_ID= evaI.ID;
+      this.evaluacionEdit.EVA_ID= inst.ID;
+      this.evaluacionEdit.EVA_RESULTADO=inst.Resultado;
+      this.evaluacionEdit.EVA_PUNTAJE= inst.Puntaje;
       this.serviceService.updateOwnEvaluacion(this.evaluacionEdit).subscribe(
         res =>{
           console.log(res);
@@ -140,9 +143,7 @@
     }
   }
 
-  guardarEvaluacion(){
 
-  }
     formatFecha(fecha: string | Date): string {
       if (typeof fecha === 'string') {
         fecha = new Date(fecha);
