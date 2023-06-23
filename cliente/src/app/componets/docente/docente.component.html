@@ -81,22 +81,13 @@
                             <td class="sextoI">{{ evaluacion.Fin | date:'dd/MM/yyyy' }}</td>
                             <td class="septimoI">{{ estados[evaluacion.Estado] }}</td>
                             <div *ngIf="rol === 5">
-                              <td><input class="octavoI" type="text" required> </td>
-                              <td ><input class="novenoI" type="text"  required></td>
+                               <td><input class="octavoI" type="text" required> </td>
+                               <td ><input class="novenoI" type="text"  required></td>
                             </div>
                             
                             <div *ngIf="rol === 3 || rol === 4 ">
-<<<<<<< HEAD
                               <!-- Etiquetas a mostrar para el rol de 3 y 4  -->
                              
-                            </div>
-                            <div *ngIf="rol === 5 ">
-                              <!-- Etiquetas a mostrar para el rol de 5 -->
-                             
-=======
-                              <!-- Etiquetas a mostrar para el rol de estudiante -->
-                              <td><input class="octavoI" type="text" required> </td>
->>>>>>> 13e276b3dfc1ab3e49b8444544e6af227de6e78b
                             </div>
                           </tr>
                         </tbody>
