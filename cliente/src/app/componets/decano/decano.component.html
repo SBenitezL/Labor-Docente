@@ -1,0 +1,76 @@
+<div class="wrapper">  
+	<div class="content">   		
+		
+		<div id="cabecera" class="cabecera-con-imagen">
+            <div class="imagen-con-texto">
+              <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+              <div class="texto-con-linea">
+                <div class="linea-vertical">
+                  <span>
+                    Universidad del Cauca
+                  </span>
+                </div>
+                <span>Reporte de actividades de labor docente</span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="mostrar-usuario">
+            <div class="card">
+              <div class="card-body">
+                <table>
+                  <tr *ngFor="let evaluacion of evaluaciones; let isFirst = first">
+                    <th>Periodo</th>
+                    <td class = "label-dato" *ngIf="isFirst">{{evaluacion.PER_NOMBRE}}</td>
+                  </tr>
+                  <tr>
+                    <th>Nombre</th>
+                    <td class = "label-dato">{{usuario.USU_NOMBRE + " " + usuario.USU_APELLIDO}}</td>
+                  </tr>
+                  <tr>
+                    <th>Identificacion</th>
+                    <td class = "label-dato">{{usuario.USR_IDENTIFICACION}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="notificaciones.length == 0">
+            <p>No se encuentran notificaciones registradas para usted.</p>
+          </div>
+            
+          
+          <table *ngIf="notificaciones.length > 0" class="table table-hover">
+            <div class="mensajes-caption">
+              <caption>Notificaciones</caption>
+            </div>
+            <div class="mensajes-cuerpo">
+              <thead>
+                <td>Mensaje</td>
+                <td>Fecha</td>
+              </thead>
+              <tbody>
+                <tr *ngFor="let notificacion of notificaciones" >
+                  <td class = "msj" data-label="Mensaje">{{notificacion.NOTI_MSJ}}</td>
+                  <td data-label="Fecha">{{notificacion.NOT_FECHA|date:'dd/MM/yyyy'}}</td>
+                </tr>
+              </tbody>
+            </div>
+          </table>		
+
+
+	</div> 
+	<div id="footer" class="footer-con-imagen">
+	  <div class="imagen-con-textoF">
+		<div class="texto-con-lineaF">
+		  <div class="linea-verticalF">
+			<span>
+			  © 2023 Universidad del Cauca, Inc.
+			</span>
+		  </div>
+		  <span>Terms Privacy Security</span>
+		</div>
+	  </div>
+	</div>
+  </div> 

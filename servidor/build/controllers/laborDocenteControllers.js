@@ -37,7 +37,7 @@ class LaborDocenteControllers {
                     const laborDocente = rows[0];
                     return res.json(laborDocente);
                 }
-                res.status(404).json({ text: 'Labor no encontrado' });
+                res.status(404).json({ text: 'Labor no encontrado aca' });
             }
             catch (error) {
                 console.error(error);
@@ -54,6 +54,7 @@ class LaborDocenteControllers {
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
+            yield database_1.default.query('DELETE FROM EVALUACION WHERE LAB_ID = ?', [id]);
             yield database_1.default.query('DELETE FROM LABOR WHERE LAB_ID = ?', [id]);
             res.json({ text: 'Labor docente Eliminada' });
         });
@@ -63,6 +64,12 @@ class LaborDocenteControllers {
             const { id } = req.params;
             yield database_1.default.query('UPDATE LABOR set ? WHERE LAB_ID  = ?', [req.body, id]);
             res.json({ text: 'Actualizando labor docente...' });
+        });
+    }
+    getToAdd(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const rows = yield database_1.default.query('SELECT LAB_ID, LAB_NOMBRE FROM labor');
+            res.json(rows[0]);
         });
     }
 }

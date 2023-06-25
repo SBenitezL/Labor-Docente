@@ -17,16 +17,40 @@
 
 
 		<nav class="menu-navegacion">
-			<ul>
-			<li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
-			<li><a (click)= "IrGestionLabor()">Gestión Labor Docente <i class='bx bx-book-open'></i></a></li>
-			<li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
-			<li><a (click)= "IrGestionEvaluacion()">Gestion Evaluación <i class='bx bx-user-check' ></i></a></li>
+			<ul>				
+				<li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
+				<li><a (click)= "IrGestionLabor()">Gestión Labor Docente <i class='bx bx-book-open'></i></a></li>
+				<li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+				<li><a (click)= "IrGestionEvaluacion()">Gestion Evaluación <i class='bx bx-user-check' ></i></a></li>
+				<li><a (click)= "IrPeriodo()">Periodo Académico <i class="bx bx-calendar-check"></i></a></li>	
 			</ul>
 		</nav>
 
 
 	</div> 
+	<div *ngIf="notificaciones.length == 0">
+		<p>No se encuentran notificaciones registradas para usted.</p>
+	</div>
+	  
+	
+	<table *ngIf="notificaciones.length > 0" class="table table-hover">
+		<div class="mensajes-caption">
+			<caption>Notificaciones</caption>
+		</div>
+		<div class="mensajes-cuerpo">
+			<thead>
+				<td>Mensaje</td>
+				<td>Fecha</td>
+			</thead>
+			<tbody>
+				<tr *ngFor="let notificacion of notificaciones" >
+					<td class = "msj" data-label="Mensaje">{{notificacion.NOTI_MSJ}}</td>
+					<td data-label="Fecha">{{notificacion.NOT_FECHA|date:'dd/MM/yyyy'}}</td>
+				</tr>
+			</tbody>
+		</div>
+	</table>		
+
 	<div id="footer" class="footer-con-imagen">
 	  <div class="imagen-con-textoF">
 		<div class="texto-con-lineaF">

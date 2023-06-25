@@ -1,0 +1,63 @@
+<div class="wrapper">  
+    <div class="content">    
+		<div id="cabecera" class="cabecera-con-imagen">
+			<div class="imagen-con-texto">
+			<img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+			<div class="texto-con-linea">
+					<div class="linea-vertical">
+						<span>
+							Universidad del Cauca
+						</span>
+					</div>
+					<span>Agregar labor docente</span>
+			</div>
+			</div>
+		</div>
+
+		<nav class="menu-navegacion">
+			<ul>
+				<li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
+				<li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
+				<li><a (click)= "IrGestionLabor()">Gestión Labor Docente <i class='bx bx-book-open'></i></a></li>
+				<li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+				<li><a (click)= "IrGestionEvaluacion()">Gestion Evaluación <i class='bx bx-user-check' ></i></a></li>
+				<li><a (click)= "AgregarPeriodo()">Nuevo Periodo <i class="bx bx-calendar-check"></i></a></li>
+			</ul>
+			</nav>
+			<div class="card">
+			<div class="card-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Inicio</th>
+							<th>Fin</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let periodo of periodos" class="text-center">
+							<td>{{periodo.PER_NOMBRE}}</td>				
+							<td>{{periodo.PER_FECHAINICIO| date:'dd/MM/yyyy'}}</td>
+							<td>{{periodo.PER_FECHAFIN | date:'dd/MM/yyyy'}}</td>
+							<td>
+								<button  [routerLink]="['/periodo/edit',periodo.PER_ID]" class="btn btn-warning">Editar</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</div>
+		</div>
+		<div id="footer" class="footer-con-imagen">
+			<div class="imagen-con-textoF">
+			<div class="texto-con-lineaF">
+					<div class="linea-verticalF">
+						<span>
+							© 2023 Universidad del Cauca, Inc.
+						</span>
+					</div>
+					<span>Terms Privacy Security</span>
+			</div>
+			</div>
+		</div>
+	</div>

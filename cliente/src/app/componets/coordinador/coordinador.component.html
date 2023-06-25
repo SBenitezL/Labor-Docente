@@ -1,0 +1,106 @@
+<div class="wrapper">  
+	<div class="content">   		
+		
+		<div id="cabecera" class="cabecera-con-imagen">
+            <div class="imagen-con-texto">
+              <img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+              <div class="texto-con-linea">
+                <div class="linea-vertical">
+                  <span>
+                    Universidad del Cauca
+                  </span>
+                </div>
+                <span>Reporte de actividades de labor docente</span>
+              </div>
+            </div>
+    </div>
+    <nav class="menu-navegacion">
+      <ul>
+          <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
+          <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
+          <li><a (click)= "IrGestionLabor()">Gestión labor docente <i class='bx bx-book-open'></i></a></li>
+          <li><a (click)= "IrGestionEvaluacion()">Gestion Evaluación <i class='bx bx-user-check' ></i></a></li>
+      </ul>
+    </nav>
+
+
+        <div class="mostrar-usuario">
+            <div class="card">
+                <div class="card-body">
+                    <div class="columna-izquierda">
+                        <div class="campos">
+                            <label for="Periodo">Periodo</label>
+                        </div>
+                        <div class="campos">
+                            <label for="UserName">Nombre</label>
+                        </div>
+                        <div class="campos">
+                            <label for="USR_IDENTIFICACION">Identificacion</label>
+                        </div>
+                    </div>
+                    <div class="columna-derecha">
+                      <tr *ngFor="let evaluacion of evaluaciones; let isFirst = first">
+                        <td> <input *ngIf="isFirst" type="text" name="UserName" [(ngModel)]="evaluacion.PER_NOMBRE" class="left-align-input"> </td>
+                      </tr>
+                      <td> <input type="text" name="UserName" [(ngModel)]="usuario.USU_NOMBRE" class="left-align-input"></td>
+                      <td> <input type="text" name="UserIdentificacion" [(ngModel)]="usuario.USR_IDENTIFICACION" class="left-align-input"></td>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="card">
+                <div class="card-head">
+                    <h3>Evaluaciones</h3>
+                    
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nombre labor</th>
+                                <th>Tipo labor</th>
+                                <th>Horas</th>
+                                <th>Fecha inicio</th>
+                                <th>Fecha fin</th>
+                                <th>Estado</th>
+                                <th>Resultado</th>
+                                <th>Evaluación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let evaluacion of evaluaciones">
+                            <td class="primerI">{{ evaluacion.ID }}</td>
+                            <td class="segundoI">{{ evaluacion.Nombre }}</td>
+                            <td class="tercerI">{{ evaluacion.TipoLabor }}</td>
+                            <td class="cuartoI">{{ evaluacion.Horas }}</td>
+                            <td class="quintoI">{{ evaluacion.Inicio | date:'dd/MM/yyyy' }}</td>
+                            <td class="sextoI">{{ evaluacion.Fin | date:'dd/MM/yyyy' }}</td>
+                            <td class="septimoI">{{ estados[evaluacion.Estado] }}</td>
+                            <td><input class="octavoI"[(ngModel)]="evaluacion.Resultado"type="text" required></td>
+                            <td><input class="novenoI" [(ngModel)]="evaluacion.Puntaje"type="text" required></td>
+                            <button (click)="updateOwnEvaluacion(evaluacion)"class="btn btn-primary">Guardar</button>
+
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+	</div> 
+	<div id="footer" class="footer-con-imagen">
+	  <div class="imagen-con-textoF">
+		<div class="texto-con-lineaF">
+		  <div class="linea-verticalF">
+			<span>
+			  © 2023 Universidad del Cauca, Inc.
+			</span>
+		  </div>
+		  <span>Terms Privacy Security</span>
+		</div>
+	  </div>
+	</div>
+  </div> 

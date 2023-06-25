@@ -135,3 +135,21 @@
   display: flex;
   flex-direction: column;
 }
+.msj{
+  width: 60%;
+  height: auto;
+}
+
+
+.table.table-hover{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+.mensajes-caption caption{
+  font-size: 28px;
+  text-transform: uppercase;
+}

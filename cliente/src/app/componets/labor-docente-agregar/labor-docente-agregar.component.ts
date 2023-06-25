@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding} from '@angular/core';
 import { LaborDocente } from '../../Modelo/LaborDocente';
 import { ActivatedRoute, Router } from '@angular/router';
+import { currentUser } from '../control-vista/control-vista.component';
 
 import { ServiceService } from '../../Service/service.service';
 
@@ -18,7 +19,7 @@ export class LaborDocenteAgregarComponent {
     LAB_HORAS:0,
 
   };
-  
+
   edit : boolean =false;
   seleccionTipoLab : string = "";
   constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){
@@ -40,17 +41,19 @@ export class LaborDocenteAgregarComponent {
     }
   }
   
-  
+  auxIdentificacion : string = '';
+  auxHoras : string= '';
   laborAgregado: boolean = false;
+  mostrar: boolean = false;
   saveNewLabor(){
-    
+    this.laborDocente.LAB_ID = parseInt(this.auxIdentificacion);
+    this.laborDocente.LAB_HORAS = parseInt(this.auxHoras);
     this.serviceService.saveLabor(this.laborDocente)
     .subscribe(
       res =>{
+        this.mostrar = true;
         console.log(res);
-        
         this.laborAgregado = true;
-        this.router.navigate(['/listarL']);
       },
       err =>console.error(err)
     )
@@ -96,9 +99,20 @@ export class LaborDocenteAgregarComponent {
     this.router.navigate(['/listarL']);
   }
   IrEvaluacion() {
-    this.router.navigate(['/listarL']);
+    this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
   }
   IrInicio(){
-    this.router.navigate(['/menuCoordinador']);
+    this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
+  }
+  IrGestionEvaluacion() {
+    this.router.navigate(['/evaluacion']);
+  }
+  cerrarModal() {
+    this.mostrar = false;
+    this.router.navigate(['/listarL']);
+  }
+  IrPeriodo()
+  {
+    this.router.navigate(['/periodo']);
   }
 }

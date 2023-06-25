@@ -3,6 +3,8 @@ DELIMITER //
 CREATE OR REPLACE PROCEDURE sp_consultar_evaluaciones()
 BEGIN
   SELECT
+    CONCAT(usuario.USU_NOMBRE, ' ', usuario.USU_APELLIDO) as NombreCompleto,
+    rol.ROL_DESCRIPCION as Rol,
     evaluacion.EVA_ID as ID,  
     labor.LAB_NOMBRE as Nombre, 
     labor.LAB_HORAS as Horas, 

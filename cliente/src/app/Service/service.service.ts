@@ -3,9 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../Modelo/Usuario';
 import { Evaluacion } from '../Modelo/Evaluacion';
 import { EvaluacionEst } from '../Modelo/EvaluacionEstructura';
+import { EvaluacionEdit } from '../Modelo/EvaluacionEdit';
 import {} from '../Modelo/Usuario';
 import { LaborDocente } from '../Modelo/LaborDocente';
 import { Observable } from 'rxjs';
+import { PeriodoUtil } from '../Modelo/PeriodoUtil';
 
 
 @Injectable({
@@ -24,6 +26,11 @@ export class ServiceService {
     return this.http.get(`${this.API_URI}/usuarios/${id}`);
   }
 
+  enviarArchivo(formData: FormData, idEv:number, idUser:number) {
+    
+    console.log("antes de entrar al servidor"+ formData)
+    return this.http.post(`${this.API_URI}/guardarArchivo/${idEv}/${idUser}`, formData);
+  }
   deleteUsuario(id: number): Observable<any> {
     return this.http.delete(`${this.API_URI}/usuarios/${id}`);
   }
@@ -84,10 +91,45 @@ export class ServiceService {
   }
   updateEvaluacion(id:number, updatedEvaluacion:EvaluacionEst)
   {
-    return this.http.put(`${this.API_URI}/evaluacion/${id}`,updatedEvaluacion);
+    return this.http.put(`${this.API_URI}/evaluacion/update/${id}`,updatedEvaluacion);
+  }
+
+  getLaborToAdd(){
+    return this.http.get(`${this.API_URI}/labor/to/add`);
+  }
+  getUseRolToAdd()
+  {
+    return this.http.get(`${this.API_URI}/userol`)
+  }
+  insertPeriodo(periodo:PeriodoUtil)
+  {
+    return this.http.post(`${this.API_URI}/periodo/add`,periodo);
+  }
+  getPeriodoToAdd()
+  {
+    return this.http.get(`${this.API_URI}/periodo`);
+  }
+  getPeriodos()
+  {
+    return this.http.get(`${this.API_URI}/periodo/to/list`);
+  }
+  getPeriodoEdit(id:number){
+    return this.http.get(`${this.API_URI}/periodo/${id}`);
+  }
+  updatePeriodo(periodo:PeriodoUtil)
+  {
+    return this.http.post(`${this.API_URI}/periodo/edit`,periodo);
   }
   validarContrasenia(contrasenia:string, login:string){
     return this.http.get(`${this.API_URI}/usuarios/${contrasenia}/${login}`);
-
+  }
+  getToEditEvaluacion(id:number){
+    return this.http.get(`${this.API_URI}/evaluacion/edit/${id}`)
+  }
+  getNotificacionesUser(id:number){
+    return this.http.get(`${this.API_URI}/notificacion/${id}`);
+  }
+  updateOwnEvaluacion(datos:EvaluacionEdit){
+    return this.http.post(`${this.API_URI}/evaluacion/update/own`,datos);
   }
 }

@@ -20,13 +20,23 @@
                 <li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
                 <li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
                 <li><a (click)= "IrGestionLabor()">Gestión labor docente <i class='bx bx-book-open'></i></a></li>
+                <li><a (click)= "IrGestionEvaluacion()">Gestión evaluación <i class='bx bx-plus-circle' ></i></a></li>
                 <li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+                <li><a (click)= "IrPeriodo()">Periodo Académico <i class="bx bx-calendar-check"></i></a></li>
             </ul>
         </nav>
         <div class="titulo"> 
             <h3>Usuarios</h3>
             <button class="btn btn-warning" (click)=" updateUsuario() ">Guardar</button>
         </div>  
+
+        <div id="miModal" class="modal" [ngStyle]="{'display': mostrar ? 'block' : 'none'}">
+            <div class="modal-contenido">
+              <span class="cerrar" (click)="cerrarModal()">&times;</span>
+              <h2>Usuario actualizado <i class='bx bx-user'></i></h2>
+              <p>El usuario se ha podido actualizar con éxito</p>
+            </div>
+          </div>
 
 
         <div class="container-main">
@@ -63,7 +73,8 @@
                               <option [ngValue]="1" [selected]="usuario.ROL_ID === 1">Decano</option>
                               <option [ngValue]="2" [selected]="usuario.ROL_ID === 2">Coordinador</option>
                               <option [ngValue]="3" [selected]="usuario.ROL_ID === 3">Planta</option>
-                              <option [ngValue]="4" [selected]="usuario.ROL_ID === 4">Ocasional</option>
+                              <option [ngValue]="4" [selected]="usuario.ROL_ID === 4">Tiempo Completo</option>
+                              <option [ngValue]="5" [selected]="usuario.ROL_ID === 5">Catedra</option>
                             </select>
   
                             <label for="UR_FECHAINICIO">Fecha de inicio</label>

@@ -2,7 +2,7 @@ import { Component, OnInit, HostBinding} from '@angular/core';
 import { Usuario } from '../../Modelo/Usuario';
 import { UseRol} from '../../Modelo/UseRol';
 import { ActivatedRoute, Router ,Route} from '@angular/router';
-
+import { currentUser } from '../control-vista/control-vista.component';
 
 import { ServiceService } from '../../Service/service.service';
 @Component({
@@ -26,9 +26,13 @@ export class UsuarioAgregarComponent implements OnInit{
     UR_FECHAFIN: new Date(),
     
   };
-
+   
     edit : boolean =false;
+    
+    seleccionRolId='';
+    seleccionGenero='';
     constructor(private serviceService: ServiceService,private router:Router,private activeRouter:ActivatedRoute){
+
     }
     ngOnInit(): void {
       
@@ -47,26 +51,59 @@ export class UsuarioAgregarComponent implements OnInit{
     
    
     usuarioAgregado: boolean = false;
-
+    mostrar: boolean = false;
+    mensajeUsuario:string = "";
+    auxIdentificacion : string = '';
     saveNewUsuario(): void {
+      this.usuario.USR_Contrasenia = this.contrasenia;
+      this.usuario.USR_IDENTIFICACION = parseInt(this.auxIdentificacion);
       console.log(this.usuario.UserName);
+      //this.mostrar = true;
       this.serviceService.saveUsuario(this.usuario)
         .subscribe(
-          res => {
-            console.log(res);
-            this.usuarioAgregado = true;
+          (res:any) => {
             
-            this.router.navigate(['/listar']);
+            this.mensajeUsuario = res.message;
+            console.log(this.mensajeUsuario);
+            this.mostrar = true;
+            
+            this.usuarioAgregado = true;       
+            
           },
-          err => console.error(err)
+          err => {
+            console.error(err);
+          }
         );
     }
-    
-    
 
+    seleccionarTipoLabor(){
+      console.log(this.seleccionRolId);
+      if(this.seleccionRolId=="opt1"){
+        this.usuario.ROL_ID=1;
+      } else if(this.seleccionRolId=="opt2"){
+        this.usuario.ROL_ID=2;
+      } else if(this.seleccionRolId=="opt3"){
+        this.usuario.ROL_ID=3;
+      }else if(this.seleccionRolId=="opt4"){
+        this.usuario.ROL_ID=4;
+      }else{
+        this.usuario.ROL_ID=5;
+
+      }
+    }
+    seleccionarGenero(){
+      console.log(this.seleccionGenero);
+      if(this.seleccionGenero=="M"){
+        this.usuario.USU_GENERO="M";
+      } else{
+        this.usuario.USU_GENERO="F";
+      }
+    }
     updateUsuario(){
+      
       console.log(this.usuario);
       this.serviceService.updateUsuario(this.usuario.USR_IDENTIFICACION,this.usuario);
+      
     }
     IrGestionDocente() {
       this.router.navigate(['/listar']);
@@ -75,10 +112,27 @@ export class UsuarioAgregarComponent implements OnInit{
       this.router.navigate(['/listarL']);
     }
     IrEvaluacion() {
-      this.router.navigate(['/listarL']);
+      this.router.navigate([`/coordinador/${currentUser.getCurrent()}`]);
     }
     IrInicio(){
-      this.router.navigate(['/menuCoordinador']);
+      this.router.navigate([`/menuCoordinador/${currentUser.getCurrent()}`]);
+    }
+    IrGestionEvaluacion() {
+      this.router.navigate(['/evaluacion']);
+    }
+    cerrarModal() {
+      this.mostrar = false;
+      this.router.navigate(['/listar']);
+    }
+    IrPeriodo()
+    {
+      this.router.navigate(['/periodo']);
+    }
+    public mostrarContrasenia: boolean = false;
+    public contrasenia: string = '';
+
+    public toggleMostrarContrasenia(): void {
+      this.mostrarContrasenia = !this.mostrarContrasenia;
     }
 
 }

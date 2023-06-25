@@ -5,7 +5,11 @@ import indexRoutes from './routes/indexRoutes';
 import usuariosRoutes from './routes/usuariosRoutes';
 import laborRoutes from './routes/LaborDocenteRoutes';
 import evaluacionRoutes from "./routes/evaluacionRoutes";
-
+import periodoRoutes from "./routes/periodoRoutes";
+import userrolRoutes from "./routes/userrolRoutes";
+import notificacionRoutes from "./routes/notificacionRoutes";
+import docenteArchivoRoutes from "./routes/docenteArchivoRoutes";
+import multer from 'multer';
 class Servidor{
     public app: Application;
     constructor(){
@@ -25,14 +29,24 @@ class Servidor{
         this.app.use('/api/usuarios',usuariosRoutes);
         this.app.use('/api/labor',laborRoutes);
         this.app.use('/api/evaluacion',evaluacionRoutes);
-        
+        this.app.use('/api/periodo',periodoRoutes);
+        this.app.use('/api/userol',userrolRoutes);
+        this.app.use('/api/notificacion',notificacionRoutes);
+        this.app.use('/api',docenteArchivoRoutes);            
     }
     start():void{
         this.app.listen(this.app.get('port'),()=>{
             console.log('Servidor en puerto', this.app.get('port'));
         });
     }
-
+    storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+          cb(null, 'uploads/'); // Carpeta donde se guardarán los archivos
+        },
+        filename: function (req, file, cb) {
+          cb(null, file.originalname); // Nombre del archivo original
+        }
+      });
 
 }
 const server=new Servidor();

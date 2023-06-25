@@ -69,6 +69,7 @@ create table PERIODO
    PER_FECHAFIN         DATE,
    constraint PK_PERIODO primary key (PER_ID)
 );
+ALTER TABLE periodo MODIFY COLUMN PER_ID INT AUTO_INCREMENT;
 /*==============================================================*/
 /* Table: TIPOLABOR                                             */
 /*==============================================================*/
@@ -142,3 +143,28 @@ alter table EVALUACION
 alter table EVALUACION
    add constraint FK_EVALUACI_TIENES_PE_PERIODO foreign key (PER_ID)
       references PERIODO (PER_ID);
+ALTER TABLE evaluacion MODIFY COLUMN EVA_ID INT AUTO_INCREMENT;
+
+
+create table NOTIFICACION 
+(  
+   NOT_ID               INT AUTO_INCREMENT,
+   USR_IDENTIFICACION   INT,
+   NOT_FECHA            DATE,
+   NOTI_MSJ             VARCHAR(500),
+   constraint PK_NOTIFICACION primary key (NOT_ID),
+   constraint FK_NOTIFICACION foreign key (USR_IDENTIFICACION) REFERENCES USUARIO(USR_IDENTIFICACION)
+);
+
+CREATE TABLE ARCHIVODOCENTE (
+  ARC_ID                  INT AUTO_INCREMENT,
+  ARC_NOMBRE              VARCHAR(100),
+  ARC_TIPO                VARCHAR(50),
+  ARC_RUTA                VARCHAR(255),
+  USR_IDENTIFICACION      INT,
+  EVA_ID                  INT,
+  constraint FK_USER_ARCHIVO foreign key (USR_IDENTIFICACION) REFERENCES USUARIO(USR_IDENTIFICACION),
+  constraint FK_EVA_ARCHIVO foreign key (EVA_ID) REFERENCES EVALUACION(EVA_ID),
+  constraint PK_ARCHIVODOCENTE primary key (ARC_ID)
+
+);

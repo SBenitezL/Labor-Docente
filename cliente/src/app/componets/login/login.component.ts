@@ -4,6 +4,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { Usuario } from '../../Modelo/Usuario';
 import { UseRol } from '../../Modelo/UseRol';
 import { ServiceService } from '../../Service/service.service';
+import { currentUser } from '../control-vista/control-vista.component';
 
 @Component({
   selector: 'app-login',
@@ -45,9 +46,11 @@ export class LoginComponent {
     }else{
      this.serviceService.validarContrasenia(pass,loginU).subscribe(
         res => {
+          console.log(res)
           if (Array.isArray(res) && res.length > 0) {
             const rolId = res[0].ROL_ID;
-            this.verificarVista(rolId);
+            const userId=  res[0].USR_IDENTIFICACION;
+            this.verificarVista(rolId,userId);
           } else {
             console.log("El array res está vacío o no es un array");
           }
@@ -59,10 +62,18 @@ export class LoginComponent {
     }
     
   }
-  verificarVista(rol:number){
+  verificarVista(rol:number,userId:number){
+    currentUser.setCurrent(userId);
+    console.log(rol);
       if(rol==2){
-        this.router.navigate(['/menuCoordinador']);
+        console.log(userId);
+        this.router.navigate([`/menuCoordinador/${userId}`]);
+
+      }else if(rol==3 || rol==4 || rol==5){
+        this.router.navigate([`/docente/${userId}`]);
+      }else if(rol == 1){
+        this.router.navigate([`/decano/`]);
       }
-  }
-  
+  }
+  
 }

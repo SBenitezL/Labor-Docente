@@ -1,0 +1,60 @@
+<div class="wrapper">  
+    <div class="content">   
+		<div id="cabecera" class="cabecera-con-imagen">
+			<div class="imagen-con-texto">
+			<img src="assets/Escudo_Unicauca2.png" alt="Icono" class="icono-izquierda">
+			<div class="texto-con-linea">
+					<div class="linea-vertical">
+						<span>
+							Universidad del Cauca
+						</span>
+					</div>
+					<span>Agregar labor docente</span>
+			</div>
+			</div>
+		</div>
+
+		<nav class="menu-navegacion">
+			<ul>
+				<li><a (click)= "IrInicio()">Inicio <i class='bx bx-home' ></i></a></li>
+				<li><a (click)= "IrGestionDocente()">Gestión Docente <i class='bx bx-user'></i></a></li>
+				<li><a (click)= "IrGestionLabor()">Gestión Labor Docente <i class='bx bx-book-open'></i></a></li>
+				<li><a (click)= "IrEvaluacion()">Evaluación <i class='bx bx-user-check' ></i></a></li>
+				<li><a (click)= "IrGestionEvaluacion()">Gestion Evaluación <i class='bx bx-user-check' ></i></a></li>
+				<li><a (click)= "IrPeriodo()">Periodo Académico <i class="bx bx-calendar-check"></i></a></li>
+
+			</ul>
+			</nav>
+		<div class="container">
+					<div class="form-container">
+						<h2>Periodo Académico</h2>
+						<form action="#">
+						<label for="name">Nombre:</label>
+						<input type="text" id="name" name="name" required [(ngModel)]="periodo.PER_NOMBRE">
+					
+						<label for="start-date">Fecha de inicio:</label>
+						<input type="date" id="start-date" name="start-date" required [(ngModel)]="periodo.PER_FECHAINICIO">
+					
+						<label for="end-date">Fecha de fin:</label>
+						<input type="date" id="end-date" name="end-date" required [(ngModel)]="periodo.PER_FECHAFIN">
+					
+						<input type="submit" value="Guardar" (click)= " active ? editar() : insertar() " class="btn btn-warning">
+						</form>
+					</div>
+				</div>
+			</div>
+		
+		<div id="footer" class="footer-con-imagen">
+			<div class="imagen-con-textoF">
+			<div class="texto-con-lineaF">
+					<div class="linea-verticalF">
+						<span>
+							© 2023 Universidad del Cauca, Inc.
+						</span>
+					</div>
+					<span>Terms Privacy Security</span>
+			</div>
+			</div>
+		</div>
+	</div>
+

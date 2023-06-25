@@ -1,0 +1,9 @@
+DELIMITER //
+
+CREATE OR REPLACE PROCEDURE sp_consultar_periodos_edit(IN p_id INT)
+BEGIN
+    SELECT PER_ID, PER_NOMBRE, PER_FECHAINICIO, PER_FECHAFIN 
+    FROM periodo
+    WHERE PER_ID = p_id;
+END //
+DELIMITER ;
